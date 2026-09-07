@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тайный Санта 2026</title>
+<style>
+  :root{--green:#0e3b2e;--gold:#f4c430;--paper:#fff8ee;--ink:#22302b}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+  .wrap{max-width:720px;margin:0 auto;padding:0 16px}
+  header{background:linear-gradient(160deg,#0e3b2e,#145a44);color:#fff;text-align:center;padding:56px 16px}
+  header h1{font-size:clamp(28px,7vw,44px);margin-bottom:12px}
+  header p{font-size:clamp(16px,4vw,20px);opacity:.9;max-width:480px;margin:0 auto 24px}
+  .btn{display:inline-block;background:var(--gold);color:#22302b;font-weight:700;padding:14px 28px;border-radius:999px;text-decoration:none;border:none;font-size:16px;cursor:pointer}
+  .btn.small{padding:10px 18px;font-size:14px}
+  section{padding:32px 0}
+  h2{font-size:clamp(22px,5vw,30px);margin-bottom:16px;color:var(--green)}
+  .card{background:#fff;border:1px solid #e8ddc8;border-radius:16px;padding:20px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+  li{margin:0 0 8px 20px}
+  summary{font-weight:700;cursor:pointer}
+  details p{margin-top:8px}
+  label{display:block;font-weight:600;font-size:14px;margin-top:10px}
+  input,textarea{width:100%;padding:12px;border:1px solid #d8cbb2;border-radius:10px;font:inherit;margin-top:6px;background:#fff}
+  textarea{min-height:70px}
+  .code{font-size:32px;font-weight:800;letter-spacing:4px;color:var(--green);background:#fff3cd;border:2px dashed var(--gold);border-radius:12px;padding:12px;text-align:center;margin:12px 0}
+  .msg{margin-top:10px;font-size:15px}
+  .err{color:#b00020}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+  td,th{border:1px solid #e0d6c0;padding:8px;text-align:left}
+  footer{background:var(--green);color:#fff;text-align:center;padding:24px 16px;font-size:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎄 Тайный Санта 2026</h1>
+  <p>Корпоративный обмен подарками до 1000 ₽. Анонимно, весело и по-новогоднему.</p>
+  <a class="btn" href="#reg">Участвовать</a>
+</header>
+
+<main class="wrap">
+
+  <section id="how">
+    <h2>Как это работает</h2>
+    <div class="card"><ol>
+      <li>Заполните форму — получите секретный код.</li>
+      <li>После жеребьёвки введите код и узнайте, кому вы Санта.</li>
+      <li>Подготовьте подарок до 1000 ₽ по пожеланиям подопечного.</li>
+      <li>25 декабря — анонимный обмен подарками 🎁</li>
+    </ol></div>
+  </section>
+
+  <section id="rules">
+    <h2>Правила и бюджет</h2>
+    <div class="card"><ul>
+      <li>Бюджет подарка — до 1000 ₽, не превышаем.</li>
+      <li>Подарок — уместный для рабочей среды.</li>
+      <li>Учитываем пожелания, аллергии и «не дарить».</li>
+      <li>Имя подопечного — секрет до вручения.</li>
+      <li>Участие добровольное.</li>
+    </ul></div>
+  </section>
+
+  <section id="dates">
+    <h2>Даты</h2>
+    <div class="card"><ul>
+      <li><b>До 1 декабря</b> — регистрация</li>
+      <li><b>2 декабря</b> — жеребьёвка</li>
+      <li><b>До 24 декабря</b> — готовим подарки</li>
+      <li><b>25 декабря</b> — обмен подарками 🎁</li>
+    </ul></div>
+  </section>
+
+  <section id="reg">
+    <h2>Регистрация</h2>
+    <div class="card">
+      <form id="regForm">
+        <label>Имя и фамилия *<input id="fName" required placeholder="Иван Петров"></label>
+        <label>Отдел / команда<input id="fDept" placeholder="Маркетинг"></label>
+        <label>Куда писать лично (Telegram / почта) *<input id="fContact" required placeholder="@ivan или ivan@company.ru"></label>
+        <label>Что вы любите? *<textarea id="fLikes" required placeholder="Кофе, книги, настолки, сладкое…"></textarea></label>
+        <label>Что вам НЕ дарить?<textarea id="fDislikes" placeholder="Кружки, парфюм…"></textarea></label>
+        <label>Аллергии и ограничения<textarea id="fAllergy" placeholder="Орехи, цитрусовые…"></textarea></label>
+        <p style="margin-top:14px"><button class="btn" id="regBtn" type="submit">Участвовать</button></p>
+      </form>
+      <div id="regMsg" class="msg"></div>
+    </div>
+  </section>
+
+  <section id="lookup">
+    <h2>Кому я дарю?</h2>
+    <div class="card">
+      <p>Введите секретный код, который вы получили при регистрации.</p>
+      <label>Секретный код<input id="lookCode" placeholder="Например: K7MQ"></label>
+      <p style="margin-top:14px"><button class="btn small" id="lookBtn" type="button">Показать</button></p>
+      <div id="lookMsg" class="msg"></div>
+    </div>
+  </section>
+
+  <section id="org">
+    <h2>Организатору</h2>
+    <div class="card">
+      <p>Служебный раздел. Пароль никому не сообщайте.</p>
+      <label>Пароль организатора<input id="orgKey" type="password"></label>
+      <p style="margin-top:14px">
+        <button class="btn small" id="drawBtn" type="button">🎲 Провести жеребьёвку</button>
+        <button class="btn small" id="listBtn" type="button">Показать таблицу</button>
+      </p>
+      <div id="orgMsg" class="msg"></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Вопросы и ответы</h2>
+    <details class="card"><summary>Можно не участвовать?</summary><p>Да, участие добровольное.</p></details>
+    <details class="card"><summary>Сколько тратить?</summary><p>До 1000 ₽, дороже не нужно.</p></details>
+    <details class="card"><summary>Я потерял код</summary><p>Напишите организатору — он подскажет код по вашему имени.</p></details>
+    <details class="card"><summary>Что если не знаю, что дарить?</summary><p>Возьмите нейтральное: кофе, чай, сладости без аллергенов, канцелярию, сертификат.</p></details>
+  </section>
+
+  <section id="contacts">
+    <h2>Контакты организатора</h2>
+    <div class="card"><p>По любым вопросам: [имя], Telegram @…, кабинет №…</p></div>
+  </section>
+
+</main>
+
+<footer>Сделано с любовью и мишурой ✨ Тайный Санта 2026</footer>
+
+<script>
+const API_URL = 'https://script.google.com/macros/s/AKfycbwsQ8iuMT58Na_nnGz6MV12SkTWpvVyknCgKVYvycQYZyGzEwxQtkihXVdboec0iUY8ZA/exec'; // ссылка, которая заканчивается на /exec
+
+const $ = id => document.getElementById(id);
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+async function api(data){
+  const r = await fetch(API_URL, {
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify(data)
+  });
+  return await r.json();
+}
+
+// --- регистрация ---
+$('regForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = $('regBtn'); btn.disabled = true;
+  $('regMsg').className = 'msg'; $('regMsg').textContent = 'Отправляем…';
+  try {
+    const res = await api({action:'register',
+      name:$('fName').value.trim(), dept:$('fDept').value.trim(),
+      contact:$('fContact').value.trim(), likes:$('fLikes').value.trim(),
+      dislikes:$('fDislikes').value.trim(), allergies:$('fAllergy').value.trim()});
+    if (res.ok) {
+      $('regForm').style.display = 'none';
+      $('regMsg').innerHTML = 'Вы в игре! 🎉 Ваш секретный код:'
+        + '<div class="code">' + res.code + '</div>'
+        + 'Сохраните его (скриншот). По этому коду вы узнаете, кому дарить подарок.';
+    } else {
+      $('regMsg').className = 'msg err';
+      $('regMsg').textContent = res.error || 'Не удалось отправить.';
+    }
+  } catch (err) {
+    $('regMsg').className = 'msg err';
+    $('regMsg').textContent = 'Нет связи с сервером. Проверьте интернет.';
+  }
+  btn.disabled = false;
+});
+
+// --- проверка кода ---
+$('lookBtn').addEventListener('click', async () => {
+  $('lookMsg').className = 'msg'; $('lookMsg').textContent = 'Проверяем…';
+  try {
+    const res = await api({action:'lookup', code:$('lookCode').value});
+    if (!res.ok) { $('lookMsg').className='msg err'; $('lookMsg').textContent = res.error; return; }
+    if (res.status === 'waiting') {
+      $('lookMsg').textContent = 'Жеребьёвка ещё не проведена. Загляните после даты жеребьёвки.';
+      return;
+    }
+    $('lookMsg').innerHTML =
+      '🎁 Вы дарите подарок: <b>' + esc(res.giftee) + '</b><br>' +
+      (res.likes ? 'Любит: ' + esc(res.likes) + '<br>' : '') +
+      (res.dislikes ? 'Не дарить: ' + esc(res.dislikes) + '<br>' : '') +
+      (res.allergies ? 'Аллергии: ' + esc(res.allergies) + '<br>' : '') +
+      'Бюджет до 1000 ₽. Держите в секрете!';
+  } catch (e) {
+    $('lookMsg').className='msg err'; $('lookMsg').textContent = 'Нет связи с сервером.';
+  }
+});
+
+// --- жеребьёвка ---
+$('drawBtn').addEventListener('click', async () => {
+  if (!confirm('Провести жеребьёвку? Если она уже была — результаты перезапишутся.')) return;
+  $('orgMsg').className = 'msg'; $('orgMsg').textContent = 'Жеребьём…';
+  try {
+    const res = await api({action:'draw', key:$('orgKey').value});
+    $('orgMsg').className = res.ok ? 'msg' : 'msg err';
+    $('orgMsg').textContent = res.ok
+      ? 'Готово! Распределено участников: ' + res.count + '. Теперь каждый может проверить свой код.'
+      : res.error;
+  } catch (e) { $('orgMsg').className='msg err'; $('orgMsg').textContent = 'Нет связи с сервером.'; }
+});
+
+// --- таблица организатора ---
+$('listBtn').addEventListener('click', async () => {
+  try {
+    const res = await api({action:'list', key:$('orgKey').value});
+    if (!res.ok) { $('orgMsg').className='msg err'; $('orgMsg').textContent = res.error; return; }
+    let html = '<table><tr><th>Кто дарит</th><th>Кому</th><th>Код</th><th>Контакт</th></tr>';
+    res.list.forEach(p => {
+      html += '<tr><td>' + esc(p.name) + '</td><td>' + esc(p.giftee) + '</td><td>' + esc(p.code) + '</td><td>' + esc(p.contact) + '</td></tr>';
+    });
+    $('orgMsg').className = 'msg';
+    $('orgMsg').innerHTML = html + '</table>';
+  } catch (e) { $('orgMsg').className='msg err'; $('orgMsg').textContent = 'Нет связи с сервером.'; }
+});
+</script>
+</body>
+</html>
