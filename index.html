@@ -1,41 +1,134 @@
 <!DOCTYPE html>
 <html lang="ru">
+<!-- Дизайн в корпоративных цветах DHL: жёлтый #FFCC00, красный #D40511 -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Тайный Санта 2026</title>
+<title>Тайный Санта 2026 • DHL</title>
 <style>
-  :root{--green:#0e3b2e;--gold:#f4c430;--paper:#fff8ee;--ink:#22302b}
+  :root{
+    --yellow:#FFCC00;
+    --red:#D40511;
+    --ink:#1a1a1a;
+    --white:#ffffff;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
-  .wrap{max-width:720px;margin:0 auto;padding:0 16px}
-  header{background:linear-gradient(160deg,#0e3b2e,#145a44);color:#fff;text-align:center;padding:56px 16px}
-  header h1{font-size:clamp(28px,7vw,44px);margin-bottom:12px}
-  header p{font-size:clamp(16px,4vw,20px);opacity:.9;max-width:480px;margin:0 auto 24px}
-  .btn{display:inline-block;background:var(--gold);color:#22302b;font-weight:700;padding:14px 28px;border-radius:999px;text-decoration:none;border:none;font-size:16px;cursor:pointer}
-  .btn.small{padding:10px 18px;font-size:14px}
-  section{padding:32px 0}
-  h2{font-size:clamp(22px,5vw,30px);margin-bottom:16px;color:var(--green)}
-  .card{background:#fff;border:1px solid #e8ddc8;border-radius:16px;padding:20px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:var(--yellow); color:var(--ink); line-height:1.6;
+  }
+
+  /* ===== ФОНОВЫЕ ЭТИКЕТКИ DHL ===== */
+  .bg{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+  .bg-label{
+    position:absolute; width:230px; background:var(--white);
+    border:2px solid var(--red); border-radius:10px; padding:14px;
+    opacity:.13; display:flex; flex-direction:column; gap:9px;
+  }
+  .bg-logo{font-weight:900; font-style:italic; font-size:34px; letter-spacing:3px; color:var(--red); line-height:1}
+  .bg-line{height:8px; background:#c9c9c9; border-radius:4px}
+  .bg-line.short{width:60%}
+  .bg-barcode{height:30px; background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 8px,transparent 8px 10px)}
+
+  header,main,footer{position:relative; z-index:1}
+
+  /* ===== Диагональные полосы DHL ===== */
+  .stripes{height:12px; background:repeating-linear-gradient(-45deg,var(--red) 0 16px,var(--yellow) 16px 32px)}
+
+  /* ===== Шапка ===== */
+  header{background:var(--yellow); text-align:center; padding:44px 16px 52px; border-bottom:4px solid var(--red)}
+  .brand{
+    display:inline-block; background:var(--red); color:var(--yellow);
+    font-weight:800; letter-spacing:2px; font-size:12px; padding:6px 16px;
+    border-radius:999px; text-transform:uppercase; margin-bottom:16px;
+  }
+  header h1{
+    font-size:clamp(30px,8vw,52px); color:var(--red); text-transform:uppercase;
+    font-style:italic; font-weight:900; letter-spacing:1px; margin-bottom:10px;
+  }
+  header .sub{max-width:520px; margin:0 auto 24px; font-size:clamp(15px,4vw,19px); font-weight:600}
+
+  .wrap{max-width:720px; margin:0 auto; padding:0 16px}
+
+  /* ===== Кнопки ===== */
+  .btn{
+    display:inline-block; background:var(--red); color:#fff; font-weight:800;
+    text-transform:uppercase; letter-spacing:.6px; padding:14px 30px;
+    border-radius:8px; text-decoration:none; border:none; font-size:15px;
+    cursor:pointer; box-shadow:0 4px 0 #8f040c;
+  }
+  .btn:active{transform:translateY(2px); box-shadow:0 2px 0 #8f040c}
+  .btn.small{padding:10px 18px; font-size:13px}
+
+  section{padding:30px 0}
+  h2{
+    font-size:clamp(20px,5vw,28px); color:var(--red); text-transform:uppercase;
+    font-style:italic; font-weight:900; letter-spacing:.5px; margin-bottom:14px;
+  }
+
+  /* ===== Карточки-«этикетки» ===== */
+  .card{
+    background:var(--white); border:2px solid var(--ink); border-top:8px solid var(--red);
+    border-radius:12px; padding:20px; margin-bottom:12px;
+    box-shadow:6px 6px 0 var(--red);
+  }
   li{margin:0 0 8px 20px}
-  summary{font-weight:700;cursor:pointer}
+  summary{font-weight:800; cursor:pointer}
+  details[open] summary{color:var(--red)}
   details p{margin-top:8px}
-  label{display:block;font-weight:600;font-size:14px;margin-top:10px}
-  input,textarea{width:100%;padding:12px;border:1px solid #d8cbb2;border-radius:10px;font:inherit;margin-top:6px;background:#fff}
+
+  label{display:block; font-weight:700; font-size:14px; margin-top:10px}
+  input,textarea{
+    width:100%; padding:12px; border:2px solid #d9d9d9; border-radius:8px;
+    font:inherit; margin-top:6px; background:#fff;
+  }
+  input:focus,textarea:focus{outline:2px solid var(--red); border-color:var(--red)}
   textarea{min-height:70px}
-  .code{font-size:32px;font-weight:800;letter-spacing:4px;color:var(--green);background:#fff3cd;border:2px dashed var(--gold);border-radius:12px;padding:12px;text-align:center;margin:12px 0}
-  .msg{margin-top:10px;font-size:15px}
-  .err{color:#b00020}
-  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
-  td,th{border:1px solid #e0d6c0;padding:8px;text-align:left}
-  footer{background:var(--green);color:#fff;text-align:center;padding:24px 16px;font-size:14px}
+
+  .code{
+    font-size:32px; font-weight:900; letter-spacing:4px; color:var(--red);
+    background:#fff; border:3px dashed var(--red); border-radius:12px;
+    padding:12px; text-align:center; margin:12px 0;
+  }
+  .msg{margin-top:10px; font-size:15px}
+  .err{color:var(--red); font-weight:700}
+
+  table{width:100%; border-collapse:collapse; font-size:14px; margin-top:10px}
+  td,th{border:1px solid #e0c9c9; padding:8px; text-align:left}
+  th{background:var(--red); color:#fff}
+
+  footer{background:var(--red); color:var(--yellow); text-align:center; padding:0 16px 28px}
+  footer .stripes{margin-bottom:24px}
+  footer p{font-size:14px; font-weight:600}
 </style>
 </head>
 <body>
 
+<!-- Фоновые лейблы DHL -->
+<div class="bg" aria-hidden="true">
+  <div class="bg-label" style="top:6%; left:-60px; transform:rotate(-14deg)">
+    <span class="bg-logo">DHL</span><span class="bg-line"></span><span class="bg-line short"></span><span class="bg-barcode"></span>
+  </div>
+  <div class="bg-label" style="top:18%; right:-70px; transform:rotate(10deg)">
+    <span class="bg-logo">DHL</span><span class="bg-line"></span><span class="bg-line short"></span><span class="bg-barcode"></span>
+  </div>
+  <div class="bg-label" style="top:46%; left:-80px; transform:rotate(8deg)">
+    <span class="bg-logo">DHL</span><span class="bg-line"></span><span class="bg-line short"></span><span class="bg-barcode"></span>
+  </div>
+  <div class="bg-label" style="top:64%; right:-60px; transform:rotate(-10deg)">
+    <span class="bg-logo">DHL</span><span class="bg-line"></span><span class="bg-line short"></span><span class="bg-barcode"></span>
+  </div>
+  <div class="bg-label" style="top:88%; left:8%; transform:rotate(-6deg)">
+    <span class="bg-logo">DHL</span><span class="bg-line"></span><span class="bg-line short"></span><span class="bg-barcode"></span>
+  </div>
+</div>
+
 <header>
+  <div class="stripes" style="position:absolute;top:0;left:0;right:0"></div>
+  <span class="brand">DHL • Служба праздничной доставки</span>
   <h1>🎄 Тайный Санта 2026</h1>
-  <p>Корпоративный обмен подарками до 1000 ₽. Анонимно, весело и по-новогоднему.</p>
+  <p class="sub">Корпоративный обмен подарками до 1000 ₽. Доставим праздничное настроение точно в срок 📦✨</p>
   <a class="btn" href="#reg">Участвовать</a>
 </header>
 
@@ -44,10 +137,10 @@
   <section id="how">
     <h2>Как это работает</h2>
     <div class="card"><ol>
-      <li>Заполните форму — получите секретный код.</li>
+      <li>Заполните форму — получите секретный код отслеживания.</li>
       <li>После жеребьёвки введите код и узнайте, кому вы Санта.</li>
       <li>Подготовьте подарок до 1000 ₽ по пожеланиям подопечного.</li>
-      <li>25 декабря — анонимный обмен подарками 🎁</li>
+      <li>25 декабря — анонимная доставка и обмен подарками 🎁</li>
     </ol></div>
   </section>
 
@@ -63,11 +156,11 @@
   </section>
 
   <section id="dates">
-    <h2>Даты</h2>
+    <h2>График доставки</h2>
     <div class="card"><ul>
-      <li><b>До 1 декабря</b> — регистрация</li>
-      <li><b>2 декабря</b> — жеребьёвка</li>
-      <li><b>До 24 декабря</b> — готовим подарки</li>
+      <li><b>До 1 декабря</b> — приём заявок</li>
+      <li><b>2 декабря</b> — жеребьёвка и распределение маршрутов</li>
+      <li><b>До 24 декабря</b> — подготовка посылок</li>
       <li><b>25 декабря</b> — обмен подарками 🎁</li>
     </ul></div>
   </section>
@@ -82,7 +175,7 @@
         <label>Что вы любите? *<textarea id="fLikes" required placeholder="Кофе, книги, настолки, сладкое…"></textarea></label>
         <label>Что вам НЕ дарить?<textarea id="fDislikes" placeholder="Кружки, парфюм…"></textarea></label>
         <label>Аллергии и ограничения<textarea id="fAllergy" placeholder="Орехи, цитрусовые…"></textarea></label>
-        <p style="margin-top:14px"><button class="btn" id="regBtn" type="submit">Участвовать</button></p>
+        <p style="margin-top:14px"><button class="btn" id="regBtn" type="submit">Отправить заявку</button></p>
       </form>
       <div id="regMsg" class="msg"></div>
     </div>
@@ -93,7 +186,7 @@
     <div class="card">
       <p>Введите секретный код, который вы получили при регистрации.</p>
       <label>Секретный код<input id="lookCode" placeholder="Например: K7MQ"></label>
-      <p style="margin-top:14px"><button class="btn small" id="lookBtn" type="button">Показать</button></p>
+      <p style="margin-top:14px"><button class="btn small" id="lookBtn" type="button">Отследить</button></p>
       <div id="lookMsg" class="msg"></div>
     </div>
   </section>
@@ -120,13 +213,17 @@
   </section>
 
   <section id="contacts">
-    <h2>Контакты организатора</h2>
+    <h2>Диспетчерская</h2>
     <div class="card"><p>По любым вопросам: [имя], Telegram @…, кабинет №…</p></div>
   </section>
 
 </main>
 
-<footer>Сделано с любовью и мишурой ✨ Тайный Санта 2026</footer>
+<footer>
+  <div class="stripes"></div>
+  <p>Сделано с любовью и мишурой ✨ Тайный Санта 2026</p>
+  <p>Жёлтый — значит, подарок доставим точно в срок 📦</p>
+</footer>
 
 <script>
 const API_URL = 'https://script.google.com/macros/s/AKfycbwsQ8iuMT58Na_nnGz6MV12SkTWpvVyknCgKVYvycQYZyGzEwxQtkihXVdboec0iUY8ZA/exec'; // ссылка, которая заканчивается на /exec
@@ -155,7 +252,8 @@ $('regForm').addEventListener('submit', async e => {
       dislikes:$('fDislikes').value.trim(), allergies:$('fAllergy').value.trim()});
     if (res.ok) {
       $('regForm').style.display = 'none';
-      $('regMsg').innerHTML = 'Вы в игре! 🎉 Ваш секретный код:'
+      $('regMsg').className = 'msg';
+      $('regMsg').innerHTML = 'Заявка принята! 🎉 Ваш секретный код:'
         + '<div class="code">' + res.code + '</div>'
         + 'Сохраните его (скриншот). По этому коду вы узнаете, кому дарить подарок.';
     } else {
