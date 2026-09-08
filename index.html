@@ -31,13 +31,48 @@
   .bg-line.short{width:60%}
   .bg-barcode{height:30px; background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 8px,transparent 8px 10px)}
 
+  /* ===== СНЕГ ===== */
+  .snow{position:fixed; inset:0; z-index:6; pointer-events:none; overflow:hidden}
+  .snow span{
+    position:absolute; top:-6vh; left:var(--x,50%);
+    font-size:var(--s,14px); color:var(--c,#fff); opacity:var(--o,.85);
+    animation:fall var(--d,12s) linear infinite; animation-delay:var(--dl,0s);
+  }
+  @keyframes fall{
+    0%{transform:translate3d(0,-10vh,0) rotate(0deg)}
+    50%{transform:translate3d(3vw,50vh,0) rotate(180deg)}
+    100%{transform:translate3d(-2vw,110vh,0) rotate(360deg)}
+  }
+
   header,main,footer{position:relative; z-index:1}
 
   /* ===== Диагональные полосы DHL ===== */
   .stripes{height:12px; background:repeating-linear-gradient(-45deg,var(--red) 0 16px,var(--yellow) 16px 32px)}
 
+  /* ===== Фургончик ===== */
+  .header-stripes{position:absolute; top:0; left:0; right:0; overflow:visible}
+  .van{
+    position:absolute; top:-26px; left:-20%; width:74px; height:30px;
+    animation:drive 7s ease-in-out .6s 1 forwards, bob .5s linear infinite;
+  }
+  .van-body{position:absolute; left:0; top:0; width:48px; height:24px; background:var(--red); border-radius:5px 5px 0 0}
+  .van-body::after{
+    content:"DHL"; position:absolute; left:9px; top:5px; color:var(--yellow);
+    font-weight:900; font-style:italic; font-size:11px; letter-spacing:1px;
+  }
+  .van-cab{
+    position:absolute; left:46px; top:7px; width:24px; height:17px;
+    background:var(--yellow); border:2px solid var(--red); border-left:none; border-radius:0 7px 0 0;
+  }
+  .van-cab::after{content:""; position:absolute; right:3px; top:2px; width:9px; height:7px; background:#fff; border-radius:2px}
+  .van-wheel{position:absolute; bottom:-6px; width:12px; height:12px; background:var(--ink); border-radius:50%; box-shadow:inset 0 0 0 3px #555}
+  .w1{left:8px}.w2{left:50px}
+  @keyframes drive{0%{left:-20%}100%{left:110%}}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+
   /* ===== Шапка ===== */
   header{background:var(--yellow); text-align:center; padding:44px 16px 52px; border-bottom:4px solid var(--red)}
+  .logo{width:min(200px,60vw); height:auto; display:block; margin:0 auto 14px}
   .brand{
     display:inline-block; background:var(--red); color:var(--yellow);
     font-weight:800; letter-spacing:2px; font-size:12px; padding:6px 16px;
@@ -101,6 +136,12 @@
   footer{background:var(--red); color:var(--yellow); text-align:center; padding:0 16px 28px}
   footer .stripes{margin-bottom:24px}
   footer p{font-size:14px; font-weight:600}
+
+  /* ===== Уважение к настройкам движения ===== */
+  @media (prefers-reduced-motion:reduce){
+    .snow span,.van{animation:none}
+    .snow span,.van{display:none}
+  }
 </style>
 </head>
 <body>
@@ -124,8 +165,41 @@
   </div>
 </div>
 
+<!-- Падающий снег -->
+<div class="snow" aria-hidden="true">
+  <span style="--x:5%;--d:11s;--dl:-2s;--s:14px;--c:#fff;--o:.9">❄</span>
+  <span style="--x:15%;--d:14s;--dl:-7s;--s:10px;--c:#D40511;--o:.35">❅</span>
+  <span style="--x:25%;--d:9s;--dl:-4s;--s:16px;--c:#fff;--o:.8">❄</span>
+  <span style="--x:35%;--d:13s;--dl:-9s;--s:12px;--c:#fff8d6;--o:.9">✻</span>
+  <span style="--x:45%;--d:10s;--dl:-1s;--s:18px;--c:#fff;--o:.85">❄</span>
+  <span style="--x:55%;--d:15s;--dl:-6s;--s:10px;--c:#D40511;--o:.3">❅</span>
+  <span style="--x:65%;--d:12s;--dl:-3s;--s:14px;--c:#fff;--o:.9">❄</span>
+  <span style="--x:75%;--d:9.5s;--dl:-8s;--s:12px;--c:#fff8d6;--o:.85">✻</span>
+  <span style="--x:85%;--d:13.5s;--dl:-5s;--s:16px;--c:#fff;--o:.8">❄</span>
+  <span style="--x:92%;--d:11.5s;--dl:-10s;--s:10px;--c:#D40511;--o:.35">❅</span>
+  <span style="--x:50%;--d:16s;--dl:-12s;--s:20px;--c:#fff;--o:.7">❄</span>
+  <span style="--x:8%;--d:17s;--dl:-14s;--s:18px;--c:#fff8d6;--o:.75">✻</span>
+</div>
+
 <header>
-  <div class="stripes" style="position:absolute;top:0;left:0;right:0"></div>
+  <div class="stripes header-stripes">
+    <!-- Курьерский фургончик проезжает по полосе при загрузке -->
+    <span class="van" aria-hidden="true">
+      <span class="van-body"></span><span class="van-cab"></span>
+      <span class="van-wheel w1"></span><span class="van-wheel w2"></span>
+    </span>
+  </div>
+
+  <!-- Логотип-плашка. Если у вас есть официальный файл логотипа,
+       замените весь <svg> на: <img src="dhl-logo.svg" alt="DHL" class="logo"> -->
+  <svg class="logo" viewBox="0 0 220 64" role="img" aria-label="DHL">
+    <rect x="0" y="0" width="220" height="64" rx="10" fill="#D40511"/>
+    <text x="110" y="44" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+          font-size="38" font-style="italic" font-weight="900" letter-spacing="6"
+          fill="#FFCC00">DHL</text>
+    <rect x="18" y="50" width="184" height="4" fill="#FFCC00"/>
+  </svg>
+
   <span class="brand">DHL • Служба праздничной доставки</span>
   <h1>🎄 Тайный Санта 2026</h1>
   <p class="sub">Доставим праздничное настроение точно в срок 📦✨</p>
