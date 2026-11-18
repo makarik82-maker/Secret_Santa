@@ -208,8 +208,6 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .gate input{width:100%;font-family:var(--mono);font-size:16px;text-align:center;background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:13px;margin-bottom:8px}
 .gate input:focus{outline:none;box-shadow:0 0 0 4px rgba(255,204,0,.5)}
 .gerr{font-size:12.5px;font-weight:700;color:var(--red);min-height:18px;margin-bottom:10px}
-.ghint{font-size:11.5px;color:var(--mute);margin-top:14px}
-.ghint code{font-family:var(--mono);background:var(--cream);padding:1px 6px;border-radius:5px;border:1px solid var(--line)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:20px}
 .stat{background:var(--white);border:2px solid var(--ink);border-radius:14px;padding:15px 17px;box-shadow:4px 4px 0 var(--ink)}
 .stat span{display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
@@ -229,7 +227,7 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .steps li{counter-increment:s;display:flex;gap:10px}
 .steps li::before{content:counter(s);flex:none;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--y);font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px}
 .steps code{font-family:var(--mono);font-size:12px;background:var(--cream);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
-.fmt{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--cream);border:2px dashed var(--line);border-radius:12px;padding:10px 13px;font-size:12px;font-weight:700;color:var(--ink2);margin-top:14px}
+.fmt{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--cream);border:2px dashed var(--line);border-radius:12px;padding:10px 13px;font-size:12px;font-weight:700;color:var(--ink2)}
 .fmt b{font-family:var(--mono);color:var(--ink)}
 .gs-a{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
 .auto{display:flex;align-items:center;gap:9px;margin-top:14px;padding:11px 14px;border-radius:12px;border:2px solid var(--ink);font-size:12.5px;font-weight:800;background:var(--cream);color:var(--ink2)}
@@ -255,7 +253,7 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .bulk .btn{box-shadow:3px 3px 0 rgba(255,204,0,.35)}
 .tt{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--mute)}
 .tw2b{overflow:auto;max-height:560px;border:2px solid var(--ink);border-radius:16px;background:var(--white);box-shadow:6px 6px 0 var(--ink)}
-table{border-collapse:collapse;min-width:1330px;width:100%;font-size:13px}
+table{border-collapse:collapse;min-width:1240px;width:100%;font-size:13px}
 thead th{position:sticky;top:0;z-index:2;background:var(--ink);color:var(--y);text-align:left;padding:11px 12px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
 td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:middle}
 tbody tr{cursor:pointer;transition:background .15s}tbody tr:hover{background:#FFF6D6}tbody tr.sel{background:#FFF0B8}
@@ -263,8 +261,7 @@ tbody tr.drag{opacity:.35}tbody tr.over{box-shadow:inset 0 3px 0 var(--red)}
 .ck{width:38px;text-align:center}.ck input{width:17px;height:17px;accent-color:var(--red);cursor:pointer}
 .dg{width:30px;text-align:center;color:var(--mute);cursor:grab;user-select:none}.dg.off{opacity:.25;cursor:not-allowed}
 .nm{font-weight:800;white-space:nowrap}.ml{font-size:12.5px;color:var(--ink2)}
-.dt2{font-family:var(--mono);font-size:11.5px;color:var(--mute);white-space:nowrap}
-.lk2{max-width:230px;min-width:160px;font-size:12.5px;color:var(--ink2)}
+.lk2{max-width:250px;min-width:170px;font-size:12.5px;color:var(--ink2)}
 .as{color:var(--gd);font-weight:800;white-space:nowrap}
 .empty{text-align:center;padding:32px!important;color:var(--mute);font-weight:600}
 .dtag{font-size:9.5px;font-weight:800;text-transform:uppercase;background:var(--cream);border:1.5px solid var(--amber);color:#9A5B00;border-radius:5px;padding:1px 5px;margin-left:7px}
@@ -319,7 +316,7 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
 .modal.open{display:flex}
 .msc{position:absolute;inset:0;background:rgba(23,17,6,.66);backdrop-filter:blur(3px)}
 .mc{position:relative;background:var(--white);border:2px solid var(--ink);border-radius:20px;max-width:430px;width:100%;padding:25px;box-shadow:10px 10px 0 rgba(34,26,6,.8);animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
-.mc.wide{max-width:880px}
+.mc.wide{max-width:900px}
 .mc h3{font-family:var(--disp);font-weight:700;font-size:19px;margin-bottom:10px}
 .mc p{font-size:14.5px;color:var(--ink2);margin-bottom:16px}
 .mc input{width:100%;font-family:var(--body);font-size:15px;border:2px solid var(--ink);border-radius:12px;padding:11px 13px;margin-bottom:16px;background:var(--paper)}
@@ -490,7 +487,7 @@ html.anim .rv.in{opacity:1;transform:none}
         <div class="wb-l">Ваш секретный код отслеживания</div>
         <div class="wb-c" id="wbCode">0000</div>
         <svg id="wbBar" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"></svg>
-        <div class="wb-m"><div><span>Отправитель</span><b id="wbName"></b></div><div><span>Отдел</span><b id="wbDept"></b></div><div><span>Дата</span><b id="wbDate"></b></div></div>
+        <div class="wb-m"><div><span>Отправитель</span><b id="wbName"></b></div><div><span>Отдел</span><b id="wbDept"></b></div><div><span>Принято</span><b id="wbDate"></b></div></div>
         <div class="wb-s" id="wbSync"></div>
         <div class="wb-n">⚠️ Сохраните код из 4 цифр — он покажет, кому вы дарите, после жеребьёвки 2 декабря.</div>
         <div class="wb-a"><button class="btn b-ink b-sm" id="wbCopy" type="button">📋 Скопировать код</button><button class="btn b-yel b-sm" id="wbTrack" type="button">📡 Проверить маршрут</button><button class="btn b-ghost b-sm" id="wbAgain" type="button">＋ Ещё заявка</button></div>
@@ -515,7 +512,6 @@ html.anim .rv.in{opacity:1;transform:none}
     <input id="pass" type="password" autocomplete="off" placeholder="••••••••" aria-label="Пароль организатора">
     <div class="gerr" id="gateErr"></div>
     <button class="btn b-ink b-big" type="submit">Войти</button>
-    <p class="ghint">Пароль по умолчанию — <code>santa2026</code>. Замените его в коде файла перед публикацией.</p>
   </form>
   <div id="panel" class="hidden">
     <div class="stats">
@@ -525,7 +521,7 @@ html.anim .rv.in{opacity:1;transform:none}
       <div class="stat"><span>Синхронизация</span><b id="stSheet" class="warn">Проверяем…</b></div>
     </div>
     <div class="demo hidden" id="demoBar"><span>✨ Демо-записи хранятся только локально и в таблицу не отправляются.</span><button class="btn b-warn b-sm" id="bDemoDel" type="button">Удалить демо</button></div>
-    <div class="demo hidden" id="fmtBar"><span>⚠️ Формат колонок в таблице устарел. Замените скрипт на новый и создайте новое развёртывание.</span><button class="btn b-warn b-sm" id="bFmtCode" type="button">Показать код</button></div>
+    <div class="demo hidden" id="fmtBar"><span>⚠️ В таблице работает старая версия скрипта. Замените код и создайте новое развёртывание — порядок колонок изменён.</span><button class="btn b-warn b-sm" id="bFmtCode" type="button">Показать код</button></div>
     <div class="gs">
       <div class="gs-h"><h3>📊 Таблица участников</h3><span class="live"><i></i> Автосохранение</span><span class="chip c-white" id="gsChip">Проверяем связь…</span><button class="btn b-yel b-sm" id="bScript" type="button">📄 Код скрипта</button></div>
       <div class="gs-b">
@@ -538,11 +534,11 @@ html.anim .rv.in{opacity:1;transform:none}
           <div class="gs-a"><button class="btn b-ink b-sm" id="bCfg" type="button">💾 Сохранить настройки</button><button class="btn b-sheet b-sm" id="bPing" type="button">🔌 Проверить связь</button><button class="btn b-ghost b-sm" id="bDef" type="button">↺ Встроенный URL</button></div>
         </div>
         <div>
-          <h4>Формат строки в таблице</h4>
-          <div class="fmt">A <b>Дата</b> · B <b>Имя</b> · C <b>Отдел</b> · D <b>Контакт</b> · E <b>Любит</b> · F <b>Не дарить</b> · G <b>Аллергии</b> · H <b>Код</b> · I <b>Кому дарит</b></div>
+          <h4>Порядок колонок при выгрузке</h4>
+          <div class="fmt">A <b>Код</b> · B <b>Имя и Фамилия</b> · C <b>Отдел</b> · D <b>Контакт</b> · E <b>Любит</b> · F <b>Не дарить</b> · G <b>Аллергии</b> · H <b>Код</b> · I <b>Кому дарит</b></div>
           <ol class="steps" style="margin-top:14px">
             <li>Участник жмёт «Отправить заявку» — строка сразу уходит в таблицу.</li>
-            <li>Дата пишется как <code>07.09.2026 11.42.03</code>, код — 4 цифры.</li>
+            <li>Код — 4 цифры, записывается в колонки <code>A</code> и <code>H</code>.</li>
             <li>Повторная отправка обновляет строку по коду, дублей нет.</li>
             <li>При открытии сайта счётчик участников берётся из таблицы.</li>
           </ol>
@@ -551,6 +547,7 @@ html.anim .rv.in{opacity:1;transform:none}
             <button class="btn b-ghost b-sm" id="bRetry" type="button">🔁 Повторить очередь</button>
             <button class="btn b-ghost b-sm" id="bImport" type="button">⬇️ Загрузить из таблицы</button>
             <button class="btn b-ghost b-sm" id="bPushDraw" type="button">🎲 Обновить назначения</button>
+            <button class="btn b-ghost b-sm" id="bCols" type="button">🧱 Выровнять колонки</button>
           </div>
         </div>
       </div>
@@ -569,10 +566,10 @@ html.anim .rv.in{opacity:1;transform:none}
     </div>
     <div id="tableBox">
       <div class="bar">
-        <input id="q" type="search" placeholder="Поиск: имя, код, отдел, контакт, пожелания…" aria-label="Поиск">
+        <input id="q" type="search" placeholder="Поиск: код, имя, отдел, контакт, пожелания…" aria-label="Поиск">
         <select id="fDeptSel" aria-label="Фильтр по отделу"><option value="">Все отделы</option></select>
         <select id="fStatus" aria-label="Фильтр по статусу"><option value="">Любой статус</option><option value="synced">✅ Сохранённые</option><option value="pending">⏳ В очереди</option><option value="error">⚠️ С ошибкой</option><option value="demo">🧪 Демо</option></select>
-        <select id="sortBy" aria-label="Сортировка"><option value="manual">Ручной порядок</option><option value="name">По имени</option><option value="dept">По отделу</option><option value="ts">По дате</option><option value="sync">По статусу</option></select>
+        <select id="sortBy" aria-label="Сортировка"><option value="manual">Ручной порядок</option><option value="code">По коду</option><option value="name">По имени</option><option value="dept">По отделу</option><option value="ts">По дате заявки</option><option value="sync">По статусу</option></select>
         <button class="btn b-ghost b-sm" id="sortDir" type="button">↑ по возрастанию</button>
         <button class="btn b-ghost b-sm" id="bView" type="button">💾 Сохранить вид</button>
       </div>
@@ -583,7 +580,7 @@ html.anim .rv.in{opacity:1;transform:none}
         <button class="btn b-ghost b-xs" id="bBulkNone" type="button">✕ Снять выделение</button></div>
       <div class="tt"><span id="tCount"></span><span id="dragHint">Перетаскивайте строки за ⠿, чтобы задать порядок</span></div>
       <div class="tw2b"><table><thead><tr>
-        <th class="ck"><input type="checkbox" id="selAll" aria-label="Выбрать все показанные строки"></th><th class="dg">⠿</th><th>№</th><th>Дата</th><th>Имя</th><th>Отдел</th><th>Контакт</th><th>Любит</th><th>Код</th><th>Кому дарит</th><th>Статус</th><th>Действия</th>
+        <th class="ck"><input type="checkbox" id="selAll" aria-label="Выбрать все показанные строки"></th><th class="dg">⠿</th><th>№</th><th>Код</th><th>Имя и Фамилия</th><th>Отдел</th><th>Контакт</th><th>Любит</th><th>Кому дарит</th><th>Статус</th><th>Действия</th>
       </tr></thead><tbody id="tbody"></tbody></table></div>
     </div>
   </div>
@@ -597,7 +594,7 @@ html.anim .rv.in{opacity:1;transform:none}
     <details class="fq rv" data-d="2"><summary>Я потерял код</summary><div class="fa">Напишите организатору — он подскажет код по вашему имени.</div></details>
     <details class="fq rv" data-d="3"><summary>Что если не знаю, что дарить?</summary><div class="fa">Возьмите нейтральное: кофе, чай, канцелярию, сертификат.</div></details>
     <details class="fq rv" data-d="3"><summary>Какой у меня код?</summary><div class="fa">Секретный код — случайное число из 4 цифр, например 4821. Он выдаётся сразу после отправки заявки и нужен, чтобы узнать своего подопечного после жеребьёвки.</div></details>
-    <details class="fq rv" data-d="3"><summary>Куда попадают заявки?</summary><div class="fa">Сразу после нажатия «Отправить заявку» данные автоматически сохраняются в таблице организатора: дата, имя, отдел, контакт, пожелания, «не дарить», аллергии, код и «кому дарит». Если связь недоступна, заявка сохраняется в браузере и отправляется повторно сама.</div></details>
+    <details class="fq rv" data-d="3"><summary>Куда попадают заявки?</summary><div class="fa">Сразу после нажатия «Отправить заявку» данные автоматически сохраняются в таблице организатора в порядке: код, имя и фамилия, отдел, контакт, «любит», «не дарить», аллергии, код, «кому дарит». Если связь недоступна, заявка сохраняется в браузере и отправляется повторно сама.</div></details>
   </div>
 </div></section>
 </main>
@@ -617,7 +614,7 @@ html.anim .rv.in{opacity:1;transform:none}
     <div class="db">
       <div class="dr"><button class="code" id="dCode" type="button" title="Скопировать код">0000</button><span id="dSync"></span></div>
       <form id="dForm" novalidate>
-        <div class="field"><label for="dName">Имя <b>*</b></label><input id="dName" type="text"><small class="err"></small></div>
+        <div class="field"><label for="dName">Имя и Фамилия <b>*</b></label><input id="dName" type="text"><small class="err"></small></div>
         <div class="field"><label for="dDept">Отдел</label><input id="dDept" list="depts" type="text"><small class="err"></small></div>
         <div class="field"><label for="dContact">Контакт (почта) <b>*</b></label><input id="dContact" type="email"><small class="err"></small></div>
         <div class="field"><label for="dLikes">Любит <b>*</b></label><textarea id="dLikes" rows="3"></textarea><small class="err"></small></div>
@@ -639,30 +636,70 @@ html.anim .rv.in{opacity:1;transform:none}
 
 <div id="sModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="sTitle"><div class="msc"></div>
   <div class="mc wide"><h3 id="sTitle">📄 Код скрипта таблицы</h3>
-    <p>Колонки: <b>Дата · Имя · Отдел · Контакт · Любит · Не дарить · Аллергии · Код · Кому дарит</b>.
+    <p>Порядок колонок: <b>Код · Имя и Фамилия · Отдел · Контакт · Любит · Не дарить · Аллергии · Код · Кому дарит</b>.
       Откройте таблицу → <b>Расширения → Apps Script</b> → замените код целиком → <b>Развернуть → Новое развёртывание → Веб-приложение</b>
-      («Выполнять как: Я», «Доступ: Все») → новый URL вставьте в поле настроек.</p>
+      («Выполнять как: Я», «Доступ: Все») → новый URL вставьте в поле настроек. Существующие строки скрипт сам переставит в новый порядок.</p>
     <pre class="codebox" id="sCode"></pre>
     <div class="ma"><button class="btn b-yel" id="sCopy" type="button">📋 Скопировать код</button><button class="btn b-ghost" id="sClose" type="button">Закрыть</button></div></div></div>
 
 <script type="text/plain" id="gsScript">
 /* Тайный Санта 2026 — приём заявок с сайта.
-   Колонки: Дата | Имя | Отдел | Контакт | Любит | Не дарить | Аллергии | Код | Кому дарит
-   Расширения → Apps Script → вставить → Развернуть → Веб-приложение
+   Колонки: Код | Имя и Фамилия | Отдел | Контакт | Любит | Не дарить | Аллергии | Код | Кому дарит
+   Расширения → Apps Script → вставить → Развернуть → Новое развёртывание → Веб-приложение
    Выполнять как: Я · Доступ: Все · URL /exec вставить в настройки сайта */
 const TOKEN = 'SANTA-2026';
 const SHEET = 'Участники';
-const HEAD = ['Дата','Имя','Отдел','Контакт','Любит','Не дарить','Аллергии','Код','Кому дарит'];
+const HEAD = ['Код','Имя и Фамилия','Отдел','Контакт','Любит','Не дарить','Аллергии','Код','Кому дарит'];
 
+function style_(s){
+  s.getRange(1,1,1,HEAD.length).setValues([HEAD]).setBackground('#FFCC00').setFontColor('#221A06').setFontWeight('bold');
+  s.setFrozenRows(1); s.setRowHeight(1,30);
+  [90,210,140,220,260,220,200,90,200].forEach(function(w,i){ s.setColumnWidth(i+1,w); });
+  s.getRange(1,1,s.getMaxRows(),1).setNumberFormat('@');
+  s.getRange(1,8,s.getMaxRows(),1).setNumberFormat('@');
+}
+function same_(h){
+  for (var i=0;i<HEAD.length;i++){ if (String(h[i]||'').trim() !== HEAD[i]) return false; }
+  return true;
+}
+function find_(h,names){
+  for (var i=0;i<h.length;i++){ for (var j=0;j<names.length;j++){ if (h[i]===names[j]) return i; } }
+  return -1;
+}
+/* Перестановка существующего листа в новый порядок колонок без потери данных */
+function migrate_(s){
+  var all = s.getDataRange().getValues();
+  if (!all.length){ style_(s); return 0; }
+  if (same_(all[0])) return 0;
+  var h = all[0].map(function(x){ return String(x).trim().toLowerCase(); });
+  var m = {
+    code: find_(h,['код','code']),
+    name: find_(h,['имя и фамилия','имя','фио','имя и фамилия ']),
+    dept: find_(h,['отдел','отдел / команда','команда']),
+    contact: find_(h,['контакт','почта','куда писать лично','email']),
+    likes: find_(h,['любит','что вы любите?','что вы любите','пожелания']),
+    dont: find_(h,['не дарить','что вам не дарить?','что вам не дарить']),
+    all: find_(h,['аллергии','аллергии и ограничения']),
+    gift: find_(h,['кому дарит','подопечный'])
+  };
+  if (m.code < 0 && m.name < 0) throw new Error('Не распознаны заголовки листа — приведите их вручную');
+  var get = function(v,i){ return i > -1 ? v[i] : ''; };
+  var out = [HEAD];
+  for (var r=1;r<all.length;r++){
+    var v = all[r], c = String(get(v,m.code)||'').trim();
+    if (!c && !String(get(v,m.name)||'').trim()) continue;
+    out.push([c, get(v,m.name), get(v,m.dept), get(v,m.contact), get(v,m.likes), get(v,m.dont), get(v,m.all), c, get(v,m.gift)]);
+  }
+  s.clearContents();
+  s.getRange(1,1,out.length,HEAD.length).setValues(out);
+  style_(s);
+  return out.length-1;
+}
 function sh_(n){
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var s = ss.getSheetByName(n || SHEET) || ss.insertSheet(n || SHEET);
-  if (s.getLastRow() === 0){
-    s.getRange(1,1,1,HEAD.length).setValues([HEAD]).setBackground('#FFCC00').setFontColor('#221A06').setFontWeight('bold');
-    s.setFrozenRows(1); s.setRowHeight(1,30);
-    [170,200,140,220,260,220,200,90,200].forEach(function(w,i){ s.setColumnWidth(i+1,w); });
-    s.getRange(1,8,s.getMaxRows(),1).setNumberFormat('@');
-  }
+  if (s.getLastRow() === 0){ style_(s); return s; }
+  migrate_(s);
   return s;
 }
 function out_(o){ return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); }
@@ -670,9 +707,11 @@ function doGet(e){ return run_((e && e.parameter) || {}); }
 function doPost(e){ var d={}; try{ d=JSON.parse(e.postData.contents); }catch(x){ d=(e && e.parameter)||{}; } return run_(d); }
 
 function line_(r){
-  if (Object.prototype.toString.call(r) === '[object Array]') return r.slice(0,9);
-  return [r.date || r.created || '', r.name || '', r.dept || '', r.contact || r.email || '',
-          r.likes || '', r.dont || '', r.allergies || '', String(r.code || ''), r.giftTo || ''];
+  if (Object.prototype.toString.call(r) === '[object Array]'){
+    var a = r.slice(0,9); a[0] = String(a[0]||''); a[7] = String(a[7]||a[0]||''); return a;
+  }
+  var c = String(r.code || '');
+  return [c, r.name||'', r.dept||'', r.contact||r.email||'', r.likes||'', r.dont||'', r.allergies||'', c, r.giftTo||''];
 }
 
 function run_(p){
@@ -682,20 +721,24 @@ function run_(p){
   try{
     var s = sh_(p.sheet), a = String(p.action || 'ping'), last = s.getLastRow();
     var vals = last > 1 ? s.getRange(2,1,last-1,HEAD.length).getValues() : [], idx = {};
-    for (var i=0;i<vals.length;i++) idx[String(vals[i][7]).trim().toUpperCase()] = i+2;
+    for (var i=0;i<vals.length;i++){
+      var k = String(vals[i][0] || vals[i][7] || '').trim().toUpperCase();
+      if (k) idx[k] = i+2;
+    }
 
-    if (a === 'ping' || a === 'count')
-      return out_({ok:true, sheet:s.getName(), rows:vals.length, count:vals.length, url:SpreadsheetApp.getActiveSpreadsheet().getUrl()});
+    if (a === 'ping' || a === 'count' || a === 'reformat')
+      return out_({ok:true, sheet:s.getName(), rows:vals.length, count:vals.length, head:HEAD, url:SpreadsheetApp.getActiveSpreadsheet().getUrl()});
 
-    if (a === 'list') return out_({ok:true, count:vals.length, rows: vals.map(function(v){
-      return {date:v[0], name:v[1], dept:v[2], contact:v[3], likes:v[4], dont:v[5], allergies:v[6], code:String(v[7]), giftTo:v[8]};
+    if (a === 'list') return out_({ok:true, count:vals.length, head:HEAD, rows: vals.map(function(v){
+      var c = String(v[0] || v[7] || '');
+      return {code:c, name:v[1], dept:v[2], contact:v[3], likes:v[4], dont:v[5], allergies:v[6], giftTo:v[8]};
     })});
 
     if (a === 'save'){
       var rows = p.rows || p.values || [], add = [], n = 0;
       if (typeof rows === 'string') rows = JSON.parse(rows);
       rows.forEach(function(r){
-        var L = line_(r), k = String(L[7]||'').trim().toUpperCase();
+        var L = line_(r), k = String(L[0]||'').trim().toUpperCase();
         if (!k) return;
         if (idx[k]) s.getRange(idx[k],1,1,HEAD.length).setValues([L]);
         else { add.push(L); idx[k] = s.getLastRow() + add.length + 1; }
@@ -721,7 +764,8 @@ function run_(p){
       cs = cs.map(function(c){ return String(c).trim().toUpperCase(); });
       var rm = 0;
       for (var j=vals.length-1;j>=0;j--){
-        if (cs.indexOf(String(vals[j][7]).trim().toUpperCase()) > -1){ s.deleteRow(j+2); rm++; }
+        var kk = String(vals[j][0] || vals[j][7] || '').trim().toUpperCase();
+        if (cs.indexOf(kk) > -1){ s.deleteRow(j+2); rm++; }
       }
       var t2 = Math.max(0, s.getLastRow()-1);
       return out_({ok:true, removed:rm, rows:t2, count:t2});
@@ -742,15 +786,16 @@ addEventListener('error',function(){document.documentElement.classList.remove('a
 var GS_URL='https://script.google.com/macros/s/AKfycbwKOyFwLLVKnjmivyzO1keMCidRGh15MOA0fgfQeLt0AfaIJ-YKgEXPBAonLcGKHxcE/exec';
 var GS_TOKEN='SANTA-2026',GS_SHEET='Участники';
 var GS_DOC='https://docs.google.com/spreadsheets/d/1lojyLY6g9lMf-tAufI4V5iHhduqrKu3NJCD-nGeK8EA/edit';
-var HEAD=['Дата','Имя','Отдел','Контакт','Любит','Не дарить','Аллергии','Код','Кому дарит'];
-var KEY='santa26.v6',GKEY='santa26.gs6',VKEY='santa26.views',PASS='santa2026';
+/* порядок колонок: Код | Имя и Фамилия | Отдел | Контакт | Любит | Не дарить | Аллергии | Код | Кому дарит */
+var HEAD=['Код','Имя и Фамилия','Отдел','Контакт','Любит','Не дарить','Аллергии','Код','Кому дарит'];
+var KEY='santa26.v7',GKEY='santa26.gs7',VKEY='santa26.views',PASS='santa2026';
 var DRAW=new Date('2026-12-02T12:00:00+03:00'),EXCH=new Date('2026-12-25T18:00:00+03:00');
 var MAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function uid(){return crypto.randomUUID?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(36).slice(2)}
 function norm(s){return String(s==null?'':s).toUpperCase().replace(/[^A-Z0-9]/g,'')}
 function p2(v){return String(v).padStart(2,'0')}
-function sheetDate(t){var d=new Date(t);return p2(d.getDate())+'.'+p2(d.getMonth()+1)+'.'+d.getFullYear()+' '+p2(d.getHours())+'.'+p2(d.getMinutes())+'.'+p2(d.getSeconds())}
+function stamp(t){var d=new Date(t);return p2(d.getDate())+'.'+p2(d.getMonth()+1)+'.'+d.getFullYear()+' '+p2(d.getHours())+'.'+p2(d.getMinutes())+'.'+p2(d.getSeconds())}
 function parseDate(s){
   if(!s)return 0;var m=String(s).match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:[ ,]+(\d{1,2})[.:](\d{2})(?:[.:](\d{2}))?)?/);
   if(m)return new Date(+m[3],+m[2]-1,+m[1],+(m[4]||0),+(m[5]||0),+(m[6]||0)).getTime();
@@ -761,7 +806,7 @@ var filters={q:'',dept:'',status:'',sort:'manual',dir:'asc'},sel=new Set(),table
 var autoTimer=null,attempt=0,nextAt=0,remoteCount=(typeof gs.count==='number'?gs.count:null),countBusy=false;
 function load(){try{var r=localStorage.getItem(KEY);if(r){var p=JSON.parse(r);return{participants:p.participants||[],draw:p.draw||null}}}catch(e){}return{participants:[],draw:null}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
-function loadGs(){var d={url:GS_URL,sheet:GS_SHEET,token:GS_TOKEN,sheetUrl:GS_DOC,last:0,ok:null,count:null};
+function loadGs(){var d={url:GS_URL,sheet:GS_SHEET,token:GS_TOKEN,sheetUrl:GS_DOC,last:0,ok:null,count:null,fmt:null};
   try{var r=localStorage.getItem(GKEY);if(r){var s=JSON.parse(r);if(s&&typeof s==='object')Object.assign(d,s)}}catch(e){}
   if(!d.url)d.url=GS_URL;if(!d.sheet)d.sheet=GS_SHEET;if(!d.token)d.token=GS_TOKEN;if(!d.sheetUrl)d.sheetUrl=GS_DOC;return d}
 function saveGs(){try{localStorage.setItem(GKEY,JSON.stringify(gs))}catch(e){}}
@@ -773,9 +818,7 @@ function setS(p,s,e){if(p.demo)return;p.sync={state:s,at:Date.now(),error:e||''}
 function pendingList(){return state.participants.filter(function(p){return !p.demo&&sst(p)!=='synced'})}
 function realList(){return state.participants.filter(function(p){return !p.demo})}
 function giftOf(p){var g=state.draw?byId(state.draw.pairs[p.id]):null;return g?g.name:(p.giftToName||'')}
-/* ===== секретный код: случайные 4 цифры ===== */
-function code(){
-  var c,i=0;
+function code(){var c,i=0;
   do{var b=new Uint16Array(1);crypto.getRandomValues(b);c=String(1000+b[0]%9000);i++}
   while(i<900&&state.participants.some(function(p){return norm(p.code)===c}));
   return c}
@@ -870,7 +913,7 @@ function render(){
   $('#gsOpen').classList.toggle('hidden',!gs.sheetUrl);if(gs.sheetUrl)$('#gsOpen').href=gs.sheetUrl;
   $('#demoBar').classList.toggle('hidden',!state.participants.some(function(p){return p.demo}));
   $('#fmtBar').classList.toggle('hidden',gs.fmt!=='old');
-  ['#bPushAll','#bRetry','#bImport','#bPushDraw','#bPing','#bBulkPush','#dPush','#bRefresh'].forEach(function(s){var e=$(s);if(e)e.disabled=syncing||countBusy});
+  ['#bPushAll','#bRetry','#bImport','#bPushDraw','#bPing','#bBulkPush','#dPush','#bRefresh','#bCols'].forEach(function(s){var e=$(s);if(e)e.disabled=syncing||countBusy});
   updateAuto();
   var deps=[];state.participants.forEach(function(p){if(p.dept&&deps.indexOf(p.dept)<0)deps.push(p.dept)});deps.sort();
   var cur=$('#fDeptSel').value;
@@ -886,7 +929,8 @@ function rows(){
     if(filters.dept&&(p.dept||'')!==filters.dept)return false;
     if(filters.status&&sst(p)!==filters.status)return false;return true});
   var dir=filters.dir==='desc'?-1:1,idx=function(p){return state.participants.indexOf(p)};
-  var cmp={manual:function(a,b){return idx(a)-idx(b)},name:function(a,b){return a.name.localeCompare(b.name,'ru')},
+  var cmp={manual:function(a,b){return idx(a)-idx(b)},code:function(a,b){return String(a.code).localeCompare(String(b.code),'ru',{numeric:true})},
+    name:function(a,b){return a.name.localeCompare(b.name,'ru')},
     dept:function(a,b){return (a.dept||'').localeCompare(b.dept||'','ru')||a.name.localeCompare(b.name,'ru')},
     ts:function(a,b){return a.ts-b.ts},sync:function(a,b){return sst(a).localeCompare(sst(b))}}[filters.sort];
   return r.sort(function(a,b){return cmp(a,b)*dir})}
@@ -896,17 +940,16 @@ function renderTable(){
   $('#dragHint').textContent=dg?'Перетаскивайте строки за ⠿, чтобы задать порядок':'Порядок доступен при сортировке «Ручной порядок» без фильтров';
   $('#bulk').classList.toggle('hidden',!sel.size);$('#bulkN').textContent=sel.size;
   $('#selAll').checked=r.length>0&&r.every(function(p){return sel.has(p.id)});
-  if(!r.length){$('#tbody').innerHTML='<tr><td colspan="12" class="empty">'+(state.participants.length?'Ничего не найдено 🔍':'Загружаем участников из таблицы…')+'</td></tr>';return}
+  if(!r.length){$('#tbody').innerHTML='<tr><td colspan="11" class="empty">'+(state.participants.length?'Ничего не найдено 🔍':'Загружаем участников из таблицы…')+'</td></tr>';return}
   $('#tbody').innerHTML=r.map(function(p){
     var gn=giftOf(p);
     return '<tr data-id="'+p.id+'"'+(dg?' draggable="true"':'')+' class="'+(sel.has(p.id)?'sel':'')+'">'+
       '<td class="ck"><input type="checkbox" data-ck="'+p.id+'"'+(sel.has(p.id)?' checked':'')+' aria-label="Выбрать строку"></td>'+
       '<td class="dg'+(dg?'':' off')+'">⠿</td><td>'+(state.participants.indexOf(p)+1)+'</td>'+
-      '<td class="dt2">'+esc(sheetDate(p.ts))+'</td>'+
+      '<td><button class="code" type="button" data-copy="'+esc(p.code)+'">'+esc(p.code)+'</button></td>'+
       '<td class="nm">'+esc(p.name)+(p.demo?'<span class="dtag">демо</span>':'')+'</td>'+
       '<td>'+esc(p.dept||'—')+'</td><td class="ml">'+esc(p.contact)+'</td>'+
       '<td class="lk2">'+esc(p.likes)+'</td>'+
-      '<td><button class="code" type="button" data-copy="'+esc(p.code)+'">'+esc(p.code)+'</button></td>'+
       '<td class="'+(gn?'as':'')+'">'+(gn?esc(gn):'—')+'</td>'+
       '<td>'+badge(p)+'</td><td><div class="ra">'+
       '<button class="ib" type="button" data-edit="'+p.id+'" title="Открыть карточку">✏️</button>'+
@@ -915,7 +958,7 @@ function renderTable(){
 function renderViews(){
   var built=[{id:'all',name:'Все',f:{q:'',dept:'',status:'',sort:'manual',dir:'asc'}},
     {id:'queue',name:'⏳ В очереди',f:{q:'',dept:'',status:'pending',sort:'manual',dir:'asc'}},
-    {id:'sent',name:'✅ Сохранённые',f:{q:'',dept:'',status:'synced',sort:'name',dir:'asc'}},
+    {id:'sent',name:'✅ Сохранённые',f:{q:'',dept:'',status:'synced',sort:'code',dir:'asc'}},
     {id:'err',name:'⚠️ Ошибки',f:{q:'',dept:'',status:'error',sort:'manual',dir:'asc'}}];
   window.__built=built;
   $('#views').innerHTML=built.map(function(v){return '<button class="view'+(activeView===v.id?' on':'')+'" type="button" data-view="'+v.id+'">'+v.name+'</button>'}).join('')+
@@ -952,7 +995,7 @@ function wbSync(p){var s=sst(p),t;
   else t=gs.url?'Заявка в очереди — отправится без вашего участия.':'Заявка сохранена локально.';
   var h=$('#wbHead');h.textContent=s==='synced'?'Сохранено':'В обработке';h.className='chip '+(s==='synced'?'c-green':'c-amber');
   $('#wbSync').innerHTML=badge(p)+'<span>'+esc(t)+'</span>'}
-function showWb(p){$('#wbCode').textContent=p.code;$('#wbName').textContent=p.name;$('#wbDept').textContent=p.dept||'—';$('#wbDate').textContent=sheetDate(p.ts);
+function showWb(p){$('#wbCode').textContent=p.code;$('#wbName').textContent=p.name;$('#wbDept').textContent=p.dept||'—';$('#wbDate').textContent=stamp(p.ts);
   barcode(p.code);wbSync(p);var w=$('#waybill');w.classList.remove('hidden','pop');void w.offsetWidth;w.classList.add('pop');
   setTimeout(function(){w.scrollIntoView({behavior:reduced?'auto':'smooth',block:'nearest'})},80)}
 $('#wbCopy').onclick=function(){if(lastP)copy(lastP.code).then(function(){toast('Код '+lastP.code+' скопирован 📋','ok')})};
@@ -975,11 +1018,11 @@ function doTrack(){
     '</div><div class="lc-f"><span class="chip c-ink">💸 Подарок до 1000 ₽</span><span class="lc-s">🤫 Не выдавайте себя до 25 декабря</span></div></div>';
   var r=R.querySelector('.lc').getBoundingClientRect();burst(r.left+r.width/2,r.top+60,70)}
 $('#trackForm').addEventListener('submit',function(e){e.preventDefault();doTrack()});
-/* ===== транспорт ===== */
-function rowOf(p){var d=sheetDate(p.ts),gift=giftOf(p);
-  return{date:d,name:p.name,dept:p.dept||'',contact:p.contact||'',likes:p.likes||'',dont:p.dont||'',allergies:p.allergies||'',code:String(p.code),giftTo:gift,
-    created:d,email:p.contact||'',updated:sheetDate(p.updated||p.ts)}}
-function valsOf(p){var r=rowOf(p);return[r.date,r.name,r.dept,r.contact,r.likes,r.dont,r.allergies,r.code,r.giftTo]}
+/* ===== выгрузка: Код | Имя и Фамилия | Отдел | Контакт | Любит | Не дарить | Аллергии | Код | Кому дарит ===== */
+function valsOf(p){var c=String(p.code);return[c,p.name,p.dept||'',p.contact||'',p.likes||'',p.dont||'',p.allergies||'',c,giftOf(p)]}
+function rowOf(p){var v=valsOf(p);
+  return{code:v[0],name:v[1],dept:v[2],contact:v[3],likes:v[4],dont:v[5],allergies:v[6],giftTo:v[8],
+    email:v[3],date:stamp(p.ts),created:stamp(p.ts),updated:stamp(p.updated||p.ts),values:v}}
 function parseRes(t){var d;try{d=JSON.parse(t)}catch(e){var er=new Error('Ответ не JSON — проверьте доступ «Все» в развёртывании');er.script=true;throw er}
   if(!d.ok){var e2=new Error(d.error||'Ошибка скрипта');e2.script=true;throw e2}return d}
 function netErr(e){return new Error(e&&e.name==='AbortError'?'Таймаут запроса (25 с)':((e&&e.message)||'Сеть недоступна'))}
@@ -1030,18 +1073,18 @@ document.addEventListener('visibilitychange',function(){if(document.hidden)retur
 function remoteDel(codes){if(!gs.url||!codes.length)return;
   gsReq({action:'delete',codes:codes}).then(function(d){log('ok','Удалено строк: '+(d.removed||0));render()})
     .catch(function(e){log('err','Удаление в таблице не выполнено: '+e.message)})}
-/* ===== загрузка из таблицы: счётчик + участники ===== */
+/* ===== чтение таблицы: счётчик + участники ===== */
 function mapRow(r){
-  var ts=parseDate(r.date||r.created)||Date.now();
+  var ts=parseDate(r.date||r.created)||0;
   return{code:String(r.code==null?'':r.code).trim(),name:r.name||'',dept:r.dept||'',contact:r.contact||r.email||'',
-    likes:r.likes||'',dont:r.dont||'',allergies:r.allergies||'',giftToName:r.giftTo||'',ts:ts,updated:ts}}
+    likes:r.likes||'',dont:r.dont||'',allergies:r.allergies||'',giftToName:r.giftTo||'',ts:ts}}
 function mergeRemote(list){
   var added=0;
   list.forEach(function(r){
     var c=norm(r.code);if(!c)return;var o=mapRow(r);
     var ex=state.participants.find(function(p){return norm(p.code)===c});
-    if(ex){if(!ex.demo&&sst(ex)==='synced'){Object.assign(ex,o);ex.sync={state:'synced',at:Date.now()}}}
-    else{state.participants.push(Object.assign({id:uid(),demo:false,sync:{state:'synced',at:Date.now()}},o));added++}});
+    if(ex){if(!ex.demo&&sst(ex)==='synced'){var keep=ex.ts;Object.assign(ex,o);ex.ts=o.ts||keep||Date.now();ex.updated=Date.now();ex.sync={state:'synced',at:Date.now()}}}
+    else{var np=Object.assign({id:uid(),demo:false,sync:{state:'synced',at:Date.now()}},o);np.ts=o.ts||Date.now();np.updated=np.ts;state.participants.push(np);added++}});
   var pairs={},n=0;
   state.participants.forEach(function(p){
     if(!p.giftToName)return;
@@ -1054,12 +1097,12 @@ function refreshRemote(quiet){
   countBusy=true;paintCount();
   return gsReq({action:'list'}).then(function(d){
     var list=d.rows||[];remoteCount=(typeof d.count==='number'?d.count:list.length);gs.count=remoteCount;
-    gs.fmt=(list.length&&list[0].created!==undefined&&list[0].date===undefined)?'old':'new';saveGs();
+    gs.fmt=(list.length&&list[0].contact===undefined&&(list[0].email!==undefined||list[0].created!==undefined))?'old':'new';saveGs();
     var added=mergeRemote(list);save();
     if(!quiet||added)log('ok','Из таблицы загружено: '+remoteCount+' участников'+(added?' · новых: '+added:''))})
   .catch(function(e){
-    return gsReq({action:'ping'}).then(function(d){log('info','Счётчик участников обновлён: '+remoteCount)})
-      .catch(function(){log('err','Не удалось读取 данные таблицы: '+e.message)})})
+    return gsReq({action:'ping'}).then(function(){log('info','Счётчик участников обновлён: '+remoteCount)})
+      .catch(function(){log('err','Не удалось получить данные таблицы: '+e.message)})})
   .then(function(){countBusy=false;render();scheduleAuto()})}
 function readCfg(){gs.url=$('#gsUrl').value.trim();gs.sheet=$('#gsSheet').value.trim()||GS_SHEET;gs.token=$('#gsToken').value.trim()||GS_TOKEN;
   if(!gs.url)gs.ok=null;saveGs()}
@@ -1070,6 +1113,12 @@ $('#bPing').onclick=function(){readCfg();if(!gs.url){toast('Укажите URL �
   log('info','Проверка связи…');
   gsReq({action:'ping'}).then(function(d){log('ok','Связь есть · лист «'+d.sheet+'», участников: '+d.rows);toast('Таблица на связи ✅','ok');render();refreshRemote(true)})
     .catch(function(e){log('err','Нет связи: '+e.message);toast('Нет связи: '+e.message,'err');render()})};
+$('#bCols').onclick=function(){
+  if(!gs.url){toast('Таблица не подключена','warn');return}
+  ask({title:'Выровнять колонки листа?',text:'Скрипт переставит существующие строки в порядок: Код, Имя и Фамилия, Отдел, Контакт, Любит, Не дарить, Аллергии, Код, Кому дарит. Данные сохраняются.',ok:'🧱 Выровнять'}).then(function(v){
+    if(!v)return;
+    gsReq({action:'reformat'}).then(function(d){log('ok','Колонки выровнены · строк: '+(d.rows==null?'—':d.rows));toast('Колонки приведены к новому порядку ✅','ok');refreshRemote(true)})
+      .catch(function(e){log('err','Выравнивание не выполнено: '+e.message);toast('Ошибка: '+e.message,'err');render()})})};
 $('#bRefresh').onclick=function(){refreshRemote(false).then(function(){toast('Данные обновлены 🔄','ok')})};
 $('#bPushAll').onclick=function(){var l=realList();if(!l.length){toast('Заявок пока нет','warn');return}attempt=0;push(l)};
 $('#bRetry').onclick=function(){var l=pendingList();if(!l.length){toast('Очередь пуста — всё сохранено ✅','ok');return}attempt=0;push(l)};
@@ -1182,7 +1231,7 @@ function openDrawer(id){var p=byId(id);if(!p)return;drawerId=id;
   $('#dTitle').textContent=p.name;$('#dCode').textContent=p.code;$('#dSync').innerHTML=badge(p);
   D.name.value=p.name;D.dept.value=p.dept||'';D.contact.value=p.contact;D.likes.value=p.likes;D.dont.value=p.dont||'';D.allergy.value=p.allergies||'';
   Object.keys(D).forEach(function(k){ok(D[k])});
-  $('#dMeta').innerHTML='<div>Дата заявки: <b>'+esc(sheetDate(p.ts))+'</b></div><div>Кому дарит: <b>'+(giftOf(p)?esc(giftOf(p)):'—')+'</b></div>'+
+  $('#dMeta').innerHTML='<div>Код: <b>'+esc(p.code)+'</b></div><div>Заявка принята: <b>'+esc(stamp(p.ts))+'</b></div><div>Кому дарит: <b>'+(giftOf(p)?esc(giftOf(p)):'—')+'</b></div>'+
     (p.demo?'<div>🧪 Демо-запись: в таблицу не отправляется</div>':'')+
     (p.sync&&p.sync.error?'<div style="color:#D40511">Ошибка: <b>'+esc(p.sync.error)+'</b></div>':'');
   $('#drawer').classList.add('open');overlay(true)}
@@ -1192,7 +1241,7 @@ $('#dCode').onclick=function(){var p=byId(drawerId);if(p)copy(p.code).then(funct
 $('#dSave').onclick=function(){
   var p=byId(drawerId);if(!p)return;Object.keys(D).forEach(function(k){ok(D[k])});
   var n=D.name.value.trim(),m=D.contact.value.trim(),l=D.likes.value.trim(),first=null;
-  if(n.length<3){bad(D.name,'Укажите имя');first=first||D.name}
+  if(n.length<3){bad(D.name,'Укажите имя и фамилию');first=first||D.name}
   else if(state.participants.some(function(x){return x.id!==p.id&&x.name.toLowerCase()===n.toLowerCase()})){bad(D.name,'Такое имя уже есть в базе');first=first||D.name}
   if(!MAIL.test(m)){bad(D.contact,'Формат почты: name@company.ru');first=first||D.contact}
   if(l.length<3){bad(D.likes,'Добавьте пожелания');first=first||D.likes}
@@ -1209,7 +1258,7 @@ addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8)}
 sizeS();sizeC();if(!reduced)requestAnimationFrame(loopS);else sc.style.display='none';
 $('#gsUrl').value=gs.url;$('#gsSheet').value=gs.sheet;$('#gsToken').value=gs.token;
 syncControls();renderViews();render();sched();tick();setInterval(tick,1000);setInterval(sched,60000);
-log('info','Подключение активно · лист «'+gs.sheet+'» · формат: '+HEAD.join(' | '));
+log('info','Порядок выгрузки: '+HEAD.join(' | '));
 if(sessionStorage.getItem('santa26.admin')==='1')unlock();
 refreshRemote(true);scheduleAuto();setInterval(function(){refreshRemote(true)},60000);
 if(!reduced&&'IntersectionObserver' in window){
