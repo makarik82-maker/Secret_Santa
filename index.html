@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#FFCC00">
-<meta name="description" content="Тайный Санта 2026 — жёлтая служба праздничной доставки. Регистрация, секретные коды, жеребьёвка, обмен подарками до 1000 ₽ и сохранение заявок в Google Sheets.">
+<meta name="description" content="Тайный Санта 2026 — жёлтая служба праздничной доставки. Регистрация, секретные коды, жеребьёвка и обмен подарками до 1000 ₽.">
 <title>Тайный Санта 2026 • Жёлтая служба праздничной доставки</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,8 +18,7 @@
   --ink:#221A06; --ink2:#4A3B12; --mute:#8A7C55;
   --paper:#FFF9E8; --cream:#FFF3CF; --white:#FFFDF6; --line:#EFE6CC;
   --dark:#171106; --dark2:#241B09; --darkline:#3A2E10;
-  --green:#1E9E6A; --green-d:#1E7A4F; --sheet:#0F9D58; --sheet2:#34A853;
-  --blue:#2E6BFF; --amber:#FF9F1C;
+  --green:#1E9E6A; --green-d:#1E7A4F; --blue:#2E6BFF; --amber:#FF9F1C;
   --disp:'Unbounded',system-ui,sans-serif;
   --body:'Manrope',system-ui,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -52,7 +51,7 @@ section{scroll-margin-top:104px}
 .grain{position:fixed;inset:0;z-index:45;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
 
-/* ============ ВЕРХНЯЯ ПОЛОСА ============ */
+/* ============ ВЕРХНЯЯ ПОЛОСА (без эмблемы DHL) ============ */
 .topstrip{background:linear-gradient(90deg,var(--y3),var(--y) 40%,var(--y2));border-bottom:3px solid var(--ink);position:relative;z-index:60}
 .ticker{overflow:hidden;border-bottom:1.5px dashed rgba(34,26,6,.35)}
 .ticker-track{display:flex;width:max-content;will-change:transform;animation:tick 38s linear infinite}
@@ -86,43 +85,31 @@ section{scroll-margin-top:104px}
 /* ============ КНОПКИ ============ */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--body);font-weight:800;
   font-size:15px;padding:13px 22px;border-radius:14px;border:2px solid var(--ink);cursor:pointer;text-decoration:none;
-  transition:transform .15s,box-shadow .15s,background .2s,opacity .2s;line-height:1.2}
-.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
+  transition:transform .15s,box-shadow .15s,background .2s;line-height:1.2}
 .btn-primary{background:var(--red);color:#fff;box-shadow:5px 5px 0 var(--ink)}
-.btn-primary:hover:not(:disabled){background:var(--red2);transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
-.btn-primary:active:not(:disabled){transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-primary:hover{background:var(--red2);transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn-primary:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
 .btn-yellow{background:var(--y);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
-.btn-yellow:hover:not(:disabled){background:var(--y3);transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
-.btn-yellow:active:not(:disabled){transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-yellow:hover{background:var(--y3);transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn-yellow:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
 .btn-dark{background:var(--ink);color:var(--y);box-shadow:5px 5px 0 rgba(34,26,6,.35)}
-.btn-dark:hover:not(:disabled){background:var(--dark2);transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(34,26,6,.35)}
-.btn-sheet{background:var(--sheet);color:#fff;box-shadow:5px 5px 0 var(--ink)}
-.btn-sheet:hover:not(:disabled){background:var(--sheet2);transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn-dark:hover{background:var(--dark2);transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(34,26,6,.35)}
 .btn-ghost{background:var(--white);color:var(--ink);box-shadow:4px 4px 0 rgba(34,26,6,.25)}
-.btn-ghost:hover:not(:disabled){background:var(--cream);transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(34,26,6,.25)}
+.btn-ghost:hover{background:var(--cream);transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(34,26,6,.25)}
 .btn-warn{background:#FFF4E0;color:#9A5B00;border-color:var(--amber);box-shadow:4px 4px 0 rgba(255,159,28,.4)}
-.btn-warn:hover:not(:disabled){background:#FFE9C7;transform:translate(-2px,-2px)}
+.btn-warn:hover{background:#FFE9C7;transform:translate(-2px,-2px)}
 .btn-danger{background:var(--red);color:#fff;box-shadow:4px 4px 0 rgba(212,5,17,.35)}
-.btn-danger:hover:not(:disabled){background:var(--red2);transform:translate(-2px,-2px)}
+.btn-danger:hover{background:var(--red2);transform:translate(-2px,-2px)}
 .btn-big{font-size:17px;padding:16px 28px;width:100%}
-.btn-sm{font-size:13px;padding:9px 14px;border-radius:11px;box-shadow:3px 3px 0 rgba(34,26,6,.3)}
-.btn-xs{font-size:12px;padding:6px 10px;border-radius:9px;box-shadow:2px 2px 0 rgba(34,26,6,.3)}
+.btn-sm{font-size:13px;padding:9px 14px;border-radius:11px}
 
-/* ============ ЧИПЫ / СТАТУСЫ ============ */
+/* ============ ЧИПЫ ============ */
 .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .chip-green{background:var(--green);color:#fff}
 .chip-red{background:var(--red);color:#fff}
 .chip-amber{background:var(--amber);color:var(--ink)}
 .chip-blue{background:var(--blue);color:#fff}
 .chip-ink{background:var(--ink);color:var(--y)}
-.chip-white{background:var(--white);color:var(--ink);border:2px solid var(--ink)}
-.sync{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;border:1.5px solid;white-space:nowrap}
-.sync .dot{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
-.sync.synced{color:var(--green-d);border-color:var(--green);background:#EAF7F0}
-.sync.pending{color:#9A5B00;border-color:var(--amber);background:#FFF4E0}
-.sync.sending{color:#1B4FBF;border-color:var(--blue);background:#EAF0FF}
-.sync.sending .dot{animation:pulse 1s ease-in-out infinite}
-.sync.error{color:var(--red);border-color:var(--red);background:#FDECEC}
 
 /* ============ HERO ============ */
 .hero{position:relative;overflow:hidden;padding:76px 0 84px;
@@ -169,7 +156,7 @@ section{scroll-margin-top:104px}
 
 /* ============ СЕКЦИИ ============ */
 .section{padding:84px 0}
-.sec-head{margin-bottom:42px;max-width:760px}
+.sec-head{margin-bottom:42px;max-width:720px}
 .sec-tag{display:inline-block;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.22em;
   background:var(--ink);color:var(--y);padding:6px 12px;border-radius:7px;margin-bottom:14px;text-transform:uppercase}
 .sec-title{font-family:var(--disp);font-weight:900;font-size:clamp(26px,3.6vw,42px);line-height:1.12;margin-bottom:12px}
@@ -258,11 +245,11 @@ section{scroll-margin-top:104px}
 .field{margin-bottom:17px}
 .field label{display:block;font-weight:800;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px}
 .field label b{color:var(--red)}
-.field input,.field textarea,.field select{width:100%;font-family:var(--body);font-size:15px;font-weight:500;color:var(--ink);
+.field input,.field textarea{width:100%;font-family:var(--body);font-size:15px;font-weight:500;color:var(--ink);
   background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:12px 14px;transition:.2s;resize:vertical}
 .field input::placeholder,.field textarea::placeholder{color:var(--mute)}
-.field input:focus,.field textarea:focus,.field select:focus{outline:none;background:#fff;box-shadow:0 0 0 4px rgba(255,204,0,.5)}
-.field .err{display:block;font-size:12px;font-weight:700;color:var(--red);margin-top:5px}
+.field input:focus,.field textarea:focus{outline:none;background:#fff;box-shadow:0 0 0 4px rgba(255,204,0,.5)}
+.field .err{display:block;font-size:12px;font-weight:700;color:var(--red);margin-top:5px;min-height:0}
 .field.invalid input,.field.invalid textarea{border-color:var(--red);background:#FFF1F0}
 .form-note{font-size:12.5px;color:var(--mute);text-align:center;margin-top:12px;font-weight:600}
 
@@ -277,10 +264,9 @@ section{scroll-margin-top:104px}
 .wb-code{font-family:var(--mono);font-weight:700;font-size:clamp(21px,3.4vw,30px);letter-spacing:.04em;
   color:var(--red);word-break:break-all;margin-bottom:12px}
 #wbBarcode{width:100%;height:46px;margin-bottom:16px}
-.wb-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.wb-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 .wb-meta span{display:block;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .wb-meta b{font-size:14px;word-break:break-word}
-.wb-sync{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:14px;font-size:12.5px;font-weight:700;color:var(--ink2)}
 .wb-note{background:#FFF4E0;border:2px solid var(--amber);border-radius:12px;padding:12px 14px;
   font-size:13px;font-weight:600;margin-bottom:18px}
 .wb-actions{display:flex;flex-wrap:wrap;gap:10px}
@@ -332,121 +318,31 @@ section{scroll-margin-top:104px}
 .gate-err{font-size:12.5px;font-weight:700;color:var(--red);min-height:18px;margin-bottom:10px}
 .gate-hint{font-size:11.5px;color:var(--mute);margin-top:14px}
 .gate-hint code{font-family:var(--mono);background:var(--cream);padding:1px 6px;border-radius:5px;border:1px solid var(--line)}
-.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:22px}
 .stat-card{background:var(--white);border:2px solid var(--ink);border-radius:14px;padding:16px 18px;box-shadow:4px 4px 0 var(--ink)}
 .stat-card span{display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
-.stat-v{font-family:var(--disp);font-weight:700;font-size:19px;word-break:break-word}
+.stat-v{font-family:var(--disp);font-weight:700;font-size:20px}
 .stat-v.ok{color:var(--green-d)}
 .stat-v.warn{color:#B26A00}
-.stat-v.err{color:var(--red)}
-.demo-banner{display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:#FFF4E0;border:2px solid var(--amber);
-  border-radius:14px;padding:12px 16px;margin-bottom:18px;font-size:13.5px;font-weight:700;color:#8A5200}
-.demo-banner .btn{margin-left:auto}
-
-/* ---- Google Sheets ---- */
-.gs-panel{background:var(--white);border:2px solid var(--ink);border-radius:20px;box-shadow:8px 8px 0 var(--ink);overflow:hidden;margin-bottom:24px}
-.gs-head{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:15px 22px;color:#fff;border-bottom:2px solid var(--ink);
-  background:linear-gradient(100deg,#0B7F46,var(--sheet) 45%,var(--sheet2))}
-.gs-head h3{font-family:var(--disp);font-weight:700;font-size:16px;display:flex;align-items:center;gap:10px}
-.gs-head .btn{margin-left:auto}
-.gs-body{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;padding:22px}
-.gs-col h4{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
-.gs-steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:9px;font-size:13.5px;font-weight:500;color:var(--ink2)}
-.gs-steps li{counter-increment:s;display:flex;gap:10px;align-items:flex-start}
-.gs-steps li::before{content:counter(s);flex:none;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--y);
-  font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px}
-.gs-steps code{font-family:var(--mono);font-size:12px;background:var(--cream);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
-.gs-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
-.gs-foot{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding:12px 22px;border-top:2px dashed var(--line);
-  background:var(--paper);font-size:12.5px;font-weight:700;color:var(--ink2)}
-.gs-foot b{font-family:var(--mono)}
-.gs-foot a{color:var(--sheet);font-weight:800}
-.gs-log{max-height:168px;overflow:auto;border-top:2px solid var(--ink);background:var(--dark2);color:#E8DFC6;
-  font-family:var(--mono);font-size:11.5px;padding:10px 16px}
-.gs-log div{display:flex;gap:10px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.gs-log div:last-child{border-bottom:none}
-.gs-log time{color:#8A7C55;flex:none}
-.gs-log .ok{color:#5BD69A}.gs-log .err{color:#FF9A9A}.gs-log .info{color:#FFD84D}
-.switch{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-weight:700;font-size:13px;user-select:none}
-.switch input{position:absolute;opacity:0;width:0;height:0}
-.switch .track{width:46px;height:26px;border-radius:999px;background:var(--line);border:2px solid var(--ink);position:relative;transition:.2s;flex:none}
-.switch .track::after{content:'';position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:var(--white);border:2px solid var(--ink);transition:.2s}
-.switch input:checked + .track{background:var(--green)}
-.switch input:checked + .track::after{transform:translateX(20px)}
-.switch input:focus-visible + .track{outline:3px solid var(--blue);outline-offset:2px}
-
-/* ---- Консоль ---- */
-.admin-actions{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:22px}
-.console-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
-.console-bar input[type=search]{flex:1;min-width:210px;font-family:var(--body);font-size:14px;font-weight:500;background:var(--white);
+.admin-actions{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:24px}
+.table-tools{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:14px}
+.table-tools input{flex:1;min-width:220px;font-family:var(--body);font-size:14px;font-weight:500;background:var(--white);
   border:2px solid var(--ink);border-radius:11px;padding:10px 14px}
-.console-bar input[type=search]:focus{outline:none;box-shadow:0 0 0 4px rgba(255,204,0,.5)}
-.console-bar select{font-family:var(--body);font-weight:700;font-size:13px;background:var(--white);border:2px solid var(--ink);
-  border-radius:11px;padding:10px 12px;cursor:pointer}
-.console-bar select:focus{outline:none;box-shadow:0 0 0 4px rgba(255,204,0,.5)}
-.view-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
-.view-chip{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:2px solid var(--ink);border-radius:999px;
-  padding:5px 13px;font-size:12.5px;font-weight:800;cursor:pointer;transition:.15s}
-.view-chip:hover{background:var(--cream)}
-.view-chip.active{background:var(--ink);color:var(--y)}
-.view-chip .x{border:none;background:transparent;color:inherit;font-weight:800;cursor:pointer;font-size:13px;line-height:1;padding:0}
-.bulk-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--ink);color:var(--y);border-radius:14px;
-  padding:10px 16px;margin-bottom:12px;font-weight:800;font-size:13.5px;animation:pop .3s}
-.bulk-bar .btn{box-shadow:3px 3px 0 rgba(255,204,0,.35)}
-.table-tools{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--mute)}
-.table-wrap{overflow:auto;max-height:560px;border:2px solid var(--ink);border-radius:16px;background:var(--white);box-shadow:6px 6px 0 var(--ink)}
-.table-wrap table{border-collapse:collapse;min-width:1280px;width:100%;font-size:13px}
+.table-tools input:focus{outline:none;box-shadow:0 0 0 4px rgba(255,204,0,.5)}
+.table-tools span{font-size:13px;font-weight:700;color:var(--mute)}
+.table-wrap{overflow:auto;max-height:520px;border:2px solid var(--ink);border-radius:16px;background:var(--white);box-shadow:6px 6px 0 var(--ink)}
+.table-wrap table{border-collapse:collapse;min-width:1100px;width:100%;font-size:13px}
 .table-wrap thead th{position:sticky;top:0;z-index:2;background:var(--ink);color:var(--y);text-align:left;
-  padding:11px 12px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
-.table-wrap td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:middle}
-.table-wrap tbody tr{transition:background .15s;cursor:pointer}
+  padding:12px 14px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.table-wrap td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
 .table-wrap tbody tr:hover{background:#FFF6D6}
-.table-wrap tbody tr.selected{background:#FFF0B8}
-.table-wrap tbody tr.dragging{opacity:.35}
-.table-wrap tbody tr.drop-target{box-shadow:inset 0 3px 0 var(--red)}
-.t-check{width:38px;text-align:center}
-.t-check input{width:17px;height:17px;accent-color:var(--red);cursor:pointer}
-.t-drag{width:30px;text-align:center;color:var(--mute);cursor:grab;font-size:15px;user-select:none}
-.t-drag.off{opacity:.25;cursor:not-allowed}
-.t-num{width:40px;color:var(--mute);font-family:var(--mono)}
 .t-name{font-weight:800;white-space:nowrap}
-.t-mail{font-size:12.5px;color:var(--ink2)}
-.t-likes{max-width:250px;min-width:180px;font-size:12.5px;color:var(--ink2)}
-.t-assigned{color:var(--green-d);font-weight:800;white-space:nowrap}
+.t-wide{min-width:170px;max-width:260px}
+.t-assigned{color:var(--green-d);font-weight:800}
 .t-empty{text-align:center;padding:34px!important;color:var(--mute);font-weight:600}
-.demo-tag{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
-  background:var(--cream);border:1.5px solid var(--amber);color:#9A5B00;border-radius:5px;padding:1px 5px;margin-left:7px;vertical-align:middle}
 .code-chip{font-family:var(--mono);font-weight:700;font-size:12px;background:var(--cream);border:1.5px solid var(--ink);
   border-radius:8px;padding:4px 9px;cursor:copy;white-space:nowrap;transition:.15s}
 .code-chip:hover{background:var(--y)}
-.row-actions{display:flex;gap:5px}
-.icon-btn{width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:var(--white);
-  border:1.5px solid var(--ink);border-radius:8px;cursor:pointer;font-size:13px;transition:.15s;padding:0}
-.icon-btn:hover{background:var(--y);transform:translateY(-2px)}
-.icon-btn.danger:hover{background:var(--red);color:#fff}
-
-/* ---- Карточка участника ---- */
-.drawer{position:fixed;inset:0;z-index:350;display:none}
-.drawer.open{display:block}
-.drawer-scrim{position:absolute;inset:0;background:rgba(23,17,6,.55);backdrop-filter:blur(2px)}
-.drawer-panel{position:absolute;top:0;right:0;height:100%;width:min(460px,100%);background:var(--paper);
-  border-left:3px solid var(--ink);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.3);
-  animation:slideIn .3s cubic-bezier(.2,.9,.3,1)}
-@keyframes slideIn{from{transform:translateX(100%)}to{transform:none}}
-.drawer-head{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border-bottom:2px solid var(--ink);
-  background:linear-gradient(120deg,var(--y3),var(--y2))}
-.drawer-kicker{display:block;font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2)}
-.drawer-head h3{font-family:var(--disp);font-weight:700;font-size:18px;line-height:1.2;word-break:break-word}
-.drawer-x{margin-left:auto;flex:none;width:34px;height:34px;border:2px solid var(--ink);border-radius:10px;background:var(--white);
-  cursor:pointer;font-weight:800;font-size:15px}
-.drawer-x:hover{background:var(--red);color:#fff}
-.drawer-body{flex:1;overflow:auto;padding:20px}
-.dr-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:14px}
-.dr-meta{background:var(--white);border:2px dashed var(--line);border-radius:12px;padding:12px 14px;font-size:12.5px;font-weight:600;color:var(--ink2);display:grid;gap:6px}
-.dr-meta b{color:var(--ink)}
-.drawer-foot{display:flex;gap:8px;padding:14px 20px;border-top:2px solid var(--ink);background:var(--white)}
-.drawer-foot .btn{flex:1}
-.drawer-foot .btn-danger{flex:0 0 auto}
 
 /* ============ FAQ ============ */
 .faq-list{max-width:800px;margin:0 auto}
@@ -482,17 +378,14 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
   text-align:center;padding:11px 16px;font-family:var(--disp);font-weight:700;font-size:clamp(9px,2vw,12px);
   letter-spacing:.3em;color:var(--ink)}
 
-/* ============ ТОСТЫ / МОДАЛКИ ============ */
-#toasts{position:fixed;right:20px;bottom:20px;z-index:600;display:flex;flex-direction:column;gap:10px;max-width:min(380px,calc(100vw - 40px))}
-.toast{display:flex;align-items:center;gap:10px;background:var(--ink);color:#F5EDD8;border-radius:12px;
+/* ============ ТОСТЫ / МОДАЛКА ============ */
+#toasts{position:fixed;right:20px;bottom:20px;z-index:300;display:flex;flex-direction:column;gap:10px;max-width:min(360px,calc(100vw - 40px))}
+.toast{display:flex;align-items:flex-start;gap:10px;background:var(--ink);color:#F5EDD8;border-radius:12px;
   padding:13px 16px;font-size:14px;font-weight:600;border-left:6px solid var(--blue);
   box-shadow:0 10px 30px rgba(0,0,0,.35);animation:toastIn .35s cubic-bezier(.2,1.2,.4,1)}
 .toast.t-success{border-left-color:var(--green)}
 .toast.t-error{border-left-color:var(--red2)}
 .toast.t-warn{border-left-color:var(--amber)}
-.toast .t-act{margin-left:auto;flex:none;background:var(--y);color:var(--ink);border:none;border-radius:8px;
-  padding:6px 11px;font-weight:800;font-size:12px;cursor:pointer;font-family:var(--body)}
-.toast .t-act:hover{background:var(--y3)}
 .toast.out{opacity:0;transform:translateX(30px);transition:.3s}
 @keyframes toastIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
 .modal{position:fixed;inset:0;z-index:400;display:none;align-items:center;justify-content:center;padding:20px}
@@ -500,15 +393,9 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
 .m-scrim{position:absolute;inset:0;background:rgba(23,17,6,.66);backdrop-filter:blur(3px)}
 .m-card{position:relative;background:var(--white);border:2px solid var(--ink);border-radius:20px;max-width:430px;
   width:100%;padding:26px;box-shadow:10px 10px 0 rgba(34,26,6,.8);animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
-.m-card.m-wide{max-width:880px}
 .m-card h3{font-family:var(--disp);font-weight:700;font-size:19px;margin-bottom:10px}
-.m-card p{font-size:14.5px;color:var(--ink2);margin-bottom:18px}
-.m-card input{width:100%;font-family:var(--body);font-size:15px;border:2px solid var(--ink);border-radius:12px;
-  padding:11px 13px;margin-bottom:18px;background:var(--paper)}
-.m-card input:focus{outline:none;box-shadow:0 0 0 4px rgba(255,204,0,.5)}
+.m-card p{font-size:14.5px;color:var(--ink2);margin-bottom:22px}
 .m-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
-.code-box{max-height:52vh;overflow:auto;background:var(--dark2);color:#E8DFC6;font-family:var(--mono);font-size:12px;
-  line-height:1.6;padding:16px;border-radius:12px;border:2px solid var(--ink);white-space:pre;margin-bottom:18px;tab-size:2}
 
 /* ============ ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ ============ */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
@@ -524,8 +411,6 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
   #nav.open #navMenu{display:flex}
   #navMenu a{padding:12px 14px;font-size:15px}
   #navMenu a.nav-cta{margin-left:0;text-align:center}
-  .admin-stats{grid-template-columns:1fr 1fr}
-  .gs-body{grid-template-columns:1fr}
 }
 @media (max-width:980px){
   .hero-grid{grid-template-columns:1fr;gap:36px}
@@ -541,15 +426,13 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
   .how-grid,.rules-grid,.admin-stats{grid-template-columns:1fr}
   .track-form{flex-direction:column}
   .wb-meta{grid-template-columns:1fr 1fr}
-  .wb-actions .btn,.admin-actions .btn,.gs-actions .btn{flex:1 1 100%}
+  .wb-actions .btn,.admin-actions .btn{flex:1 1 100%}
   .cd-cell{min-width:50px;padding:6px 8px}
   .cd-cell b{font-size:20px}
   .stamp-badge{width:92px;height:92px;top:-8px;right:0}
   .budget-banner{padding:22px}
   .footer-top{flex-direction:column;gap:22px}
   .footer-bottom{flex-direction:column}
-  .drawer-foot{flex-wrap:wrap}
-  #toasts{right:12px;left:12px;bottom:12px;max-width:none}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -564,7 +447,7 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
 <canvas id="snow" aria-hidden="true"></canvas>
 <div class="grain" aria-hidden="true"></div>
 
-<!-- ===== ВЕРХНЯЯ ПОЛОСА ===== -->
+<!-- ===== ВЕРХНЯЯ ПОЛОСА: эмблема DHL убрана ===== -->
 <div class="topstrip">
   <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
   <div class="tagline">ЖЕЛТАЯ СЛУЖБА ПРАЗДНИЧНОЙ ДОСТАВКИ</div>
@@ -793,15 +676,14 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
     <div class="sec-head reveal">
       <span class="sec-tag">Раздел 04 · Накладная</span>
       <h2 class="sec-title">Регистрация</h2>
-      <p class="sec-sub">Заполните праздничную накладную — код отслеживания выдаётся сразу, а заявка уходит в Google Sheets.</p>
+      <p class="sec-sub">Заполните праздничную накладную — код отслеживания выдаётся сразу.</p>
     </div>
     <div class="reg-grid">
       <div class="reg-info reveal">
         <h3>Присоединяйтесь к рейсу 🎅</h3>
         <p>Заполните накладную — и система выдаст секретный код. После жеребьёвки код откроет имя вашего подопечного и его пожелания.</p>
         <ul class="info-list">
-          <li><span class="ii">📊</span> Заявка сохраняется в таблицу организатора</li>
-          <li><span class="ii">🔒</span> Полные данные видит только организатор</li>
+          <li><span class="ii">🔒</span> Данные видит только организатор</li>
           <li><span class="ii">🎲</span> Пары назначает случайная жеребьёвка</li>
           <li><span class="ii">🤫</span> Никто не знает, кто чей Санта</li>
         </ul>
@@ -846,7 +728,7 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
               <small class="err"></small>
             </div>
             <button class="btn btn-primary btn-big" type="submit" id="regSubmit">🎁 Отправить заявку</button>
-            <p class="form-note">Код отслеживания появится сразу, заявка сохранится в таблицу организатора.</p>
+            <p class="form-note">Сразу после отправки вы получите секретный код отслеживания.</p>
           </form>
         </div>
 
@@ -860,7 +742,6 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
             <div><span>Отдел</span><b id="wbDept"></b></div>
             <div><span>Принято</span><b id="wbDate"></b></div>
           </div>
-          <div class="wb-sync" id="wbSync"></div>
           <div class="wb-note">⚠️ Сохраните код — он покажет, кому вы дарите, после жеребьёвки 2 декабря. Без кода маршрут не отследить.</div>
           <div class="wb-actions">
             <button class="btn btn-dark btn-sm" id="wbCopy" type="button">📋 Скопировать код</button>
@@ -899,7 +780,7 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
     <div class="sec-head reveal">
       <span class="sec-tag">Раздел 06 · Служебный</span>
       <h2 class="sec-title">Организатору</h2>
-      <p class="sec-sub">Жеребьёвка, база участников и синхронизация заявок с Google Sheets.</p>
+      <p class="sec-sub">Служебный раздел: жеребьёвка, таблица участников и выгрузка маршрутов.</p>
     </div>
 
     <form class="gate-card reveal" id="adminGate">
@@ -916,130 +797,27 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
       <div class="admin-stats">
         <div class="stat-card"><span>Участников</span><div class="stat-v" id="statCount">0</div></div>
         <div class="stat-card"><span>Жеребьёвка</span><div class="stat-v warn" id="statDraw">Ещё не было</div></div>
-        <div class="stat-card"><span>Очередь отправки</span><div class="stat-v warn" id="statQueue">0</div></div>
-        <div class="stat-card"><span>Google Sheets</span><div class="stat-v warn" id="statSheet">Не подключено</div></div>
+        <div class="stat-card"><span>Дата жеребьёвки</span><div class="stat-v" id="statDate">—</div></div>
       </div>
-
-      <div class="demo-banner hidden" id="demoBanner">
-        <span>✨ В базе есть демо-участники — удалите их перед реальным сбором заявок.</span>
-        <button class="btn btn-warn btn-sm" id="btnRemoveDemo" type="button">Удалить демо</button>
-      </div>
-
-      <!-- ===== GOOGLE SHEETS ===== -->
-      <div class="gs-panel">
-        <div class="gs-head">
-          <h3>📊 Google Sheets</h3>
-          <span class="chip chip-white" id="gsStatusChip">Не подключено</span>
-          <button class="btn btn-yellow btn-sm" id="btnScript" type="button">📄 Код скрипта</button>
-        </div>
-        <div class="gs-body">
-          <div class="gs-col">
-            <h4>Подключение</h4>
-            <div class="field">
-              <label for="gsUrl">URL веб-приложения (/exec)</label>
-              <input id="gsUrl" type="url" spellcheck="false" placeholder="https://script.google.com/macros/s/…/exec">
-              <small class="err"></small>
-            </div>
-            <div class="field">
-              <label for="gsSheet">Название листа</label>
-              <input id="gsSheet" type="text" placeholder="Участники">
-              <small class="err"></small>
-            </div>
-            <div class="field">
-              <label for="gsToken">Токен (как TOKEN в скрипте)</label>
-              <input id="gsToken" type="text" spellcheck="false" placeholder="SANTA-2026">
-              <small class="err"></small>
-            </div>
-            <label class="switch" for="gsAuto">
-              <input type="checkbox" id="gsAuto" checked><span class="track"></span>
-              Автосохранение при регистрации и правках
-            </label>
-            <div class="gs-actions">
-              <button class="btn btn-dark btn-sm" id="btnSaveCfg" type="button">💾 Сохранить настройки</button>
-              <button class="btn btn-sheet btn-sm" id="btnPing" type="button">🔌 Проверить связь</button>
-            </div>
-          </div>
-          <div class="gs-col">
-            <h4>Как подключить за 4 шага</h4>
-            <ol class="gs-steps">
-              <li>Создайте Google-таблицу → <code>Расширения → Apps Script</code>.</li>
-              <li>Вставьте код из кнопки «Код скрипта», сохраните проект.</li>
-              <li><code>Развернуть → Новое развёртывание → Веб-приложение</code>: выполнять как «Я», доступ «Все».</li>
-              <li>Скопируйте URL <code>/exec</code> в поле слева и нажмите «Проверить связь».</li>
-            </ol>
-            <div class="gs-actions">
-              <button class="btn btn-sheet btn-sm" id="btnPushAll" type="button">⬆️ Отправить всех</button>
-              <button class="btn btn-ghost btn-sm" id="btnRetry" type="button">🔁 Повторить очередь</button>
-              <button class="btn btn-ghost btn-sm" id="btnImport" type="button">⬇️ Загрузить из таблицы</button>
-              <button class="btn btn-ghost btn-sm" id="btnPushDraw" type="button">🎲 Обновить назначения</button>
-            </div>
-          </div>
-        </div>
-        <div class="gs-foot">
-          <span>✅ Отправлено: <b id="gsSynced">0</b></span>
-          <span>⏳ В очереди: <b id="gsPending">0</b></span>
-          <span>⚠️ Ошибок: <b id="gsErrors">0</b></span>
-          <span>🕒 Последняя операция: <b id="gsLast">—</b></span>
-          <a id="gsOpenLink" class="hidden" href="#" target="_blank" rel="noopener">Открыть таблицу ↗</a>
-        </div>
-        <div class="gs-log" id="gsLog" aria-live="polite"></div>
-      </div>
-
       <div class="admin-actions">
         <button class="btn btn-primary" id="btnDraw" type="button">🎲 Провести жеребьёвку</button>
-        <button class="btn btn-dark" id="btnTable" type="button" aria-expanded="true">🙈 Скрыть таблицу</button>
+        <button class="btn btn-dark" id="btnTable" type="button" aria-expanded="false">📋 Показать таблицу</button>
         <button class="btn btn-ghost" id="btnExport" type="button">⬇️ Экспорт CSV</button>
-        <button class="btn btn-ghost" id="btnDemo" type="button">✨ Добавить демо</button>
+        <button class="btn btn-ghost" id="btnDemo" type="button">✨ Демо-данные</button>
         <button class="btn btn-warn" id="btnResetDraw" type="button">↺ Сбросить жеребьёвку</button>
         <button class="btn btn-danger" id="btnClear" type="button">🗑 Очистить всё</button>
         <button class="btn btn-ghost btn-sm" id="btnLogout" type="button">Выйти</button>
       </div>
-
-      <div id="tableWrap">
-        <div class="console-bar">
-          <input id="tableSearch" type="search" placeholder="Поиск: имя, код, отдел, почта, пожелания…" aria-label="Поиск по базе">
-          <select id="filterDept" aria-label="Фильтр по отделу"><option value="">Все отделы</option></select>
-          <select id="filterStatus" aria-label="Фильтр по статусу отправки">
-            <option value="">Любой статус</option>
-            <option value="synced">✅ Отправленные</option>
-            <option value="pending">⏳ В очереди</option>
-            <option value="error">⚠️ С ошибкой</option>
-          </select>
-          <select id="sortBy" aria-label="Сортировка">
-            <option value="manual">Ручной порядок</option>
-            <option value="name">По имени</option>
-            <option value="dept">По отделу</option>
-            <option value="ts">По дате заявки</option>
-            <option value="sync">По статусу</option>
-          </select>
-          <button class="btn btn-ghost btn-sm" id="sortDir" type="button" title="Направление сортировки">↑ по возрастанию</button>
-          <button class="btn btn-ghost btn-sm" id="btnSaveView" type="button">💾 Сохранить вид</button>
-        </div>
-        <div class="view-chips" id="viewChips"></div>
-        <div class="bulk-bar hidden" id="bulkBar">
-          <span>Выбрано: <b id="bulkCount">0</b></span>
-          <button class="btn btn-sheet btn-xs" id="btnBulkPush" type="button">⬆️ Отправить в таблицу</button>
-          <button class="btn btn-danger btn-xs" id="btnBulkDelete" type="button">🗑 Удалить</button>
-          <button class="btn btn-ghost btn-xs" id="btnBulkClear" type="button">✕ Снять выделение</button>
-        </div>
+      <div id="tableWrap" class="hidden">
         <div class="table-tools">
+          <input id="tableSearch" type="search" placeholder="Поиск по имени, коду или отделу…" aria-label="Поиск по таблице">
           <span id="tableCount"></span>
-          <span id="dragHint">Перетаскивайте строки за ⠿, чтобы задать порядок</span>
         </div>
         <div class="table-wrap">
           <table>
             <thead><tr>
-              <th class="t-check"><input type="checkbox" id="selectAll" aria-label="Выбрать все показанные строки"></th>
-              <th class="t-drag">⠿</th>
-              <th class="t-num">№</th>
-              <th>Имя и фамилия</th>
-              <th>Отдел</th>
-              <th>Почта</th>
-              <th>Код</th>
-              <th>Что любит</th>
-              <th>Кому дарит</th>
-              <th>Google Sheets</th>
-              <th>Действия</th>
+              <th>#</th><th>Имя</th><th>Отдел</th><th>Почта</th><th>Код</th>
+              <th>Пожелания</th><th>Не дарить</th><th>Аллергии</th><th>Кому дарит</th>
             </tr></thead>
             <tbody id="tableBody"></tbody>
           </table>
@@ -1073,10 +851,6 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
         <summary class="faq-q">Что если не знаю, что дарить?</summary>
         <div class="faq-a">Возьмите нейтральное: кофе, чай, канцелярию, сертификат.</div>
       </details>
-      <details class="faq-item reveal" data-d="4">
-        <summary class="faq-q">Куда попадают заявки?</summary>
-        <div class="faq-a">В Google-таблицу организатора: имя, отдел, почта, пожелания, «не дарить», аллергии, код и дата. Пока таблица не подключена, заявки хранятся в браузере и уходят в таблицу сразу после настройки.</div>
-      </details>
     </div>
   </div>
 </section>
@@ -1091,7 +865,6 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
         <div class="footer-status">
           <span class="fs-chip">👥 Участников: <b id="footCount">0</b></span>
           <span class="fs-chip" id="footDraw">🎲 Жеребьёвка 2 декабря</span>
-          <span class="fs-chip" id="footSheet">📊 Таблица не подключена</span>
         </div>
       </div>
       <nav class="footer-nav" aria-label="Разделы страницы">
@@ -1112,58 +885,6 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
   <div class="bottom-strip">❄ ЖЕЛТАЯ СЛУЖБА ПРАЗДНИЧНОЙ ДОСТАВКИ • 2026 ❄</div>
 </footer>
 
-<!-- ===== КАРТОЧКА УЧАСТНИКА ===== -->
-<div id="drawer" class="drawer">
-  <div class="drawer-scrim" id="drawerScrim"></div>
-  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drTitle">
-    <header class="drawer-head">
-      <div>
-        <span class="drawer-kicker">Карточка участника</span>
-        <h3 id="drTitle">—</h3>
-      </div>
-      <button class="drawer-x" id="drawerClose" type="button" aria-label="Закрыть карточку">✕</button>
-    </header>
-    <div class="drawer-body">
-      <div class="dr-row">
-        <button class="code-chip" id="drCode" type="button" title="Скопировать код">—</button>
-        <span id="drSync"></span>
-      </div>
-      <form id="drForm" novalidate>
-        <div class="field">
-          <label for="drName">Имя и фамилия <b>*</b></label>
-          <input id="drName" type="text"><small class="err"></small>
-        </div>
-        <div class="field">
-          <label for="drDept">Отдел / команда</label>
-          <input id="drDept" list="depts" type="text"><small class="err"></small>
-        </div>
-        <div class="field">
-          <label for="drContact">Почта <b>*</b></label>
-          <input id="drContact" type="email"><small class="err"></small>
-        </div>
-        <div class="field">
-          <label for="drLikes">Что вы любите? <b>*</b></label>
-          <textarea id="drLikes" rows="3"></textarea><small class="err"></small>
-        </div>
-        <div class="field">
-          <label for="drDont">Что вам НЕ дарить?</label>
-          <textarea id="drDont" rows="2"></textarea><small class="err"></small>
-        </div>
-        <div class="field">
-          <label for="drAllergy">Аллергии и ограничения</label>
-          <input id="drAllergy" type="text"><small class="err"></small>
-        </div>
-      </form>
-      <div class="dr-meta" id="drMeta"></div>
-    </div>
-    <footer class="drawer-foot">
-      <button class="btn btn-primary btn-sm" id="drSave" type="button">💾 Сохранить</button>
-      <button class="btn btn-sheet btn-sm" id="drPush" type="button">⬆️ В таблицу</button>
-      <button class="btn btn-danger btn-sm" id="drDelete" type="button" title="Удалить участника">🗑</button>
-    </footer>
-  </aside>
-</div>
-
 <canvas id="confetti" aria-hidden="true"></canvas>
 <div id="toasts" aria-live="polite"></div>
 
@@ -1172,24 +893,9 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
   <div class="m-card">
     <h3 id="mTitle"></h3>
     <p id="mText"></p>
-    <input id="mInput" class="hidden" type="text">
     <div class="m-actions">
       <button class="btn btn-ghost" id="mCancel" type="button">Отмена</button>
       <button class="btn btn-primary" id="mOk" type="button">Подтвердить</button>
-    </div>
-  </div>
-</div>
-
-<div id="scriptModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="smTitle">
-  <div class="m-scrim"></div>
-  <div class="m-card m-wide">
-    <h3 id="smTitle">📄 Скрипт для Google Sheets</h3>
-    <p>Откройте таблицу → <b>Расширения → Apps Script</b>, вставьте код целиком, сохраните и разверните как веб-приложение
-      («Выполнять как: Я», «Доступ: Все»). Колонки листа создадутся автоматически и совпадают с полями формы.</p>
-    <pre class="code-box" id="scriptCode"></pre>
-    <div class="m-actions">
-      <button class="btn btn-yellow" id="scriptCopy" type="button">📋 Скопировать код</button>
-      <button class="btn btn-ghost" id="scriptClose" type="button">Закрыть</button>
     </div>
   </div>
 </div>
@@ -1200,9 +906,7 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
 /* ================= БАЗА ================= */
 const $  = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => [...r.querySelectorAll(s)];
-const LS_KEY = 'yellowSanta2026.v2';
-const GS_KEY = 'yellowSanta2026.gs';
-const VIEW_KEY = 'yellowSanta2026.views';
+const LS_KEY = 'yellowSanta2026.v1';
 const ORGANIZER_PASSWORD = 'santa2026';
 const DRAW_DATE = new Date('2026-12-02T12:00:00+03:00');
 const EXCHANGE_DATE = new Date('2026-12-25T18:00:00+03:00');
@@ -1212,26 +916,18 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(36).slice(2));
 const normCode = s => String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
-const fmtDate = ts => new Date(ts).toLocaleString('ru-RU',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
-const sheetDate = ts => new Date(ts).toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
-const clockTime = ts => new Date(ts).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+const fmtDate = iso => new Date(iso).toLocaleString('ru-RU',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
 
-const firstRun = !localStorage.getItem(LS_KEY);
 let state = load();
 function load(){
   try{
     const raw = localStorage.getItem(LS_KEY);
-    if(raw){
-      const p = JSON.parse(raw);
-      return { participants: Array.isArray(p.participants)?p.participants:[], draw: p.draw||null };
-    }
+    if(raw){ const p = JSON.parse(raw); return { participants: Array.isArray(p.participants)?p.participants:[], draw: p.draw||null }; }
   }catch(e){}
   return { participants: [], draw: null };
 }
 function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
 const byId = id => state.participants.find(p => p.id === id);
-const syncState = p => (p.sync && p.sync.state) || 'pending';
-function setSync(p, st, error){ p.sync = { state: st, at: Date.now(), error: error || '' }; }
 
 const ALPH = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 function genCode(){
@@ -1244,51 +940,16 @@ function genCode(){
   return c;
 }
 
-/* ================= КОНФИГ GOOGLE SHEETS ================= */
-let gs = loadGs();
-function loadGs(){
-  const def = { url:'', sheet:'Участники', token:'SANTA-2026', autoSync:true, sheetUrl:'', lastAt:0 };
-  try{ const raw = localStorage.getItem(GS_KEY); if(raw) return Object.assign(def, JSON.parse(raw)); }catch(e){}
-  return def;
-}
-function saveGs(){ try{ localStorage.setItem(GS_KEY, JSON.stringify(gs)); }catch(e){} }
-let gsOk = null;      // null — не проверяли, true/false — результат последней операции
-let syncing = false;
-
-/* ================= СОХРАНЁННЫЕ ВИДЫ ================= */
-const BUILTIN_VIEWS = [
-  {id:'all', name:'Все', q:'', dept:'', status:'', sort:'manual', dir:'asc', builtin:true},
-  {id:'queue', name:'⏳ В очереди', q:'', dept:'', status:'pending', sort:'manual', dir:'asc', builtin:true},
-  {id:'sent', name:'✅ Отправленные', q:'', dept:'', status:'synced', sort:'name', dir:'asc', builtin:true},
-  {id:'failed', name:'⚠️ Ошибки', q:'', dept:'', status:'error', sort:'manual', dir:'asc', builtin:true}
-];
-let userViews = loadViews();
-function loadViews(){ try{ const r = localStorage.getItem(VIEW_KEY); if(r) return JSON.parse(r)||[]; }catch(e){} return []; }
-function saveViews(){ try{ localStorage.setItem(VIEW_KEY, JSON.stringify(userViews)); }catch(e){} }
-let filters = { q:'', dept:'', status:'', sort:'manual', dir:'asc' };
-let activeView = 'all';
-const selection = new Set();
-let tableOpen = true;
-let drawerId = null;
-
 /* ================= ТОСТЫ ================= */
-function toast(msg, type='info', action){
+function toast(msg, type='info'){
   const icons = {success:'✅', error:'🚫', info:'ℹ️', warn:'⚠️'};
   const el = document.createElement('div');
   el.className = 'toast t-' + type;
   el.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${esc(msg)}</span>`;
-  if(action){
-    const b = document.createElement('button');
-    b.className = 't-act'; b.type = 'button'; b.textContent = action.label;
-    b.addEventListener('click', () => { action.fn(); dismiss(); });
-    el.appendChild(b);
-  }
   const box = $('#toasts');
   box.appendChild(el);
   while(box.children.length > 4) box.firstChild.remove();
-  let done = false;
-  const dismiss = () => { if(done) return; done = true; el.classList.add('out'); setTimeout(() => el.remove(), 350); };
-  setTimeout(dismiss, action ? 9000 : 4200);
+  setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 350); }, 4200);
 }
 
 /* ================= КОПИРОВАНИЕ ================= */
@@ -1304,62 +965,36 @@ async function copyText(t){
   }
 }
 
-/* ================= ОВЕРЛЕИ / МОДАЛКИ ================= */
-let overlayCount = 0;
-function setOverlay(open){
-  overlayCount = Math.max(0, overlayCount + (open ? 1 : -1));
-  document.body.style.overflow = overlayCount ? 'hidden' : '';
+/* ================= МОДАЛКА ================= */
+let mResolve = null;
+function confirmDialog(o){
+  return new Promise(res => {
+    mResolve = res;
+    $('#mTitle').textContent = o.title;
+    $('#mText').textContent = o.text;
+    const ok = $('#mOk');
+    ok.textContent = o.ok || 'Подтвердить';
+    ok.className = 'btn ' + (o.danger ? 'btn-danger' : 'btn-primary');
+    $('#modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => ok.focus(), 60);
+  });
 }
-let mResolve = null, mMode = 'confirm';
-function openModal(o){
-  mMode = o.input ? 'prompt' : 'confirm';
-  $('#mTitle').textContent = o.title;
-  $('#mText').textContent = o.text || '';
-  const ok = $('#mOk');
-  ok.textContent = o.ok || 'Подтвердить';
-  ok.className = 'btn ' + (o.danger ? 'btn-danger' : 'btn-primary');
-  const inp = $('#mInput');
-  inp.classList.toggle('hidden', !o.input);
-  if(o.input){ inp.value = o.value || ''; inp.placeholder = o.placeholder || ''; }
-  $('#modal').classList.add('open');
-  setOverlay(true);
-  setTimeout(() => (o.input ? inp : ok).focus(), 60);
-}
-function confirmDialog(o){ return new Promise(res => { mResolve = res; openModal(o); }); }
-function promptDialog(o){ return new Promise(res => { mResolve = res; openModal(Object.assign({}, o, {input:true})); }); }
-function closeModal(ok){
+function closeModal(v){
   if(!mResolve) return;
-  const inp = $('#mInput');
-  const val = mMode === 'prompt' ? (ok ? (inp.value.trim() || null) : null) : ok;
   $('#modal').classList.remove('open');
-  setOverlay(false);
-  const r = mResolve; mResolve = null; r(val);
+  document.body.style.overflow = '';
+  const r = mResolve; mResolve = null; r(v);
 }
 $('#mOk').addEventListener('click', () => closeModal(true));
 $('#mCancel').addEventListener('click', () => closeModal(false));
 $('#modal .m-scrim').addEventListener('click', () => closeModal(false));
-$('#mInput').addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); closeModal(true); } });
-
-function openScriptModal(){ $('#scriptModal').classList.add('open'); setOverlay(true); }
-function closeScriptModal(){ if(!$('#scriptModal').classList.contains('open')) return; $('#scriptModal').classList.remove('open'); setOverlay(false); }
-$('#btnScript').addEventListener('click', openScriptModal);
-$('#scriptClose').addEventListener('click', closeScriptModal);
-$('#scriptModal .m-scrim').addEventListener('click', closeScriptModal);
-$('#scriptCopy').addEventListener('click', async () => {
-  const ok = await copyText(APPS_SCRIPT);
-  toast(ok ? 'Код скрипта скопирован 📋' : 'Не удалось скопировать', ok ? 'success' : 'error');
-});
-addEventListener('keydown', e => {
-  if(e.key !== 'Escape') return;
-  if($('#scriptModal').classList.contains('open')) return closeScriptModal();
-  if(mResolve) return closeModal(false);
-  if($('#drawer').classList.contains('open')) return closeDrawer();
-});
+addEventListener('keydown', e => { if(e.key === 'Escape' && mResolve) closeModal(false); });
 
 /* ================= БЕГУЩАЯ СТРОКА ================= */
 const seq = '❄ ❅ ❄ ✻ ❄ ❅ ❄ ✻ ❄ ❅ ❄ ✻ 🎁 ❄ ✦ ❄ 📦 ✦ ';
-const halfSeq = seq.repeat(6);
-$('#tickerTrack').innerHTML = `<span>${halfSeq}</span><span aria-hidden="true">${halfSeq}</span>`;
+const half = seq.repeat(6);
+$('#tickerTrack').innerHTML = `<span>${half}</span><span aria-hidden="true">${half}</span>`;
 
 /* ================= СНЕГ ================= */
 const snowC = $('#snow'), sctx = snowC.getContext('2d');
@@ -1422,7 +1057,10 @@ function burst(x, y, n=110){
   }
   if(!cfRaf) cfLoop();
 }
-function burstAt(el){ const r = el.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/2); }
+function burstAt(el){
+  const r = el.getBoundingClientRect();
+  burst(r.left + r.width/2, r.top + r.height/2);
+}
 function cfLoop(){
   cfRaf = requestAnimationFrame(cfLoop);
   cfX.clearRect(0,0,cw,ch);
@@ -1440,7 +1078,7 @@ function cfLoop(){
 let rT;
 addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(() => { sizeSnow(); sizeConfetti(); }, 150); });
 
-/* ================= ОТСЧЁТ / ГРАФИК ================= */
+/* ================= ОБРАТНЫЙ ОТСЧЁТ / ГРАФИК ================= */
 function tickCountdown(){
   const now = Date.now();
   let target = null, label;
@@ -1458,7 +1096,6 @@ function tickCountdown(){
   $('#cdM').textContent = pad(m); $('#cdS').textContent = pad(s);
 }
 const STAGE_BOUNDS = ['2026-12-02T00:00:00+03:00','2026-12-03T00:00:00+03:00','2026-12-25T00:00:00+03:00','2026-12-26T00:00:00+03:00'].map(x => new Date(x).getTime());
-const STAGE_ICONS = ['📝','🎲','🎁','🚚'];
 function updateSchedule(){
   const now = Date.now();
   $$('.tl-item').forEach((el, i) => {
@@ -1466,74 +1103,31 @@ function updateSchedule(){
     const active = !done && (i === 0 || now >= STAGE_BOUNDS[i-1]);
     el.classList.toggle('done', done);
     el.classList.toggle('active', active);
-    el.querySelector('.tl-node').textContent = done ? '✓' : STAGE_ICONS[i];
+    const node = el.querySelector('.tl-node');
+    if(done) node.textContent = '✓';
   });
-}
-
-/* ================= ЖУРНАЛ СИНХРОНИЗАЦИИ ================= */
-const LOG = [];
-function logSync(kind, text){
-  LOG.unshift({ t: Date.now(), kind, text });
-  if(LOG.length > 40) LOG.pop();
-  renderLog();
-}
-function renderLog(){
-  $('#gsLog').innerHTML = LOG.map(l =>
-    `<div><time>${clockTime(l.t)}</time><span class="${l.kind}">${esc(l.text)}</span></div>`).join('');
 }
 
 /* ================= СЧЁТЧИКИ / СТАТУСЫ ================= */
-function counts(){
-  let synced=0, pending=0, errors=0;
-  state.participants.forEach(p => {
-    const s = syncState(p);
-    if(s === 'synced') synced++;
-    else if(s === 'error') errors++;
-    else pending++;
-  });
-  return {synced, pending, errors};
-}
 function renderCounts(){
-  const n = state.participants.length, drawn = !!state.draw, c = counts();
+  const n = state.participants.length, drawn = !!state.draw;
   $('#heroCount').textContent = n;
   $('#regCount').textContent = n;
   $('#footCount').textContent = n;
   $('#footDraw').textContent = drawn ? '✅ Маршруты построены' : '🎲 Жеребьёвка 2 декабря';
-  $('#footSheet').textContent = gs.url ? (gsOk === false ? '📊 Таблица: ошибка связи' : '📊 Таблица подключена') : '📊 Таблица не подключена';
   $('#statCount').textContent = n;
   const sd = $('#statDraw');
   sd.textContent = drawn ? 'Проведена ✅' : 'Ещё не было';
   sd.className = 'stat-v ' + (drawn ? 'ok' : 'warn');
-  const sq = $('#statQueue');
-  sq.textContent = c.pending + c.errors;
-  sq.className = 'stat-v ' + ((c.pending + c.errors) ? 'warn' : 'ok');
-  const ss = $('#statSheet');
-  ss.textContent = !gs.url ? 'Не подключено' : (gsOk === true ? 'Подключено ✅' : gsOk === false ? 'Ошибка связи' : 'Настроено');
-  ss.className = 'stat-v ' + (!gs.url ? 'warn' : gsOk === true ? 'ok' : gsOk === false ? 'err' : 'warn');
+  $('#statDate').textContent = drawn ? fmtDate(state.draw.at) : '—';
   $('#btnDraw').textContent = drawn ? '🎲 Перестроить маршруты' : '🎲 Провести жеребьёвку';
-  $('#gsSynced').textContent = c.synced;
-  $('#gsPending').textContent = c.pending;
-  $('#gsErrors').textContent = c.errors;
-  $('#gsLast').textContent = gs.lastAt ? clockTime(gs.lastAt) : '—';
-  const chip = $('#gsStatusChip');
-  chip.textContent = !gs.url ? 'Не подключено' : gsOk === true ? 'Связь есть' : gsOk === false ? 'Ошибка связи' : 'Настроено, не проверено';
-  const link = $('#gsOpenLink');
-  link.classList.toggle('hidden', !gs.sheetUrl);
-  if(gs.sheetUrl) link.href = gs.sheetUrl;
-  $('#demoBanner').classList.toggle('hidden', !state.participants.some(p => p.demo));
-  const busy = syncing;
-  ['#btnPushAll','#btnRetry','#btnImport','#btnPushDraw','#btnPing','#btnBulkPush','#drPush'].forEach(s => { const el = $(s); if(el) el.disabled = busy; });
-}
-function renderAll(){
-  renderCounts();
-  renderDeptOptions();
-  if(tableOpen) renderTable();
-  if(drawerId){ const p = byId(drawerId); if(p) refreshDrawerStatus(p); else closeDrawer(); }
-  if(lastParticipant){ const p = byId(lastParticipant.id); if(p) renderWaybillSync(p); }
 }
 
-/* ================= ВАЛИДАЦИЯ ================= */
-function setErr(input, msg){
+/* ================= РЕГИСТРАЦИЯ ================= */
+const regForm = $('#regForm');
+const fName=$('#fName'), fDept=$('#fDept'), fContact=$('#fContact'), fLikes=$('#fLikes'), fDont=$('#fDont'), fAllergy=$('#fAllergy');
+const regInputs = [fName,fDept,fContact,fLikes,fDont,fAllergy];
+function setErr(input,msg){
   const f = input.closest('.field');
   f.classList.add('invalid'); f.querySelector('.err').textContent = msg;
   input.setAttribute('aria-invalid','true');
@@ -1543,14 +1137,9 @@ function clearErr(input){
   f.classList.remove('invalid'); f.querySelector('.err').textContent = '';
   input.removeAttribute('aria-invalid');
 }
-
-/* ================= РЕГИСТРАЦИЯ ================= */
-const regForm = $('#regForm');
-const fName=$('#fName'), fDept=$('#fDept'), fContact=$('#fContact'), fLikes=$('#fLikes'), fDont=$('#fDont'), fAllergy=$('#fAllergy');
-const regInputs = [fName,fDept,fContact,fLikes,fDont,fAllergy];
 regInputs.forEach(i => i.addEventListener('input', () => clearErr(i)));
-let lastParticipant = null;
 
+let lastParticipant = null;
 regForm.addEventListener('submit', e => {
   e.preventDefault();
   regInputs.forEach(clearErr);
@@ -1568,21 +1157,14 @@ regForm.addEventListener('submit', e => {
   if(bad){ bad.focus(); toast('Проверьте выделенные поля','error'); return; }
 
   const p = { id: uid(), name, dept: fDept.value.trim(), contact, likes,
-    dont: fDont.value.trim(), allergies: fAllergy.value.trim(),
-    code: genCode(), ts: Date.now(), updated: Date.now(), demo:false };
-  setSync(p, 'pending', gs.url ? '' : 'Google Sheets не подключён');
+    dont: fDont.value.trim(), allergies: fAllergy.value.trim(), code: genCode(), ts: Date.now() };
   state.participants.push(p); save();
   lastParticipant = p;
-  renderAll();
+  renderCounts(); if(tableOpen) renderTable();
   showWaybill(p);
   burstAt($('#regSubmit'));
+  toast('Заявка принята! Код отслеживания выдан 🎫','success');
   regForm.reset();
-  if(gs.url && gs.autoSync){
-    toast('Заявка принята! Отправляем в Google Sheets…','success');
-    pushParticipants([p], {quiet:true});
-  }else{
-    toast('Заявка принята! Код выдан, заявка в очереди на отправку 🎫','success');
-  }
 });
 
 function drawBarcode(code){
@@ -1595,17 +1177,291 @@ function drawBarcode(code){
   }
   $('#wbBarcode').innerHTML = out;
 }
-function syncBadge(p){
-  const s = syncState(p);
-  const map = { synced:['synced','В таблице'], pending:['pending','В очереди'], sending:['sending','Отправка…'], error:['error','Ошибка'] };
-  const [cls, label] = map[s] || map.pending;
-  const title = s === 'error' && p.sync && p.sync.error ? ` title="${esc(p.sync.error)}"` : '';
-  return `<span class="sync ${cls}"${title}><span class="dot"></span>${label}</span>`;
+function showWaybill(p){
+  $('#wbCode').textContent = p.code;
+  $('#wbName').textContent = p.name;
+  $('#wbDept').textContent = p.dept || '—';
+  $('#wbDate').textContent = new Date(p.ts).toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  drawBarcode(p.code);
+  const wb = $('#waybill');
+  wb.classList.remove('hidden');
+  wb.classList.remove('reveal-pop'); void wb.offsetWidth; wb.classList.add('reveal-pop');
+  setTimeout(() => wb.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'nearest'}), 80);
 }
-function renderWaybillSync(p){
-  const s = syncState(p);
-  const text = s === 'synced' ? 'Заявка сохранена в Google Sheets организатора.'
-    : s === 'sending' ? 'Отправляем заявку в Google Sheets…'
-    : s === 'error' ? 'Таблица недоступна — заявка сохранена локально и отправится повторно.'
-    : gs.url ? 'Заявка в очереди на отправку в таблицу.' : 'Заявка сохранена локально. Организатор отправит её в таблицу после подключения.';
-  $('#wbSync').innerHTML = syncBadge(p)
+$('#wbCopy').addEventListener('click', async () => {
+  if(!lastParticipant) return;
+  const ok = await copyText(lastParticipant.code);
+  toast(ok ? 'Код скопирован — сохраните его 📋' : 'Не удалось скопировать', ok ? 'success' : 'error');
+});
+$('#wbTrack').addEventListener('click', () => {
+  if(!lastParticipant) return;
+  $('#trackInput').value = lastParticipant.code;
+  $('#track').scrollIntoView({behavior: reduced ? 'auto' : 'smooth'});
+  setTimeout(doTrack, reduced ? 0 : 450);
+});
+$('#wbAgain').addEventListener('click', () => {
+  $('#waybill').classList.add('hidden');
+  $('#regForm').scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'center'});
+  setTimeout(() => fName.focus(), reduced ? 0 : 450);
+});
+
+/* ================= ОТСЛЕЖИВАНИЕ ================= */
+const trackResult = $('#trackResult');
+function trackError(msg){
+  trackResult.innerHTML = `<div class="label-card error reveal-pop shake">
+    <div class="lc-head"><span>🚫 КОД НЕ НАЙДЕН</span><span class="chip chip-red">Ошибка</span></div>
+    <p class="lc-msg">${esc(msg)}</p></div>`;
+}
+function trackPending(p){
+  trackResult.innerHTML = `<div class="label-card pending reveal-pop">
+    <div class="lc-head"><span>⏳ МАРШРУТ В ОБРАБОТКЕ</span><span class="chip chip-amber">Ожидание</span></div>
+    <p class="lc-msg">Код принят, <b>${esc(p.name)}</b>! Жеребьёвка пройдёт <b>2 декабря</b> — после неё здесь появится имя вашего подопечного и его пожелания.</p>
+    <div class="lc-foot"><span class="chip chip-ink">🎲 2 декабря — жеребьёвка</span><span class="lc-secret">Загляните сюда после распределения маршрутов</span></div></div>`;
+}
+function trackLate(p){
+  trackResult.innerHTML = `<div class="label-card late reveal-pop">
+    <div class="lc-head"><span>📮 ВЫ В СЛЕДУЮЩЕМ РЕЙСЕ</span><span class="chip chip-blue">Инфо</span></div>
+    <p class="lc-msg"><b>${esc(p.name)}</b>, вы зарегистрировались после жеребьёвки. Сообщите организатору — он перестроит маршруты и добавит вас в рейс.</p>
+    <div class="lc-foot"><span class="chip chip-ink">📮 Ожидайте перестройки маршрутов</span></div></div>`;
+}
+function trackReveal(p, r){
+  trackResult.innerHTML = `<div class="label-card reveal-pop">
+    <div class="lc-head"><span>🚚 МАРШРУТ ПОСТРОЕН</span><span class="chip chip-red">Секретно</span></div>
+    <div class="lc-to">Вы — Тайный Санта для:</div>
+    <div class="lc-name">${esc(r.name)}</div>
+    ${r.dept ? `<div class="lc-dept">🏢 ${esc(r.dept)}</div>` : ''}
+    <div class="lc-grid">
+      <div class="lc-block good"><h4>🎯 Пожелания</h4><p>${esc(r.likes)}</p></div>
+      ${r.dont ? `<div class="lc-block bad"><h4>🚫 Не дарить</h4><p>${esc(r.dont)}</p></div>` : ''}
+      ${r.allergies ? `<div class="lc-block warn"><h4>⚠️ Аллергии / ограничения</h4><p>${esc(r.allergies)}</p></div>` : ''}
+    </div>
+    <div class="lc-foot"><span class="chip chip-ink">💸 Подарок до 1000 ₽</span><span class="lc-secret">🤫 Не выдавайте себя до 25 декабря</span></div></div>`;
+  const rc = trackResult.querySelector('.label-card').getBoundingClientRect();
+  burst(rc.left + rc.width/2, rc.top + 60, 70);
+}
+function doTrack(){
+  const raw = $('#trackInput').value.trim();
+  if(!raw){ trackError('Введите секретный код, который вы получили при регистрации.'); return; }
+  const n = normCode(raw);
+  const p = state.participants.find(x => normCode(x.code) === n);
+  if(!p){ trackError('Код не найден. Проверьте символы — или напишите организатору, он подскажет код по вашему имени.'); return; }
+  if(!state.draw){ trackPending(p); return; }
+  const r = byId(state.draw.pairs[p.id]);
+  if(!r){ trackLate(p); return; }
+  trackReveal(p, r);
+}
+$('#trackForm').addEventListener('submit', e => { e.preventDefault(); doTrack(); });
+
+/* ================= ОРГАНИЗАТОР ================= */
+const adminGate = $('#adminGate'), adminPanel = $('#adminPanel'), adminPass = $('#adminPass');
+let tableOpen = false;
+
+adminGate.addEventListener('submit', e => {
+  e.preventDefault();
+  if(adminPass.value === ORGANIZER_PASSWORD){
+    sessionStorage.setItem('ys26.admin','1');
+    unlockAdmin();
+    toast('Добро пожаловать, организатор 🎅','success');
+  }else{
+    $('#adminErr').textContent = 'Неверный пароль';
+    adminGate.classList.add('shake');
+    setTimeout(() => adminGate.classList.remove('shake'), 500);
+  }
+});
+function unlockAdmin(){
+  adminGate.classList.add('hidden');
+  adminPanel.classList.remove('hidden');
+  adminPass.value = ''; $('#adminErr').textContent = '';
+  renderCounts();
+}
+$('#btnLogout').addEventListener('click', () => {
+  sessionStorage.removeItem('ys26.admin');
+  adminPanel.classList.add('hidden');
+  adminGate.classList.remove('hidden');
+  toast('Вы вышли из служебного раздела','info');
+});
+
+/* Жеребьёвка: алгоритм Саттоло — один цикл, никто не дарит сам себе */
+function sattolo(arr){
+  const a = [...arr];
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * i);
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+$('#btnDraw').addEventListener('click', async () => {
+  if(state.participants.length < 2){ toast('Нужно минимум 2 участника для жеребьёвки','error'); return; }
+  if(state.draw){
+    const ok = await confirmDialog({
+      title:'Перестроить маршруты?',
+      text:'Жеребьёвка уже проведена. Пары будут назначены заново для всех участников. Коды отслеживания не изменятся.',
+      ok:'🎲 Перестроить'
+    });
+    if(!ok) return;
+  }
+  const ids = state.participants.map(p => p.id);
+  const shuffled = sattolo(ids);
+  const pairs = {};
+  ids.forEach((id, i) => pairs[id] = shuffled[i]);
+  state.draw = { pairs, at: new Date().toISOString() };
+  save();
+  trackResult.innerHTML = '';
+  renderCounts(); if(tableOpen) renderTable();
+  burstAt($('#btnDraw'));
+  toast(`Маршруты построены: ${ids.length} сант в рейсе 🎄`,`success`);
+});
+
+$('#btnTable').addEventListener('click', () => {
+  tableOpen = !tableOpen;
+  $('#tableWrap').classList.toggle('hidden', !tableOpen);
+  $('#btnTable').textContent = tableOpen ? '🙈 Скрыть таблицу' : '📋 Показать таблицу';
+  $('#btnTable').setAttribute('aria-expanded', String(tableOpen));
+  if(tableOpen) renderTable();
+});
+$('#tableSearch').addEventListener('input', renderTable);
+
+function renderTable(){
+  const q = ($('#tableSearch').value || '').trim().toLowerCase();
+  const rows = state.participants.filter(p =>
+    !q || p.name.toLowerCase().includes(q) || p.code.toLowerCase().includes(q) || (p.dept||'').toLowerCase().includes(q));
+  $('#tableCount').textContent = `Показано ${rows.length} из ${state.participants.length}`;
+  const tb = $('#tableBody');
+  if(!rows.length){
+    tb.innerHTML = `<tr><td colspan="9" class="t-empty">${state.participants.length ? 'Ничего не найдено 🔍' : 'Пока пусто — зарегистрируйте участников или загрузите демо-данные ✨'}</td></tr>`;
+    return;
+  }
+  tb.innerHTML = rows.map((p, i) => {
+    const r = state.draw ? byId(state.draw.pairs[p.id]) : null;
+    return `<tr>
+      <td>${i+1}</td>
+      <td class="t-name">${esc(p.name)}</td>
+      <td>${esc(p.dept || '—')}</td>
+      <td>${esc(p.contact)}</td>
+      <td><button class="code-chip" type="button" data-copy="${esc(p.code)}" title="Скопировать код">${esc(p.code)}</button></td>
+      <td class="t-wide">${esc(p.likes)}</td>
+      <td class="t-wide">${esc(p.dont || '—')}</td>
+      <td class="t-wide">${esc(p.allergies || '—')}</td>
+      <td class="${r ? 't-assigned' : ''}">${r ? esc(r.name) : '—'}</td>
+    </tr>`;
+  }).join('');
+}
+$('#tableBody').addEventListener('click', async e => {
+  const b = e.target.closest('[data-copy]');
+  if(!b) return;
+  const ok = await copyText(b.dataset.copy);
+  toast(ok ? 'Код скопирован 📋' : 'Не удалось скопировать', ok ? 'success' : 'error');
+});
+
+$('#btnExport').addEventListener('click', () => {
+  if(!state.participants.length){ toast('Список пуст — нечего выгружать','warn'); return; }
+  const head = ['Имя','Отдел','Почта','Код','Пожелания','Не дарить','Аллергии','Кому дарит'];
+  const lines = [head, ...state.participants.map(p => [
+    p.name, p.dept, p.contact, p.code, p.likes, p.dont, p.allergies,
+    state.draw ? (byId(state.draw.pairs[p.id])?.name || '') : ''
+  ])].map(r => r.map(v => '"' + String(v ?? '').replace(/"/g,'""') + '"').join(';')).join('\r\n');
+  const blob = new Blob(['\uFEFF' + lines], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'secret-santa-2026.csv';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  toast('CSV выгружен ⬇️','success');
+});
+
+const DEMO = [
+  {name:'Анна Морозова', dept:'HR', contact:'a.morozova@company.ru', likes:'Кофе зерновой, тёмный шоколад, красивые блокноты', dont:'Алкоголь, свечи с запахом', allergies:'Орехи'},
+  {name:'Дмитрий Соколов', dept:'IT', contact:'d.sokolov@company.ru', likes:'Настолки, чай улун, аксессуары для механической клавиатуры', dont:'Кружки с надписями', allergies:''},
+  {name:'Елена Виноградова', dept:'Маркетинг', contact:'e.vinogradova@company.ru', likes:'Сертификаты в книжный, гирлянды, мандарины', dont:'Косметика с отдушками', allergies:'Ланолин'},
+  {name:'Павел Орлов', dept:'Операции', contact:'p.orlov@company.ru', likes:'Термокружка, кофе дрип-пакеты, носки с оленями', dont:'Сладкое', allergies:'Сахар'},
+  {name:'Мария Лебедева', dept:'Финансы', contact:'m.lebedeva@company.ru', likes:'Пазлы, какао, тёплый плед', dont:'Растения — нет места', allergies:''},
+  {name:'Игорь Черных', dept:'Логистика', contact:'i.chernykh@company.ru', likes:'Мультитул, фонарик, вяленое мясо', dont:'Парфюм', allergies:''},
+  {name:'Ольга Снегирёва', dept:'Клиентский сервис', contact:'o.snegireva@company.ru', likes:'Чай матча, стикеры, аромадиффузор', dont:'Молочный шоколад', allergies:'Цитрусовые'},
+  {name:'Алексей Зимин', dept:'Продажи', contact:'a.zimin@company.ru', likes:'Книги по бизнесу, эспрессо, карточные игры', dont:'Алкоголь', allergies:''}
+];
+$('#btnDemo').addEventListener('click', () => {
+  let added = 0;
+  DEMO.forEach(d => {
+    if(!state.participants.some(p => p.name.toLowerCase() === d.name.toLowerCase())){
+      state.participants.push({ id: uid(), code: genCode(), ts: Date.now(), ...d });
+      added++;
+    }
+  });
+  save(); renderCounts(); if(tableOpen) renderTable();
+  toast(added ? `Демо-данные загружены: +${added} участников ✨` : 'Демо-участники уже в списке','info');
+});
+
+$('#btnResetDraw').addEventListener('click', async () => {
+  if(!state.draw){ toast('Жеребьёвка ещё не проводилась','warn'); return; }
+  const ok = await confirmDialog({
+    title:'Сбросить жеребьёвку?',
+    text:'Все маршруты будут удалены. Участники и коды останутся — пары можно будет назначить заново.',
+    ok:'↺ Сбросить'
+  });
+  if(!ok) return;
+  state.draw = null; save();
+  trackResult.innerHTML = '';
+  renderCounts(); if(tableOpen) renderTable();
+  toast('Жеребьёвка сброшена — маршруты очищены','info');
+});
+
+$('#btnClear').addEventListener('click', async () => {
+  const ok = await confirmDialog({
+    title:'Очистить все данные?',
+    text:'Будут удалены все участники, коды и маршруты. Это действие нельзя отменить.',
+    ok:'🗑 Удалить всё', danger:true
+  });
+  if(!ok) return;
+  state = { participants: [], draw: null }; save();
+  lastParticipant = null;
+  $('#waybill').classList.add('hidden');
+  trackResult.innerHTML = '';
+  renderCounts(); if(tableOpen) renderTable();
+  toast('Все данные очищены','info');
+});
+
+/* ================= НАВИГАЦИЯ ================= */
+const nav = $('#nav'), burger = $('#burger');
+burger.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(open));
+});
+$$('#navMenu a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');
+}));
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), {passive:true});
+
+const secIds = ['top','how','rules','schedule','reg','track','admin','faq'];
+if('IntersectionObserver' in window){
+  const ao = new IntersectionObserver(es => es.forEach(en => {
+    if(en.isIntersecting){
+      $$('#navMenu a[data-sec]').forEach(a => a.classList.toggle('active', a.dataset.sec === en.target.id));
+    }
+  }), {rootMargin:'-35% 0px -55% 0px'});
+  secIds.forEach(id => { const el = document.getElementById(id); if(el) ao.observe(el); });
+}
+
+/* ================= ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ ================= */
+const revEls = $$('.reveal');
+if(reduced || !('IntersectionObserver' in window)){
+  revEls.forEach(el => el.classList.add('in'));
+}else{
+  const ro = new IntersectionObserver(es => es.forEach(en => {
+    if(en.isIntersecting){ en.target.classList.add('in'); ro.unobserve(en.target); }
+  }), {threshold:.12});
+  revEls.forEach(el => ro.observe(el));
+}
+
+/* ================= СТАРТ ================= */
+sizeSnow(); sizeConfetti();
+if(!reduced) requestAnimationFrame(snowLoop);
+else snowC.style.display = 'none';
+renderCounts(); updateSchedule(); tickCountdown();
+setInterval(tickCountdown, 1000);
+setInterval(updateSchedule, 60000);
+if(sessionStorage.getItem('ys26.admin') === '1') unlockAdmin();
+})();
+</script>
+</body>
+</html>
