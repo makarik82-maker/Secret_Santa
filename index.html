@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#FFCC00">
-<meta name="description" content="Тайный Санта 2026 — жёлтая служба праздничной доставки: заявки, секретные коды, жеребьёвка и автоматическая синхронизация участников с Google Sheets.">
+<meta name="description" content="Тайный Санта 2026 — жёлтая служба праздничной доставки: заявки, секретные коды, жеребьёвка и обмен подарками до 1000 ₽.">
 <title>Тайный Санта 2026 • Жёлтая служба праздничной доставки</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -169,7 +169,7 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .wb{margin-top:22px;border-style:dashed;border-width:2.5px}
 .wb-h,.lc-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;font-family:var(--disp);font-weight:700;font-size:13px;border-bottom:2px dashed var(--line);padding-bottom:13px;margin-bottom:15px}
 .wb-l{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
-.wb-c{font-family:var(--mono);font-weight:700;font-size:clamp(20px,3.4vw,29px);color:var(--red);word-break:break-all;margin-bottom:12px}
+.wb-c{font-family:var(--mono);font-weight:700;font-size:clamp(34px,6vw,54px);letter-spacing:.22em;color:var(--red);margin-bottom:12px}
 #wbBar{width:100%;height:44px;margin-bottom:14px}
 .wb-m{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
 .wb-m span{display:block;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
@@ -179,8 +179,8 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .wb-a{display:flex;flex-wrap:wrap;gap:10px}
 .track-box{max-width:720px;margin:0 auto;position:relative;z-index:2}
 .tf{display:flex;gap:12px}
-.in-dark{flex:1;min-width:0;font-family:var(--mono);font-weight:700;font-size:17px;letter-spacing:.06em;color:var(--y);background:var(--dark2);border:2px solid var(--y);border-radius:14px;padding:15px 18px;text-transform:uppercase}
-.in-dark::placeholder{color:#8A7C55;text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;font-size:14px}
+.in-dark{flex:1;min-width:0;font-family:var(--mono);font-weight:700;font-size:22px;letter-spacing:.3em;color:var(--y);background:var(--dark2);border:2px solid var(--y);border-radius:14px;padding:14px 18px}
+.in-dark::placeholder{color:#8A7C55;letter-spacing:0;font-family:var(--body);font-weight:500;font-size:14px}
 .in-dark:focus{outline:none;box-shadow:0 0 0 4px rgba(255,204,0,.3)}
 .hint{font-size:13px;color:#C9BC9C;margin-top:14px}
 .hint code{font-family:var(--mono);color:var(--y);background:var(--dark2);padding:2px 7px;border-radius:6px;border:1px solid var(--darkline)}
@@ -229,6 +229,8 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .steps li{counter-increment:s;display:flex;gap:10px}
 .steps li::before{content:counter(s);flex:none;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--y);font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px}
 .steps code{font-family:var(--mono);font-size:12px;background:var(--cream);border:1px solid var(--line);border-radius:5px;padding:1px 5px}
+.fmt{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--cream);border:2px dashed var(--line);border-radius:12px;padding:10px 13px;font-size:12px;font-weight:700;color:var(--ink2);margin-top:14px}
+.fmt b{font-family:var(--mono);color:var(--ink)}
 .gs-a{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
 .auto{display:flex;align-items:center;gap:9px;margin-top:14px;padding:11px 14px;border-radius:12px;border:2px solid var(--ink);font-size:12.5px;font-weight:800;background:var(--cream);color:var(--ink2)}
 .auto.ok{border-color:var(--green);background:#EAF7F0;color:var(--gd)}
@@ -253,7 +255,7 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .bulk .btn{box-shadow:3px 3px 0 rgba(255,204,0,.35)}
 .tt{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--mute)}
 .tw2b{overflow:auto;max-height:560px;border:2px solid var(--ink);border-radius:16px;background:var(--white);box-shadow:6px 6px 0 var(--ink)}
-table{border-collapse:collapse;min-width:1270px;width:100%;font-size:13px}
+table{border-collapse:collapse;min-width:1330px;width:100%;font-size:13px}
 thead th{position:sticky;top:0;z-index:2;background:var(--ink);color:var(--y);text-align:left;padding:11px 12px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
 td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:middle}
 tbody tr{cursor:pointer;transition:background .15s}tbody tr:hover{background:#FFF6D6}tbody tr.sel{background:#FFF0B8}
@@ -261,11 +263,12 @@ tbody tr.drag{opacity:.35}tbody tr.over{box-shadow:inset 0 3px 0 var(--red)}
 .ck{width:38px;text-align:center}.ck input{width:17px;height:17px;accent-color:var(--red);cursor:pointer}
 .dg{width:30px;text-align:center;color:var(--mute);cursor:grab;user-select:none}.dg.off{opacity:.25;cursor:not-allowed}
 .nm{font-weight:800;white-space:nowrap}.ml{font-size:12.5px;color:var(--ink2)}
-.lk2{max-width:250px;min-width:170px;font-size:12.5px;color:var(--ink2)}
+.dt2{font-family:var(--mono);font-size:11.5px;color:var(--mute);white-space:nowrap}
+.lk2{max-width:230px;min-width:160px;font-size:12.5px;color:var(--ink2)}
 .as{color:var(--gd);font-weight:800;white-space:nowrap}
 .empty{text-align:center;padding:32px!important;color:var(--mute);font-weight:600}
 .dtag{font-size:9.5px;font-weight:800;text-transform:uppercase;background:var(--cream);border:1.5px solid var(--amber);color:#9A5B00;border-radius:5px;padding:1px 5px;margin-left:7px}
-.code{font-family:var(--mono);font-weight:700;font-size:12px;background:var(--cream);border:1.5px solid var(--ink);border-radius:8px;padding:4px 9px;cursor:copy;white-space:nowrap}
+.code{font-family:var(--mono);font-weight:700;font-size:14px;letter-spacing:.12em;background:var(--cream);border:1.5px solid var(--ink);border-radius:8px;padding:4px 10px;cursor:copy;white-space:nowrap}
 .code:hover{background:var(--y)}
 .ra{display:flex;gap:5px}
 .ib{width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:var(--white);border:1.5px solid var(--ink);border-radius:8px;cursor:pointer;font-size:13px;padding:0;transition:.15s}
@@ -381,7 +384,7 @@ html.anim .rv.in{opacity:1;transform:none}
       <span class="hstat">💸 бюджет <b>до 1000 ₽</b></span>
       <span class="hstat">🎲 жеребьёвка <b>2 дек</b></span>
       <span class="hstat">🎁 обмен <b>25 дек</b></span>
-      <span class="hstat">👥 участников: <b id="heroCount">0</b></span>
+      <span class="hstat">👥 участников: <b id="heroCount">…</b></span>
     </div>
   </div>
   <div class="art">
@@ -428,7 +431,7 @@ html.anim .rv.in{opacity:1;transform:none}
 <section class="section" id="how"><div class="wrap">
   <div class="sec-head rv"><span class="tag">Раздел 01 · Маршрут</span><h2>Как это <mark>работает</mark></h2><p>Четыре остановки — от заявки до праздничной вручки. Всё анонимно и точно в срок.</p></div>
   <div class="how">
-    <article class="step rv"><span class="n">01</span><span class="ico">📝</span><h3>Заполните форму</h3><p>Нажмите «Отправить заявку» — код придёт сразу, а данные в ту же секунду уйдут в Google-таблицу.</p></article>
+    <article class="step rv"><span class="n">01</span><span class="ico">📝</span><h3>Заполните форму</h3><p>Нажмите «Отправить заявку» — получите секретный код из 4 цифр, а заявка сразу уйдёт организатору.</p></article>
     <article class="step rv" data-d="1"><span class="n">02</span><span class="ico">🔑</span><h3>Узнайте подопечного</h3><p>После жеребьёвки введите код и узнайте, кому вы Санта.</p></article>
     <article class="step rv" data-d="2"><span class="n">03</span><span class="ico">🎁</span><h3>Соберите подарок</h3><p>Подготовьте подарок до 1000 ₽ по пожеланиям подопечного.</p></article>
     <article class="step rv" data-d="3"><span class="n">04</span><span class="ico">🚚</span><h3>Доставка 25 декабря</h3><p>25 декабря — анонимная доставка и обмен подарками 🎁</p></article>
@@ -457,56 +460,56 @@ html.anim .rv.in{opacity:1;transform:none}
 </div></section>
 
 <section class="section" id="reg"><div class="wrap">
-  <div class="sec-head rv"><span class="tag">Раздел 04 · Накладная</span><h2>Регистрация</h2><p>Заполните праздничную накладную — код выдаётся сразу, а заявка автоматически уходит в Google Sheets в момент нажатия кнопки.</p></div>
+  <div class="sec-head rv"><span class="tag">Раздел 04 · Накладная</span><h2>Регистрация</h2><p>Заполните праздничную накладную — секретный код выдаётся сразу, заявка сохраняется автоматически.</p></div>
   <div class="reg">
     <div class="reg-info rv">
       <h3>Присоединяйтесь к рейсу 🎅</h3>
-      <p>Заполните накладную — система выдаст секретный код. После жеребьёвки код откроет имя подопечного и его пожелания.</p>
+      <p>Заполните накладную — система выдаст секретный код из 4 цифр. После жеребьёвки код откроет имя подопечного и его пожелания.</p>
       <ul class="il">
-        <li><i>⚡</i> Запись в Google Sheets — сразу по кнопке «Отправить заявку»</li>
-        <li><i>🔁</i> При сбое связи заявка отправится повторно автоматически</li>
+        <li><i>⚡</i> Заявка сохраняется сразу по кнопке «Отправить заявку»</li>
+        <li><i>🔁</i> При сбое связи отправка повторится автоматически</li>
         <li><i>🔒</i> Полные данные видит только организатор</li>
         <li><i>🤫</i> Никто не знает, кто чей Санта</li>
       </ul>
-      <span class="cnt">👥 Уже в деле: <b id="regCount">0</b></span><br>
+      <span class="cnt">👥 Уже в деле: <b id="regCount">…</b></span><br>
       <a class="rl" href="#track">Уже есть код? → Отследить маршрут</a>
     </div>
     <div class="rv" data-d="1">
       <div class="card"><form id="regForm" novalidate>
-        <div class="field"><label for="fName">Имя и фамилия <b>*</b></label><input id="fName" type="text" autocomplete="name" placeholder="Например: Анна Морозова"><small class="err"></small></div>
-        <div class="field"><label for="fDept">Отдел / команда</label><input id="fDept" list="depts" placeholder="HR, IT, Логистика…"><datalist id="depts"><option value="HR"><option value="IT"><option value="Операции"><option value="Логистика"><option value="Продажи"><option value="Маркетинг"><option value="Финансы"><option value="Клиентский сервис"></datalist><small class="err"></small></div>
+        <div class="field"><label for="fName">Имя и фамилия <b>*</b></label><input id="fName" type="text" autocomplete="name" placeholder="Например: Петр Смирнов"><small class="err"></small></div>
+        <div class="field"><label for="fDept">Отдел / команда</label><input id="fDept" list="depts" placeholder="Ops, HR, IT, Логистика…"><datalist id="depts"><option value="Ops"><option value="HR"><option value="IT"><option value="Логистика"><option value="Продажи"><option value="Маркетинг"><option value="Финансы"><option value="Клиентский сервис"></datalist><small class="err"></small></div>
         <div class="field"><label for="fContact">Куда писать лично (почта) <b>*</b></label><input id="fContact" type="email" inputmode="email" autocomplete="email" placeholder="name@company.ru"><small class="err"></small></div>
         <div class="field"><label for="fLikes">Что вы любите? <b>*</b></label><textarea id="fLikes" rows="3" placeholder="Кофе, книги, настолки, сертификаты…"></textarea><small class="err"></small></div>
         <div class="field"><label for="fDont">Что вам НЕ дарить?</label><textarea id="fDont" rows="2" placeholder="Алкоголь, свечи, косметику…"></textarea><small class="err"></small></div>
         <div class="field"><label for="fAllergy">Аллергии и ограничения</label><input id="fAllergy" type="text" placeholder="Орехи, цитрусовые, без сахара…"><small class="err"></small></div>
         <button class="btn b-red b-big" type="submit" id="regSubmit">🎁 Отправить заявку</button>
-        <p class="note">Данные автоматически сохраняются в Google-таблицу организатора сразу после отправки.</p>
+        <p class="note">Заявка сохраняется автоматически сразу после отправки.</p>
       </form></div>
       <div id="waybill" class="wb hidden" aria-live="polite">
-        <div class="wb-h"><span>📦 ПОСЫЛКА ПРИНЯТА</span><span class="chip c-green" id="wbHead">В обработке</span></div>
+        <div class="wb-h"><span>📦 ПОСЫЛКА ПРИНЯТА</span><span class="chip c-amber" id="wbHead">В обработке</span></div>
         <div class="wb-l">Ваш секретный код отслеживания</div>
-        <div class="wb-c" id="wbCode">—</div>
+        <div class="wb-c" id="wbCode">0000</div>
         <svg id="wbBar" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"></svg>
-        <div class="wb-m"><div><span>Отправитель</span><b id="wbName"></b></div><div><span>Отдел</span><b id="wbDept"></b></div><div><span>Принято</span><b id="wbDate"></b></div></div>
+        <div class="wb-m"><div><span>Отправитель</span><b id="wbName"></b></div><div><span>Отдел</span><b id="wbDept"></b></div><div><span>Дата</span><b id="wbDate"></b></div></div>
         <div class="wb-s" id="wbSync"></div>
-        <div class="wb-n">⚠️ Сохраните код — он покажет, кому вы дарите, после жеребьёвки 2 декабря.</div>
+        <div class="wb-n">⚠️ Сохраните код из 4 цифр — он покажет, кому вы дарите, после жеребьёвки 2 декабря.</div>
         <div class="wb-a"><button class="btn b-ink b-sm" id="wbCopy" type="button">📋 Скопировать код</button><button class="btn b-yel b-sm" id="wbTrack" type="button">📡 Проверить маршрут</button><button class="btn b-ghost b-sm" id="wbAgain" type="button">＋ Ещё заявка</button></div>
       </div>
     </div>
   </div>
-</div></section>
+</section>
 
 <section class="section dark" id="track"><div class="wrap">
   <div class="sec-head rv" style="margin:0 auto 40px;text-align:center"><span class="tag">Раздел 05 · Отслеживание</span><h2>Кому я дарю?</h2><p>Введите секретный код, который вы получили при регистрации.</p></div>
   <div class="track-box rv" data-d="1">
-    <form class="tf" id="trackForm"><input class="in-dark" id="trackInput" type="text" placeholder="Секретный код, например SN26-7KQ4-9Z2P" autocomplete="off" spellcheck="false" autocapitalize="characters" aria-label="Секретный код"><button class="btn b-yel" type="submit">📡 Отследить</button></form>
-    <p class="hint">Код выглядит так: <code>SN26-XXXX-XXXX</code>. Потеряли? Напишите организатору — он подскажет код по вашему имени.</p>
+    <form class="tf" id="trackForm"><input class="in-dark" id="trackInput" type="text" inputmode="numeric" maxlength="8" placeholder="Код из 4 цифр, например 4821" autocomplete="off" spellcheck="false" aria-label="Секретный код"><button class="btn b-yel" type="submit">📡 Отследить</button></form>
+    <p class="hint">Код — это <code>4 цифры</code>. Потеряли? Напишите организатору — он подскажет код по вашему имени.</p>
     <div id="trackRes" aria-live="polite"></div>
   </div>
 </div></section>
 
 <section class="section" id="admin"><div class="wrap">
-  <div class="sec-head rv"><span class="tag">Раздел 06 · Служебный</span><h2>Организатору</h2><p>Жеребьёвка, база участников и автоматическая синхронизация заявок с Google Sheets.</p></div>
+  <div class="sec-head rv"><span class="tag">Раздел 06 · Служебный</span><h2>Организатору</h2><p>Жеребьёвка, база участников и автоматическое сохранение заявок.</p></div>
   <form class="gate rv" id="gate">
     <div class="lk">🔐</div><h3>Вход для организатора</h3><p>Пароль организатора</p>
     <input id="pass" type="password" autocomplete="off" placeholder="••••••••" aria-label="Пароль организатора">
@@ -516,30 +519,32 @@ html.anim .rv.in{opacity:1;transform:none}
   </form>
   <div id="panel" class="hidden">
     <div class="stats">
-      <div class="stat"><span>Участников</span><b id="stCount">0</b></div>
+      <div class="stat"><span>Участников</span><b id="stCount">…</b></div>
       <div class="stat"><span>Жеребьёвка</span><b id="stDraw" class="warn">Ещё не было</b></div>
       <div class="stat"><span>Очередь отправки</span><b id="stQueue" class="warn">0</b></div>
-      <div class="stat"><span>Google Sheets</span><b id="stSheet" class="warn">Проверяем…</b></div>
+      <div class="stat"><span>Синхронизация</span><b id="stSheet" class="warn">Проверяем…</b></div>
     </div>
-    <div class="demo hidden" id="demoBar"><span>✨ Демо-участники хранятся только локально и в таблицу не отправляются — удалите их перед реальным сбором заявок.</span><button class="btn b-warn b-sm" id="bDemoDel" type="button">Удалить демо</button></div>
+    <div class="demo hidden" id="demoBar"><span>✨ Демо-записи хранятся только локально и в таблицу не отправляются.</span><button class="btn b-warn b-sm" id="bDemoDel" type="button">Удалить демо</button></div>
+    <div class="demo hidden" id="fmtBar"><span>⚠️ Формат колонок в таблице устарел. Замените скрипт на новый и создайте новое развёртывание.</span><button class="btn b-warn b-sm" id="bFmtCode" type="button">Показать код</button></div>
     <div class="gs">
-      <div class="gs-h"><h3>📊 Google Sheets</h3><span class="live"><i></i> Автосинхронизация</span><span class="chip c-white" id="gsChip">Проверяем связь…</span><button class="btn b-yel b-sm" id="bScript" type="button">📄 Код скрипта</button></div>
+      <div class="gs-h"><h3>📊 Таблица участников</h3><span class="live"><i></i> Автосохранение</span><span class="chip c-white" id="gsChip">Проверяем связь…</span><button class="btn b-yel b-sm" id="bScript" type="button">📄 Код скрипта</button></div>
       <div class="gs-b">
         <div>
-          <h4>Подключение (уже настроено)</h4>
+          <h4>Подключение</h4>
           <div class="field"><label for="gsUrl">URL веб-приложения (/exec)</label><input id="gsUrl" type="url" spellcheck="false"><small class="err"></small></div>
           <div class="field"><label for="gsSheet">Название листа</label><input id="gsSheet" type="text" placeholder="Участники"><small class="err"></small></div>
           <div class="field"><label for="gsToken">Токен (как TOKEN в скрипте)</label><input id="gsToken" type="text" spellcheck="false" placeholder="SANTA-2026"><small class="err"></small></div>
-          <div class="auto" id="autoState">Автоотправка активна</div>
+          <div class="auto" id="autoState">Автосохранение активно</div>
           <div class="gs-a"><button class="btn b-ink b-sm" id="bCfg" type="button">💾 Сохранить настройки</button><button class="btn b-sheet b-sm" id="bPing" type="button">🔌 Проверить связь</button><button class="btn b-ghost b-sm" id="bDef" type="button">↺ Встроенный URL</button></div>
         </div>
         <div>
-          <h4>Что происходит при отправке заявки</h4>
-          <ol class="steps">
-            <li>Участник жмёт «Отправить заявку» — запись сразу уходит POST-запросом в веб-приложение.</li>
-            <li>Скрипт пишет строку на лист <code>Участники</code> (обновление по коду, без дублей).</li>
-            <li>Накладная участника показывает статус <code>В таблице</code> и число строк.</li>
-            <li>Если сеть подвела — повтор каждые 5→60 с, при возврате онлайн и при открытии вкладки.</li>
+          <h4>Формат строки в таблице</h4>
+          <div class="fmt">A <b>Дата</b> · B <b>Имя</b> · C <b>Отдел</b> · D <b>Контакт</b> · E <b>Любит</b> · F <b>Не дарить</b> · G <b>Аллергии</b> · H <b>Код</b> · I <b>Кому дарит</b></div>
+          <ol class="steps" style="margin-top:14px">
+            <li>Участник жмёт «Отправить заявку» — строка сразу уходит в таблицу.</li>
+            <li>Дата пишется как <code>07.09.2026 11.42.03</code>, код — 4 цифры.</li>
+            <li>Повторная отправка обновляет строку по коду, дублей нет.</li>
+            <li>При открытии сайта счётчик участников берётся из таблицы.</li>
           </ol>
           <div class="gs-a">
             <button class="btn b-sheet b-sm" id="bPushAll" type="button">⬆️ Отправить всех</button>
@@ -549,24 +554,25 @@ html.anim .rv.in{opacity:1;transform:none}
           </div>
         </div>
       </div>
-      <div class="gs-f"><span>✅ Отправлено: <b id="gsSynced">0</b></span><span>⏳ В очереди: <b id="gsPending">0</b></span><span>⚠️ Ошибок: <b id="gsErrors">0</b></span><span>🕒 Последняя операция: <b id="gsLast">—</b></span><a id="gsOpen" class="hidden" href="#" target="_blank" rel="noopener">Открыть таблицу ↗</a></div>
+      <div class="gs-f"><span>✅ Сохранено: <b id="gsSynced">0</b></span><span>⏳ В очереди: <b id="gsPending">0</b></span><span>⚠️ Ошибок: <b id="gsErrors">0</b></span><span>🕒 Последняя операция: <b id="gsLast">—</b></span><a id="gsOpen" class="hidden" href="#" target="_blank" rel="noopener">Открыть таблицу ↗</a></div>
       <div class="log" id="gsLog"></div>
     </div>
     <div class="acts">
       <button class="btn b-red" id="bDraw" type="button">🎲 Провести жеребьёвку</button>
       <button class="btn b-ink" id="bTable" type="button" aria-expanded="true">🙈 Скрыть таблицу</button>
       <button class="btn b-ghost" id="bCsv" type="button">⬇️ Экспорт CSV</button>
+      <button class="btn b-ghost" id="bRefresh" type="button">🔄 Обновить из таблицы</button>
       <button class="btn b-ghost" id="bDemo" type="button">✨ Добавить демо</button>
       <button class="btn b-warn" id="bReset" type="button">↺ Сбросить жеребьёвку</button>
-      <button class="btn b-red" id="bClear" type="button">🗑 Очистить всё</button>
+      <button class="btn b-red" id="bClear" type="button">🗑 Очистить локально</button>
       <button class="btn b-ghost b-sm" id="bLogout" type="button">Выйти</button>
     </div>
     <div id="tableBox">
       <div class="bar">
-        <input id="q" type="search" placeholder="Поиск: имя, код, отдел, почта, пожелания…" aria-label="Поиск">
+        <input id="q" type="search" placeholder="Поиск: имя, код, отдел, контакт, пожелания…" aria-label="Поиск">
         <select id="fDeptSel" aria-label="Фильтр по отделу"><option value="">Все отделы</option></select>
-        <select id="fStatus" aria-label="Фильтр по статусу"><option value="">Любой статус</option><option value="synced">✅ Отправленные</option><option value="pending">⏳ В очереди</option><option value="error">⚠️ С ошибкой</option><option value="demo">🧪 Демо</option></select>
-        <select id="sortBy" aria-label="Сортировка"><option value="manual">Ручной порядок</option><option value="name">По имени</option><option value="dept">По отделу</option><option value="ts">По дате заявки</option><option value="sync">По статусу</option></select>
+        <select id="fStatus" aria-label="Фильтр по статусу"><option value="">Любой статус</option><option value="synced">✅ Сохранённые</option><option value="pending">⏳ В очереди</option><option value="error">⚠️ С ошибкой</option><option value="demo">🧪 Демо</option></select>
+        <select id="sortBy" aria-label="Сортировка"><option value="manual">Ручной порядок</option><option value="name">По имени</option><option value="dept">По отделу</option><option value="ts">По дате</option><option value="sync">По статусу</option></select>
         <button class="btn b-ghost b-sm" id="sortDir" type="button">↑ по возрастанию</button>
         <button class="btn b-ghost b-sm" id="bView" type="button">💾 Сохранить вид</button>
       </div>
@@ -577,7 +583,7 @@ html.anim .rv.in{opacity:1;transform:none}
         <button class="btn b-ghost b-xs" id="bBulkNone" type="button">✕ Снять выделение</button></div>
       <div class="tt"><span id="tCount"></span><span id="dragHint">Перетаскивайте строки за ⠿, чтобы задать порядок</span></div>
       <div class="tw2b"><table><thead><tr>
-        <th class="ck"><input type="checkbox" id="selAll" aria-label="Выбрать все показанные строки"></th><th class="dg">⠿</th><th>№</th><th>Имя и фамилия</th><th>Отдел</th><th>Почта</th><th>Код</th><th>Что любит</th><th>Кому дарит</th><th>Google Sheets</th><th>Действия</th>
+        <th class="ck"><input type="checkbox" id="selAll" aria-label="Выбрать все показанные строки"></th><th class="dg">⠿</th><th>№</th><th>Дата</th><th>Имя</th><th>Отдел</th><th>Контакт</th><th>Любит</th><th>Код</th><th>Кому дарит</th><th>Статус</th><th>Действия</th>
       </tr></thead><tbody id="tbody"></tbody></table></div>
     </div>
   </div>
@@ -590,7 +596,8 @@ html.anim .rv.in{opacity:1;transform:none}
     <details class="fq rv" data-d="1"><summary>Сколько тратить?</summary><div class="fa">До 1000 ₽, дороже не нужно.</div></details>
     <details class="fq rv" data-d="2"><summary>Я потерял код</summary><div class="fa">Напишите организатору — он подскажет код по вашему имени.</div></details>
     <details class="fq rv" data-d="3"><summary>Что если не знаю, что дарить?</summary><div class="fa">Возьмите нейтральное: кофе, чай, канцелярию, сертификат.</div></details>
-    <details class="fq rv" data-d="3"><summary>Куда попадают заявки?</summary><div class="fa">Сразу после нажатия «Отправить заявку» данные автоматически записываются в Google-таблицу организатора на лист «Участники»: код, имя, отдел, почта, пожелания, «не дарить», аллергии и дата. Если связь недоступна, заявка сохраняется в браузере и отправляется повторно сама — ничего нажимать не нужно.</div></details>
+    <details class="fq rv" data-d="3"><summary>Какой у меня код?</summary><div class="fa">Секретный код — случайное число из 4 цифр, например 4821. Он выдаётся сразу после отправки заявки и нужен, чтобы узнать своего подопечного после жеребьёвки.</div></details>
+    <details class="fq rv" data-d="3"><summary>Куда попадают заявки?</summary><div class="fa">Сразу после нажатия «Отправить заявку» данные автоматически сохраняются в таблице организатора: дата, имя, отдел, контакт, пожелания, «не дарить», аллергии, код и «кому дарит». Если связь недоступна, заявка сохраняется в браузере и отправляется повторно сама.</div></details>
   </div>
 </div></section>
 </main>
@@ -598,7 +605,7 @@ html.anim .rv.in{opacity:1;transform:none}
 <footer><div class="wrap fm">
   <div class="ft">
     <div><a class="fb" href="#top">🎄 Тайный Санта <em>2026</em></a>
-      <div class="fs"><span class="fsc">👥 Участников: <b id="footCount">0</b></span><span class="fsc" id="footDraw">🎲 Жеребьёвка 2 декабря</span><span class="fsc" id="footSheet">📊 Проверяем таблицу…</span></div></div>
+      <div class="fs"><span class="fsc">👥 Участников: <b id="footCount">…</b></span><span class="fsc" id="footDraw">🎲 Жеребьёвка 2 декабря</span><span class="fsc" id="footSheet">📊 Проверяем таблицу…</span></div></div>
     <nav class="fn" aria-label="Разделы страницы"><a href="#how">Как это работает</a><a href="#rules">Правила и бюджет</a><a href="#schedule">График доставки</a><a href="#reg">Регистрация</a><a href="#track">Кому я дарю?</a><a href="#faq">Вопросы и ответы</a><a href="#admin">🔐 Организатору</a></nav>
   </div>
   <div class="fbt"><span>Сделано с любовью и мишурой ✨ Тайный Санта 2026</span><span>Жёлтый — значит, подарок доставим точно в срок 📦</span></div>
@@ -608,14 +615,14 @@ html.anim .rv.in{opacity:1;transform:none}
   <aside class="dpanel" role="dialog" aria-modal="true" aria-labelledby="dTitle">
     <header class="dh"><div><small>Карточка участника</small><h3 id="dTitle">—</h3></div><button class="dx" id="dClose" type="button" aria-label="Закрыть">✕</button></header>
     <div class="db">
-      <div class="dr"><button class="code" id="dCode" type="button" title="Скопировать код">—</button><span id="dSync"></span></div>
+      <div class="dr"><button class="code" id="dCode" type="button" title="Скопировать код">0000</button><span id="dSync"></span></div>
       <form id="dForm" novalidate>
-        <div class="field"><label for="dName">Имя и фамилия <b>*</b></label><input id="dName" type="text"><small class="err"></small></div>
-        <div class="field"><label for="dDept">Отдел / команда</label><input id="dDept" list="depts" type="text"><small class="err"></small></div>
-        <div class="field"><label for="dContact">Почта <b>*</b></label><input id="dContact" type="email"><small class="err"></small></div>
-        <div class="field"><label for="dLikes">Что вы любите? <b>*</b></label><textarea id="dLikes" rows="3"></textarea><small class="err"></small></div>
-        <div class="field"><label for="dDont">Что вам НЕ дарить?</label><textarea id="dDont" rows="2"></textarea><small class="err"></small></div>
-        <div class="field"><label for="dAllergy">Аллергии и ограничения</label><input id="dAllergy" type="text"><small class="err"></small></div>
+        <div class="field"><label for="dName">Имя <b>*</b></label><input id="dName" type="text"><small class="err"></small></div>
+        <div class="field"><label for="dDept">Отдел</label><input id="dDept" list="depts" type="text"><small class="err"></small></div>
+        <div class="field"><label for="dContact">Контакт (почта) <b>*</b></label><input id="dContact" type="email"><small class="err"></small></div>
+        <div class="field"><label for="dLikes">Любит <b>*</b></label><textarea id="dLikes" rows="3"></textarea><small class="err"></small></div>
+        <div class="field"><label for="dDont">Не дарить</label><textarea id="dDont" rows="2"></textarea><small class="err"></small></div>
+        <div class="field"><label for="dAllergy">Аллергии</label><input id="dAllergy" type="text"><small class="err"></small></div>
       </form>
       <div class="dm" id="dMeta"></div>
     </div>
@@ -631,27 +638,30 @@ html.anim .rv.in{opacity:1;transform:none}
     <div class="ma"><button class="btn b-ghost" id="mCancel" type="button">Отмена</button><button class="btn b-red" id="mOk" type="button">Подтвердить</button></div></div></div>
 
 <div id="sModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="sTitle"><div class="msc"></div>
-  <div class="mc wide"><h3 id="sTitle">📄 Скрипт Google Sheets (уже развёрнут)</h3>
-    <p>Этот код уже работает по встроенному URL. Он нужен, только если вы захотите перенести приём заявок в другую таблицу:
-      <b>Расширения → Apps Script</b> → вставить → <b>Развернуть → Веб-приложение</b> («Выполнять как: Я», «Доступ: Все») → новый URL вставить в поле настроек.</p>
+  <div class="mc wide"><h3 id="sTitle">📄 Код скрипта таблицы</h3>
+    <p>Колонки: <b>Дата · Имя · Отдел · Контакт · Любит · Не дарить · Аллергии · Код · Кому дарит</b>.
+      Откройте таблицу → <b>Расширения → Apps Script</b> → замените код целиком → <b>Развернуть → Новое развёртывание → Веб-приложение</b>
+      («Выполнять как: Я», «Доступ: Все») → новый URL вставьте в поле настроек.</p>
     <pre class="codebox" id="sCode"></pre>
     <div class="ma"><button class="btn b-yel" id="sCopy" type="button">📋 Скопировать код</button><button class="btn b-ghost" id="sClose" type="button">Закрыть</button></div></div></div>
 
 <script type="text/plain" id="gsScript">
-/* Тайный Санта 2026 — автоматический приём заявок с сайта в Google Sheets.
+/* Тайный Санта 2026 — приём заявок с сайта.
+   Колонки: Дата | Имя | Отдел | Контакт | Любит | Не дарить | Аллергии | Код | Кому дарит
    Расширения → Apps Script → вставить → Развернуть → Веб-приложение
    Выполнять как: Я · Доступ: Все · URL /exec вставить в настройки сайта */
 const TOKEN = 'SANTA-2026';
 const SHEET = 'Участники';
-const HEAD = ['Код','Имя и фамилия','Отдел / команда','Почта','Что вы любите?','Что вам НЕ дарить?','Аллергии и ограничения','Кому дарит','Зарегистрирован','Обновлён'];
+const HEAD = ['Дата','Имя','Отдел','Контакт','Любит','Не дарить','Аллергии','Код','Кому дарит'];
 
 function sh_(n){
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var s = ss.getSheetByName(n || SHEET) || ss.insertSheet(n || SHEET);
   if (s.getLastRow() === 0){
     s.getRange(1,1,1,HEAD.length).setValues([HEAD]).setBackground('#FFCC00').setFontColor('#221A06').setFontWeight('bold');
-    s.setFrozenRows(1); s.setRowHeight(1,32);
-    [150,200,150,220,320,240,200,190,170,170].forEach(function(w,i){ s.setColumnWidth(i+1,w); });
+    s.setFrozenRows(1); s.setRowHeight(1,30);
+    [170,200,140,220,260,220,200,90,200].forEach(function(w,i){ s.setColumnWidth(i+1,w); });
+    s.getRange(1,8,s.getMaxRows(),1).setNumberFormat('@');
   }
   return s;
 }
@@ -659,49 +669,62 @@ function out_(o){ return ContentService.createTextOutput(JSON.stringify(o)).setM
 function doGet(e){ return run_((e && e.parameter) || {}); }
 function doPost(e){ var d={}; try{ d=JSON.parse(e.postData.contents); }catch(x){ d=(e && e.parameter)||{}; } return run_(d); }
 
+function line_(r){
+  if (Object.prototype.toString.call(r) === '[object Array]') return r.slice(0,9);
+  return [r.date || r.created || '', r.name || '', r.dept || '', r.contact || r.email || '',
+          r.likes || '', r.dont || '', r.allergies || '', String(r.code || ''), r.giftTo || ''];
+}
+
 function run_(p){
   if (String(p.token||'') !== TOKEN) return out_({ok:false, error:'Неверный токен'});
   var lock = LockService.getScriptLock();
   if (!lock.tryLock(20000)) return out_({ok:false, error:'Таблица занята, повторите'});
   try{
-    var s = sh_(p.sheet), a = String(p.action||'ping'), last = s.getLastRow();
+    var s = sh_(p.sheet), a = String(p.action || 'ping'), last = s.getLastRow();
     var vals = last > 1 ? s.getRange(2,1,last-1,HEAD.length).getValues() : [], idx = {};
-    for (var i=0;i<vals.length;i++) idx[String(vals[i][0]).trim().toUpperCase()] = i+2;
+    for (var i=0;i<vals.length;i++) idx[String(vals[i][7]).trim().toUpperCase()] = i+2;
 
-    if (a === 'ping') return out_({ok:true, sheet:s.getName(), rows:vals.length, url:SpreadsheetApp.getActiveSpreadsheet().getUrl()});
+    if (a === 'ping' || a === 'count')
+      return out_({ok:true, sheet:s.getName(), rows:vals.length, count:vals.length, url:SpreadsheetApp.getActiveSpreadsheet().getUrl()});
 
-    if (a === 'list') return out_({ok:true, rows: vals.map(function(v){
-      return {code:v[0],name:v[1],dept:v[2],email:v[3],likes:v[4],dont:v[5],allergies:v[6],giftTo:v[7],created:v[8],updated:v[9]};
+    if (a === 'list') return out_({ok:true, count:vals.length, rows: vals.map(function(v){
+      return {date:v[0], name:v[1], dept:v[2], contact:v[3], likes:v[4], dont:v[5], allergies:v[6], code:String(v[7]), giftTo:v[8]};
     })});
 
     if (a === 'save'){
-      var rows = p.rows || [], add = [], n = 0;
+      var rows = p.rows || p.values || [], add = [], n = 0;
+      if (typeof rows === 'string') rows = JSON.parse(rows);
       rows.forEach(function(r){
-        var k = String(r.code||'').trim().toUpperCase(); if (!k) return;
-        var line = [r.code, r.name||'', r.dept||'', r.email||'', r.likes||'', r.dont||'', r.allergies||'', r.giftTo||'', r.created||'', r.updated||''];
-        if (idx[k]) s.getRange(idx[k],1,1,HEAD.length).setValues([line]);
-        else { add.push(line); idx[k] = s.getLastRow() + add.length + 1; }
+        var L = line_(r), k = String(L[7]||'').trim().toUpperCase();
+        if (!k) return;
+        if (idx[k]) s.getRange(idx[k],1,1,HEAD.length).setValues([L]);
+        else { add.push(L); idx[k] = s.getLastRow() + add.length + 1; }
         n++;
       });
       if (add.length) s.getRange(s.getLastRow()+1,1,add.length,HEAD.length).setValues(add);
-      return out_({ok:true, saved:n, rows:Math.max(0, s.getLastRow()-1)});
+      var total = Math.max(0, s.getLastRow()-1);
+      return out_({ok:true, saved:n, rows:total, count:total});
     }
 
     if (a === 'draw'){
-      var u = 0;
-      (p.pairs||[]).forEach(function(x){
+      var u = 0, pr = p.pairs || [];
+      if (typeof pr === 'string') pr = JSON.parse(pr);
+      pr.forEach(function(x){
         var k = String(x.code||'').trim().toUpperCase();
-        if (idx[k]){ s.getRange(idx[k],8).setValue(x.giftTo||''); u++; }
+        if (idx[k]){ s.getRange(idx[k],9).setValue(x.giftTo||''); u++; }
       });
       return out_({ok:true, updated:u});
     }
 
     if (a === 'delete'){
-      var cs = (p.codes||[]).map(function(c){ return String(c).trim().toUpperCase(); }), rm = 0;
+      var cs = p.codes || []; if (typeof cs === 'string') cs = JSON.parse(cs);
+      cs = cs.map(function(c){ return String(c).trim().toUpperCase(); });
+      var rm = 0;
       for (var j=vals.length-1;j>=0;j--){
-        if (cs.indexOf(String(vals[j][0]).trim().toUpperCase()) > -1){ s.deleteRow(j+2); rm++; }
+        if (cs.indexOf(String(vals[j][7]).trim().toUpperCase()) > -1){ s.deleteRow(j+2); rm++; }
       }
-      return out_({ok:true, removed:rm});
+      var t2 = Math.max(0, s.getLastRow()-1);
+      return out_({ok:true, removed:rm, rows:t2, count:t2});
     }
 
     return out_({ok:false, error:'Неизвестное действие: ' + a});
@@ -715,28 +738,32 @@ function run_(p){
 'use strict';
 var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 addEventListener('error',function(){document.documentElement.classList.remove('anim')});
-/* ===== ВСТРОЕННОЕ ПОДКЛЮЧЕНИЕ К GOOGLE SHEETS ===== */
+/* ===== встроенное подключение ===== */
 var GS_URL='https://script.google.com/macros/s/AKfycbwKOyFwLLVKnjmivyzO1keMCidRGh15MOA0fgfQeLt0AfaIJ-YKgEXPBAonLcGKHxcE/exec';
 var GS_TOKEN='SANTA-2026',GS_SHEET='Участники';
 var GS_DOC='https://docs.google.com/spreadsheets/d/1lojyLY6g9lMf-tAufI4V5iHhduqrKu3NJCD-nGeK8EA/edit';
-var KEY='santa26.v5',GKEY='santa26.gs5',VKEY='santa26.views',PASS='santa2026';
+var HEAD=['Дата','Имя','Отдел','Контакт','Любит','Не дарить','Аллергии','Код','Кому дарит'];
+var KEY='santa26.v6',GKEY='santa26.gs6',VKEY='santa26.views',PASS='santa2026';
 var DRAW=new Date('2026-12-02T12:00:00+03:00'),EXCH=new Date('2026-12-25T18:00:00+03:00');
 var MAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function uid(){return crypto.randomUUID?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(36).slice(2)}
-function norm(s){return String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'')}
-function dt(t){return new Date(t).toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}
+function norm(s){return String(s==null?'':s).toUpperCase().replace(/[^A-Z0-9]/g,'')}
+function p2(v){return String(v).padStart(2,'0')}
+function sheetDate(t){var d=new Date(t);return p2(d.getDate())+'.'+p2(d.getMonth()+1)+'.'+d.getFullYear()+' '+p2(d.getHours())+'.'+p2(d.getMinutes())+'.'+p2(d.getSeconds())}
+function parseDate(s){
+  if(!s)return 0;var m=String(s).match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:[ ,]+(\d{1,2})[.:](\d{2})(?:[.:](\d{2}))?)?/);
+  if(m)return new Date(+m[3],+m[2]-1,+m[1],+(m[4]||0),+(m[5]||0),+(m[6]||0)).getTime();
+  var t=Date.parse(s);return isNaN(t)?0:t}
 function tm(t){return new Date(t).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit',second:'2-digit'})}
-var first=!localStorage.getItem(KEY),state=load(),gs=loadGs(),views=loadViews(),LOG=[];
+var state=load(),gs=loadGs(),views=loadViews(),LOG=[];
 var filters={q:'',dept:'',status:'',sort:'manual',dir:'asc'},sel=new Set(),tableOpen=true,drawerId=null,syncing=false,lastP=null,activeView='all';
-var autoTimer=null,attempt=0,nextAt=0;
+var autoTimer=null,attempt=0,nextAt=0,remoteCount=(typeof gs.count==='number'?gs.count:null),countBusy=false;
 function load(){try{var r=localStorage.getItem(KEY);if(r){var p=JSON.parse(r);return{participants:p.participants||[],draw:p.draw||null}}}catch(e){}return{participants:[],draw:null}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
-function loadGs(){
-  var d={url:GS_URL,sheet:GS_SHEET,token:GS_TOKEN,sheetUrl:GS_DOC,last:0,ok:null};
+function loadGs(){var d={url:GS_URL,sheet:GS_SHEET,token:GS_TOKEN,sheetUrl:GS_DOC,last:0,ok:null,count:null};
   try{var r=localStorage.getItem(GKEY);if(r){var s=JSON.parse(r);if(s&&typeof s==='object')Object.assign(d,s)}}catch(e){}
-  if(!d.url)d.url=GS_URL;if(!d.sheet)d.sheet=GS_SHEET;if(!d.token)d.token=GS_TOKEN;if(!d.sheetUrl)d.sheetUrl=GS_DOC;
-  return d}
+  if(!d.url)d.url=GS_URL;if(!d.sheet)d.sheet=GS_SHEET;if(!d.token)d.token=GS_TOKEN;if(!d.sheetUrl)d.sheetUrl=GS_DOC;return d}
 function saveGs(){try{localStorage.setItem(GKEY,JSON.stringify(gs))}catch(e){}}
 function loadViews(){try{var r=localStorage.getItem(VKEY);if(r)return JSON.parse(r)||[]}catch(e){}return[]}
 function saveViews(){try{localStorage.setItem(VKEY,JSON.stringify(views))}catch(e){}}
@@ -745,8 +772,13 @@ function sst(p){return p.demo?'demo':((p.sync&&p.sync.state)||'pending')}
 function setS(p,s,e){if(p.demo)return;p.sync={state:s,at:Date.now(),error:e||''}}
 function pendingList(){return state.participants.filter(function(p){return !p.demo&&sst(p)!=='synced'})}
 function realList(){return state.participants.filter(function(p){return !p.demo})}
-var AL='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
-function code(){var c;do{var b=new Uint8Array(8);crypto.getRandomValues(b);var f=function(a){return Array.prototype.map.call(a,function(x){return AL[x%AL.length]}).join('')};c='SN26-'+f(b.slice(0,4))+'-'+f(b.slice(4))}while(state.participants.some(function(p){return p.code===c}));return c}
+function giftOf(p){var g=state.draw?byId(state.draw.pairs[p.id]):null;return g?g.name:(p.giftToName||'')}
+/* ===== секретный код: случайные 4 цифры ===== */
+function code(){
+  var c,i=0;
+  do{var b=new Uint16Array(1);crypto.getRandomValues(b);c=String(1000+b[0]%9000);i++}
+  while(i<900&&state.participants.some(function(p){return norm(p.code)===c}));
+  return c}
 function toast(msg,type,act){
   var ic={ok:'✅',err:'🚫',info:'ℹ️',warn:'⚠️'},el=document.createElement('div');
   el.className='toast '+(type||'info');el.innerHTML='<span>'+(ic[type]||'ℹ️')+'</span><span>'+esc(msg)+'</span>';
@@ -766,14 +798,12 @@ function ask(o){return new Promise(function(r){mRes=r;modal(o)})}
 function askText(o){return new Promise(function(r){mRes=r;modal(Object.assign({},o,{input:true}))})}
 function closeM(v){if(!mRes)return;var i=$('#mInput'),val=mMode==='p'?(v?(i.value.trim()||null):null):v;
   $('#modal').classList.remove('open');overlay(false);var r=mRes;mRes=null;r(val)}
-$('#mOk').onclick=function(){closeM(true)};$('#mCancel').onclick=function(){closeM(false)};
-$('#modal .msc').onclick=function(){closeM(false)};
+$('#mOk').onclick=function(){closeM(true)};$('#mCancel').onclick=function(){closeM(false)};$('#modal .msc').onclick=function(){closeM(false)};
 $('#mInput').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();closeM(true)}});
-var SCRIPT=$('#gsScript').textContent.trim();
-$('#sCode').textContent=SCRIPT;
-$('#bScript').onclick=function(){$('#sModal').classList.add('open');overlay(true)};
+var SCRIPT=$('#gsScript').textContent.trim();$('#sCode').textContent=SCRIPT;
+function openS(){$('#sModal').classList.add('open');overlay(true)}
 function closeS(){if(!$('#sModal').classList.contains('open'))return;$('#sModal').classList.remove('open');overlay(false)}
-$('#sClose').onclick=closeS;$('#sModal .msc').onclick=closeS;
+$('#bScript').onclick=openS;$('#bFmtCode').onclick=openS;$('#sClose').onclick=closeS;$('#sModal .msc').onclick=closeS;
 $('#sCopy').onclick=function(){copy(SCRIPT).then(function(){toast('Код скрипта скопирован 📋','ok')})};
 addEventListener('keydown',function(e){if(e.key!=='Escape')return;
   if($('#sModal').classList.contains('open'))return closeS();if(mRes)return closeM(false);
@@ -808,31 +838,30 @@ function tick(){var n=Date.now(),t=null,l;
   if(n<DRAW.getTime()){t=DRAW;l='До жеребьёвки'}else if(n<EXCH.getTime()){t=EXCH;l='До обмена подарками'}else l='Праздник доставлен! 🎉';
   $('#cdL').textContent=l;var d=0,h=0,m=0,s=0;
   if(t){var f=Math.max(0,t.getTime()-n);d=Math.floor(f/864e5);h=Math.floor(f/36e5)%24;m=Math.floor(f/6e4)%60;s=Math.floor(f/1e3)%60}
-  var p=function(v){return String(v).padStart(2,'0')};$('#cdD').textContent=p(d);$('#cdH').textContent=p(h);$('#cdM').textContent=p(m);$('#cdS').textContent=p(s);
-  updateAuto()}
+  $('#cdD').textContent=p2(d);$('#cdH').textContent=p2(h);$('#cdM').textContent=p2(m);$('#cdS').textContent=p2(s);updateAuto()}
 var BND=['2026-12-02T00:00:00+03:00','2026-12-03T00:00:00+03:00','2026-12-25T00:00:00+03:00','2026-12-26T00:00:00+03:00'].map(function(x){return new Date(x).getTime()}),ICO=['📝','🎲','🎁','🚚'];
 function sched(){var n=Date.now();$$('.ti').forEach(function(el,i){var done=n>=BND[i],act=!done&&(i===0||n>=BND[i-1]);
   el.classList.toggle('done',done);el.classList.toggle('active',act);$('.tn',el).textContent=done?'✓':ICO[i]})}
 function counts(){var c={synced:0,pending:0,error:0};realList().forEach(function(p){var s=sst(p);if(s==='synced')c.synced++;else if(s==='error')c.error++;else c.pending++});return c}
-function badge(p){var s=sst(p),m={synced:['synced','В таблице'],pending:['pending','В очереди'],sending:['sending','Отправка…'],error:['error','Ошибка'],demo:['demo','Демо · локально']},v=m[s]||m.pending;
+function paintCount(){var v=(remoteCount!=null)?remoteCount:(countBusy?'…':realList().length);
+  $('#heroCount').textContent=v;$('#regCount').textContent=v;$('#footCount').textContent=v;$('#stCount').textContent=v}
+function badge(p){var s=sst(p),m={synced:['synced','Сохранено'],pending:['pending','В очереди'],sending:['sending','Отправка…'],error:['error','Ошибка'],demo:['demo','Демо']},v=m[s]||m.pending;
   var ti=s==='error'&&p.sync&&p.sync.error?' title="'+esc(p.sync.error)+'"':'';return '<span class="sync '+v[0]+'"'+ti+'><span class="d"></span>'+v[1]+'</span>'}
 function updateAuto(){
   var el=$('#autoState'),n=pendingList().length;
-  if(!realList().length){el.className='auto';el.innerHTML='⚡ Автосинхронизация включена — реальных заявок пока нет';return}
-  if(!n){el.className='auto ok';el.innerHTML='✅ Все заявки автоматически записаны в Google Sheets';return}
-  if(!gs.url){el.className='auto warn';el.innerHTML='⏸ '+n+' в очереди · укажите URL таблицы — отправка пойдёт сама';return}
-  if(syncing){el.className='auto run';el.innerHTML='<span class="sp"></span> Отправляем '+n+' записей в Google Sheets…';return}
+  if(!realList().length){el.className='auto';el.innerHTML='⚡ Автосохранение включено — заявок пока нет';return}
+  if(!n){el.className='auto ok';el.innerHTML='✅ Все заявки сохранены в таблице';return}
+  if(!gs.url){el.className='auto warn';el.innerHTML='⏸ '+n+' в очереди · укажите URL таблицы';return}
+  if(syncing){el.className='auto run';el.innerHTML='<span class="sp"></span> Отправляем '+n+' записей…';return}
   var left=nextAt?Math.max(0,Math.ceil((nextAt-Date.now())/1000)):0;
   el.className='auto run';el.innerHTML='<span class="sp"></span> Автоотправка: '+n+' в очереди'+(left?' · повтор через '+left+' с':' · запускаем…')}
 function render(){
-  var n=state.participants.length,d=!!state.draw,c=counts();
-  $('#heroCount').textContent=n;$('#regCount').textContent=n;$('#footCount').textContent=n;
+  var d=!!state.draw,c=counts();paintCount();
   $('#footDraw').textContent=d?'✅ Маршруты построены':'🎲 Жеребьёвка 2 декабря';
   $('#footSheet').textContent=gs.url?(gs.ok===false?'📊 Таблица: ошибка связи':gs.ok===true?'📊 Таблица на связи':'📊 Проверяем таблицу…'):'📊 Таблица не подключена';
-  $('#stCount').textContent=n;
   $('#stDraw').textContent=d?'Проведена ✅':'Ещё не было';$('#stDraw').className=d?'ok':'warn';
   $('#stQueue').textContent=c.pending+c.error;$('#stQueue').className=(c.pending+c.error)?'warn':'ok';
-  $('#stSheet').textContent=!gs.url?'Не подключено':gs.ok===true?'Подключено ✅':gs.ok===false?'Ошибка связи':'Проверяем…';
+  $('#stSheet').textContent=!gs.url?'Не подключено':gs.ok===true?'На связи ✅':gs.ok===false?'Ошибка связи':'Проверяем…';
   $('#stSheet').className=!gs.url?'warn':gs.ok===true?'ok':gs.ok===false?'err':'warn';
   $('#gsChip').textContent=!gs.url?'Не подключено':gs.ok===true?'Связь есть':gs.ok===false?'Ошибка связи':'Проверяем связь…';
   $('#bDraw').textContent=d?'🎲 Перестроить маршруты':'🎲 Провести жеребьёвку';
@@ -840,11 +869,12 @@ function render(){
   $('#gsLast').textContent=gs.last?tm(gs.last):'—';
   $('#gsOpen').classList.toggle('hidden',!gs.sheetUrl);if(gs.sheetUrl)$('#gsOpen').href=gs.sheetUrl;
   $('#demoBar').classList.toggle('hidden',!state.participants.some(function(p){return p.demo}));
-  ['#bPushAll','#bRetry','#bImport','#bPushDraw','#bPing','#bBulkPush','#dPush'].forEach(function(s){var e=$(s);if(e)e.disabled=syncing});
+  $('#fmtBar').classList.toggle('hidden',gs.fmt!=='old');
+  ['#bPushAll','#bRetry','#bImport','#bPushDraw','#bPing','#bBulkPush','#dPush','#bRefresh'].forEach(function(s){var e=$(s);if(e)e.disabled=syncing||countBusy});
   updateAuto();
   var deps=[];state.participants.forEach(function(p){if(p.dept&&deps.indexOf(p.dept)<0)deps.push(p.dept)});deps.sort();
   var cur=$('#fDeptSel').value;
-  $('#fDeptSel').innerHTML='<option value="">Все отделы</option>'+deps.map(function(d){return '<option'+(d===cur?' selected':'')+'>'+esc(d)+'</option>'}).join('');
+  $('#fDeptSel').innerHTML='<option value="">Все отделы</option>'+deps.map(function(x){return '<option'+(x===cur?' selected':'')+'>'+esc(x)+'</option>'}).join('');
   if(tableOpen)renderTable();
   if(drawerId){var p=byId(drawerId);if(p)$('#dSync').innerHTML=badge(p);else closeDrawer()}
   if(lastP){var q=byId(lastP.id);if(q)wbSync(q)}}
@@ -866,16 +896,18 @@ function renderTable(){
   $('#dragHint').textContent=dg?'Перетаскивайте строки за ⠿, чтобы задать порядок':'Порядок доступен при сортировке «Ручной порядок» без фильтров';
   $('#bulk').classList.toggle('hidden',!sel.size);$('#bulkN').textContent=sel.size;
   $('#selAll').checked=r.length>0&&r.every(function(p){return sel.has(p.id)});
-  if(!r.length){$('#tbody').innerHTML='<tr><td colspan="11" class="empty">'+(state.participants.length?'Ничего не найдено 🔍':'Пока пусто — зарегистрируйте участников или добавьте демо ✨')+'</td></tr>';return}
+  if(!r.length){$('#tbody').innerHTML='<tr><td colspan="12" class="empty">'+(state.participants.length?'Ничего не найдено 🔍':'Загружаем участников из таблицы…')+'</td></tr>';return}
   $('#tbody').innerHTML=r.map(function(p){
-    var g=state.draw?byId(state.draw.pairs[p.id]):null;
+    var gn=giftOf(p);
     return '<tr data-id="'+p.id+'"'+(dg?' draggable="true"':'')+' class="'+(sel.has(p.id)?'sel':'')+'">'+
       '<td class="ck"><input type="checkbox" data-ck="'+p.id+'"'+(sel.has(p.id)?' checked':'')+' aria-label="Выбрать строку"></td>'+
       '<td class="dg'+(dg?'':' off')+'">⠿</td><td>'+(state.participants.indexOf(p)+1)+'</td>'+
+      '<td class="dt2">'+esc(sheetDate(p.ts))+'</td>'+
       '<td class="nm">'+esc(p.name)+(p.demo?'<span class="dtag">демо</span>':'')+'</td>'+
       '<td>'+esc(p.dept||'—')+'</td><td class="ml">'+esc(p.contact)+'</td>'+
+      '<td class="lk2">'+esc(p.likes)+'</td>'+
       '<td><button class="code" type="button" data-copy="'+esc(p.code)+'">'+esc(p.code)+'</button></td>'+
-      '<td class="lk2">'+esc(p.likes)+'</td><td class="'+(g?'as':'')+'">'+(g?esc(g.name):'—')+'</td>'+
+      '<td class="'+(gn?'as':'')+'">'+(gn?esc(gn):'—')+'</td>'+
       '<td>'+badge(p)+'</td><td><div class="ra">'+
       '<button class="ib" type="button" data-edit="'+p.id+'" title="Открыть карточку">✏️</button>'+
       '<button class="ib" type="button" data-push="'+p.id+'" title="Отправить в таблицу">⬆️</button>'+
@@ -883,7 +915,7 @@ function renderTable(){
 function renderViews(){
   var built=[{id:'all',name:'Все',f:{q:'',dept:'',status:'',sort:'manual',dir:'asc'}},
     {id:'queue',name:'⏳ В очереди',f:{q:'',dept:'',status:'pending',sort:'manual',dir:'asc'}},
-    {id:'sent',name:'✅ Отправленные',f:{q:'',dept:'',status:'synced',sort:'name',dir:'asc'}},
+    {id:'sent',name:'✅ Сохранённые',f:{q:'',dept:'',status:'synced',sort:'name',dir:'asc'}},
     {id:'err',name:'⚠️ Ошибки',f:{q:'',dept:'',status:'error',sort:'manual',dir:'asc'}}];
   window.__built=built;
   $('#views').innerHTML=built.map(function(v){return '<button class="view'+(activeView===v.id?' on':'')+'" type="button" data-view="'+v.id+'">'+v.name+'</button>'}).join('')+
@@ -892,7 +924,7 @@ function applyView(id){var v=(window.__built||[]).concat(views).find(function(x)
   filters=Object.assign({},v.f);activeView=id;syncControls();renderViews();renderTable()}
 function syncControls(){$('#q').value=filters.q;$('#fDeptSel').value=filters.dept;$('#fStatus').value=filters.status;
   $('#sortBy').value=filters.sort;$('#sortDir').textContent=filters.dir==='asc'?'↑ по возрастанию':'↓ по убыванию'}
-/* ===== РЕГИСТРАЦИЯ: запись в таблицу сразу по кнопке ===== */
+/* ===== регистрация ===== */
 var F={name:$('#fName'),dept:$('#fDept'),contact:$('#fContact'),likes:$('#fLikes'),dont:$('#fDont'),allergy:$('#fAllergy')};
 function bad(i,m){var f=i.closest('.field');f.classList.add('bad');$('.err',f).textContent=m}
 function ok(i){var f=i.closest('.field');f.classList.remove('bad');$('.err',f).textContent=''}
@@ -906,35 +938,34 @@ $('#regForm').addEventListener('submit',function(e){
   else if(!MAIL.test(mail)){bad(F.contact,'Формат почты: name@company.ru');first=first||F.contact}
   if(likes.length<3){bad(F.likes,'Пара слов о пожеланиях поможет вашему Санте');first=first||F.likes}
   if(first){first.focus();toast('Проверьте выделенные поля','err');return}
-  var p={id:uid(),name:name,dept:F.dept.value.trim(),contact:mail,likes:likes,dont:F.dont.value.trim(),allergies:F.allergy.value.trim(),code:code(),ts:Date.now(),updated:Date.now(),demo:false};
+  var p={id:uid(),name:name,dept:F.dept.value.trim(),contact:mail,likes:likes,dont:F.dont.value.trim(),allergies:F.allergy.value.trim(),code:code(),ts:Date.now(),updated:Date.now(),demo:false,giftToName:''};
   setS(p,'sending');state.participants.push(p);save();lastP=p;render();showWb(p);burstAt($('#regSubmit'));
-  $('#regForm').reset();
-  toast('Заявка принята! Код выдан 🎫','ok');
+  $('#regForm').reset();toast('Заявка принята! Ваш код: '+p.code+' 🎫','ok');
   attempt=0;nextAt=0;push([p],true)});
-function barcode(c){var s=c.split('').map(function(x){return x.charCodeAt(0)}),x=4,i=0,o='';
-  while(x<194){var w=1+(s[i%s.length]+i)%4;if(i%2===0)o+='<rect x="'+x+'" y="4" width="'+w+'" height="38" fill="#221A06"/>';x+=w+1.5;i++}
+function barcode(c){var s=String(c).split('').map(function(x){return x.charCodeAt(0)}),x=4,i=0,o='';
+  while(x<194){var w=1+(s[i%s.length]+i*7)%4;if(i%2===0)o+='<rect x="'+x+'" y="4" width="'+w+'" height="38" fill="#221A06"/>';x+=w+1.5;i++}
   $('#wbBar').innerHTML=o}
 function wbSync(p){var s=sst(p),t;
-  if(s==='synced')t='Заявка автоматически записана в Google Sheets организатора.';
-  else if(s==='sending')t='Отправляем заявку в Google Sheets прямо сейчас…';
-  else if(s==='error')t='Связь с таблицей недоступна — заявка сохранена и отправится повторно автоматически.';
-  else t=gs.url?'Заявка в очереди автоотправки — уйдёт в таблицу без вашего участия.':'Заявка сохранена; после подключения таблицы уйдёт автоматически.';
-  var h=$('#wbHead');h.textContent=s==='synced'?'В таблице':'В обработке';h.className='chip '+(s==='synced'?'c-green':'c-amber');
+  if(s==='synced')t='Заявка сохранена в таблице организатора.';
+  else if(s==='sending')t='Сохраняем заявку прямо сейчас…';
+  else if(s==='error')t='Связь недоступна — заявка сохранена и отправится повторно автоматически.';
+  else t=gs.url?'Заявка в очереди — отправится без вашего участия.':'Заявка сохранена локально.';
+  var h=$('#wbHead');h.textContent=s==='synced'?'Сохранено':'В обработке';h.className='chip '+(s==='synced'?'c-green':'c-amber');
   $('#wbSync').innerHTML=badge(p)+'<span>'+esc(t)+'</span>'}
-function showWb(p){$('#wbCode').textContent=p.code;$('#wbName').textContent=p.name;$('#wbDept').textContent=p.dept||'—';$('#wbDate').textContent=dt(p.ts);
+function showWb(p){$('#wbCode').textContent=p.code;$('#wbName').textContent=p.name;$('#wbDept').textContent=p.dept||'—';$('#wbDate').textContent=sheetDate(p.ts);
   barcode(p.code);wbSync(p);var w=$('#waybill');w.classList.remove('hidden','pop');void w.offsetWidth;w.classList.add('pop');
   setTimeout(function(){w.scrollIntoView({behavior:reduced?'auto':'smooth',block:'nearest'})},80)}
-$('#wbCopy').onclick=function(){if(lastP)copy(lastP.code).then(function(){toast('Код скопирован — сохраните его 📋','ok')})};
+$('#wbCopy').onclick=function(){if(lastP)copy(lastP.code).then(function(){toast('Код '+lastP.code+' скопирован 📋','ok')})};
 $('#wbTrack').onclick=function(){if(!lastP)return;$('#trackInput').value=lastP.code;$('#track').scrollIntoView({behavior:reduced?'auto':'smooth'});setTimeout(doTrack,reduced?0:450)};
 $('#wbAgain').onclick=function(){$('#waybill').classList.add('hidden');$('#regForm').scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});setTimeout(function(){F.name.focus()},reduced?0:450)};
 function doTrack(){
   var R=$('#trackRes'),v=$('#trackInput').value.trim();
-  if(!v){R.innerHTML='<div class="lc error pop shake"><div class="lc-h"><span>🚫 ПУСТОЙ ЗАПРОС</span><span class="chip c-red">Ошибка</span></div><p class="lc-m">Введите секретный код, который вы получили при регистрации.</p></div>';return}
+  if(!v){R.innerHTML='<div class="lc error pop shake"><div class="lc-h"><span>🚫 ПУСТОЙ ЗАПРОС</span><span class="chip c-red">Ошибка</span></div><p class="lc-m">Введите секретный код из 4 цифр.</p></div>';return}
   var p=state.participants.find(function(x){return norm(x.code)===norm(v)});
-  if(!p){R.innerHTML='<div class="lc error pop shake"><div class="lc-h"><span>🚫 КОД НЕ НАЙДЕН</span><span class="chip c-red">Ошибка</span></div><p class="lc-m">Проверьте символы — или напишите организатору, он подскажет код по вашему имени.</p></div>';return}
-  if(!state.draw){R.innerHTML='<div class="lc pending pop"><div class="lc-h"><span>⏳ МАРШРУТ В ОБРАБОТКЕ</span><span class="chip c-amber">Ожидание</span></div><p class="lc-m">Код принят, <b>'+esc(p.name)+'</b>! Жеребьёвка пройдёт <b>2 декабря</b> — после неё здесь появится имя подопечного и его пожелания.</p><div class="lc-f"><span class="chip c-ink">🎲 2 декабря — жеребьёвка</span></div></div>';return}
-  var g=byId(state.draw.pairs[p.id]);
-  if(!g){R.innerHTML='<div class="lc late pop"><div class="lc-h"><span>📮 ВЫ В СЛЕДУЮЩЕМ РЕЙСЕ</span><span class="chip c-blue">Инфо</span></div><p class="lc-m"><b>'+esc(p.name)+'</b>, вы зарегистрировались после жеребьёвки. Сообщите организатору — он перестроит маршруты.</p></div>';return}
+  if(!p){R.innerHTML='<div class="lc error pop shake"><div class="lc-h"><span>🚫 КОД НЕ НАЙДЕН</span><span class="chip c-red">Ошибка</span></div><p class="lc-m">Проверьте цифры — или напишите организатору, он подскажет код по вашему имени.</p></div>';return}
+  var gid=state.draw?state.draw.pairs[p.id]:null,g=gid?byId(gid):null;
+  if(!g&&p.giftToName)g=state.participants.find(function(x){return x.name.trim().toLowerCase()===String(p.giftToName).trim().toLowerCase()});
+  if(!g){R.innerHTML='<div class="lc pending pop"><div class="lc-h"><span>⏳ МАРШРУТ В ОБРАБОТКЕ</span><span class="chip c-amber">Ожидание</span></div><p class="lc-m">Код принят, <b>'+esc(p.name)+'</b>! Жеребьёвка пройдёт <b>2 декабря</b> — после неё здесь появится имя подопечного и его пожелания.</p><div class="lc-f"><span class="chip c-ink">🎲 2 декабря — жеребьёвка</span></div></div>';return}
   R.innerHTML='<div class="lc pop"><div class="lc-h"><span>🚚 МАРШРУТ ПОСТРОЕН</span><span class="chip c-red">Секретно</span></div>'+
     '<div class="lc-to">Вы — Тайный Санта для:</div><div class="lc-n">'+esc(g.name)+'</div>'+
     (g.dept?'<div class="lc-d">🏢 '+esc(g.dept)+'</div>':'')+'<div class="lc-g">'+
@@ -944,101 +975,114 @@ function doTrack(){
     '</div><div class="lc-f"><span class="chip c-ink">💸 Подарок до 1000 ₽</span><span class="lc-s">🤫 Не выдавайте себя до 25 декабря</span></div></div>';
   var r=R.querySelector('.lc').getBoundingClientRect();burst(r.left+r.width/2,r.top+60,70)}
 $('#trackForm').addEventListener('submit',function(e){e.preventDefault();doTrack()});
-/* ===== ТРАНСПОРТ GOOGLE SHEETS ===== */
-function rowOf(p){var g=state.draw?byId(state.draw.pairs[p.id]):null;
-  return{code:p.code,name:p.name,dept:p.dept||'',email:p.contact||'',likes:p.likes||'',dont:p.dont||'',allergies:p.allergies||'',giftTo:g?g.name:'',created:dt(p.ts),updated:dt(p.updated||p.ts)}}
-function parseRes(txt){var d;try{d=JSON.parse(txt)}catch(e){throw new Error('Ответ не JSON — проверьте доступ «Все» в развёртывании')}
-  if(!d.ok)throw new Error(d.error||'Ошибка скрипта');return d}
+/* ===== транспорт ===== */
+function rowOf(p){var d=sheetDate(p.ts),gift=giftOf(p);
+  return{date:d,name:p.name,dept:p.dept||'',contact:p.contact||'',likes:p.likes||'',dont:p.dont||'',allergies:p.allergies||'',code:String(p.code),giftTo:gift,
+    created:d,email:p.contact||'',updated:sheetDate(p.updated||p.ts)}}
+function valsOf(p){var r=rowOf(p);return[r.date,r.name,r.dept,r.contact,r.likes,r.dont,r.allergies,r.code,r.giftTo]}
+function parseRes(t){var d;try{d=JSON.parse(t)}catch(e){var er=new Error('Ответ не JSON — проверьте доступ «Все» в развёртывании');er.script=true;throw er}
+  if(!d.ok){var e2=new Error(d.error||'Ошибка скрипта');e2.script=true;throw e2}return d}
 function netErr(e){return new Error(e&&e.name==='AbortError'?'Таймаут запроса (25 с)':((e&&e.message)||'Сеть недоступна'))}
-function postGs(body){
-  var c=new AbortController(),t=setTimeout(function(){c.abort()},25000);
-  return fetch(gs.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},signal:c.signal,body:JSON.stringify(body)})
+function postGs(b){var c=new AbortController(),t=setTimeout(function(){c.abort()},25000);
+  return fetch(gs.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},signal:c.signal,body:JSON.stringify(b)})
     .then(function(r){clearTimeout(t);return r.text()},function(e){clearTimeout(t);throw netErr(e)}).then(parseRes)}
-function getGs(body){
-  var qs=Object.keys(body).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(typeof body[k]==='object'?JSON.stringify(body[k]):body[k])}).join('&');
-  var c=new AbortController(),t=setTimeout(function(){c.abort()},25000);
+function getGs(qs){var c=new AbortController(),t=setTimeout(function(){c.abort()},25000);
   return fetch(gs.url+'?'+qs,{method:'GET',signal:c.signal})
     .then(function(r){clearTimeout(t);return r.text()},function(e){clearTimeout(t);throw netErr(e)}).then(parseRes)}
+function qsOf(b){return Object.keys(b).map(function(k){var v=b[k];return encodeURIComponent(k)+'='+encodeURIComponent(typeof v==='object'?JSON.stringify(v):v)}).join('&')}
 function gsReq(payload){
   if(!gs.url)return Promise.reject(new Error('Не указан URL веб-приложения'));
-  var body=Object.assign({token:gs.token,sheet:gs.sheet},payload);
-  return postGs(body).catch(function(e){if(payload.action==='ping')return getGs(body);throw e})
-    .then(function(d){gs.ok=true;gs.last=Date.now();if(d.url)gs.sheetUrl=d.url;saveGs();return d})
+  var b=Object.assign({token:gs.token,sheet:gs.sheet},payload);
+  return postGs(b).catch(function(e){var qs=qsOf(b);if(!e.script&&gs.url.length+qs.length+1<6000)return getGs(qs);throw e})
+    .then(function(d){gs.ok=true;gs.last=Date.now();if(d.url)gs.sheetUrl=d.url;
+      if(typeof d.count==='number'){remoteCount=d.count;gs.count=d.count}else if(typeof d.rows==='number'){remoteCount=d.rows;gs.count=d.rows}
+      saveGs();return d})
     .catch(function(e){gs.ok=false;gs.last=Date.now();saveGs();throw e})}
 function push(list,quiet){
   list=(list||[]).filter(function(p){return p&&!p.demo});
   if(!list.length){if(!quiet)toast('Демо-записи в таблицу не отправляются','info');return Promise.resolve()}
   var mine=list.length===1&&lastP&&list[0].id===lastP.id;
   if(!gs.url){list.forEach(function(p){setS(p,'pending','Таблица не подключена')});save();render();scheduleAuto();
-    if(!quiet)toast('Google Sheets не подключён — заявки ждут автоотправки','warn');return Promise.resolve()}
+    if(!quiet)toast('Таблица не подключена — заявки ждут отправки','warn');return Promise.resolve()}
   if(syncing){scheduleAuto();if(!quiet)toast('Дождитесь завершения текущей отправки','warn');return Promise.resolve()}
   syncing=true;list.forEach(function(p){setS(p,'sending')});save();render();
-  return gsReq({action:'save',rows:list.map(rowOf)}).then(function(d){
+  return gsReq({action:'save',rows:list.map(rowOf),values:list.map(valsOf),head:HEAD}).then(function(d){
     list.forEach(function(p){setS(p,'synced')});attempt=0;
-    log('ok','Записано строк: '+list.length+' · всего в листе «'+gs.sheet+'»: '+(d.rows==null?'—':d.rows));
-    if(!quiet||mine)toast('Заявка сохранена в Google Sheets ✅','ok')})
-  .catch(function(e){
-    list.forEach(function(p){setS(p,'error',e.message)});log('err','Автоотправка не удалась: '+e.message);
-    if(!quiet)toast('Не отправлено: '+e.message,'err');
-    else if(mine)toast('Таблица недоступна — отправим автоматически повторно','warn')})
+    log('ok','Записано строк: '+list.length+' · всего участников: '+(remoteCount==null?'—':remoteCount));
+    if(!quiet||mine)toast('Заявка сохранена ✅','ok')})
+  .catch(function(e){list.forEach(function(p){setS(p,'error',e.message)});log('err','Отправка не удалась: '+e.message);
+    if(!quiet)toast('Не отправлено: '+e.message,'err');else if(mine)toast('Таблица недоступна — отправим автоматически повторно','warn')})
   .then(function(){syncing=false;save();render();scheduleAuto()})}
 function scheduleAuto(){
   if(autoTimer){clearTimeout(autoTimer);autoTimer=null}
   var n=pendingList().length;
   if(!n){attempt=0;nextAt=0;updateAuto();return}
   if(!gs.url||syncing){nextAt=0;updateAuto();return}
-  var delay=Math.min(60000,5000*Math.pow(2,Math.min(attempt,4)));
-  nextAt=Date.now()+delay;
-  autoTimer=setTimeout(function(){autoTimer=null;autoFlush()},delay);
-  updateAuto()}
+  nextAt=Date.now()+Math.min(60000,5000*Math.pow(2,Math.min(attempt,4)));
+  autoTimer=setTimeout(function(){autoTimer=null;autoFlush()},Math.max(0,nextAt-Date.now()));updateAuto()}
 function autoFlush(){
   if(syncing){scheduleAuto();return}
-  var list=pendingList();
-  if(!list.length){attempt=0;nextAt=0;updateAuto();return}
+  var l=pendingList();if(!l.length){attempt=0;nextAt=0;updateAuto();return}
   if(!gs.url){nextAt=0;updateAuto();return}
-  nextAt=0;push(list,true).then(function(){if(pendingList().length)attempt++;else attempt=0;scheduleAuto()})}
-addEventListener('online',function(){attempt=0;log('info','Сеть восстановлена — автоотправка возобновлена');autoFlush()});
-document.addEventListener('visibilitychange',function(){if(!document.hidden&&pendingList().length&&gs.url){attempt=0;autoFlush()}});
+  nextAt=0;push(l,true).then(function(){attempt=pendingList().length?attempt+1:0;scheduleAuto()})}
+addEventListener('online',function(){attempt=0;log('info','Сеть восстановлена — автоотправка возобновлена');autoFlush();refreshRemote(true)});
+document.addEventListener('visibilitychange',function(){if(document.hidden)return;refreshRemote(true);if(pendingList().length&&gs.url){attempt=0;autoFlush()}});
 function remoteDel(codes){if(!gs.url||!codes.length)return;
-  gsReq({action:'delete',codes:codes}).then(function(d){log('ok','Удалено строк в таблице: '+(d.removed||0))})
+  gsReq({action:'delete',codes:codes}).then(function(d){log('ok','Удалено строк: '+(d.removed||0));render()})
     .catch(function(e){log('err','Удаление в таблице не выполнено: '+e.message)})}
+/* ===== загрузка из таблицы: счётчик + участники ===== */
+function mapRow(r){
+  var ts=parseDate(r.date||r.created)||Date.now();
+  return{code:String(r.code==null?'':r.code).trim(),name:r.name||'',dept:r.dept||'',contact:r.contact||r.email||'',
+    likes:r.likes||'',dont:r.dont||'',allergies:r.allergies||'',giftToName:r.giftTo||'',ts:ts,updated:ts}}
+function mergeRemote(list){
+  var added=0;
+  list.forEach(function(r){
+    var c=norm(r.code);if(!c)return;var o=mapRow(r);
+    var ex=state.participants.find(function(p){return norm(p.code)===c});
+    if(ex){if(!ex.demo&&sst(ex)==='synced'){Object.assign(ex,o);ex.sync={state:'synced',at:Date.now()}}}
+    else{state.participants.push(Object.assign({id:uid(),demo:false,sync:{state:'synced',at:Date.now()}},o));added++}});
+  var pairs={},n=0;
+  state.participants.forEach(function(p){
+    if(!p.giftToName)return;
+    var t=state.participants.find(function(x){return x.name.trim().toLowerCase()===String(p.giftToName).trim().toLowerCase()});
+    if(t&&t.id!==p.id){pairs[p.id]=t.id;n++}});
+  if(n>=2)state.draw={pairs:pairs,at:new Date().toISOString(),remote:true};
+  return added}
+function refreshRemote(quiet){
+  if(!gs.url||countBusy)return Promise.resolve();
+  countBusy=true;paintCount();
+  return gsReq({action:'list'}).then(function(d){
+    var list=d.rows||[];remoteCount=(typeof d.count==='number'?d.count:list.length);gs.count=remoteCount;
+    gs.fmt=(list.length&&list[0].created!==undefined&&list[0].date===undefined)?'old':'new';saveGs();
+    var added=mergeRemote(list);save();
+    if(!quiet||added)log('ok','Из таблицы загружено: '+remoteCount+' участников'+(added?' · новых: '+added:''))})
+  .catch(function(e){
+    return gsReq({action:'ping'}).then(function(d){log('info','Счётчик участников обновлён: '+remoteCount)})
+      .catch(function(){log('err','Не удалось读取 данные таблицы: '+e.message)})})
+  .then(function(){countBusy=false;render();scheduleAuto()})}
 function readCfg(){gs.url=$('#gsUrl').value.trim();gs.sheet=$('#gsSheet').value.trim()||GS_SHEET;gs.token=$('#gsToken').value.trim()||GS_TOKEN;
   if(!gs.url)gs.ok=null;saveGs()}
-$('#bCfg').onclick=function(){readCfg();render();attempt=0;log('info','Настройки сохранены'+(gs.url?' · автосинхронизация активна':' · URL не задан'));
-  toast('Настройки сохранены 💾','ok');if(gs.url)autoFlush();else scheduleAuto()};
+$('#bCfg').onclick=function(){readCfg();render();attempt=0;log('info','Настройки сохранены');toast('Настройки сохранены 💾','ok');refreshRemote(true);autoFlush()};
 $('#bDef').onclick=function(){gs.url=GS_URL;gs.sheet=GS_SHEET;gs.token=GS_TOKEN;gs.sheetUrl=GS_DOC;gs.ok=null;saveGs();
-  $('#gsUrl').value=gs.url;$('#gsSheet').value=gs.sheet;$('#gsToken').value=gs.token;render();
-  log('info','Восстановлено встроенное подключение');toast('Встроенный URL восстановлен ↺','ok');bootPing()};
+  $('#gsUrl').value=gs.url;$('#gsSheet').value=gs.sheet;$('#gsToken').value=gs.token;render();log('info','Восстановлено встроенное подключение');toast('Встроенный URL восстановлен ↺','ok');refreshRemote(true)};
 $('#bPing').onclick=function(){readCfg();if(!gs.url){toast('Укажите URL веб-приложения','warn');render();return}
   log('info','Проверка связи…');
-  gsReq({action:'ping'}).then(function(d){log('ok','Связь есть · лист «'+d.sheet+'», строк: '+d.rows);toast('Google Sheets на связи ✅','ok');render();attempt=0;autoFlush()})
+  gsReq({action:'ping'}).then(function(d){log('ok','Связь есть · лист «'+d.sheet+'», участников: '+d.rows);toast('Таблица на связи ✅','ok');render();refreshRemote(true)})
     .catch(function(e){log('err','Нет связи: '+e.message);toast('Нет связи: '+e.message,'err');render()})};
-$('#bPushAll').onclick=function(){var l=realList();if(!l.length){toast('Реальных заявок пока нет','warn');return}attempt=0;push(l)};
-$('#bRetry').onclick=function(){var l=pendingList();if(!l.length){toast('Очередь пуста — всё отправлено ✅','ok');return}attempt=0;push(l)};
+$('#bRefresh').onclick=function(){refreshRemote(false).then(function(){toast('Данные обновлены 🔄','ok')})};
+$('#bPushAll').onclick=function(){var l=realList();if(!l.length){toast('Заявок пока нет','warn');return}attempt=0;push(l)};
+$('#bRetry').onclick=function(){var l=pendingList();if(!l.length){toast('Очередь пуста — всё сохранено ✅','ok');return}attempt=0;push(l)};
 $('#bPushDraw').onclick=function(){
   if(!state.draw){toast('Сначала проведите жеребьёвку','warn');return}
-  if(!gs.url){toast('Google Sheets не подключён','warn');return}
-  var pairs=realList().map(function(p){var g=byId(state.draw.pairs[p.id]);return{code:p.code,giftTo:g?g.name:''}});
+  if(!gs.url){toast('Таблица не подключена','warn');return}
+  var pairs=realList().map(function(p){return{code:String(p.code),giftTo:giftOf(p)}});
   syncing=true;render();
-  gsReq({action:'draw',pairs:pairs}).then(function(d){log('ok','Назначения обновлены: '+(d.updated||0));toast('Назначения записаны в таблицу 🎲','ok')})
+  gsReq({action:'draw',pairs:pairs}).then(function(d){log('ok','Назначения обновлены: '+(d.updated||0));toast('Назначения записаны 🎲','ok')})
     .catch(function(e){log('err','Назначения не записаны: '+e.message);toast('Ошибка: '+e.message,'err')})
     .then(function(){syncing=false;render();scheduleAuto()})};
-$('#bImport').onclick=function(){
-  if(!gs.url){toast('Google Sheets не подключён','warn');return}
-  syncing=true;render();
-  gsReq({action:'list'}).then(function(d){
-    var add=0;(d.rows||[]).forEach(function(r){
-      if(!r.code||state.participants.some(function(p){return norm(p.code)===norm(r.code)}))return;
-      state.participants.push({id:uid(),code:String(r.code),name:r.name||'Без имени',dept:r.dept||'',contact:r.email||'',likes:r.likes||'',dont:r.dont||'',allergies:r.allergies||'',ts:Date.parse(r.created)||Date.now(),updated:Date.now(),demo:false,sync:{state:'synced',at:Date.now()}});add++});
-    save();log('ok','Импорт: добавлено '+add+' из '+(d.rows||[]).length);toast(add?'Загружено новых участников: '+add:'Новых строк нет — все уже в базе',add?'ok':'info')})
-  .catch(function(e){log('err','Импорт не выполнен: '+e.message);toast('Ошибка: '+e.message,'err')})
-  .then(function(){syncing=false;render();scheduleAuto()})};
-function bootPing(){
-  if(!gs.url)return;
-  gsReq({action:'ping'}).then(function(d){
-    log('ok','Таблица на связи · лист «'+d.sheet+'», строк: '+d.rows);render();attempt=0;autoFlush()})
-  .catch(function(e){log('err','Стартовая проверка связи: '+e.message);render();scheduleAuto()})}
-/* ===== ОРГАНИЗАТОР ===== */
+$('#bImport').onclick=function(){refreshRemote(false).then(function(){toast('Загружено участников: '+(remoteCount==null?'—':remoteCount),'ok')})};
+/* ===== организатор ===== */
 $('#gate').addEventListener('submit',function(e){e.preventDefault();
   if($('#pass').value===PASS){sessionStorage.setItem('santa26.admin','1');unlock();toast('Добро пожаловать, организатор 🎅','ok')}
   else{$('#gateErr').textContent='Неверный пароль';var g=$('#gate');g.classList.add('shake');setTimeout(function(){g.classList.remove('shake')},500)}});
@@ -1046,69 +1090,66 @@ function unlock(){$('#gate').classList.add('hidden');$('#panel').classList.remov
 $('#bLogout').onclick=function(){sessionStorage.removeItem('santa26.admin');$('#panel').classList.add('hidden');$('#gate').classList.remove('hidden');toast('Вы вышли из служебного раздела','info')};
 function sattolo(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*i),t=a[i];a[i]=a[j];a[j]=t}return a}
 $('#bDraw').onclick=function(){
-  if(state.participants.length<2){toast('Нужно минимум 2 участника','err');return}
+  var pool=realList();
+  if(pool.length<2){toast('Нужно минимум 2 реальных участника','err');return}
   var go=function(){
-    var ids=state.participants.map(function(p){return p.id}),sh=sattolo(ids),pairs={};
+    var ids=pool.map(function(p){return p.id}),sh=sattolo(ids),pairs={};
     ids.forEach(function(id,i){pairs[id]=sh[i]});
-    state.draw={pairs:pairs,at:new Date().toISOString()};save();$('#trackRes').innerHTML='';render();burstAt($('#bDraw'));
-    toast('Маршруты построены: '+ids.length+' сант в рейсе 🎄','ok');log('info','Жеребьёвка проведена: '+ids.length+' участников');
-    attempt=0;push(realList(),true)};
-  if(state.draw)ask({title:'Перестроить маршруты?',text:'Пары будут назначены заново для всех участников. Коды отслеживания не изменятся.',ok:'🎲 Перестроить'}).then(function(v){if(v)go()});
-  else go()};
+    state.draw={pairs:pairs,at:new Date().toISOString()};
+    pool.forEach(function(p){p.giftToName=giftOf(p)});
+    save();$('#trackRes').innerHTML='';render();burstAt($('#bDraw'));
+    toast('Маршруты построены: '+ids.length+' сант в рейсе 🎄','ok');log('info','Жеребьёвка: '+ids.length+' участников');
+    attempt=0;push(pool,true)};
+  if(state.draw)ask({title:'Перестроить маршруты?',text:'Пары будут назначены заново. Коды участников не изменятся.',ok:'🎲 Перестроить'}).then(function(v){if(v)go()});else go()};
 $('#bTable').onclick=function(){tableOpen=!tableOpen;$('#tableBox').classList.toggle('hidden',!tableOpen);
   $('#bTable').textContent=tableOpen?'🙈 Скрыть таблицу':'📋 Показать таблицу';$('#bTable').setAttribute('aria-expanded',String(tableOpen));if(tableOpen)renderTable()};
 $('#bCsv').onclick=function(){
-  if(!state.participants.length){toast('Список пуст — нечего выгружать','warn');return}
-  var head=['Код','Имя и фамилия','Отдел / команда','Почта','Что вы любите?','Что вам НЕ дарить?','Аллергии и ограничения','Кому дарит','Зарегистрирован','Статус отправки'];
-  var st={synced:'Отправлено',pending:'В очереди',sending:'Отправка',error:'Ошибка',demo:'Демо (локально)'};
-  var lines=[head].concat(state.participants.map(function(p){var r=rowOf(p);return[r.code,r.name,r.dept,r.email,r.likes,r.dont,r.allergies,r.giftTo,r.created,st[sst(p)]]}))
+  if(!state.participants.length){toast('Список пуст','warn');return}
+  var lines=[HEAD].concat(state.participants.map(valsOf))
     .map(function(r){return r.map(function(v){return '"'+String(v==null?'':v).replace(/"/g,'""')+'"'}).join(';')}).join('\r\n');
   var b=new Blob(['\uFEFF'+lines],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');
   a.href=URL.createObjectURL(b);a.download='secret-santa-2026.csv';document.body.appendChild(a);a.click();a.remove();
   setTimeout(function(){URL.revokeObjectURL(a.href)},2000);toast('CSV выгружен ⬇️','ok')};
 var DEMO=[
- {name:'Анна Морозова',dept:'HR',contact:'a.morozova@company.ru',likes:'Кофе зерновой, тёмный шоколад, красивые блокноты',dont:'Алкоголь, свечи с запахом',allergies:'Орехи'},
- {name:'Дмитрий Соколов',dept:'IT',contact:'d.sokolov@company.ru',likes:'Настолки, чай улун, аксессуары для клавиатуры',dont:'Кружки с надписями',allergies:''},
- {name:'Елена Виноградова',dept:'Маркетинг',contact:'e.vinogradova@company.ru',likes:'Сертификаты в книжный, гирлянды, мандарины',dont:'Косметика с отдушками',allergies:'Ланолин'},
- {name:'Павел Орлов',dept:'Операции',contact:'p.orlov@company.ru',likes:'Термокружка, кофе дрип-пакеты, носки с оленями',dont:'Сладкое',allergies:'Сахар'},
- {name:'Мария Лебедева',dept:'Финансы',contact:'m.lebedeva@company.ru',likes:'Пазлы, какао, тёплый плед',dont:'Растения — нет места',allergies:''},
+ {name:'Петр Смирнов',dept:'Ops',contact:'petr@company.ru',likes:'Lexus, кофе, настолки',dont:'Mercedes',allergies:''},
+ {name:'Михаил Петров',dept:'IT',contact:'m.petrov@company.ru',likes:'Чай улун, механическая клавиатура',dont:'Кружки с надписями',allergies:''},
+ {name:'Елена Виноградова',dept:'Маркетинг',contact:'e.vinogradova@company.ru',likes:'Книжные сертификаты, гирлянды',dont:'Косметика с отдушками',allergies:'Ланолин'},
+ {name:'Мария Лебедева',dept:'Финансы',contact:'m.lebedeva@company.ru',likes:'Пазлы, какао, тёплый плед',dont:'Растения',allergies:''},
  {name:'Игорь Черных',dept:'Логистика',contact:'i.chernykh@company.ru',likes:'Мультитул, фонарик, вяленое мясо',dont:'Парфюм',allergies:''},
- {name:'Ольга Снегирёва',dept:'Клиентский сервис',contact:'o.snegireva@company.ru',likes:'Чай матча, стикеры, аромадиффузор',dont:'Молочный шоколад',allergies:'Цитрусовые'},
- {name:'Алексей Зимин',dept:'Продажи',contact:'a.zimin@company.ru',likes:'Книги по бизнесу, эспрессо, карточные игры',dont:'Алкоголь',allergies:''}];
-function addDemo(silent){
-  var n=0;DEMO.forEach(function(d){if(state.participants.some(function(p){return p.name.toLowerCase()===d.name.toLowerCase()}))return;
-    state.participants.push(Object.assign({id:uid(),code:code(),ts:Date.now()-n*36e5,updated:Date.now(),demo:true},d));n++});
-  save();render();if(!silent)toast(n?'Демо-участники добавлены: '+n+' ✨ (в таблицу не отправляются)':'Демо-участники уже в списке',n?'ok':'info');return n}
-$('#bDemo').onclick=function(){addDemo(false)};
+ {name:'Ольга Снегирёва',dept:'Клиентский сервис',contact:'o.snegireva@company.ru',likes:'Чай матча, стикеры, диффузор',dont:'Молочный шоколад',allergies:'Цитрусовые'}];
+$('#bDemo').onclick=function(){var n=0;DEMO.forEach(function(d){if(state.participants.some(function(p){return p.name.toLowerCase()===d.name.toLowerCase()}))return;
+  state.participants.push(Object.assign({id:uid(),code:code(),ts:Date.now()-n*36e5,updated:Date.now(),demo:true,giftToName:''},d));n++});
+  save();render();toast(n?'Демо-записи добавлены: '+n+' ✨ (в таблицу не отправляются)':'Демо уже в списке',n?'ok':'info')};
 $('#bDemoDel').onclick=function(){del(state.participants.filter(function(p){return p.demo}).map(function(p){return p.id}))};
 $('#bReset').onclick=function(){
   if(!state.draw){toast('Жеребьёвка ещё не проводилась','warn');return}
-  ask({title:'Сбросить жеребьёвку?',text:'Все маршруты будут удалены. Участники и коды останутся.',ok:'↺ Сбросить'}).then(function(v){
-    if(!v)return;var old=state.draw;state.draw=null;save();$('#trackRes').innerHTML='';render();
-    toast('Жеребьёвка сброшена','info',{label:'↩ Отменить',fn:function(){state.draw=old;save();render();attempt=0;push(realList(),true);toast('Жеребьёвка восстановлена','ok')}})})};
+  ask({title:'Сбросить жеребьёвку?',text:'Маршруты будут удалены локально и в таблице. Участники и коды останутся.',ok:'↺ Сбросить'}).then(function(v){
+    if(!v)return;var old=state.draw;state.draw=null;state.participants.forEach(function(p){p.giftToName=''});save();$('#trackRes').innerHTML='';render();
+    if(gs.url)gsReq({action:'draw',pairs:realList().map(function(p){return{code:String(p.code),giftTo:''}})}).then(function(){log('info','Назначения очищены в таблице')}).catch(function(){});
+    toast('Жеребьёвка сброшена','info',{label:'↩ Отменить',fn:function(){state.draw=old;state.participants.forEach(function(p){p.giftToName=giftOf(p)});save();render();attempt=0;push(realList(),true);toast('Жеребьёвка восстановлена','ok')}})})};
 $('#bClear').onclick=function(){
-  ask({title:'Очистить все данные?',text:'Будут удалены все участники, коды и маршруты в браузере. Строки в Google Sheets останутся.',ok:'🗑 Удалить всё',danger:true}).then(function(v){
+  ask({title:'Очистить локальную базу?',text:'Локальный список и маршруты будут очищены. Строки в таблице останутся и загрузятся заново при обновлении.',ok:'🗑 Очистить',danger:true}).then(function(v){
     if(!v)return;var snap=JSON.parse(JSON.stringify(state));
-    state={participants:[],draw:null};sel.clear();lastP=null;$('#waybill').classList.add('hidden');$('#trackRes').innerHTML='';closeDrawer();save();render();scheduleAuto();
-    toast('Все данные очищены','info',{label:'↩ Отменить',fn:function(){state=snap;save();render();scheduleAuto();toast('Данные восстановлены','ok')}})})};
+    state={participants:[],draw:null};sel.clear();lastP=null;$('#waybill').classList.add('hidden');$('#trackRes').innerHTML='';closeDrawer();save();render();
+    toast('Локальная база очищена','info',{label:'↩ Отменить',fn:function(){state=snap;save();render();toast('Данные восстановлены','ok')}})})};
 function del(ids){
   if(!ids.length)return;
-  var snap=JSON.parse(JSON.stringify(state)),codes=state.participants.filter(function(p){return ids.indexOf(p.id)>-1&&!p.demo}).map(function(p){return p.code});
+  var snap=JSON.parse(JSON.stringify(state)),codes=state.participants.filter(function(p){return ids.indexOf(p.id)>-1&&!p.demo}).map(function(p){return String(p.code)});
   var hadDraw=!!state.draw;
   state.participants=state.participants.filter(function(p){return ids.indexOf(p.id)<0});
   if(hadDraw)state.draw=null;
   ids.forEach(function(i){sel.delete(i)});if(drawerId&&ids.indexOf(drawerId)>-1)closeDrawer();
   if(lastP&&ids.indexOf(lastP.id)>-1){lastP=null;$('#waybill').classList.add('hidden')}
+  if(remoteCount!=null&&codes.length)remoteCount=Math.max(0,remoteCount-codes.length);
   save();render();scheduleAuto();remoteDel(codes);
   toast('Удалено: '+ids.length+(hadDraw?' · жеребьёвка сброшена':''),'info',{label:'↩ Отменить',fn:function(){
-    state=snap;save();render();toast('Восстановлено','ok');attempt=0;
-    push(state.participants.filter(function(p){return codes.indexOf(p.code)>-1}),true)}})}
+    state=snap;save();render();toast('Восстановлено','ok');attempt=0;push(state.participants.filter(function(p){return codes.indexOf(String(p.code))>-1}),true)}})}
 $('#q').addEventListener('input',function(){filters.q=this.value;activeView='';renderViews();renderTable()});
 $('#fDeptSel').addEventListener('change',function(){filters.dept=this.value;activeView='';renderViews();renderTable()});
 $('#fStatus').addEventListener('change',function(){filters.status=this.value;activeView='';renderViews();renderTable()});
 $('#sortBy').addEventListener('change',function(){filters.sort=this.value;activeView='';renderViews();renderTable()});
 $('#sortDir').onclick=function(){filters.dir=filters.dir==='asc'?'desc':'asc';activeView='';syncControls();renderViews();renderTable()};
-$('#bView').onclick=function(){askText({title:'Сохранить текущий вид',text:'Название для набора фильтров и сортировки.',ok:'💾 Сохранить',ph:'Например: IT в очереди'}).then(function(n){
+$('#bView').onclick=function(){askText({title:'Сохранить текущий вид',text:'Название для набора фильтров и сортировки.',ok:'💾 Сохранить',ph:'Например: Ops в очереди'}).then(function(n){
   if(!n)return;var v={id:'v'+Date.now(),name:n,f:Object.assign({},filters)};views.push(v);saveViews();activeView=v.id;renderViews();toast('Вид «'+n+'» сохранён','ok')})};
 $('#views').addEventListener('click',function(e){
   var x=e.target.closest('[data-vdel]');
@@ -1117,10 +1158,9 @@ $('#views').addEventListener('click',function(e){
 $('#selAll').addEventListener('change',function(){var r=rows(),on=this.checked;r.forEach(function(p){on?sel.add(p.id):sel.delete(p.id)});renderTable()});
 $('#bBulkNone').onclick=function(){sel.clear();renderTable()};
 $('#bBulkPush').onclick=function(){attempt=0;push(state.participants.filter(function(p){return sel.has(p.id)}))};
-$('#bBulkDel').onclick=function(){var ids=Array.from(sel);ask({title:'Удалить выбранных?',text:'Будет удалено записей: '+ids.length+'. Действие можно отменить сразу после удаления.',ok:'🗑 Удалить',danger:true}).then(function(v){if(v)del(ids)})};
+$('#bBulkDel').onclick=function(){var ids=Array.from(sel);ask({title:'Удалить выбранных?',text:'Будет удалено записей: '+ids.length+' (локально и в таблице). Отмена доступна сразу после удаления.',ok:'🗑 Удалить',danger:true}).then(function(v){if(v)del(ids)})};
 $('#tbody').addEventListener('click',function(e){
-  var ck=e.target.closest('[data-ck]');
-  if(ck){var id=ck.getAttribute('data-ck');ck.checked?sel.add(id):sel.delete(id);renderTable();return}
+  var ck=e.target.closest('[data-ck]');if(ck){var id=ck.getAttribute('data-ck');ck.checked?sel.add(id):sel.delete(id);renderTable();return}
   var cp=e.target.closest('[data-copy]');if(cp){copy(cp.getAttribute('data-copy')).then(function(){toast('Код скопирован 📋','ok')});return}
   var ed=e.target.closest('[data-edit]');if(ed){openDrawer(ed.getAttribute('data-edit'));return}
   var pu=e.target.closest('[data-push]');if(pu){var p=byId(pu.getAttribute('data-push'));if(p){attempt=0;push([p])}return}
@@ -1142,9 +1182,8 @@ function openDrawer(id){var p=byId(id);if(!p)return;drawerId=id;
   $('#dTitle').textContent=p.name;$('#dCode').textContent=p.code;$('#dSync').innerHTML=badge(p);
   D.name.value=p.name;D.dept.value=p.dept||'';D.contact.value=p.contact;D.likes.value=p.likes;D.dont.value=p.dont||'';D.allergy.value=p.allergies||'';
   Object.keys(D).forEach(function(k){ok(D[k])});
-  var g=state.draw?byId(state.draw.pairs[p.id]):null;
-  $('#dMeta').innerHTML='<div>Кому дарит: <b>'+(g?esc(g.name):'—')+'</b></div><div>Заявка: <b>'+dt(p.ts)+'</b></div><div>Изменён: <b>'+dt(p.updated||p.ts)+'</b></div>'+
-    (p.demo?'<div>🧪 Демо-запись: в Google Sheets не отправляется</div>':'')+
+  $('#dMeta').innerHTML='<div>Дата заявки: <b>'+esc(sheetDate(p.ts))+'</b></div><div>Кому дарит: <b>'+(giftOf(p)?esc(giftOf(p)):'—')+'</b></div>'+
+    (p.demo?'<div>🧪 Демо-запись: в таблицу не отправляется</div>':'')+
     (p.sync&&p.sync.error?'<div style="color:#D40511">Ошибка: <b>'+esc(p.sync.error)+'</b></div>':'');
   $('#drawer').classList.add('open');overlay(true)}
 function closeDrawer(){if(!$('#drawer').classList.contains('open'))return;$('#drawer').classList.remove('open');overlay(false);drawerId=null}
@@ -1153,7 +1192,7 @@ $('#dCode').onclick=function(){var p=byId(drawerId);if(p)copy(p.code).then(funct
 $('#dSave').onclick=function(){
   var p=byId(drawerId);if(!p)return;Object.keys(D).forEach(function(k){ok(D[k])});
   var n=D.name.value.trim(),m=D.contact.value.trim(),l=D.likes.value.trim(),first=null;
-  if(n.length<3){bad(D.name,'Укажите имя и фамилию');first=first||D.name}
+  if(n.length<3){bad(D.name,'Укажите имя');first=first||D.name}
   else if(state.participants.some(function(x){return x.id!==p.id&&x.name.toLowerCase()===n.toLowerCase()})){bad(D.name,'Такое имя уже есть в базе');first=first||D.name}
   if(!MAIL.test(m)){bad(D.contact,'Формат почты: name@company.ru');first=first||D.contact}
   if(l.length<3){bad(D.likes,'Добавьте пожелания');first=first||D.likes}
@@ -1166,14 +1205,13 @@ var nav=$('#nav');
 $('#burger').onclick=function(){var o=nav.classList.toggle('open');this.setAttribute('aria-expanded',String(o))};
 $$('#navMenu a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');$('#burger').setAttribute('aria-expanded','false')})});
 addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8)},{passive:true});
-/* ===== СТАРТ ===== */
+/* ===== старт ===== */
 sizeS();sizeC();if(!reduced)requestAnimationFrame(loopS);else sc.style.display='none';
 $('#gsUrl').value=gs.url;$('#gsSheet').value=gs.sheet;$('#gsToken').value=gs.token;
-if(first)addDemo(true);
 syncControls();renderViews();render();sched();tick();setInterval(tick,1000);setInterval(sched,60000);
-log('info','Встроенное подключение к Google Sheets активно · лист «'+gs.sheet+'»');
+log('info','Подключение активно · лист «'+gs.sheet+'» · формат: '+HEAD.join(' | '));
 if(sessionStorage.getItem('santa26.admin')==='1')unlock();
-bootPing();scheduleAuto();
+refreshRemote(true);scheduleAuto();setInterval(function(){refreshRemote(true)},60000);
 if(!reduced&&'IntersectionObserver' in window){
   document.documentElement.classList.add('anim');
   var ro=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');ro.unobserve(en.target)}})},{threshold:.1});
