@@ -1,442 +1,1456 @@
 <!DOCTYPE html>
 <html lang="ru">
-<!-- DHL Neon Night: глубокие цвета + неоновая подсветка -->
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Тайный Санта 2026 • DHL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFCC00">
+<meta name="description" content="Тайный Санта 2026 — жёлтая служба праздничной доставки. Регистрация, секретные коды, жеребьёвка и обмен подарками до 1000 ₽.">
+<title>Тайный Санта 2026 • Жёлтая служба праздничной доставки</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --yellow:#FFCC00;
-    --yellow-hot:#ffe27a;
-    --red:#ff1f3d;
-    --red-deep:#c00418;
-    --bg:#120508;
-    --panel:#1c0a10;
-    --text:#ffe9b0;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-    color:var(--text); line-height:1.6;
-    background:
-      radial-gradient(1200px 600px at 85% -10%, rgba(255,31,61,.18), transparent 60%),
-      radial-gradient(900px 500px at -10% 110%, rgba(255,204,0,.12), transparent 60%),
-      var(--bg);
-    background-attachment:fixed;
-  }
-  ::selection{background:var(--yellow); color:var(--bg)}
-  :focus-visible{outline:2px solid var(--yellow); outline-offset:2px}
+/* ============ ПАЛИТРА ============ */
+:root{
+  --y:#FFCC00; --y2:#FFB800; --y3:#FFD84D; --y4:#FFE066; --y-deep:#E6A800;
+  --red:#D40511; --red2:#FF2A33;
+  --ink:#221A06; --ink2:#4A3B12; --mute:#8A7C55;
+  --paper:#FFF9E8; --cream:#FFF3CF; --white:#FFFDF6; --line:#EFE6CC;
+  --dark:#171106; --dark2:#241B09; --darkline:#3A2E10;
+  --green:#1E9E6A; --green-d:#1E7A4F; --blue:#2E6BFF; --amber:#FF9F1C;
+  --disp:'Unbounded',system-ui,sans-serif;
+  --body:'Manrope',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body); color:var(--ink); background:var(--paper);
+  overflow-x:hidden; line-height:1.55;
+  background-image:radial-gradient(900px 500px at 110% 12%,rgba(255,204,0,.14),transparent 60%),
+                   radial-gradient(700px 500px at -10% 55%,rgba(212,5,17,.05),transparent 60%);
+}
+::selection{background:var(--ink);color:var(--y)}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--dark2)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--y3),var(--y2));border:3px solid var(--dark2);border-radius:8px}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--red2),var(--red))}
+*{scrollbar-width:thin;scrollbar-color:var(--y2) var(--dark2)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:6px}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.hidden{display:none!important}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+section{scroll-margin-top:104px}
+#top{scroll-margin-top:0}
 
-  /* ===== Градиентный неоновый шрифт в стиле DHL ===== */
-  h1,h2{
-    font-style:italic; font-weight:900; text-transform:uppercase; letter-spacing:1.5px;
-    background:linear-gradient(92deg,var(--yellow) 0%,#ff9a00 45%,var(--red) 100%);
-    -webkit-background-clip:text; background-clip:text;
-    color:transparent; -webkit-text-fill-color:transparent;
-  }
-  h1{
-    font-size:clamp(30px,8vw,54px); margin-bottom:10px;
-    animation:neonPulse 3.2s ease-in-out infinite;
-  }
-  h2{font-size:clamp(20px,5vw,28px); margin-bottom:14px;
-    filter:drop-shadow(0 0 8px rgba(255,154,0,.45));}
-  @keyframes neonPulse{
-    0%,100%{filter:drop-shadow(0 0 6px rgba(255,204,0,.55)) drop-shadow(0 0 18px rgba(255,31,61,.35))}
-    50%{filter:drop-shadow(0 0 12px rgba(255,204,0,.9)) drop-shadow(0 0 30px rgba(255,31,61,.6))}
-  }
+/* ============ ФОНОВЫЕ СЛОИ ============ */
+#snow{position:fixed;inset:0;z-index:40;pointer-events:none}
+#confetti{position:fixed;inset:0;z-index:500;pointer-events:none}
+.grain{position:fixed;inset:0;z-index:45;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
 
-  /* ===== ФОНОВЫЕ ЭТИКЕТКИ DHL (неон) ===== */
-  .bg{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
-  .bg-label{
-    position:absolute; width:230px; background:rgba(24,8,12,.9);
-    border:1px solid rgba(255,31,61,.6); border-radius:10px; padding:14px;
-    opacity:.22; display:flex; flex-direction:column; gap:9px;
-    box-shadow:0 0 18px rgba(255,31,61,.35);
-  }
-  .bg-logo{font-weight:900; font-style:italic; font-size:34px; letter-spacing:3px; color:var(--red); line-height:1;
-    text-shadow:0 0 10px rgba(255,31,61,.8)}
-  .bg-line{height:8px; background:rgba(255,204,0,.35); border-radius:4px}
-  .bg-line.short{width:60%}
-  .bg-barcode{height:30px; background:repeating-linear-gradient(90deg,var(--yellow) 0 2px,transparent 2px 5px,var(--yellow) 5px 8px,transparent 8px 10px)}
+/* ============ ВЕРХНЯЯ ПОЛОСА (без эмблемы DHL) ============ */
+.topstrip{background:linear-gradient(90deg,var(--y3),var(--y) 40%,var(--y2));border-bottom:3px solid var(--ink);position:relative;z-index:60}
+.ticker{overflow:hidden;border-bottom:1.5px dashed rgba(34,26,6,.35)}
+.ticker-track{display:flex;width:max-content;will-change:transform;animation:tick 38s linear infinite}
+.ticker-track span{white-space:pre;font-size:16px;letter-spacing:7px;padding:7px 0;color:var(--ink)}
+@keyframes tick{to{transform:translateX(-50%)}}
+.tagline{font-family:var(--disp);font-weight:700;font-size:clamp(10px,2.3vw,14px);letter-spacing:.32em;
+  text-align:center;padding:8px 16px 10px;color:var(--ink)}
+.tagline::before,.tagline::after{content:'✦';color:var(--red);letter-spacing:0;margin:0 16px}
 
-  /* ===== СНЕГ (неон) ===== */
-  .snow{position:fixed; inset:0; z-index:6; pointer-events:none; overflow:hidden}
-  .snow span{
-    position:absolute; top:-6vh; left:var(--x,50%);
-    font-size:var(--s,14px); color:var(--c,#fff); opacity:var(--o,.85);
-    text-shadow:0 0 10px currentColor;
-    animation:fall var(--d,12s) linear infinite; animation-delay:var(--dl,0s);
-  }
-  @keyframes fall{
-    0%{transform:translate3d(0,-10vh,0) rotate(0deg)}
-    50%{transform:translate3d(3vw,50vh,0) rotate(180deg)}
-    100%{transform:translate3d(-2vw,110vh,0) rotate(360deg)}
-  }
+/* ============ НАВИГАЦИЯ ============ */
+#nav{position:sticky;top:0;z-index:100;background:rgba(255,249,232,.92);backdrop-filter:blur(10px);
+  border-bottom:2px solid var(--ink);transition:box-shadow .3s}
+#nav.scrolled{box-shadow:0 8px 28px rgba(34,26,6,.16)}
+.nav-inner{max-width:1180px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:18px}
+.brand{font-family:var(--disp);font-weight:900;font-size:16px;text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.brand em{font-style:normal;color:var(--red)}
+#navMenu{display:flex;align-items:center;gap:4px;margin-left:auto;list-style:none}
+#navMenu a{display:block;text-decoration:none;font-weight:700;font-size:13.5px;padding:8px 11px;border-radius:10px;color:var(--ink2);transition:.2s;white-space:nowrap}
+#navMenu a:hover{background:var(--cream);color:var(--ink)}
+#navMenu a.active{background:var(--ink);color:var(--y)}
+#navMenu a.nav-cta{background:var(--red);color:#fff;font-weight:800;box-shadow:3px 3px 0 var(--ink);margin-left:6px}
+#navMenu a.nav-cta:hover{background:var(--red2);color:#fff;transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+#navMenu a.nav-lock{font-size:15px;padding:8px 9px}
+.burger{display:none;margin-left:auto;background:var(--white);border:2px solid var(--ink);border-radius:10px;
+  width:42px;height:42px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;box-shadow:3px 3px 0 var(--ink)}
+.burger i{display:block;width:18px;height:2.5px;background:var(--ink);border-radius:2px;transition:.25s}
+#nav.open .burger i:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+#nav.open .burger i:nth-child(2){opacity:0}
+#nav.open .burger i:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 
-  header,main,footer{position:relative; z-index:1}
+/* ============ КНОПКИ ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--body);font-weight:800;
+  font-size:15px;padding:13px 22px;border-radius:14px;border:2px solid var(--ink);cursor:pointer;text-decoration:none;
+  transition:transform .15s,box-shadow .15s,background .2s;line-height:1.2}
+.btn-primary{background:var(--red);color:#fff;box-shadow:5px 5px 0 var(--ink)}
+.btn-primary:hover{background:var(--red2);transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn-primary:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-yellow{background:var(--y);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.btn-yellow:hover{background:var(--y3);transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn-yellow:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-dark{background:var(--ink);color:var(--y);box-shadow:5px 5px 0 rgba(34,26,6,.35)}
+.btn-dark:hover{background:var(--dark2);transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(34,26,6,.35)}
+.btn-ghost{background:var(--white);color:var(--ink);box-shadow:4px 4px 0 rgba(34,26,6,.25)}
+.btn-ghost:hover{background:var(--cream);transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(34,26,6,.25)}
+.btn-warn{background:#FFF4E0;color:#9A5B00;border-color:var(--amber);box-shadow:4px 4px 0 rgba(255,159,28,.4)}
+.btn-warn:hover{background:#FFE9C7;transform:translate(-2px,-2px)}
+.btn-danger{background:var(--red);color:#fff;box-shadow:4px 4px 0 rgba(212,5,17,.35)}
+.btn-danger:hover{background:var(--red2);transform:translate(-2px,-2px)}
+.btn-big{font-size:17px;padding:16px 28px;width:100%}
+.btn-sm{font-size:13px;padding:9px 14px;border-radius:11px}
 
-  /* ===== Неоновые полосы DHL ===== */
-  .stripes{
-    height:12px;
-    background:repeating-linear-gradient(-45deg,var(--red) 0 16px,var(--yellow) 16px 32px);
-    box-shadow:0 0 16px rgba(255,31,61,.6), 0 0 30px rgba(255,204,0,.35);
-  }
+/* ============ ЧИПЫ ============ */
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.chip-green{background:var(--green);color:#fff}
+.chip-red{background:var(--red);color:#fff}
+.chip-amber{background:var(--amber);color:var(--ink)}
+.chip-blue{background:var(--blue);color:#fff}
+.chip-ink{background:var(--ink);color:var(--y)}
 
-  /* ===== Фургончик (неон) ===== */
-  .header-stripes{position:absolute; top:0; left:0; right:0; overflow:visible}
-  .van{
-    position:absolute; top:-26px; left:-20%; width:74px; height:30px;
-    animation:drive 7s ease-in-out .6s 1 forwards, bob .5s linear infinite;
-  }
-  .van::before{ /* луч фары */
-    content:""; position:absolute; right:-16px; top:14px; width:18px; height:6px;
-    background:linear-gradient(90deg,rgba(255,204,0,.85),transparent); filter:blur(1px);
-  }
-  .van-body{position:absolute; left:0; top:0; width:48px; height:24px; background:var(--red); border-radius:5px 5px 0 0;
-    box-shadow:0 0 12px rgba(255,31,61,.7)}
-  .van-body::after{
-    content:"DHL"; position:absolute; left:9px; top:5px; color:var(--yellow);
-    font-weight:900; font-style:italic; font-size:11px; letter-spacing:1px;
-    text-shadow:0 0 8px rgba(255,204,0,.9);
-  }
-  .van-cab{
-    position:absolute; left:46px; top:7px; width:24px; height:17px;
-    background:var(--yellow); border:2px solid var(--red); border-left:none; border-radius:0 7px 0 0;
-    box-shadow:0 0 10px rgba(255,204,0,.6);
-  }
-  .van-cab::after{content:""; position:absolute; right:3px; top:2px; width:9px; height:7px; background:#fff; border-radius:2px}
-  .van-wheel{position:absolute; bottom:-6px; width:12px; height:12px; background:#0a0a0a; border-radius:50%;
-    box-shadow:inset 0 0 0 3px var(--yellow), 0 0 8px rgba(255,204,0,.6)}
-  .w1{left:8px}.w2{left:50px}
-  @keyframes drive{0%{left:-20%}100%{left:110%}}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+/* ============ HERO ============ */
+.hero{position:relative;overflow:hidden;padding:76px 0 84px;
+  background:linear-gradient(135deg,var(--y3) 0%,var(--y) 46%,var(--y2) 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(700px 420px at 18% 8%,rgba(255,253,246,.75),transparent 60%);pointer-events:none}
+.hero::after{content:'❄';position:absolute;right:-70px;top:-90px;font-size:340px;line-height:1;color:rgba(255,253,246,.32);transform:rotate(15deg);pointer-events:none}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;background:var(--white);border:2px solid var(--ink);
+  border-radius:999px;padding:7px 15px;font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;box-shadow:3px 3px 0 var(--ink)}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.5);opacity:.55}}
+.hero-title{font-family:var(--disp);font-weight:900;font-size:clamp(38px,5.6vw,72px);line-height:1.04;margin:20px 0 16px;letter-spacing:-.01em}
+.hero-title .year{color:var(--red)}
+.hero-sub{font-size:clamp(16px,2vw,20px);font-weight:600;color:var(--ink2);max-width:46ch;margin-bottom:26px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:26px}
+.countdown{display:inline-flex;flex-direction:column;gap:8px;background:var(--white);border:2px solid var(--ink);
+  border-radius:16px;padding:14px 18px;box-shadow:5px 5px 0 var(--ink);margin-bottom:22px}
+.cd-label{font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.cd-digits{display:flex;align-items:flex-start;gap:7px}
+.cd-cell{background:var(--ink);color:var(--y);border-radius:10px;padding:7px 10px;min-width:58px;text-align:center}
+.cd-cell b{font-family:var(--mono);font-weight:700;font-size:25px;display:block;line-height:1.1;font-variant-numeric:tabular-nums}
+.cd-cell span{display:block;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C9BC9C;margin-top:2px}
+.cd-sep{font-weight:800;font-size:22px;color:var(--ink);padding-top:8px}
+.hero-stats{display:flex;flex-wrap:wrap;gap:10px}
+.hstat{background:rgba(255,253,246,.8);border:2px solid var(--ink);border-radius:999px;padding:7px 15px;font-weight:800;font-size:13px}
+.hstat b{color:var(--red)}
+.hero-art{position:relative}
+.parcel-scene{width:100%;height:auto;animation:bob 7s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.stamp-badge{position:absolute;top:-16px;right:-4px;width:118px;height:118px;filter:drop-shadow(4px 4px 0 rgba(34,26,6,.85))}
+.stamp-badge svg{width:100%;height:100%;animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stamp-text{font-family:var(--disp);font-weight:700;font-size:11.5px;letter-spacing:1.5px;fill:var(--ink)}
+.float-a,.float-b,.float-c{transform-box:fill-box;transform-origin:center}
+.float-a{animation:floatA 5s ease-in-out infinite}
+.float-b{animation:floatA 6.5s ease-in-out infinite reverse}
+.float-c{animation:floatA 7.5s ease-in-out infinite}
+@keyframes floatA{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-13px) rotate(7deg)}}
+.tw1,.tw2,.tw3{transform-box:fill-box;transform-origin:center;animation:tw 2.4s ease-in-out infinite}
+.tw2{animation-delay:.7s}.tw3{animation-delay:1.3s}
+@keyframes tw{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+.tape-divider{height:18px;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  background:repeating-linear-gradient(45deg,var(--red) 0 18px,var(--y) 18px 36px,var(--ink) 36px 54px)}
 
-  /* ===== Шапка ===== */
-  header{
-    text-align:center; padding:44px 16px 52px;
-    background:radial-gradient(ellipse at 50% -20%, rgba(255,31,61,.25), transparent 60%);
-    border-bottom:2px solid rgba(255,204,0,.5);
-    box-shadow:0 6px 24px rgba(255,204,0,.15);
-  }
-  .logo{width:min(200px,60vw); height:auto; display:block; margin:0 auto 14px;
-    filter:drop-shadow(0 0 12px rgba(255,204,0,.5)) drop-shadow(0 0 22px rgba(255,31,61,.4))}
-  .brand{
-    display:inline-block; background:rgba(255,31,61,.15); color:var(--yellow);
-    font-weight:800; letter-spacing:2px; font-size:12px; padding:6px 16px;
-    border-radius:999px; text-transform:uppercase; margin-bottom:16px;
-    border:1px solid rgba(255,204,0,.6);
-    box-shadow:0 0 12px rgba(255,204,0,.35);
-    text-shadow:0 0 8px rgba(255,204,0,.6);
-  }
-  header .sub{max-width:520px; margin:0 auto 24px; font-size:clamp(15px,4vw,19px); font-weight:600; color:var(--yellow-hot)}
+/* ============ СЕКЦИИ ============ */
+.section{padding:84px 0}
+.sec-head{margin-bottom:42px;max-width:720px}
+.sec-tag{display:inline-block;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.22em;
+  background:var(--ink);color:var(--y);padding:6px 12px;border-radius:7px;margin-bottom:14px;text-transform:uppercase}
+.sec-title{font-family:var(--disp);font-weight:900;font-size:clamp(26px,3.6vw,42px);line-height:1.12;margin-bottom:12px}
+.sec-title mark{background:linear-gradient(transparent 55%,var(--y) 55%);color:inherit;padding:0 4px}
+.sec-sub{font-size:16px;font-weight:500;color:var(--ink2)}
+.dark{background:linear-gradient(160deg,#1C1507,var(--dark2) 55%,#1C1507);color:#F5EDD8;position:relative;overflow:hidden}
+.dark .sec-title{color:var(--white)}
+.dark .sec-sub{color:#C9BC9C}
+.dark .sec-tag{background:var(--y);color:var(--ink)}
 
-  .wrap{max-width:720px; margin:0 auto; padding:0 16px}
+/* ============ КАК ЭТО РАБОТАЕТ ============ */
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.step-card{position:relative;background:var(--white);border:2px solid var(--ink);border-radius:18px;
+  padding:24px 22px;box-shadow:6px 6px 0 var(--ink);transition:transform .2s,box-shadow .2s}
+.step-card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink)}
+.step-card:hover .step-ico{animation:wiggle .5s ease-in-out}
+@keyframes wiggle{25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
+.step-num{position:absolute;top:-14px;right:16px;font-family:var(--disp);font-weight:900;font-size:13px;
+  background:var(--y);border:2px solid var(--ink);border-radius:999px;padding:4px 11px}
+.step-ico{font-size:32px;margin-bottom:14px;display:inline-block}
+.step-title{font-weight:800;font-size:16.5px;margin-bottom:8px}
+.step-text{font-size:14px;color:var(--ink2)}
+.step-card:not(:last-child)::after{content:'→';position:absolute;right:-23px;top:44px;color:var(--red);font-weight:800;font-size:22px;z-index:2}
 
-  /* ===== Неоновые кнопки ===== */
-  .btn{
-    display:inline-block; background:linear-gradient(180deg,var(--red),var(--red-deep));
-    color:#fff; font-weight:800; text-transform:uppercase; letter-spacing:.6px;
-    padding:14px 30px; border-radius:8px; text-decoration:none;
-    border:1px solid rgba(255,204,0,.5); font-size:15px; cursor:pointer;
-    box-shadow:0 0 14px rgba(255,31,61,.55), 0 4px 0 #7a0310;
-    text-shadow:0 0 6px rgba(255,255,255,.35);
-  }
-  .btn:hover{box-shadow:0 0 22px rgba(255,31,61,.8), 0 4px 0 #7a0310}
-  .btn:active{transform:translateY(2px); box-shadow:0 0 10px rgba(255,31,61,.5), 0 2px 0 #7a0310}
-  .btn.small{padding:10px 18px; font-size:13px}
+/* ============ ПРАВИЛА ============ */
+#rules::after{content:'₽';position:absolute;right:-40px;bottom:-110px;font-family:var(--disp);font-weight:900;
+  font-size:420px;line-height:1;color:rgba(255,204,0,.06);pointer-events:none}
+.budget-banner{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:26px;
+  background:linear-gradient(120deg,var(--y3),var(--y2));color:var(--ink);border:2px solid var(--ink);
+  border-radius:20px;padding:26px 30px;box-shadow:8px 8px 0 var(--red);margin-bottom:34px}
+.budget-sum{font-family:var(--disp);font-weight:900;font-size:clamp(34px,4.5vw,52px);line-height:1;white-space:nowrap}
+.budget-sum small{display:block;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px}
+.budget-note{flex:1;min-width:240px;font-weight:600;font-size:15px}
+.meter{height:14px;background:var(--ink);border-radius:999px;overflow:hidden;margin-top:12px;border:2px solid var(--ink)}
+.meter-fill{height:100%;width:100%;border-radius:999px;
+  background:repeating-linear-gradient(45deg,var(--red) 0 12px,var(--red2) 12px 24px);
+  background-size:34px 34px;animation:meter 1.4s linear infinite}
+@keyframes meter{to{background-position:34px 0}}
+.rules-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.rule-item{display:flex;gap:16px;background:var(--dark2);border:2px solid rgba(255,204,0,.35);border-radius:16px;padding:20px 22px;transition:border-color .2s,transform .2s}
+.rule-item:hover{border-color:var(--y);transform:translateY(-3px)}
+.rule-ico{flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:22px;
+  background:var(--y);border:2px solid var(--ink);border-radius:13px}
+.rule-item h3{font-size:16px;font-weight:800;color:var(--white);margin-bottom:5px}
+.rule-item p{font-size:14px;color:#C9BC9C}
 
-  section{padding:30px 0}
+/* ============ ГРАФИК ============ */
+#schedule{background:linear-gradient(180deg,var(--paper),var(--cream))}
+.timeline{position:relative;max-width:760px;margin:0 auto;padding-left:34px}
+.timeline::before{content:'';position:absolute;left:11px;top:14px;bottom:14px;width:4px;border-radius:4px;
+  background:linear-gradient(180deg,var(--y),var(--y2) 55%,var(--red))}
+.tl-item{position:relative;margin-bottom:22px}
+.tl-node{position:absolute;left:-34px;top:18px;width:26px;height:26px;border-radius:50%;background:var(--white);
+  border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:12px;z-index:2}
+.tl-item.active .tl-node{background:var(--red);border-color:var(--ink);animation:ring 1.8s ease-out infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(212,5,17,.45)}100%{box-shadow:0 0 0 14px rgba(212,5,17,0)}}
+.tl-item.done .tl-node{background:var(--green);color:#fff}
+.tl-card{background:var(--white);border:2px solid var(--ink);border-radius:16px;padding:18px 22px;
+  box-shadow:5px 5px 0 var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;transition:transform .2s}
+.tl-card:hover{transform:translateX(4px)}
+.tl-item.active .tl-card{border-color:var(--red);box-shadow:5px 5px 0 var(--red)}
+.tl-date{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--red);white-space:nowrap}
+.tl-body{flex:1;min-width:200px}
+.tl-title{font-weight:800;font-size:16px}
+.tl-text{font-size:13.5px;color:var(--ink2)}
+.tl-now{display:none}
+.tl-item.active .tl-now{display:inline-flex}
+.tl-item.done .tl-date{color:var(--green-d)}
 
-  /* ===== Карточки-«этикетки» (неон) ===== */
-  .card{
-    background:linear-gradient(180deg,rgba(30,10,16,.92),rgba(18,6,10,.92));
-    border:1px solid rgba(255,204,0,.35); border-top:4px solid var(--red);
-    border-radius:12px; padding:20px; margin-bottom:12px; color:var(--text);
-    box-shadow:0 0 18px rgba(255,31,61,.28), inset 0 0 24px rgba(255,204,0,.05);
-  }
-  li{margin:0 0 8px 20px}
-  summary{font-weight:800; cursor:pointer; color:var(--yellow); text-shadow:0 0 8px rgba(255,204,0,.45)}
-  details[open] summary{color:var(--red); text-shadow:0 0 8px rgba(255,31,61,.6)}
-  details p{margin-top:8px}
+/* ============ РЕГИСТРАЦИЯ ============ */
+#reg{background:linear-gradient(150deg,var(--y4),var(--y) 55%,var(--y2));border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.reg-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
+.reg-info{position:sticky;top:100px}
+.reg-info h3{font-family:var(--disp);font-weight:700;font-size:22px;margin-bottom:14px}
+.reg-info>p{font-size:15.5px;font-weight:500;color:var(--ink2);margin-bottom:20px}
+.info-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.info-list li{display:flex;gap:12px;align-items:flex-start;font-weight:600;font-size:14.5px}
+.info-list .ii{flex:none;width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  background:var(--white);border:2px solid var(--ink);border-radius:10px;font-size:16px}
+.count-chip{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--y);
+  border-radius:999px;padding:9px 18px;font-weight:800;font-size:14px;margin-bottom:18px}
+.count-chip b{font-family:var(--mono);font-size:17px}
+.reg-link{font-weight:800;font-size:14.5px;color:var(--red);text-decoration:none;border-bottom:2px solid var(--red)}
+.reg-link:hover{color:var(--ink);border-color:var(--ink)}
+.form-card{background:var(--white);border:2px solid var(--ink);border-radius:20px;padding:28px;box-shadow:8px 8px 0 var(--ink)}
+.field{margin-bottom:17px}
+.field label{display:block;font-weight:800;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px}
+.field label b{color:var(--red)}
+.field input,.field textarea{width:100%;font-family:var(--body);font-size:15px;font-weight:500;color:var(--ink);
+  background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:12px 14px;transition:.2s;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:var(--mute)}
+.field input:focus,.field textarea:focus{outline:none;background:#fff;box-shadow:0 0 0 4px rgba(255,204,0,.5)}
+.field .err{display:block;font-size:12px;font-weight:700;color:var(--red);margin-top:5px;min-height:0}
+.field.invalid input,.field.invalid textarea{border-color:var(--red);background:#FFF1F0}
+.form-note{font-size:12.5px;color:var(--mute);text-align:center;margin-top:12px;font-weight:600}
 
-  label{display:block; font-weight:700; font-size:14px; margin-top:10px; color:#ffd76a}
-  input,textarea{
-    width:100%; padding:12px; border:1px solid rgba(255,204,0,.4); border-radius:8px;
-    font:inherit; margin-top:6px; background:#180709; color:#fff3d6;
-  }
-  input::placeholder,textarea::placeholder{color:rgba(255,233,176,.45)}
-  input:focus,textarea:focus{outline:none; border-color:var(--yellow); box-shadow:0 0 12px rgba(255,204,0,.5)}
-  textarea{min-height:70px}
+/* ============ НАКЛАДНАЯ / МАРШРУТ ============ */
+.waybill,.label-card{background:var(--white);border:2px solid var(--ink);border-radius:18px;padding:24px;
+  box-shadow:8px 8px 0 var(--ink);color:var(--ink);position:relative;overflow:hidden}
+.waybill{margin-top:24px;border-style:dashed;border-width:2.5px}
+.wb-head,.lc-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;
+  font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.06em;
+  border-bottom:2px dashed var(--line);padding-bottom:14px;margin-bottom:16px}
+.wb-code-label{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.wb-code{font-family:var(--mono);font-weight:700;font-size:clamp(21px,3.4vw,30px);letter-spacing:.04em;
+  color:var(--red);word-break:break-all;margin-bottom:12px}
+#wbBarcode{width:100%;height:46px;margin-bottom:16px}
+.wb-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.wb-meta span{display:block;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.wb-meta b{font-size:14px;word-break:break-word}
+.wb-note{background:#FFF4E0;border:2px solid var(--amber);border-radius:12px;padding:12px 14px;
+  font-size:13px;font-weight:600;margin-bottom:18px}
+.wb-actions{display:flex;flex-wrap:wrap;gap:10px}
+.track-box{max-width:720px;margin:0 auto;position:relative;z-index:2}
+.track-form{display:flex;gap:12px}
+.input-dark{flex:1;font-family:var(--mono);font-weight:700;font-size:17px;letter-spacing:.06em;color:var(--y);
+  background:var(--dark2);border:2px solid var(--y);border-radius:14px;padding:15px 18px;text-transform:uppercase;transition:.2s;min-width:0}
+.input-dark::placeholder{color:#8A7C55;text-transform:none;letter-spacing:0;font-family:var(--body);font-weight:500;font-size:14px}
+.input-dark:focus{outline:none;box-shadow:0 0 0 4px rgba(255,204,0,.3);border-color:var(--y3)}
+.track-hint{font-size:13px;color:#C9BC9C;margin-top:14px}
+.track-hint code{font-family:var(--mono);color:var(--y);background:var(--dark2);padding:2px 7px;border-radius:6px;border:1px solid var(--darkline)}
+#trackResult{margin-top:26px}
+#trackResult .label-card{box-shadow:8px 8px 0 var(--y)}
+.lc-to{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.lc-name{font-family:var(--disp);font-weight:900;font-size:clamp(24px,4vw,36px);line-height:1.1;margin-bottom:8px;word-break:break-word}
+.lc-dept{display:inline-block;background:var(--cream);border:2px solid var(--ink);border-radius:999px;
+  padding:5px 14px;font-weight:800;font-size:13px;margin-bottom:16px}
+.lc-grid{display:grid;gap:12px;margin-bottom:16px}
+.lc-block{border:2px solid;border-radius:12px;padding:12px 15px}
+.lc-block h4{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.lc-block p{font-size:14.5px;font-weight:500}
+.lc-block.good{border-color:var(--green);background:#EAF7F0}
+.lc-block.good h4{color:var(--green-d)}
+.lc-block.bad{border-color:var(--red);background:#FDECEC}
+.lc-block.bad h4{color:var(--red)}
+.lc-block.warn{border-color:var(--amber);background:#FFF4E0}
+.lc-block.warn h4{color:#9A5B00}
+.lc-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px;border-top:2px dashed var(--line);padding-top:14px}
+.lc-secret{font-size:13px;font-weight:700;color:var(--mute)}
+.lc-msg{font-size:15.5px;font-weight:500;margin-bottom:16px}
+.label-card.pending{border-color:var(--amber)}
+.label-card.error{border-color:var(--red);background:#FDECEC}
+.label-card.late{border-color:var(--blue);background:#EAF0FF}
+.reveal-pop{animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{0%{opacity:0;transform:scale(.92) translateY(14px)}100%{opacity:1;transform:none}}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
 
-  .code{
-    font-size:32px; font-weight:900; letter-spacing:4px; color:var(--yellow);
-    background:rgba(255,204,0,.06); border:2px dashed rgba(255,204,0,.7); border-radius:12px;
-    padding:12px; text-align:center; margin:12px 0;
-    text-shadow:0 0 10px rgba(255,204,0,.8), 0 0 30px rgba(255,204,0,.4);
-  }
-  .msg{margin-top:10px; font-size:15px}
-  .err{color:#ff5d6e; font-weight:700; text-shadow:0 0 8px rgba(255,31,61,.6)}
+/* ============ ОРГАНИЗАТОР ============ */
+#admin{background:linear-gradient(180deg,var(--cream),var(--paper))}
+.gate-card{max-width:460px;margin:0 auto;background:var(--white);border:2px solid var(--ink);border-radius:20px;
+  padding:32px 28px;box-shadow:8px 8px 0 var(--ink);text-align:center}
+.gate-lock{font-size:40px;margin-bottom:10px}
+.gate-card h3{font-family:var(--disp);font-weight:700;font-size:19px;margin-bottom:6px}
+.gate-card>p{font-size:13.5px;color:var(--ink2);margin-bottom:18px}
+.gate-card input{width:100%;font-family:var(--mono);font-size:16px;text-align:center;background:var(--paper);
+  border:2px solid var(--ink);border-radius:12px;padding:13px;margin-bottom:8px}
+.gate-card input:focus{outline:none;box-shadow:0 0 0 4px rgba(255,204,0,.5)}
+.gate-err{font-size:12.5px;font-weight:700;color:var(--red);min-height:18px;margin-bottom:10px}
+.gate-hint{font-size:11.5px;color:var(--mute);margin-top:14px}
+.gate-hint code{font-family:var(--mono);background:var(--cream);padding:1px 6px;border-radius:5px;border:1px solid var(--line)}
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:22px}
+.stat-card{background:var(--white);border:2px solid var(--ink);border-radius:14px;padding:16px 18px;box-shadow:4px 4px 0 var(--ink)}
+.stat-card span{display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
+.stat-v{font-family:var(--disp);font-weight:700;font-size:20px}
+.stat-v.ok{color:var(--green-d)}
+.stat-v.warn{color:#B26A00}
+.admin-actions{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:24px}
+.table-tools{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:14px}
+.table-tools input{flex:1;min-width:220px;font-family:var(--body);font-size:14px;font-weight:500;background:var(--white);
+  border:2px solid var(--ink);border-radius:11px;padding:10px 14px}
+.table-tools input:focus{outline:none;box-shadow:0 0 0 4px rgba(255,204,0,.5)}
+.table-tools span{font-size:13px;font-weight:700;color:var(--mute)}
+.table-wrap{overflow:auto;max-height:520px;border:2px solid var(--ink);border-radius:16px;background:var(--white);box-shadow:6px 6px 0 var(--ink)}
+.table-wrap table{border-collapse:collapse;min-width:1100px;width:100%;font-size:13px}
+.table-wrap thead th{position:sticky;top:0;z-index:2;background:var(--ink);color:var(--y);text-align:left;
+  padding:12px 14px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.table-wrap td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+.table-wrap tbody tr:hover{background:#FFF6D6}
+.t-name{font-weight:800;white-space:nowrap}
+.t-wide{min-width:170px;max-width:260px}
+.t-assigned{color:var(--green-d);font-weight:800}
+.t-empty{text-align:center;padding:34px!important;color:var(--mute);font-weight:600}
+.code-chip{font-family:var(--mono);font-weight:700;font-size:12px;background:var(--cream);border:1.5px solid var(--ink);
+  border-radius:8px;padding:4px 9px;cursor:copy;white-space:nowrap;transition:.15s}
+.code-chip:hover{background:var(--y)}
 
-  table{width:100%; border-collapse:collapse; font-size:14px; margin-top:10px}
-  td,th{border:1px solid rgba(255,204,0,.25); padding:8px; text-align:left}
-  th{background:linear-gradient(90deg,var(--red-deep),var(--red)); color:#fff; text-shadow:0 0 8px rgba(255,255,255,.4)}
+/* ============ FAQ ============ */
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{background:var(--white);border:2px solid var(--ink);border-radius:16px;margin-bottom:14px;
+  box-shadow:4px 4px 0 var(--ink);transition:transform .2s}
+.faq-item:hover{transform:translate(-2px,-2px)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;
+  font-weight:800;font-size:16px;cursor:pointer;list-style:none}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:'+';flex:none;width:27px;height:27px;display:flex;align-items:center;justify-content:center;
+  background:var(--y);border:2px solid var(--ink);border-radius:50%;font-weight:800;font-size:17px;transition:transform .25s}
+.faq-item[open] .faq-q::after{transform:rotate(45deg);background:var(--red);color:#fff}
+.faq-a{padding:0 20px 18px;color:var(--ink2);font-size:15px;animation:fadeUp .35s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 
-  footer{background:linear-gradient(180deg,#2a070c,#160409); color:var(--yellow); text-align:center; padding:0 16px 28px}
-  footer .stripes{margin-bottom:24px}
-  footer p{font-size:14px; font-weight:600; text-shadow:0 0 8px rgba(255,204,0,.4)}
+/* ============ ФУТЕР ============ */
+footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;border-top:3px solid var(--ink)}
+.footer-main{padding:64px 0 40px}
+.dispatch{display:flex;flex-wrap:wrap;align-items:center;gap:22px;background:var(--dark2);
+  border:2px solid rgba(255,204,0,.4);border-radius:20px;padding:26px 28px;margin-bottom:36px}
+.dispatch-avatar{flex:none;width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-size:30px;
+  background:var(--y);border:2px solid var(--ink);border-radius:50%;box-shadow:4px 4px 0 rgba(0,0,0,.4)}
+.dispatch-info{flex:1;min-width:230px}
+.dispatch-info h3{font-family:var(--disp);font-weight:700;font-size:19px;color:var(--white);margin-bottom:5px}
+.dispatch-info p{font-size:14px;color:#C9BC9C;margin-bottom:8px}
+.dispatch-contacts{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;font-weight:700}
+.dispatch-contacts a{color:var(--y);text-decoration:none;border-bottom:1.5px solid rgba(255,204,0,.5)}
+.dispatch-contacts a:hover{color:var(--y3);border-color:var(--y3)}
+.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:13px;color:#B7A87F;
+  border-top:1px solid var(--darkline);padding-top:24px}
+.bottom-strip{background:linear-gradient(90deg,var(--y3),var(--y2));border-top:3px solid var(--ink);
+  text-align:center;padding:11px 16px;font-family:var(--disp);font-weight:700;font-size:clamp(9px,2vw,12px);
+  letter-spacing:.3em;color:var(--ink)}
 
-  /* ===== Уважение к настройкам движения ===== */
-  @media (prefers-reduced-motion:reduce){
-    h1{animation:none}
-    .snow span,.van{animation:none; display:none}
-  }
+/* ============ ТОСТЫ / МОДАЛКА ============ */
+#toasts{position:fixed;right:20px;bottom:20px;z-index:300;display:flex;flex-direction:column;gap:10px;max-width:min(360px,calc(100vw - 40px))}
+.toast{display:flex;align-items:flex-start;gap:10px;background:var(--ink);color:#F5EDD8;border-radius:12px;
+  padding:13px 16px;font-size:14px;font-weight:600;border-left:6px solid var(--blue);
+  box-shadow:0 10px 30px rgba(0,0,0,.35);animation:toastIn .35s cubic-bezier(.2,1.2,.4,1)}
+.toast.t-success{border-left-color:var(--green)}
+.toast.t-error{border-left-color:var(--red2)}
+.toast.t-warn{border-left-color:var(--amber)}
+.toast.out{opacity:0;transform:translateX(30px);transition:.3s}
+@keyframes toastIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+.modal{position:fixed;inset:0;z-index:400;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.m-scrim{position:absolute;inset:0;background:rgba(23,17,6,.66);backdrop-filter:blur(3px)}
+.m-card{position:relative;background:var(--white);border:2px solid var(--ink);border-radius:20px;max-width:430px;
+  width:100%;padding:26px;box-shadow:10px 10px 0 rgba(34,26,6,.8);animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+.m-card h3{font-family:var(--disp);font-weight:700;font-size:19px;margin-bottom:10px}
+.m-card p{font-size:14.5px;color:var(--ink2);margin-bottom:22px}
+.m-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+
+/* ============ ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}.reveal[data-d="4"]{transition-delay:.32s}
+
+/* ============ АДАПТИВ ============ */
+@media (max-width:1024px){
+  .burger{display:flex}
+  #navMenu{position:absolute;top:100%;left:0;right:0;display:none;flex-direction:column;align-items:stretch;
+    background:var(--paper);border-bottom:2px solid var(--ink);padding:14px 20px 18px;gap:6px;box-shadow:0 20px 40px rgba(34,26,6,.2)}
+  #nav.open #navMenu{display:flex}
+  #navMenu a{padding:12px 14px;font-size:15px}
+  #navMenu a.nav-cta{margin-left:0;text-align:center}
+}
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero-art{max-width:480px;margin:0 auto;width:100%}
+  .how-grid{grid-template-columns:1fr 1fr}
+  .step-card:not(:last-child)::after{display:none}
+  .reg-grid{grid-template-columns:1fr}
+  .reg-info{position:static}
+}
+@media (max-width:640px){
+  .section{padding:60px 0}
+  .hero{padding:52px 0 60px}
+  .how-grid,.rules-grid,.admin-stats{grid-template-columns:1fr}
+  .track-form{flex-direction:column}
+  .wb-meta{grid-template-columns:1fr 1fr}
+  .wb-actions .btn,.admin-actions .btn{flex:1 1 100%}
+  .cd-cell{min-width:50px;padding:6px 8px}
+  .cd-cell b{font-size:20px}
+  .stamp-badge{width:92px;height:92px;top:-8px;right:0}
+  .budget-banner{padding:22px}
+  .dispatch{padding:22px}
+  .footer-bottom{flex-direction:column}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
 </style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
-<!-- Фоновые лейблы DHL -->
-<div class="bg" aria-hidden="true">
-  <div class="bg-label" style="top:6%; left:-60px; transform:rotate(-14deg)">
-    <span class="bg-logo">DHL</span><span class="bg-line"></span><span class="bg-line short"></span><span class="bg-barcode"></span>
-  </div>
-  <div class="bg-label" style="top:18%; right:-70px; transform:rotate(10deg)">
-    <span class="bg-logo">DHL</span><span class="bg-line"></span><span class="bg-line short"></span><span class="bg-barcode"></span>
-  </div>
-  <div class="bg-label" style="top:46%; left:-80px; transform:rotate(8deg)">
-    <span class="bg-logo">DHL</span><span class="bg-line"></span><span class="bg-line short"></span><span class="bg-barcode"></span>
-  </div>
-  <div class="bg-label" style="top:64%; right:-60px; transform:rotate(-10deg)">
-    <span class="bg-logo">DHL</span><span class="bg-line"></span><span class="bg-line short"></span><span class="bg-barcode"></span>
-  </div>
-  <div class="bg-label" style="top:88%; left:8%; transform:rotate(-6deg)">
-    <span class="bg-logo">DHL</span><span class="bg-line"></span><span class="bg-line short"></span><span class="bg-barcode"></span>
-  </div>
+<canvas id="snow" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ===== ВЕРХНЯЯ ПОЛОСА: эмблема DHL убрана ===== -->
+<div class="topstrip">
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+  <div class="tagline">ЖЕЛТАЯ СЛУЖБА ПРАЗДНИЧНОЙ ДОСТАВКИ</div>
 </div>
 
-<!-- Падающий неоновый снег -->
-<div class="snow" aria-hidden="true">
-  <span style="--x:5%;--d:11s;--dl:-2s;--s:14px;--c:#fff;--o:.9">❄</span>
-  <span style="--x:15%;--d:14s;--dl:-7s;--s:10px;--c:#FFCC00;--o:.6">❅</span>
-  <span style="--x:25%;--d:9s;--dl:-4s;--s:16px;--c:#fff;--o:.8">❄</span>
-  <span style="--x:35%;--d:13s;--dl:-9s;--s:12px;--c:#ffe27a;--o:.9">✻</span>
-  <span style="--x:45%;--d:10s;--dl:-1s;--s:18px;--c:#fff;--o:.85">❄</span>
-  <span style="--x:55%;--d:15s;--dl:-6s;--s:10px;--c:#ff1f3d;--o:.55">❅</span>
-  <span style="--x:65%;--d:12s;--dl:-3s;--s:14px;--c:#fff;--o:.9">❄</span>
-  <span style="--x:75%;--d:9.5s;--dl:-8s;--s:12px;--c:#ffe27a;--o:.85">✻</span>
-  <span style="--x:85%;--d:13.5s;--dl:-5s;--s:16px;--c:#fff;--o:.8">❄</span>
-  <span style="--x:92%;--d:11.5s;--dl:-10s;--s:10px;--c:#FFCC00;--o:.6">❅</span>
-  <span style="--x:50%;--d:16s;--dl:-12s;--s:20px;--c:#fff;--o:.7">❄</span>
-  <span style="--x:8%;--d:17s;--dl:-14s;--s:18px;--c:#ffe27a;--o:.75">✻</span>
-</div>
-
-<header>
-  <div class="stripes header-stripes">
-    <!-- Курьерский фургончик проезжает по полосе при загрузке -->
-    <span class="van" aria-hidden="true">
-      <span class="van-body"></span><span class="van-cab"></span>
-      <span class="van-wheel w1"></span><span class="van-wheel w2"></span>
-    </span>
+<!-- ===== НАВИГАЦИЯ ===== -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">🎄 Тайный Санта <em>2026</em></a>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><i></i><i></i><i></i></button>
+    <ul id="navMenu">
+      <li><a href="#how" data-sec="how">Как это работает</a></li>
+      <li><a href="#rules" data-sec="rules">Правила</a></li>
+      <li><a href="#schedule" data-sec="schedule">График</a></li>
+      <li><a href="#track" data-sec="track">Кому я дарю?</a></li>
+      <li><a href="#faq" data-sec="faq">FAQ</a></li>
+      <li><a href="#admin" data-sec="admin" class="nav-lock" title="Организатору">🔐</a></li>
+      <li><a href="#reg" class="nav-cta">🎁 Участвовать</a></li>
+    </ul>
   </div>
+</nav>
 
-  <!-- Логотип-плашка. Если есть официальный файл логотипа,
-       замените весь <svg> на: <img src="dhl-logo.svg" alt="DHL" class="logo"> -->
-  <svg class="logo" viewBox="0 0 220 64" role="img" aria-label="DHL">
-    <rect x="0" y="0" width="220" height="64" rx="10" fill="#c00418"/>
-    <text x="110" y="44" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
-          font-size="38" font-style="italic" font-weight="900" letter-spacing="6"
-          fill="#FFCC00">DHL</text>
-    <rect x="18" y="50" width="184" height="4" fill="#FFCC00"/>
-  </svg>
-
-  <span class="brand">DHL • Служба праздничной доставки</span>
-  <h1>🎄 Тайный Санта 2026</h1>
-  <p class="sub">Доставим праздничное настроение точно в срок 📦✨</p>
-  <a class="btn" href="#reg">Участвовать</a>
+<main>
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow reveal in"><span class="dot"></span> Сезон 2026 · приём заявок открыт</span>
+      <h1 class="hero-title">🎄 Тайный<br>Санта <span class="year">2026</span></h1>
+      <p class="hero-sub">Доставим праздничное настроение точно в срок 📦✨ Анонимно, по пожеланиям и без превышения бюджета.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#reg">🎁 Участвовать</a>
+        <a class="btn btn-ghost" href="#how">Как это работает ↓</a>
+      </div>
+      <div class="countdown" role="timer" aria-live="off">
+        <div class="cd-label" id="cdLabel">До жеребьёвки</div>
+        <div class="cd-digits">
+          <div class="cd-cell"><b id="cdD">00</b><span>дн</span></div><i class="cd-sep">:</i>
+          <div class="cd-cell"><b id="cdH">00</b><span>час</span></div><i class="cd-sep">:</i>
+          <div class="cd-cell"><b id="cdM">00</b><span>мин</span></div><i class="cd-sep">:</i>
+          <div class="cd-cell"><b id="cdS">00</b><span>сек</span></div>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <span class="hstat">💸 бюджет <b>до 1000 ₽</b></span>
+        <span class="hstat">🎲 жеребьёвка <b>2 дек</b></span>
+        <span class="hstat">🎁 обмен <b>25 дек</b></span>
+        <span class="hstat">👥 участников: <b id="heroCount">0</b></span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg class="parcel-scene" viewBox="0 0 520 440" role="img" aria-label="Праздничная посылка с красной лентой на маршруте доставки">
+        <defs>
+          <linearGradient id="boxG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#FFD84D"/><stop offset="1" stop-color="#F5B800"/>
+          </linearGradient>
+          <radialGradient id="glowG" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#FFFDF6" stop-opacity=".9"/><stop offset="1" stop-color="#FFFDF6" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="260" cy="240" r="205" fill="url(#glowG)"/>
+        <path d="M 28 372 C 110 292 176 414 258 362 C 330 316 404 300 494 344" fill="none" stroke="#D40511" stroke-width="3" stroke-dasharray="10 10" opacity=".65"/>
+        <g>
+          <circle r="15" fill="#FFFDF6" stroke="#221A06" stroke-width="2.5"/>
+          <text x="-9" y="6" font-size="17">🎁</text>
+          <animateMotion dur="11s" repeatCount="indefinite" path="M 28 372 C 110 292 176 414 258 362 C 330 316 404 300 494 344"/>
+        </g>
+        <ellipse cx="260" cy="396" rx="142" ry="17" fill="#221A06" opacity=".14"/>
+        <rect x="150" y="214" width="220" height="158" rx="14" fill="url(#boxG)" stroke="#221A06" stroke-width="3"/>
+        <rect x="138" y="184" width="244" height="44" rx="12" fill="#FFCC00" stroke="#221A06" stroke-width="3"/>
+        <rect x="246" y="184" width="28" height="188" fill="#D40511" opacity=".92"/>
+        <line x1="260" y1="192" x2="260" y2="364" stroke="#FFE066" stroke-width="2" stroke-dasharray="5 9" opacity=".8"/>
+        <rect x="172" y="254" width="104" height="76" rx="8" fill="#FFFDF6" stroke="#221A06" stroke-width="2.5"/>
+        <text x="182" y="274" font-family="JetBrains Mono, monospace" font-weight="700" font-size="11" fill="#221A06">TO: SECRET</text>
+        <rect x="182" y="282" width="72" height="4" fill="#D8CBA8"/>
+        <rect x="182" y="290" width="56" height="4" fill="#D8CBA8"/>
+        <g fill="#221A06">
+          <rect x="182" y="300" width="3" height="16"/><rect x="187" y="300" width="2" height="16"/><rect x="191" y="300" width="4" height="16"/>
+          <rect x="197" y="300" width="2" height="16"/><rect x="201" y="300" width="3" height="16"/><rect x="206" y="300" width="5" height="16"/>
+          <rect x="213" y="300" width="2" height="16"/><rect x="217" y="300" width="3" height="16"/><rect x="222" y="300" width="2" height="16"/>
+          <rect x="226" y="300" width="4" height="16"/><rect x="232" y="300" width="3" height="16"/><rect x="237" y="300" width="2" height="16"/>
+          <rect x="241" y="300" width="4" height="16"/><rect x="247" y="300" width="2" height="16"/><rect x="251" y="300" width="3" height="16"/>
+          <rect x="256" y="300" width="5" height="16"/>
+        </g>
+        <text x="182" y="326" font-family="JetBrains Mono, monospace" font-weight="700" font-size="10" fill="#D40511">25.12.2026</text>
+        <g transform="rotate(-12 336 284)">
+          <circle cx="336" cy="284" r="27" fill="rgba(255,253,246,.6)" stroke="#D40511" stroke-width="2.5" stroke-dasharray="5 4"/>
+          <text x="336" y="280" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="9" fill="#D40511">ДО</text>
+          <text x="336" y="294" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="11" fill="#D40511">1000 ₽</text>
+        </g>
+        <path d="M260 178 C 226 138 196 146 206 168 C 212 182 244 184 260 178 Z" fill="#FF2A33" stroke="#221A06" stroke-width="3"/>
+        <path d="M260 178 C 294 138 324 146 314 168 C 308 182 276 184 260 178 Z" fill="#FF2A33" stroke="#221A06" stroke-width="3"/>
+        <circle cx="260" cy="180" r="11" fill="#D40511" stroke="#221A06" stroke-width="3"/>
+        <text x="118" y="148" font-size="22" fill="#D40511" class="tw1">✦</text>
+        <text x="402" y="132" font-size="18" fill="#E6A800" class="tw2">✦</text>
+        <text x="438" y="246" font-size="16" fill="#D40511" class="tw3">✦</text>
+        <text x="92" y="262" font-size="20" fill="#E6A800" class="tw2">✦</text>
+        <text x="84" y="100" font-size="30" class="float-a">🎁</text>
+        <text x="442" y="86" font-size="26" fill="#FFFDF6" class="float-b">❄</text>
+        <text x="452" y="300" font-size="26" class="float-c">📦</text>
+      </svg>
+      <div class="stamp-badge" aria-hidden="true">
+        <svg viewBox="0 0 120 120">
+          <defs><path id="stampCircle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+          <circle cx="60" cy="60" r="57" fill="#FFFDF6" stroke="#221A06" stroke-width="3"/>
+          <circle cx="60" cy="60" r="33" fill="none" stroke="#D40511" stroke-width="2" stroke-dasharray="3 4"/>
+          <text class="stamp-text" textLength="272"><textPath href="#stampCircle">ТАЙНЫЙ САНТА • 2026 • ДО 1000 ₽ •</textPath></text>
+          <text x="60" y="72" text-anchor="middle" font-size="32">🎅</text>
+        </svg>
+      </div>
+    </div>
+  </div>
 </header>
 
-<main class="wrap">
+<div class="tape-divider" aria-hidden="true"></div>
 
-  <section id="how">
-    <h2>Как это работает</h2>
-    <div class="card"><ol>
-      <li>Заполните форму — получите секретный код отслеживания.</li>
-      <li>После жеребьёвки введите код и узнайте, кому вы Санта.</li>
-      <li>Подготовьте подарок до 1000 ₽ по пожеланиям подопечного.</li>
-      <li>25 декабря — анонимная доставка и обмен подарками 🎁</li>
-    </ol></div>
-  </section>
+<!-- ===== КАК ЭТО РАБОТАЕТ ===== -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Раздел 01 · Маршрут</span>
+      <h2 class="sec-title">Как это <mark>работает</mark></h2>
+      <p class="sec-sub">Четыре остановки — от заявки до праздничной вручки. Всё анонимно и точно в срок.</p>
+    </div>
+    <div class="how-grid">
+      <article class="step-card reveal" data-d="1">
+        <span class="step-num">01</span><span class="step-ico">📝</span>
+        <h3 class="step-title">Заполните форму</h3>
+        <p class="step-text">Заполните форму — получите секретный код отслеживания.</p>
+      </article>
+      <article class="step-card reveal" data-d="2">
+        <span class="step-num">02</span><span class="step-ico">🔑</span>
+        <h3 class="step-title">Узнайте подопечного</h3>
+        <p class="step-text">После жеребьёвки введите код и узнайте, кому вы Санта.</p>
+      </article>
+      <article class="step-card reveal" data-d="3">
+        <span class="step-num">03</span><span class="step-ico">🎁</span>
+        <h3 class="step-title">Соберите подарок</h3>
+        <p class="step-text">Подготовьте подарок до 1000 ₽ по пожеланиям подопечного.</p>
+      </article>
+      <article class="step-card reveal" data-d="4">
+        <span class="step-num">04</span><span class="step-ico">🚚</span>
+        <h3 class="step-title">Доставка 25 декабря</h3>
+        <p class="step-text">25 декабря — анонимная доставка и обмен подарками 🎁</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-  <section id="rules">
-    <h2>Правила и бюджет</h2>
-    <div class="card"><ul>
-      <li>Бюджет подарка — до 1000 ₽, не превышаем.</li>
-      <li>Подарок — уместный для рабочей среды.</li>
-      <li>Учитываем пожелания, аллергии и «не дарить».</li>
-      <li>Имя подопечного — секрет до вручения.</li>
-    </ul></div>
-  </section>
+<!-- ===== ПРАВИЛА ===== -->
+<section class="section dark" id="rules">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Раздел 02 · Регламент</span>
+      <h2 class="sec-title">Правила и бюджет</h2>
+      <p class="sec-sub">Простой регламент, чтобы праздник остался праздником для всех.</p>
+    </div>
+    <div class="budget-banner reveal">
+      <div class="budget-sum"><small>Бюджет подарка</small>до 1000 ₽</div>
+      <div class="budget-note">
+        Не превышаем: ценим внимание, а не чек. Дороже — не нужно, скромнее — не страшно.
+        <div class="meter" aria-hidden="true"><div class="meter-fill"></div></div>
+      </div>
+    </div>
+    <div class="rules-grid">
+      <div class="rule-item reveal" data-d="1"><span class="rule-ico">💸</span>
+        <div><h3>Бюджет — до 1000 ₽</h3><p>Не превышаем сумму: одинаковые условия для всех сант.</p></div></div>
+      <div class="rule-item reveal" data-d="2"><span class="rule-ico">💼</span>
+        <div><h3>Уместно для офиса</h3><p>Подарок должен быть уместным для рабочей среды.</p></div></div>
+      <div class="rule-item reveal" data-d="3"><span class="rule-ico">🎯</span>
+        <div><h3>Учитываем пожелания</h3><p>Смотрим «что люблю», аллергии и список «не дарить».</p></div></div>
+      <div class="rule-item reveal" data-d="4"><span class="rule-ico">🤫</span>
+        <div><h3>Имя — секрет</h3><p>Имя подопечного — секрет до вручения. Интрига обязательна.</p></div></div>
+    </div>
+  </div>
+</section>
 
-  <section id="dates">
-    <h2>График доставки</h2>
-    <div class="card"><ul>
-      <li><b>До 1 декабря</b> — приём заявок</li>
-      <li><b>2 декабря</b> — жеребьёвка и распределение маршрутов</li>
-      <li><b>До 24 декабря</b> — подготовка посылок</li>
-      <li><b>25 декабря</b> — обмен подарками 🎁</li>
-    </ul></div>
-  </section>
+<!-- ===== ГРАФИК ===== -->
+<section class="section" id="schedule">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Раздел 03 · Расписание</span>
+      <h2 class="sec-title">График <mark>доставки</mark></h2>
+      <p class="sec-sub">Праздничная логистика по расписанию — ни одна посылка не опоздает.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal" data-stage="1">
+        <span class="tl-node">📝</span>
+        <div class="tl-card">
+          <span class="tl-date">До 1 декабря</span>
+          <div class="tl-body"><div class="tl-title">Приём заявок</div><div class="tl-text">Заполняйте форму и получайте секретный код.</div></div>
+          <span class="chip chip-red tl-now">Сейчас</span>
+        </div>
+      </div>
+      <div class="tl-item reveal" data-stage="2" data-d="1">
+        <span class="tl-node">🎲</span>
+        <div class="tl-card">
+          <span class="tl-date">2 декабря</span>
+          <div class="tl-body"><div class="tl-title">Жеребьёвка</div><div class="tl-text">Жеребьёвка и распределение маршрутов: кто кому дарит.</div></div>
+          <span class="chip chip-red tl-now">Сейчас</span>
+        </div>
+      </div>
+      <div class="tl-item reveal" data-stage="3" data-d="2">
+        <span class="tl-node">🎁</span>
+        <div class="tl-card">
+          <span class="tl-date">До 24 декабря</span>
+          <div class="tl-body"><div class="tl-title">Подготовка посылок</div><div class="tl-text">Выбираем и упаковываем подарок до 1000 ₽ по пожеланиям.</div></div>
+          <span class="chip chip-red tl-now">Сейчас</span>
+        </div>
+      </div>
+      <div class="tl-item reveal" data-stage="4" data-d="3">
+        <span class="tl-node">🚚</span>
+        <div class="tl-card">
+          <span class="tl-date">25 декабря</span>
+          <div class="tl-body"><div class="tl-title">Обмен подарками 🎁</div><div class="tl-text">Анонимная доставка и праздничное вручение.</div></div>
+          <span class="chip chip-red tl-now">Сейчас</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="reg">
-    <h2>Регистрация</h2>
-    <div class="card">
-      <form id="regForm">
-        <label>Имя и фамилия *<input id="fName" required placeholder="Иван Петров"></label>
-        <label>Отдел / команда<input id="fDept" placeholder="Маркетинг"></label>
-        <label>Куда писать лично (Telegram / почта) *<input id="fContact" required placeholder="@ivan или ivan@company.ru"></label>
-        <label>Что вы любите? *<textarea id="fLikes" required placeholder="Кофе, книги, настолки, сладкое…"></textarea></label>
-        <label>Что вам НЕ дарить?<textarea id="fDislikes" placeholder="Кружки, парфюм…"></textarea></label>
-        <label>Аллергии и ограничения<textarea id="fAllergy" placeholder="Орехи, цитрусовые…"></textarea></label>
-        <p style="margin-top:14px"><button class="btn" id="regBtn" type="submit">Отправить заявку</button></p>
+<!-- ===== РЕГИСТРАЦИЯ ===== -->
+<section class="section" id="reg">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Раздел 04 · Накладная</span>
+      <h2 class="sec-title">Регистрация</h2>
+      <p class="sec-sub">Заполните праздничную накладную — код отслеживания выдаётся сразу.</p>
+    </div>
+    <div class="reg-grid">
+      <div class="reg-info reveal">
+        <h3>Присоединяйтесь к рейсу 🎅</h3>
+        <p>Заполните накладную — и система выдаст секретный код. После жеребьёвки код откроет имя вашего подопечного и его пожелания.</p>
+        <ul class="info-list">
+          <li><span class="ii">🔒</span> Данные видит только организатор</li>
+          <li><span class="ii">🎲</span> Пары назначает случайная жеребьёвка</li>
+          <li><span class="ii">🤫</span> Никто не знает, кто чей Санта</li>
+        </ul>
+        <span class="count-chip">👥 Уже в деле: <b id="regCount">0</b></span><br>
+        <a class="reg-link" href="#track">Уже есть код? → Отследить маршрут</a>
+      </div>
+      <div class="reg-col reveal" data-d="1">
+        <div class="form-card">
+          <form id="regForm" novalidate>
+            <div class="field">
+              <label for="fName">Имя и фамилия <b>*</b></label>
+              <input id="fName" type="text" autocomplete="name" placeholder="Например: Анна Морозова" required>
+              <small class="err"></small>
+            </div>
+            <div class="field">
+              <label for="fDept">Отдел / команда</label>
+              <input id="fDept" list="depts" placeholder="HR, IT, Логистика…">
+              <datalist id="depts">
+                <option value="HR"><option value="IT"><option value="Операции"><option value="Логистика">
+                <option value="Продажи"><option value="Маркетинг"><option value="Финансы"><option value="Клиентский сервис">
+              </datalist>
+              <small class="err"></small>
+            </div>
+            <div class="field">
+              <label for="fContact">Куда писать лично (Telegram / почта) <b>*</b></label>
+              <input id="fContact" type="text" placeholder="@nickname или mail@company.ru" required>
+              <small class="err"></small>
+            </div>
+            <div class="field">
+              <label for="fLikes">Что вы любите? <b>*</b></label>
+              <textarea id="fLikes" rows="3" placeholder="Кофе, книги, настолки, сертификаты…" required></textarea>
+              <small class="err"></small>
+            </div>
+            <div class="field">
+              <label for="fDont">Что вам НЕ дарить?</label>
+              <textarea id="fDont" rows="2" placeholder="Алкоголь, свечи, косметику…"></textarea>
+              <small class="err"></small>
+            </div>
+            <div class="field">
+              <label for="fAllergy">Аллергии и ограничения</label>
+              <input id="fAllergy" type="text" placeholder="Орехи, цитрусовые, без сахара…">
+              <small class="err"></small>
+            </div>
+            <button class="btn btn-primary btn-big" type="submit" id="regSubmit">🎁 Отправить заявку</button>
+            <p class="form-note">Сразу после отправки вы получите секретный код отслеживания.</p>
+          </form>
+        </div>
+
+        <div id="waybill" class="waybill hidden" aria-live="polite">
+          <div class="wb-head"><span>📦 ПОСЫЛКА ПРИНЯТА</span><span class="chip chip-green">В обработке</span></div>
+          <div class="wb-code-label">Ваш секретный код отслеживания</div>
+          <div class="wb-code" id="wbCode">SN26-····-····</div>
+          <svg id="wbBarcode" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="wb-meta">
+            <div><span>Отправитель</span><b id="wbName"></b></div>
+            <div><span>Отдел</span><b id="wbDept"></b></div>
+            <div><span>Принято</span><b id="wbDate"></b></div>
+          </div>
+          <div class="wb-note">⚠️ Сохраните код — он покажет, кому вы дарите, после жеребьёвки 2 декабря. Без кода маршрут не отследить.</div>
+          <div class="wb-actions">
+            <button class="btn btn-dark btn-sm" id="wbCopy" type="button">📋 Скопировать код</button>
+            <button class="btn btn-yellow btn-sm" id="wbTrack" type="button">📡 Проверить маршрут</button>
+            <button class="btn btn-ghost btn-sm" id="wbAgain" type="button">＋ Ещё заявка</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== КОМУ Я ДАРЮ ===== -->
+<section class="section dark" id="track">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-left:auto;margin-right:auto;text-align:center">
+      <span class="sec-tag">Раздел 05 · Отслеживание</span>
+      <h2 class="sec-title">Кому я дарю?</h2>
+      <p class="sec-sub">Введите секретный код, который вы получили при регистрации.</p>
+    </div>
+    <div class="track-box reveal" data-d="1">
+      <form class="track-form" id="trackForm">
+        <input class="input-dark" id="trackInput" type="text" placeholder="Секретный код, например SN26-7KQ4-9Z2P"
+               autocomplete="off" spellcheck="false" autocapitalize="characters" aria-label="Секретный код">
+        <button class="btn btn-yellow" type="submit">📡 Отследить</button>
       </form>
-      <div id="regMsg" class="msg"></div>
+      <p class="track-hint">Код выглядит так: <code>SN26-XXXX-XXXX</code>. Потеряли? Напишите организатору — он подскажет код по вашему имени.</p>
+      <div id="trackResult" aria-live="polite"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="lookup">
-    <h2>Кому я дарю?</h2>
-    <div class="card">
-      <p>Введите секретный код, который вы получили при регистрации.</p>
-      <label>Секретный код<input id="lookCode" placeholder="Например: K7MQ"></label>
-      <p style="margin-top:14px"><button class="btn small" id="lookBtn" type="button">Отследить</button></p>
-      <div id="lookMsg" class="msg"></div>
+<!-- ===== ОРГАНИЗАТОРУ ===== -->
+<section class="section" id="admin">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Раздел 06 · Диспетчерская</span>
+      <h2 class="sec-title">Организатору</h2>
+      <p class="sec-sub">Служебный раздел: жеребьёвка, таблица участников и выгрузка маршрутов.</p>
     </div>
-  </section>
 
-  <section id="org">
-    <h2>Организатору</h2>
-    <div class="card">
-      <p>Служебный раздел.</p>
-      <label>Пароль организатора<input id="orgKey" type="password"></label>
-      <p style="margin-top:14px">
-        <button class="btn small" id="drawBtn" type="button">🎲 Провести жеребьёвку</button>
-        <button class="btn small" id="listBtn" type="button">Показать таблицу</button>
-      </p>
-      <div id="orgMsg" class="msg"></div>
+    <form class="gate-card reveal" id="adminGate">
+      <div class="gate-lock">🔐</div>
+      <h3>Вход для организатора</h3>
+      <p>Пароль организатора</p>
+      <input id="adminPass" type="password" autocomplete="off" placeholder="••••••••" aria-label="Пароль организатора">
+      <div class="gate-err" id="adminErr"></div>
+      <button class="btn btn-dark btn-big" type="submit">Войти в диспетчерскую</button>
+      <p class="gate-hint">Пароль по умолчанию — <code>santa2026</code>. Замените его в коде файла перед публикацией.</p>
+    </form>
+
+    <div id="adminPanel" class="hidden">
+      <div class="admin-stats">
+        <div class="stat-card"><span>Участников</span><div class="stat-v" id="statCount">0</div></div>
+        <div class="stat-card"><span>Жеребьёвка</span><div class="stat-v warn" id="statDraw">Ещё не было</div></div>
+        <div class="stat-card"><span>Дата жеребьёвки</span><div class="stat-v" id="statDate">—</div></div>
+      </div>
+      <div class="admin-actions">
+        <button class="btn btn-primary" id="btnDraw" type="button">🎲 Провести жеребьёвку</button>
+        <button class="btn btn-dark" id="btnTable" type="button" aria-expanded="false">📋 Показать таблицу</button>
+        <button class="btn btn-ghost" id="btnExport" type="button">⬇️ Экспорт CSV</button>
+        <button class="btn btn-ghost" id="btnDemo" type="button">✨ Демо-данные</button>
+        <button class="btn btn-warn" id="btnResetDraw" type="button">↺ Сбросить жеребьёвку</button>
+        <button class="btn btn-danger" id="btnClear" type="button">🗑 Очистить всё</button>
+        <button class="btn btn-ghost btn-sm" id="btnLogout" type="button">Выйти</button>
+      </div>
+      <div id="tableWrap" class="hidden">
+        <div class="table-tools">
+          <input id="tableSearch" type="search" placeholder="Поиск по имени, коду или отделу…" aria-label="Поиск по таблице">
+          <span id="tableCount"></span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>#</th><th>Имя</th><th>Отдел</th><th>Контакт</th><th>Код</th>
+              <th>Пожелания</th><th>Не дарить</th><th>Аллергии</th><th>Кому дарит</th>
+            </tr></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="faq">
-    <h2>Вопросы и ответы</h2>
-    <details class="card"><summary>Можно не участвовать?</summary><p>Да, участие добровольное.</p></details>
-    <details class="card"><summary>Сколько тратить?</summary><p>До 1000 ₽, дороже не нужно.</p></details>
-    <details class="card"><summary>Я потерял код</summary><p>Напишите организатору — он подскажет код по вашему имени.</p></details>
-    <details class="card"><summary>Что если не знаю, что дарить?</summary><p>Возьмите нейтральное: кофе, чай, канцелярию, сертификат.</p></details>
-  </section>
-
-  <section id="contacts">
-    <h2>Диспетчерская</h2>
-    <div class="card"><p>По любым вопросам: [имя]</p></div>
-  </section>
-
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Раздел 07 · Справка</span>
+      <h2 class="sec-title">Вопросы и ответы</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary class="faq-q">Можно не участвовать?</summary>
+        <div class="faq-a">Да, участие добровольное.</div>
+      </details>
+      <details class="faq-item reveal" data-d="1">
+        <summary class="faq-q">Сколько тратить?</summary>
+        <div class="faq-a">До 1000 ₽, дороже не нужно.</div>
+      </details>
+      <details class="faq-item reveal" data-d="2">
+        <summary class="faq-q">Я потерял код</summary>
+        <div class="faq-a">Напишите организатору — он подскажет код по вашему имени.</div>
+      </details>
+      <details class="faq-item reveal" data-d="3">
+        <summary class="faq-q">Что если не знаю, что дарить?</summary>
+        <div class="faq-a">Возьмите нейтральное: кофе, чай, канцелярию, сертификат.</div>
+      </details>
+    </div>
+  </div>
+</section>
 </main>
 
+<!-- ===== ФУТЕР ===== -->
 <footer>
-  <div class="stripes"></div>
-  <p>Сделано с любовью и мишурой ✨ Тайный Санта 2026</p>
-  <p>Жёлтый — значит, подарок доставим точно в срок 📦</p>
+  <div class="wrap footer-main">
+    <div class="dispatch reveal">
+      <span class="dispatch-avatar">🎅</span>
+      <div class="dispatch-info">
+        <h3>Диспетчерская</h3>
+        <p>По любым вопросам: Анна Морозова — организатор праздничной службы.</p>
+        <div class="dispatch-contacts">
+          <a href="https://t.me/anna_morozova" target="_blank" rel="noopener">Telegram: @anna_morozova</a>
+          <a href="mailto:santa@yellow-santa.ru">santa@yellow-santa.ru</a>
+        </div>
+      </div>
+      <a class="btn btn-yellow" href="#admin">🔐 Организатору</a>
+    </div>
+    <div class="footer-bottom">
+      <span>Сделано с любовью и мишурой ✨ Тайный Санта 2026</span>
+      <span>Жёлтый — значит, подарок доставим точно в срок 📦</span>
+    </div>
+  </div>
+  <div class="bottom-strip">❄ ЖЕЛТАЯ СЛУЖБА ПРАЗДНИЧНОЙ ДОСТАВКИ • 2026 ❄</div>
 </footer>
 
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div id="toasts" aria-live="polite"></div>
+
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="m-scrim"></div>
+  <div class="m-card">
+    <h3 id="mTitle"></h3>
+    <p id="mText"></p>
+    <div class="m-actions">
+      <button class="btn btn-ghost" id="mCancel" type="button">Отмена</button>
+      <button class="btn btn-primary" id="mOk" type="button">Подтвердить</button>
+    </div>
+  </div>
+</div>
+
 <script>
-const API_URL = 'https://script.google.com/macros/s/AKfycbwsQ8iuMT58Na_nnGz6MV12SkTWpvVyknCgKVYvycQYZyGzEwxQtkihXVdboec0iUY8ZA/exec'; // ссылка, которая заканчивается на /exec
+(() => {
+'use strict';
+/* ================= БАЗА ================= */
+const $  = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const LS_KEY = 'yellowSanta2026.v1';
+const ORGANIZER_PASSWORD = 'santa2026';
+const DRAW_DATE = new Date('2026-12-02T12:00:00+03:00');
+const EXCHANGE_DATE = new Date('2026-12-25T18:00:00+03:00');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const $ = id => document.getElementById(id);
-function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(36).slice(2));
+const normCode = s => String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+const fmtDate = iso => new Date(iso).toLocaleString('ru-RU',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
 
-async function api(data){
-  const r = await fetch(API_URL, {
-    method:'POST',
-    headers:{'Content-Type':'text/plain;charset=utf-8'},
-    body: JSON.stringify(data)
-  });
-  return await r.json();
+let state = load();
+function load(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw){ const p = JSON.parse(raw); return { participants: Array.isArray(p.participants)?p.participants:[], draw: p.draw||null }; }
+  }catch(e){}
+  return { participants: [], draw: null };
+}
+function save(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
+const byId = id => state.participants.find(p => p.id === id);
+
+const ALPH = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+function genCode(){
+  let c;
+  do{
+    const b = new Uint8Array(8); crypto.getRandomValues(b);
+    const part = arr => [...arr].map(x => ALPH[x % ALPH.length]).join('');
+    c = 'SN26-' + part(b.slice(0,4)) + '-' + part(b.slice(4));
+  }while(state.participants.some(p => p.code === c));
+  return c;
 }
 
-// --- регистрация ---
-$('regForm').addEventListener('submit', async e => {
+/* ================= ТОСТЫ ================= */
+function toast(msg, type='info'){
+  const icons = {success:'✅', error:'🚫', info:'ℹ️', warn:'⚠️'};
+  const el = document.createElement('div');
+  el.className = 'toast t-' + type;
+  el.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${esc(msg)}</span>`;
+  const box = $('#toasts');
+  box.appendChild(el);
+  while(box.children.length > 4) box.firstChild.remove();
+  setTimeout(() => { el.classList.add('out'); setTimeout(() => el.remove(), 350); }, 4200);
+}
+
+/* ================= КОПИРОВАНИЕ ================= */
+async function copyText(t){
+  try{ await navigator.clipboard.writeText(t); return true; }
+  catch(e){
+    try{
+      const ta = document.createElement('textarea');
+      ta.value = t; ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta); ta.select();
+      const ok = document.execCommand('copy'); ta.remove(); return ok;
+    }catch(_){ return false; }
+  }
+}
+
+/* ================= МОДАЛКА ================= */
+let mResolve = null;
+function confirmDialog(o){
+  return new Promise(res => {
+    mResolve = res;
+    $('#mTitle').textContent = o.title;
+    $('#mText').textContent = o.text;
+    const ok = $('#mOk');
+    ok.textContent = o.ok || 'Подтвердить';
+    ok.className = 'btn ' + (o.danger ? 'btn-danger' : 'btn-primary');
+    $('#modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => ok.focus(), 60);
+  });
+}
+function closeModal(v){
+  if(!mResolve) return;
+  $('#modal').classList.remove('open');
+  document.body.style.overflow = '';
+  const r = mResolve; mResolve = null; r(v);
+}
+$('#mOk').addEventListener('click', () => closeModal(true));
+$('#mCancel').addEventListener('click', () => closeModal(false));
+$('#modal .m-scrim').addEventListener('click', () => closeModal(false));
+addEventListener('keydown', e => { if(e.key === 'Escape' && mResolve) closeModal(false); });
+
+/* ================= БЕГУЩАЯ СТРОКА ================= */
+const seq = '❄ ❅ ❄ ✻ ❄ ❅ ❄ ✻ ❄ ❅ ❄ ✻ 🎁 ❄ ✦ ❄ 📦 ✦ ';
+const half = seq.repeat(6);
+$('#tickerTrack').innerHTML = `<span>${half}</span><span aria-hidden="true">${half}</span>`;
+
+/* ================= СНЕГ ================= */
+const snowC = $('#snow'), sctx = snowC.getContext('2d');
+const SDPR = Math.min(window.devicePixelRatio || 1, 2);
+let sw = 0, sh = 0, flakes = [], lastT = 0;
+function newFlake(any){
+  return { x: Math.random()*sw, y: any ? Math.random()*sh : -14,
+    r: 1 + Math.random()*2.6, s: .35 + Math.random()*.9, ph: Math.random()*Math.PI*2,
+    o: .35 + Math.random()*.5, glyph: Math.random() < .14, gs: 9 + Math.random()*8,
+    rot: Math.random()*Math.PI*2, vr: (Math.random()-.5)*.012 };
+}
+function sizeSnow(){
+  sw = innerWidth; sh = innerHeight;
+  snowC.width = sw*SDPR; snowC.height = sh*SDPR;
+  snowC.style.width = sw+'px'; snowC.style.height = sh+'px';
+  sctx.setTransform(SDPR,0,0,SDPR,0,0);
+  const n = Math.round(Math.min(150, Math.max(60, sw/11)));
+  flakes = Array.from({length:n}, () => newFlake(true));
+}
+function snowLoop(t){
+  requestAnimationFrame(snowLoop);
+  if(document.hidden) return;
+  const dt = Math.min(50, t - lastT || 16); lastT = t;
+  const k = dt/16.7;
+  sctx.clearRect(0,0,sw,sh);
+  for(const f of flakes){
+    f.y += f.s*k; f.ph += .008*k; f.x += Math.sin(f.ph)*.3*k; f.rot += f.vr*k;
+    if(f.y > sh+16) Object.assign(f, newFlake(false));
+    if(f.x < -24) f.x = sw+12; if(f.x > sw+24) f.x = -12;
+    sctx.globalAlpha = f.o;
+    if(f.glyph){
+      sctx.save(); sctx.translate(f.x, f.y); sctx.rotate(f.rot);
+      sctx.fillStyle = '#FFFDF6'; sctx.font = f.gs + 'px serif'; sctx.fillText('❄', 0, 0);
+      sctx.restore();
+    }else{
+      sctx.beginPath(); sctx.fillStyle = '#FFFFFF'; sctx.arc(f.x, f.y, f.r, 0, 7); sctx.fill();
+    }
+  }
+  sctx.globalAlpha = 1;
+}
+
+/* ================= КОНФЕТТИ ================= */
+const cfC = $('#confetti'), cfX = cfC.getContext('2d');
+const CDPR = Math.min(window.devicePixelRatio || 1, 2);
+let cw = 0, ch = 0, parts = [], cfRaf = null;
+const CCOLORS = ['#FFCC00','#D40511','#FF2A33','#1E9E6A','#2E6BFF','#FFFDF6','#FF9F1C'];
+function sizeConfetti(){
+  cw = innerWidth; ch = innerHeight;
+  cfC.width = cw*CDPR; cfC.height = ch*CDPR;
+  cfC.style.width = cw+'px'; cfC.style.height = ch+'px';
+  cfX.setTransform(CDPR,0,0,CDPR,0,0);
+}
+function burst(x, y, n=110){
+  if(reduced) return;
+  for(let i=0;i<n;i++){
+    const a = Math.random()*Math.PI*2, sp = 3 + Math.random()*8;
+    parts.push({ x, y, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp - 5, g: .24 + Math.random()*.1,
+      s: 4 + Math.random()*6, c: CCOLORS[(Math.random()*CCOLORS.length)|0],
+      r: Math.random()*Math.PI, vr: (Math.random()-.5)*.35, l: 1, d: .009 + Math.random()*.012, sh: Math.random() < .6 });
+  }
+  if(!cfRaf) cfLoop();
+}
+function burstAt(el){
+  const r = el.getBoundingClientRect();
+  burst(r.left + r.width/2, r.top + r.height/2);
+}
+function cfLoop(){
+  cfRaf = requestAnimationFrame(cfLoop);
+  cfX.clearRect(0,0,cw,ch);
+  parts = parts.filter(p => p.l > 0 && p.y < ch + 60);
+  if(!parts.length){ cancelAnimationFrame(cfRaf); cfRaf = null; return; }
+  for(const p of parts){
+    p.vy += p.g; p.x += p.vx; p.y += p.vy; p.vx *= .99; p.r += p.vr; p.l -= p.d;
+    cfX.save(); cfX.globalAlpha = Math.max(0, p.l);
+    cfX.translate(p.x, p.y); cfX.rotate(p.r); cfX.fillStyle = p.c;
+    if(p.sh) cfX.fillRect(-p.s/2, -p.s/2, p.s, p.s*.62);
+    else{ cfX.beginPath(); cfX.arc(0, 0, p.s/2, 0, 7); cfX.fill(); }
+    cfX.restore();
+  }
+}
+let rT;
+addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(() => { sizeSnow(); sizeConfetti(); }, 150); });
+
+/* ================= ОБРАТНЫЙ ОТСЧЁТ / ГРАФИК ================= */
+function tickCountdown(){
+  const now = Date.now();
+  let target = null, label;
+  if(now < DRAW_DATE.getTime()){ target = DRAW_DATE; label = 'До жеребьёвки'; }
+  else if(now < EXCHANGE_DATE.getTime()){ target = EXCHANGE_DATE; label = 'До обмена подарками'; }
+  else{ label = 'Праздник доставлен! 🎉'; }
+  $('#cdLabel').textContent = label;
+  let d=0,h=0,m=0,s=0;
+  if(target){
+    const diff = Math.max(0, target.getTime() - now);
+    d = Math.floor(diff/864e5); h = Math.floor(diff/36e5)%24; m = Math.floor(diff/6e4)%60; s = Math.floor(diff/1e3)%60;
+  }
+  const pad = v => String(v).padStart(2,'0');
+  $('#cdD').textContent = pad(d); $('#cdH').textContent = pad(h);
+  $('#cdM').textContent = pad(m); $('#cdS').textContent = pad(s);
+}
+const STAGE_BOUNDS = ['2026-12-02T00:00:00+03:00','2026-12-03T00:00:00+03:00','2026-12-25T00:00:00+03:00','2026-12-26T00:00:00+03:00'].map(x => new Date(x).getTime());
+function updateSchedule(){
+  const now = Date.now();
+  $$('.tl-item').forEach((el, i) => {
+    const done = now >= STAGE_BOUNDS[i];
+    const active = !done && (i === 0 || now >= STAGE_BOUNDS[i-1]);
+    el.classList.toggle('done', done);
+    el.classList.toggle('active', active);
+    const node = el.querySelector('.tl-node');
+    if(done) node.textContent = '✓';
+  });
+}
+
+/* ================= СЧЁТЧИКИ / СТАТУСЫ ================= */
+function renderCounts(){
+  const n = state.participants.length, drawn = !!state.draw;
+  $('#heroCount').textContent = n;
+  $('#regCount').textContent = n;
+  $('#statCount').textContent = n;
+  const sd = $('#statDraw');
+  sd.textContent = drawn ? 'Проведена ✅' : 'Ещё не было';
+  sd.className = 'stat-v ' + (drawn ? 'ok' : 'warn');
+  $('#statDate').textContent = drawn ? fmtDate(state.draw.at) : '—';
+  $('#btnDraw').textContent = drawn ? '🎲 Перестроить маршруты' : '🎲 Провести жеребьёвку';
+}
+
+/* ================= РЕГИСТРАЦИЯ ================= */
+const regForm = $('#regForm');
+const fName=$('#fName'), fDept=$('#fDept'), fContact=$('#fContact'), fLikes=$('#fLikes'), fDont=$('#fDont'), fAllergy=$('#fAllergy');
+const regInputs = [fName,fDept,fContact,fLikes,fDont,fAllergy];
+function setErr(input,msg){
+  const f = input.closest('.field');
+  f.classList.add('invalid'); f.querySelector('.err').textContent = msg;
+  input.setAttribute('aria-invalid','true');
+}
+function clearErr(input){
+  const f = input.closest('.field');
+  f.classList.remove('invalid'); f.querySelector('.err').textContent = '';
+  input.removeAttribute('aria-invalid');
+}
+regInputs.forEach(i => i.addEventListener('input', () => clearErr(i)));
+
+let lastParticipant = null;
+regForm.addEventListener('submit', e => {
   e.preventDefault();
-  const btn = $('regBtn'); btn.disabled = true;
-  $('regMsg').className = 'msg'; $('regMsg').textContent = 'Отправляем…';
-  try {
-    const res = await api({action:'register',
-      name:$('fName').value.trim(), dept:$('fDept').value.trim(),
-      contact:$('fContact').value.trim(), likes:$('fLikes').value.trim(),
-      dislikes:$('fDislikes').value.trim(), allergies:$('fAllergy').value.trim()});
-    if (res.ok) {
-      $('regForm').style.display = 'none';
-      $('regMsg').className = 'msg';
-      $('regMsg').innerHTML = 'Заявка принята! 🎉 Ваш секретный код:'
-        + '<div class="code">' + res.code + '</div>'
-        + 'Сохраните его (скриншот). По этому коду вы узнаете, кому дарить подарок.';
-    } else {
-      $('regMsg').className = 'msg err';
-      $('regMsg').textContent = res.error || 'Не удалось отправить.';
-    }
-  } catch (err) {
-    $('regMsg').className = 'msg err';
-    $('regMsg').textContent = 'Нет связи с сервером. Проверьте интернет.';
+  regInputs.forEach(clearErr);
+  const name = fName.value.trim().replace(/\s+/g,' ');
+  const contact = fContact.value.trim();
+  const likes = fLikes.value.trim();
+  let bad = null;
+  if(name.length < 3){ setErr(fName,'Укажите имя и фамилию'); bad = bad || fName; }
+  else if(state.participants.some(p => p.name.toLowerCase() === name.toLowerCase())){
+    setErr(fName,'Такое имя уже зарегистрировано. Если это вы — используйте свой код в разделе «Кому я дарю?».'); bad = bad || fName;
   }
-  btn.disabled = false;
+  if(!contact){ setErr(fContact,'Укажите Telegram или почту'); bad = bad || fContact; }
+  if(likes.length < 3){ setErr(fLikes,'Пара слов о пожеланиях поможет вашему Санте'); bad = bad || fLikes; }
+  if(bad){ bad.focus(); toast('Проверьте выделенные поля','error'); return; }
+
+  const p = { id: uid(), name, dept: fDept.value.trim(), contact, likes,
+    dont: fDont.value.trim(), allergies: fAllergy.value.trim(), code: genCode(), ts: Date.now() };
+  state.participants.push(p); save();
+  lastParticipant = p;
+  renderCounts(); if(tableOpen) renderTable();
+  showWaybill(p);
+  burstAt($('#regSubmit'));
+  toast('Заявка принята! Код отслеживания выдан 🎫','success');
+  regForm.reset();
 });
 
-// --- проверка кода ---
-$('lookBtn').addEventListener('click', async () => {
-  $('lookMsg').className = 'msg'; $('lookMsg').textContent = 'Проверяем…';
-  try {
-    const res = await api({action:'lookup', code:$('lookCode').value});
-    if (!res.ok) { $('lookMsg').className='msg err'; $('lookMsg').textContent = res.error; return; }
-    if (res.status === 'waiting') {
-      $('lookMsg').textContent = 'Жеребьёвка ещё не проведена. Загляните после даты жеребьёвки.';
-      return;
-    }
-    $('lookMsg').innerHTML =
-      '🎁 Вы дарите подарок: <b>' + esc(res.giftee) + '</b><br>' +
-      (res.likes ? 'Любит: ' + esc(res.likes) + '<br>' : '') +
-      (res.dislikes ? 'Не дарить: ' + esc(res.dislikes) + '<br>' : '') +
-      (res.allergies ? 'Аллергии: ' + esc(res.allergies) + '<br>' : '') +
-      'Бюджет до 1000 ₽. Держите в секрете!';
-  } catch (e) {
-    $('lookMsg').className='msg err'; $('lookMsg').textContent = 'Нет связи с сервером.';
+function drawBarcode(code){
+  const seed = [...code].map(c => c.charCodeAt(0));
+  let x = 4, i = 0, out = '';
+  while(x < 194){
+    const w = 1 + (seed[i % seed.length] + i) % 4;
+    if(i % 2 === 0) out += `<rect x="${x}" y="4" width="${w}" height="38" fill="#221A06"/>`;
+    x += w + 1.5; i++;
+  }
+  $('#wbBarcode').innerHTML = out;
+}
+function showWaybill(p){
+  $('#wbCode').textContent = p.code;
+  $('#wbName').textContent = p.name;
+  $('#wbDept').textContent = p.dept || '—';
+  $('#wbDate').textContent = new Date(p.ts).toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  drawBarcode(p.code);
+  const wb = $('#waybill');
+  wb.classList.remove('hidden');
+  wb.classList.remove('reveal-pop'); void wb.offsetWidth; wb.classList.add('reveal-pop');
+  setTimeout(() => wb.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'nearest'}), 80);
+}
+$('#wbCopy').addEventListener('click', async () => {
+  if(!lastParticipant) return;
+  const ok = await copyText(lastParticipant.code);
+  toast(ok ? 'Код скопирован — сохраните его 📋' : 'Не удалось скопировать', ok ? 'success' : 'error');
+});
+$('#wbTrack').addEventListener('click', () => {
+  if(!lastParticipant) return;
+  $('#trackInput').value = lastParticipant.code;
+  $('#track').scrollIntoView({behavior: reduced ? 'auto' : 'smooth'});
+  setTimeout(doTrack, reduced ? 0 : 450);
+});
+$('#wbAgain').addEventListener('click', () => {
+  $('#waybill').classList.add('hidden');
+  $('#regForm').scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'center'});
+  setTimeout(() => fName.focus(), reduced ? 0 : 450);
+});
+
+/* ================= ОТСЛЕЖИВАНИЕ ================= */
+const trackResult = $('#trackResult');
+function trackError(msg){
+  trackResult.innerHTML = `<div class="label-card error reveal-pop shake">
+    <div class="lc-head"><span>🚫 КОД НЕ НАЙДЕН</span><span class="chip chip-red">Ошибка</span></div>
+    <p class="lc-msg">${esc(msg)}</p></div>`;
+}
+function trackPending(p){
+  trackResult.innerHTML = `<div class="label-card pending reveal-pop">
+    <div class="lc-head"><span>⏳ МАРШРУТ В ОБРАБОТКЕ</span><span class="chip chip-amber">Ожидание</span></div>
+    <p class="lc-msg">Код принят, <b>${esc(p.name)}</b>! Жеребьёвка пройдёт <b>2 декабря</b> — после неё здесь появится имя вашего подопечного и его пожелания.</p>
+    <div class="lc-foot"><span class="chip chip-ink">🎲 2 декабря — жеребьёвка</span><span class="lc-secret">Загляните сюда после распределения маршрутов</span></div></div>`;
+}
+function trackLate(p){
+  trackResult.innerHTML = `<div class="label-card late reveal-pop">
+    <div class="lc-head"><span>📮 ВЫ В СЛЕДУЮЩЕМ РЕЙСЕ</span><span class="chip chip-blue">Инфо</span></div>
+    <p class="lc-msg"><b>${esc(p.name)}</b>, вы зарегистрировались после жеребьёвки. Напишите организатору — он перестроит маршруты и добавит вас в рейс.</p>
+    <div class="lc-foot"><span class="chip chip-ink">✉️ @anna_morozova</span></div></div>`;
+}
+function trackReveal(p, r){
+  trackResult.innerHTML = `<div class="label-card reveal-pop">
+    <div class="lc-head"><span>🚚 МАРШРУТ ПОСТРОЕН</span><span class="chip chip-red">Секретно</span></div>
+    <div class="lc-to">Вы — Тайный Санта для:</div>
+    <div class="lc-name">${esc(r.name)}</div>
+    ${r.dept ? `<div class="lc-dept">🏢 ${esc(r.dept)}</div>` : ''}
+    <div class="lc-grid">
+      <div class="lc-block good"><h4>🎯 Пожелания</h4><p>${esc(r.likes)}</p></div>
+      ${r.dont ? `<div class="lc-block bad"><h4>🚫 Не дарить</h4><p>${esc(r.dont)}</p></div>` : ''}
+      ${r.allergies ? `<div class="lc-block warn"><h4>⚠️ Аллергии / ограничения</h4><p>${esc(r.allergies)}</p></div>` : ''}
+    </div>
+    <div class="lc-foot"><span class="chip chip-ink">💸 Подарок до 1000 ₽</span><span class="lc-secret">🤫 Не выдавайте себя до 25 декабря</span></div></div>`;
+  const rc = trackResult.querySelector('.label-card').getBoundingClientRect();
+  burst(rc.left + rc.width/2, rc.top + 60, 70);
+}
+function doTrack(){
+  const raw = $('#trackInput').value.trim();
+  if(!raw){ trackError('Введите секретный код, который вы получили при регистрации.'); return; }
+  const n = normCode(raw);
+  const p = state.participants.find(x => normCode(x.code) === n);
+  if(!p){ trackError('Код не найден. Проверьте символы — или напишите организатору, он подскажет код по вашему имени.'); return; }
+  if(!state.draw){ trackPending(p); return; }
+  const r = byId(state.draw.pairs[p.id]);
+  if(!r){ trackLate(p); return; }
+  trackReveal(p, r);
+}
+$('#trackForm').addEventListener('submit', e => { e.preventDefault(); doTrack(); });
+
+/* ================= ОРГАНИЗАТОР ================= */
+const adminGate = $('#adminGate'), adminPanel = $('#adminPanel'), adminPass = $('#adminPass');
+let tableOpen = false;
+
+adminGate.addEventListener('submit', e => {
+  e.preventDefault();
+  if(adminPass.value === ORGANIZER_PASSWORD){
+    sessionStorage.setItem('ys26.admin','1');
+    unlockAdmin();
+    toast('Добро пожаловать, организатор 🎅','success');
+  }else{
+    $('#adminErr').textContent = 'Неверный пароль';
+    adminGate.classList.add('shake');
+    setTimeout(() => adminGate.classList.remove('shake'), 500);
   }
 });
-
-// --- жеребьёвка ---
-$('drawBtn').addEventListener('click', async () => {
-  if (!confirm('Провести жеребьёвку? Если она уже была — результаты перезапишутся.')) return;
-  $('orgMsg').className = 'msg'; $('orgMsg').textContent = 'Жеребьём…';
-  try {
-    const res = await api({action:'draw', key:$('orgKey').value});
-    $('orgMsg').className = res.ok ? 'msg' : 'msg err';
-    $('orgMsg').textContent = res.ok
-      ? 'Готово! Распределено участников: ' + res.count + '. Теперь каждый может проверить свой код.'
-      : res.error;
-  } catch (e) { $('orgMsg').className='msg err'; $('orgMsg').textContent = 'Нет связи с сервером.'; }
+function unlockAdmin(){
+  adminGate.classList.add('hidden');
+  adminPanel.classList.remove('hidden');
+  adminPass.value = ''; $('#adminErr').textContent = '';
+  renderCounts();
+}
+$('#btnLogout').addEventListener('click', () => {
+  sessionStorage.removeItem('ys26.admin');
+  adminPanel.classList.add('hidden');
+  adminGate.classList.remove('hidden');
+  toast('Вы вышли из диспетчерской','info');
 });
 
-// --- таблица организатора ---
-$('listBtn').addEventListener('click', async () => {
-  try {
-    const res = await api({action:'list', key:$('orgKey').value});
-    if (!res.ok) { $('orgMsg').className='msg err'; $('orgMsg').textContent = res.error; return; }
-    let html = '<table><tr><th>Кто дарит</th><th>Кому</th><th>Код</th><th>Контакт</th></tr>';
-    res.list.forEach(p => {
-      html += '<tr><td>' + esc(p.name) + '</td><td>' + esc(p.giftee) + '</td><td>' + esc(p.code) + '</td><td>' + esc(p.contact) + '</td></tr>';
+/* Жеребьёвка: алгоритм Саттоло — один цикл, никто не дарит сам себе */
+function sattolo(arr){
+  const a = [...arr];
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * i);
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+$('#btnDraw').addEventListener('click', async () => {
+  if(state.participants.length < 2){ toast('Нужно минимум 2 участника для жеребьёвки','error'); return; }
+  if(state.draw){
+    const ok = await confirmDialog({
+      title:'Перестроить маршруты?',
+      text:'Жеребьёвка уже проведена. Пары будут назначены заново для всех участников. Коды отслеживания не изменятся.',
+      ok:'🎲 Перестроить'
     });
-    $('orgMsg').className = 'msg';
-    $('orgMsg').innerHTML = html + '</table>';
-  } catch (e) { $('orgMsg').className='msg err'; $('orgMsg').textContent = 'Нет связи с сервером.'; }
+    if(!ok) return;
+  }
+  const ids = state.participants.map(p => p.id);
+  const shuffled = sattolo(ids);
+  const pairs = {};
+  ids.forEach((id, i) => pairs[id] = shuffled[i]);
+  state.draw = { pairs, at: new Date().toISOString() };
+  save();
+  trackResult.innerHTML = '';
+  renderCounts(); if(tableOpen) renderTable();
+  burstAt($('#btnDraw'));
+  toast(`Маршруты построены: ${ids.length} сант в рейсе 🎄`,`success`);
 });
+
+$('#btnTable').addEventListener('click', () => {
+  tableOpen = !tableOpen;
+  $('#tableWrap').classList.toggle('hidden', !tableOpen);
+  $('#btnTable').textContent = tableOpen ? '🙈 Скрыть таблицу' : '📋 Показать таблицу';
+  $('#btnTable').setAttribute('aria-expanded', String(tableOpen));
+  if(tableOpen) renderTable();
+});
+$('#tableSearch').addEventListener('input', renderTable);
+
+function renderTable(){
+  const q = ($('#tableSearch').value || '').trim().toLowerCase();
+  const rows = state.participants.filter(p =>
+    !q || p.name.toLowerCase().includes(q) || p.code.toLowerCase().includes(q) || (p.dept||'').toLowerCase().includes(q));
+  $('#tableCount').textContent = `Показано ${rows.length} из ${state.participants.length}`;
+  const tb = $('#tableBody');
+  if(!rows.length){
+    tb.innerHTML = `<tr><td colspan="9" class="t-empty">${state.participants.length ? 'Ничего не найдено 🔍' : 'Пока пусто — зарегистрируйте участников или загрузите демо-данные ✨'}</td></tr>`;
+    return;
+  }
+  tb.innerHTML = rows.map((p, i) => {
+    const r = state.draw ? byId(state.draw.pairs[p.id]) : null;
+    return `<tr>
+      <td>${i+1}</td>
+      <td class="t-name">${esc(p.name)}</td>
+      <td>${esc(p.dept || '—')}</td>
+      <td>${esc(p.contact)}</td>
+      <td><button class="code-chip" type="button" data-copy="${esc(p.code)}" title="Скопировать код">${esc(p.code)}</button></td>
+      <td class="t-wide">${esc(p.likes)}</td>
+      <td class="t-wide">${esc(p.dont || '—')}</td>
+      <td class="t-wide">${esc(p.allergies || '—')}</td>
+      <td class="${r ? 't-assigned' : ''}">${r ? esc(r.name) : '—'}</td>
+    </tr>`;
+  }).join('');
+}
+$('#tableBody').addEventListener('click', async e => {
+  const b = e.target.closest('[data-copy]');
+  if(!b) return;
+  const ok = await copyText(b.dataset.copy);
+  toast(ok ? 'Код скопирован 📋' : 'Не удалось скопировать', ok ? 'success' : 'error');
+});
+
+$('#btnExport').addEventListener('click', () => {
+  if(!state.participants.length){ toast('Список пуст — нечего выгружать','warn'); return; }
+  const head = ['Имя','Отдел','Контакт','Код','Пожелания','Не дарить','Аллергии','Кому дарит'];
+  const lines = [head, ...state.participants.map(p => [
+    p.name, p.dept, p.contact, p.code, p.likes, p.dont, p.allergies,
+    state.draw ? (byId(state.draw.pairs[p.id])?.name || '') : ''
+  ])].map(r => r.map(v => '"' + String(v ?? '').replace(/"/g,'""') + '"').join(';')).join('\r\n');
+  const blob = new Blob(['\uFEFF' + lines], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'secret-santa-2026.csv';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  toast('CSV выгружен ⬇️','success');
+});
+
+const DEMO = [
+  {name:'Анна Морозова', dept:'HR', contact:'@anna_morozova', likes:'Кофе зерновой, тёмный шоколад, красивые блокноты', dont:'Алкоголь, свечи с запахом', allergies:'Орехи'},
+  {name:'Дмитрий Соколов', dept:'IT', contact:'@dsokolov', likes:'Настолки, чай улун, аксессуары для механической клавиатуры', dont:'Кружки с надписями', allergies:''},
+  {name:'Елена Виноградова', dept:'Маркетинг', contact:'@elena_v', likes:'Сертификаты в книжный, гирлянды, мандарины', dont:'Косметика с отдушками', allergies:'Ланолин'},
+  {name:'Павел Орлов', dept:'Операции', contact:'@p_orlov', likes:'Термокружка, кофе дрип-пакеты, носки с оленями', dont:'Сладкое', allergies:'Сахар'},
+  {name:'Мария Лебедева', dept:'Финансы', contact:'@mlebedeva', likes:'Пазлы, какао, тёплый плед', dont:'Растения — нет места', allergies:''},
+  {name:'Игорь Черных', dept:'Логистика', contact:'@ichernykh', likes:'Мультитул, фонарик, вяленое мясо', dont:'Парфюм', allergies:''},
+  {name:'Ольга Снегирёва', dept:'Клиентский сервис', contact:'@osnegireva', likes:'Чай матча, стикеры, аромадиффузор', dont:'Молочный шоколад', allergies:'Цитрусовые'},
+  {name:'Алексей Зимин', dept:'Продажи', contact:'@azimin', likes:'Книги по бизнесу, эспрессо, карточные игры', dont:'Алкоголь', allergies:''}
+];
+$('#btnDemo').addEventListener('click', () => {
+  let added = 0;
+  DEMO.forEach(d => {
+    if(!state.participants.some(p => p.name.toLowerCase() === d.name.toLowerCase())){
+      state.participants.push({ id: uid(), code: genCode(), ts: Date.now(), ...d });
+      added++;
+    }
+  });
+  save(); renderCounts(); if(tableOpen) renderTable();
+  toast(added ? `Демо-данные загружены: +${added} участников ✨` : 'Демо-участники уже в списке','info');
+});
+
+$('#btnResetDraw').addEventListener('click', async () => {
+  if(!state.draw){ toast('Жеребьёвка ещё не проводилась','warn'); return; }
+  const ok = await confirmDialog({
+    title:'Сбросить жеребьёвку?',
+    text:'Все маршруты будут удалены. Участники и коды останутся — пары можно будет назначить заново.',
+    ok:'↺ Сбросить'
+  });
+  if(!ok) return;
+  state.draw = null; save();
+  trackResult.innerHTML = '';
+  renderCounts(); if(tableOpen) renderTable();
+  toast('Жеребьёвка сброшена — маршруты очищены','info');
+});
+
+$('#btnClear').addEventListener('click', async () => {
+  const ok = await confirmDialog({
+    title:'Очистить все данные?',
+    text:'Будут удалены все участники, коды и маршруты. Это действие нельзя отменить.',
+    ok:'🗑 Удалить всё', danger:true
+  });
+  if(!ok) return;
+  state = { participants: [], draw: null }; save();
+  lastParticipant = null;
+  $('#waybill').classList.add('hidden');
+  trackResult.innerHTML = '';
+  renderCounts(); if(tableOpen) renderTable();
+  toast('Все данные очищены','info');
+});
+
+/* ================= НАВИГАЦИЯ ================= */
+const nav = $('#nav'), burger = $('#burger');
+burger.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(open));
+});
+$$('#navMenu a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');
+}));
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), {passive:true});
+
+const secIds = ['top','how','rules','schedule','reg','track','admin','faq'];
+if('IntersectionObserver' in window){
+  const ao = new IntersectionObserver(es => es.forEach(en => {
+    if(en.isIntersecting){
+      $$('#navMenu a[data-sec]').forEach(a => a.classList.toggle('active', a.dataset.sec === en.target.id));
+    }
+  }), {rootMargin:'-35% 0px -55% 0px'});
+  secIds.forEach(id => { const el = document.getElementById(id); if(el) ao.observe(el); });
+}
+
+/* ================= ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ ================= */
+const revEls = $$('.reveal');
+if(reduced || !('IntersectionObserver' in window)){
+  revEls.forEach(el => el.classList.add('in'));
+}else{
+  const ro = new IntersectionObserver(es => es.forEach(en => {
+    if(en.isIntersecting){ en.target.classList.add('in'); ro.unobserve(en.target); }
+  }), {threshold:.12});
+  revEls.forEach(el => ro.observe(el));
+}
+
+/* ================= СТАРТ ================= */
+sizeSnow(); sizeConfetti();
+if(!reduced) requestAnimationFrame(snowLoop);
+else snowC.style.display = 'none';
+renderCounts(); updateSchedule(); tickCountdown();
+setInterval(tickCountdown, 1000);
+setInterval(updateSchedule, 60000);
+if(sessionStorage.getItem('ys26.admin') === '1') unlockAdmin();
+})();
 </script>
 </body>
 </html>
