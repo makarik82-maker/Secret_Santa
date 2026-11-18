@@ -360,17 +360,18 @@ section{scroll-margin-top:104px}
 
 /* ============ ФУТЕР ============ */
 footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;border-top:3px solid var(--ink)}
-.footer-main{padding:64px 0 40px}
-.dispatch{display:flex;flex-wrap:wrap;align-items:center;gap:22px;background:var(--dark2);
-  border:2px solid rgba(255,204,0,.4);border-radius:20px;padding:26px 28px;margin-bottom:36px}
-.dispatch-avatar{flex:none;width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-size:30px;
-  background:var(--y);border:2px solid var(--ink);border-radius:50%;box-shadow:4px 4px 0 rgba(0,0,0,.4)}
-.dispatch-info{flex:1;min-width:230px}
-.dispatch-info h3{font-family:var(--disp);font-weight:700;font-size:19px;color:var(--white);margin-bottom:5px}
-.dispatch-info p{font-size:14px;color:#C9BC9C;margin-bottom:8px}
-.dispatch-contacts{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;font-weight:700}
-.dispatch-contacts a{color:var(--y);text-decoration:none;border-bottom:1.5px solid rgba(255,204,0,.5)}
-.dispatch-contacts a:hover{color:var(--y3);border-color:var(--y3)}
+.footer-main{padding:56px 0 36px}
+.footer-top{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:flex-start;margin-bottom:30px}
+.footer-brand{font-family:var(--disp);font-weight:900;font-size:19px;text-decoration:none;color:var(--white);
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:16px}
+.footer-brand em{font-style:normal;color:var(--y)}
+.footer-status{display:flex;flex-wrap:wrap;gap:10px}
+.fs-chip{background:var(--dark2);border:2px solid rgba(255,204,0,.35);border-radius:999px;padding:7px 15px;
+  font-size:13px;font-weight:700;color:#F5EDD8}
+.fs-chip b{font-family:var(--mono);color:var(--y)}
+.footer-nav{display:flex;flex-wrap:wrap;gap:12px 24px;max-width:520px}
+.footer-nav a{font-size:14px;font-weight:700;color:#C9BC9C;text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:2px;transition:.2s}
+.footer-nav a:hover{color:var(--y);border-color:rgba(255,204,0,.6)}
 .footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:13px;color:#B7A87F;
   border-top:1px solid var(--darkline);padding-top:24px}
 .bottom-strip{background:linear-gradient(90deg,var(--y3),var(--y2));border-top:3px solid var(--ink);
@@ -430,7 +431,7 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
   .cd-cell b{font-size:20px}
   .stamp-badge{width:92px;height:92px;top:-8px;right:0}
   .budget-banner{padding:22px}
-  .dispatch{padding:22px}
+  .footer-top{flex-direction:column;gap:22px}
   .footer-bottom{flex-direction:column}
 }
 @media (prefers-reduced-motion: reduce){
@@ -707,8 +708,8 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
               <small class="err"></small>
             </div>
             <div class="field">
-              <label for="fContact">Куда писать лично (Telegram / почта) <b>*</b></label>
-              <input id="fContact" type="text" placeholder="@nickname или mail@company.ru" required>
+              <label for="fContact">Куда писать лично (почта) <b>*</b></label>
+              <input id="fContact" type="email" inputmode="email" autocomplete="email" placeholder="name@company.ru" required>
               <small class="err"></small>
             </div>
             <div class="field">
@@ -777,7 +778,7 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
 <section class="section" id="admin">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="sec-tag">Раздел 06 · Диспетчерская</span>
+      <span class="sec-tag">Раздел 06 · Служебный</span>
       <h2 class="sec-title">Организатору</h2>
       <p class="sec-sub">Служебный раздел: жеребьёвка, таблица участников и выгрузка маршрутов.</p>
     </div>
@@ -788,7 +789,7 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
       <p>Пароль организатора</p>
       <input id="adminPass" type="password" autocomplete="off" placeholder="••••••••" aria-label="Пароль организатора">
       <div class="gate-err" id="adminErr"></div>
-      <button class="btn btn-dark btn-big" type="submit">Войти в диспетчерскую</button>
+      <button class="btn btn-dark btn-big" type="submit">Войти</button>
       <p class="gate-hint">Пароль по умолчанию — <code>santa2026</code>. Замените его в коде файла перед публикацией.</p>
     </form>
 
@@ -815,7 +816,7 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
         <div class="table-wrap">
           <table>
             <thead><tr>
-              <th>#</th><th>Имя</th><th>Отдел</th><th>Контакт</th><th>Код</th>
+              <th>#</th><th>Имя</th><th>Отдел</th><th>Почта</th><th>Код</th>
               <th>Пожелания</th><th>Не дарить</th><th>Аллергии</th><th>Кому дарит</th>
             </tr></thead>
             <tbody id="tableBody"></tbody>
@@ -858,17 +859,23 @@ footer{background:linear-gradient(160deg,#1C1507,var(--dark2));color:#F5EDD8;bor
 <!-- ===== ФУТЕР ===== -->
 <footer>
   <div class="wrap footer-main">
-    <div class="dispatch reveal">
-      <span class="dispatch-avatar">🎅</span>
-      <div class="dispatch-info">
-        <h3>Диспетчерская</h3>
-        <p>По любым вопросам: Анна Морозова — организатор праздничной службы.</p>
-        <div class="dispatch-contacts">
-          <a href="https://t.me/anna_morozova" target="_blank" rel="noopener">Telegram: @anna_morozova</a>
-          <a href="mailto:santa@yellow-santa.ru">santa@yellow-santa.ru</a>
+    <div class="footer-top">
+      <div>
+        <a class="footer-brand" href="#top">🎄 Тайный Санта <em>2026</em></a>
+        <div class="footer-status">
+          <span class="fs-chip">👥 Участников: <b id="footCount">0</b></span>
+          <span class="fs-chip" id="footDraw">🎲 Жеребьёвка 2 декабря</span>
         </div>
       </div>
-      <a class="btn btn-yellow" href="#admin">🔐 Организатору</a>
+      <nav class="footer-nav" aria-label="Разделы страницы">
+        <a href="#how">Как это работает</a>
+        <a href="#rules">Правила и бюджет</a>
+        <a href="#schedule">График доставки</a>
+        <a href="#reg">Регистрация</a>
+        <a href="#track">Кому я дарю?</a>
+        <a href="#faq">Вопросы и ответы</a>
+        <a href="#admin">🔐 Организатору</a>
+      </nav>
     </div>
     <div class="footer-bottom">
       <span>Сделано с любовью и мишурой ✨ Тайный Санта 2026</span>
@@ -903,6 +910,7 @@ const LS_KEY = 'yellowSanta2026.v1';
 const ORGANIZER_PASSWORD = 'santa2026';
 const DRAW_DATE = new Date('2026-12-02T12:00:00+03:00');
 const EXCHANGE_DATE = new Date('2026-12-25T18:00:00+03:00');
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1105,6 +1113,8 @@ function renderCounts(){
   const n = state.participants.length, drawn = !!state.draw;
   $('#heroCount').textContent = n;
   $('#regCount').textContent = n;
+  $('#footCount').textContent = n;
+  $('#footDraw').textContent = drawn ? '✅ Маршруты построены' : '🎲 Жеребьёвка 2 декабря';
   $('#statCount').textContent = n;
   const sd = $('#statDraw');
   sd.textContent = drawn ? 'Проведена ✅' : 'Ещё не было';
@@ -1141,7 +1151,8 @@ regForm.addEventListener('submit', e => {
   else if(state.participants.some(p => p.name.toLowerCase() === name.toLowerCase())){
     setErr(fName,'Такое имя уже зарегистрировано. Если это вы — используйте свой код в разделе «Кому я дарю?».'); bad = bad || fName;
   }
-  if(!contact){ setErr(fContact,'Укажите Telegram или почту'); bad = bad || fContact; }
+  if(!contact){ setErr(fContact,'Укажите почту для связи'); bad = bad || fContact; }
+  else if(!EMAIL_RE.test(contact)){ setErr(fContact,'Формат почты: name@company.ru'); bad = bad || fContact; }
   if(likes.length < 3){ setErr(fLikes,'Пара слов о пожеланиях поможет вашему Санте'); bad = bad || fLikes; }
   if(bad){ bad.focus(); toast('Проверьте выделенные поля','error'); return; }
 
@@ -1210,8 +1221,8 @@ function trackPending(p){
 function trackLate(p){
   trackResult.innerHTML = `<div class="label-card late reveal-pop">
     <div class="lc-head"><span>📮 ВЫ В СЛЕДУЮЩЕМ РЕЙСЕ</span><span class="chip chip-blue">Инфо</span></div>
-    <p class="lc-msg"><b>${esc(p.name)}</b>, вы зарегистрировались после жеребьёвки. Напишите организатору — он перестроит маршруты и добавит вас в рейс.</p>
-    <div class="lc-foot"><span class="chip chip-ink">✉️ @anna_morozova</span></div></div>`;
+    <p class="lc-msg"><b>${esc(p.name)}</b>, вы зарегистрировались после жеребьёвки. Сообщите организатору — он перестроит маршруты и добавит вас в рейс.</p>
+    <div class="lc-foot"><span class="chip chip-ink">📮 Ожидайте перестройки маршрутов</span></div></div>`;
 }
 function trackReveal(p, r){
   trackResult.innerHTML = `<div class="label-card reveal-pop">
@@ -1267,7 +1278,7 @@ $('#btnLogout').addEventListener('click', () => {
   sessionStorage.removeItem('ys26.admin');
   adminPanel.classList.add('hidden');
   adminGate.classList.remove('hidden');
-  toast('Вы вышли из диспетчерской','info');
+  toast('Вы вышли из служебного раздела','info');
 });
 
 /* Жеребьёвка: алгоритм Саттоло — один цикл, никто не дарит сам себе */
@@ -1344,7 +1355,7 @@ $('#tableBody').addEventListener('click', async e => {
 
 $('#btnExport').addEventListener('click', () => {
   if(!state.participants.length){ toast('Список пуст — нечего выгружать','warn'); return; }
-  const head = ['Имя','Отдел','Контакт','Код','Пожелания','Не дарить','Аллергии','Кому дарит'];
+  const head = ['Имя','Отдел','Почта','Код','Пожелания','Не дарить','Аллергии','Кому дарит'];
   const lines = [head, ...state.participants.map(p => [
     p.name, p.dept, p.contact, p.code, p.likes, p.dont, p.allergies,
     state.draw ? (byId(state.draw.pairs[p.id])?.name || '') : ''
@@ -1359,14 +1370,14 @@ $('#btnExport').addEventListener('click', () => {
 });
 
 const DEMO = [
-  {name:'Анна Морозова', dept:'HR', contact:'@anna_morozova', likes:'Кофе зерновой, тёмный шоколад, красивые блокноты', dont:'Алкоголь, свечи с запахом', allergies:'Орехи'},
-  {name:'Дмитрий Соколов', dept:'IT', contact:'@dsokolov', likes:'Настолки, чай улун, аксессуары для механической клавиатуры', dont:'Кружки с надписями', allergies:''},
-  {name:'Елена Виноградова', dept:'Маркетинг', contact:'@elena_v', likes:'Сертификаты в книжный, гирлянды, мандарины', dont:'Косметика с отдушками', allergies:'Ланолин'},
-  {name:'Павел Орлов', dept:'Операции', contact:'@p_orlov', likes:'Термокружка, кофе дрип-пакеты, носки с оленями', dont:'Сладкое', allergies:'Сахар'},
-  {name:'Мария Лебедева', dept:'Финансы', contact:'@mlebedeva', likes:'Пазлы, какао, тёплый плед', dont:'Растения — нет места', allergies:''},
-  {name:'Игорь Черных', dept:'Логистика', contact:'@ichernykh', likes:'Мультитул, фонарик, вяленое мясо', dont:'Парфюм', allergies:''},
-  {name:'Ольга Снегирёва', dept:'Клиентский сервис', contact:'@osnegireva', likes:'Чай матча, стикеры, аромадиффузор', dont:'Молочный шоколад', allergies:'Цитрусовые'},
-  {name:'Алексей Зимин', dept:'Продажи', contact:'@azimin', likes:'Книги по бизнесу, эспрессо, карточные игры', dont:'Алкоголь', allergies:''}
+  {name:'Анна Морозова', dept:'HR', contact:'a.morozova@company.ru', likes:'Кофе зерновой, тёмный шоколад, красивые блокноты', dont:'Алкоголь, свечи с запахом', allergies:'Орехи'},
+  {name:'Дмитрий Соколов', dept:'IT', contact:'d.sokolov@company.ru', likes:'Настолки, чай улун, аксессуары для механической клавиатуры', dont:'Кружки с надписями', allergies:''},
+  {name:'Елена Виноградова', dept:'Маркетинг', contact:'e.vinogradova@company.ru', likes:'Сертификаты в книжный, гирлянды, мандарины', dont:'Косметика с отдушками', allergies:'Ланолин'},
+  {name:'Павел Орлов', dept:'Операции', contact:'p.orlov@company.ru', likes:'Термокружка, кофе дрип-пакеты, носки с оленями', dont:'Сладкое', allergies:'Сахар'},
+  {name:'Мария Лебедева', dept:'Финансы', contact:'m.lebedeva@company.ru', likes:'Пазлы, какао, тёплый плед', dont:'Растения — нет места', allergies:''},
+  {name:'Игорь Черных', dept:'Логистика', contact:'i.chernykh@company.ru', likes:'Мультитул, фонарик, вяленое мясо', dont:'Парфюм', allergies:''},
+  {name:'Ольга Снегирёва', dept:'Клиентский сервис', contact:'o.snegireva@company.ru', likes:'Чай матча, стикеры, аромадиффузор', dont:'Молочный шоколад', allergies:'Цитрусовые'},
+  {name:'Алексей Зимин', dept:'Продажи', contact:'a.zimin@company.ru', likes:'Книги по бизнесу, эспрессо, карточные игры', dont:'Алкоголь', allergies:''}
 ];
 $('#btnDemo').addEventListener('click', () => {
   let added = 0;
