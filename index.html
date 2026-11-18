@@ -67,6 +67,7 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .sync.synced{color:var(--gd);border-color:var(--green);background:#EAF7F0}.sync.pending{color:#9A5B00;border-color:var(--amber);background:#FFF4E0}
 .sync.sending{color:#1B4FBF;border-color:var(--blue);background:#EAF0FF}.sync.sending .d{animation:pulse 1s infinite}
 .sync.error{color:var(--red);border-color:var(--red);background:#FDECEC}
+.sync.demo{color:#7A6B45;border-color:var(--mute);background:#F3EEDD}
 @keyframes pulse{50%{transform:scale(1.5);opacity:.5}}
 .hero{position:relative;overflow:hidden;padding:74px 0 82px;background:linear-gradient(135deg,var(--y3),var(--y) 46%,var(--y2))}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(700px 420px at 18% 8%,rgba(255,253,246,.75),transparent 60%)}
@@ -427,7 +428,7 @@ html.anim .rv.in{opacity:1;transform:none}
 <section class="section" id="how"><div class="wrap">
   <div class="sec-head rv"><span class="tag">Раздел 01 · Маршрут</span><h2>Как это <mark>работает</mark></h2><p>Четыре остановки — от заявки до праздничной вручки. Всё анонимно и точно в срок.</p></div>
   <div class="how">
-    <article class="step rv"><span class="n">01</span><span class="ico">📝</span><h3>Заполните форму</h3><p>Нажмите «Отправить заявку» — код придёт сразу, а данные автоматически уйдут в Google-таблицу.</p></article>
+    <article class="step rv"><span class="n">01</span><span class="ico">📝</span><h3>Заполните форму</h3><p>Нажмите «Отправить заявку» — код придёт сразу, а данные в ту же секунду уйдут в Google-таблицу.</p></article>
     <article class="step rv" data-d="1"><span class="n">02</span><span class="ico">🔑</span><h3>Узнайте подопечного</h3><p>После жеребьёвки введите код и узнайте, кому вы Санта.</p></article>
     <article class="step rv" data-d="2"><span class="n">03</span><span class="ico">🎁</span><h3>Соберите подарок</h3><p>Подготовьте подарок до 1000 ₽ по пожеланиям подопечного.</p></article>
     <article class="step rv" data-d="3"><span class="n">04</span><span class="ico">🚚</span><h3>Доставка 25 декабря</h3><p>25 декабря — анонимная доставка и обмен подарками 🎁</p></article>
@@ -456,13 +457,13 @@ html.anim .rv.in{opacity:1;transform:none}
 </div></section>
 
 <section class="section" id="reg"><div class="wrap">
-  <div class="sec-head rv"><span class="tag">Раздел 04 · Накладная</span><h2>Регистрация</h2><p>Заполните праздничную накладную — код выдаётся сразу, а заявка автоматически уходит в Google Sheets в момент отправки.</p></div>
+  <div class="sec-head rv"><span class="tag">Раздел 04 · Накладная</span><h2>Регистрация</h2><p>Заполните праздничную накладную — код выдаётся сразу, а заявка автоматически уходит в Google Sheets в момент нажатия кнопки.</p></div>
   <div class="reg">
     <div class="reg-info rv">
       <h3>Присоединяйтесь к рейсу 🎅</h3>
       <p>Заполните накладную — система выдаст секретный код. После жеребьёвки код откроет имя подопечного и его пожелания.</p>
       <ul class="il">
-        <li><i>⚡</i> Синхронизация с Google Sheets — сразу по кнопке «Отправить заявку»</li>
+        <li><i>⚡</i> Запись в Google Sheets — сразу по кнопке «Отправить заявку»</li>
         <li><i>🔁</i> При сбое связи заявка отправится повторно автоматически</li>
         <li><i>🔒</i> Полные данные видит только организатор</li>
         <li><i>🤫</i> Никто не знает, кто чей Санта</li>
@@ -479,10 +480,10 @@ html.anim .rv.in{opacity:1;transform:none}
         <div class="field"><label for="fDont">Что вам НЕ дарить?</label><textarea id="fDont" rows="2" placeholder="Алкоголь, свечи, косметику…"></textarea><small class="err"></small></div>
         <div class="field"><label for="fAllergy">Аллергии и ограничения</label><input id="fAllergy" type="text" placeholder="Орехи, цитрусовые, без сахара…"><small class="err"></small></div>
         <button class="btn b-red b-big" type="submit" id="regSubmit">🎁 Отправить заявку</button>
-        <p class="note">Синхронизация с Google Sheets запускается автоматически сразу после отправки.</p>
+        <p class="note">Данные автоматически сохраняются в Google-таблицу организатора сразу после отправки.</p>
       </form></div>
       <div id="waybill" class="wb hidden" aria-live="polite">
-        <div class="wb-h"><span>📦 ПОСЫЛКА ПРИНЯТА</span><span class="chip c-green">В обработке</span></div>
+        <div class="wb-h"><span>📦 ПОСЫЛКА ПРИНЯТА</span><span class="chip c-green" id="wbHead">В обработке</span></div>
         <div class="wb-l">Ваш секретный код отслеживания</div>
         <div class="wb-c" id="wbCode">—</div>
         <svg id="wbBar" viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"></svg>
@@ -518,27 +519,27 @@ html.anim .rv.in{opacity:1;transform:none}
       <div class="stat"><span>Участников</span><b id="stCount">0</b></div>
       <div class="stat"><span>Жеребьёвка</span><b id="stDraw" class="warn">Ещё не было</b></div>
       <div class="stat"><span>Очередь отправки</span><b id="stQueue" class="warn">0</b></div>
-      <div class="stat"><span>Google Sheets</span><b id="stSheet" class="warn">Не подключено</b></div>
+      <div class="stat"><span>Google Sheets</span><b id="stSheet" class="warn">Проверяем…</b></div>
     </div>
-    <div class="demo hidden" id="demoBar"><span>✨ В базе есть демо-участники — удалите их перед реальным сбором заявок.</span><button class="btn b-warn b-sm" id="bDemoDel" type="button">Удалить демо</button></div>
+    <div class="demo hidden" id="demoBar"><span>✨ Демо-участники хранятся только локально и в таблицу не отправляются — удалите их перед реальным сбором заявок.</span><button class="btn b-warn b-sm" id="bDemoDel" type="button">Удалить демо</button></div>
     <div class="gs">
-      <div class="gs-h"><h3>📊 Google Sheets</h3><span class="live"><i></i> Автоотправка включена</span><span class="chip c-white" id="gsChip">Не подключено</span><button class="btn b-yel b-sm" id="bScript" type="button">📄 Код скрипта</button></div>
+      <div class="gs-h"><h3>📊 Google Sheets</h3><span class="live"><i></i> Автосинхронизация</span><span class="chip c-white" id="gsChip">Проверяем связь…</span><button class="btn b-yel b-sm" id="bScript" type="button">📄 Код скрипта</button></div>
       <div class="gs-b">
         <div>
-          <h4>Подключение</h4>
-          <div class="field"><label for="gsUrl">URL веб-приложения (/exec)</label><input id="gsUrl" type="url" spellcheck="false" placeholder="https://script.google.com/macros/s/…/exec"><small class="err"></small></div>
+          <h4>Подключение (уже настроено)</h4>
+          <div class="field"><label for="gsUrl">URL веб-приложения (/exec)</label><input id="gsUrl" type="url" spellcheck="false"><small class="err"></small></div>
           <div class="field"><label for="gsSheet">Название листа</label><input id="gsSheet" type="text" placeholder="Участники"><small class="err"></small></div>
           <div class="field"><label for="gsToken">Токен (как TOKEN в скрипте)</label><input id="gsToken" type="text" spellcheck="false" placeholder="SANTA-2026"><small class="err"></small></div>
           <div class="auto" id="autoState">Автоотправка активна</div>
-          <div class="gs-a"><button class="btn b-ink b-sm" id="bCfg" type="button">💾 Сохранить настройки</button><button class="btn b-sheet b-sm" id="bPing" type="button">🔌 Проверить связь</button></div>
+          <div class="gs-a"><button class="btn b-ink b-sm" id="bCfg" type="button">💾 Сохранить настройки</button><button class="btn b-sheet b-sm" id="bPing" type="button">🔌 Проверить связь</button><button class="btn b-ghost b-sm" id="bDef" type="button">↺ Встроенный URL</button></div>
         </div>
         <div>
-          <h4>Как подключить за 4 шага</h4>
+          <h4>Что происходит при отправке заявки</h4>
           <ol class="steps">
-            <li>Создайте Google-таблицу → <code>Расширения → Apps Script</code>.</li>
-            <li>Вставьте код из кнопки «Код скрипта» и сохраните проект.</li>
-            <li><code>Развернуть → Веб-приложение</code>: выполнять как «Я», доступ «Все».</li>
-            <li>Скопируйте URL <code>/exec</code> в поле слева и нажмите «Сохранить настройки».</li>
+            <li>Участник жмёт «Отправить заявку» — запись сразу уходит POST-запросом в веб-приложение.</li>
+            <li>Скрипт пишет строку на лист <code>Участники</code> (обновление по коду, без дублей).</li>
+            <li>Накладная участника показывает статус <code>В таблице</code> и число строк.</li>
+            <li>Если сеть подвела — повтор каждые 5→60 с, при возврате онлайн и при открытии вкладки.</li>
           </ol>
           <div class="gs-a">
             <button class="btn b-sheet b-sm" id="bPushAll" type="button">⬆️ Отправить всех</button>
@@ -564,7 +565,7 @@ html.anim .rv.in{opacity:1;transform:none}
       <div class="bar">
         <input id="q" type="search" placeholder="Поиск: имя, код, отдел, почта, пожелания…" aria-label="Поиск">
         <select id="fDeptSel" aria-label="Фильтр по отделу"><option value="">Все отделы</option></select>
-        <select id="fStatus" aria-label="Фильтр по статусу"><option value="">Любой статус</option><option value="synced">✅ Отправленные</option><option value="pending">⏳ В очереди</option><option value="error">⚠️ С ошибкой</option></select>
+        <select id="fStatus" aria-label="Фильтр по статусу"><option value="">Любой статус</option><option value="synced">✅ Отправленные</option><option value="pending">⏳ В очереди</option><option value="error">⚠️ С ошибкой</option><option value="demo">🧪 Демо</option></select>
         <select id="sortBy" aria-label="Сортировка"><option value="manual">Ручной порядок</option><option value="name">По имени</option><option value="dept">По отделу</option><option value="ts">По дате заявки</option><option value="sync">По статусу</option></select>
         <button class="btn b-ghost b-sm" id="sortDir" type="button">↑ по возрастанию</button>
         <button class="btn b-ghost b-sm" id="bView" type="button">💾 Сохранить вид</button>
@@ -589,7 +590,7 @@ html.anim .rv.in{opacity:1;transform:none}
     <details class="fq rv" data-d="1"><summary>Сколько тратить?</summary><div class="fa">До 1000 ₽, дороже не нужно.</div></details>
     <details class="fq rv" data-d="2"><summary>Я потерял код</summary><div class="fa">Напишите организатору — он подскажет код по вашему имени.</div></details>
     <details class="fq rv" data-d="3"><summary>Что если не знаю, что дарить?</summary><div class="fa">Возьмите нейтральное: кофе, чай, канцелярию, сертификат.</div></details>
-    <details class="fq rv" data-d="3"><summary>Куда попадают заявки?</summary><div class="fa">Сразу после нажатия «Отправить заявку» данные автоматически уходят в Google-таблицу организатора: имя, отдел, почта, пожелания, «не дарить», аллергии, код и дата. Если связь недоступна, заявка сохраняется в браузере и отправляется повторно сама — ничего нажимать не нужно.</div></details>
+    <details class="fq rv" data-d="3"><summary>Куда попадают заявки?</summary><div class="fa">Сразу после нажатия «Отправить заявку» данные автоматически записываются в Google-таблицу организатора на лист «Участники»: код, имя, отдел, почта, пожелания, «не дарить», аллергии и дата. Если связь недоступна, заявка сохраняется в браузере и отправляется повторно сама — ничего нажимать не нужно.</div></details>
   </div>
 </div></section>
 </main>
@@ -597,7 +598,7 @@ html.anim .rv.in{opacity:1;transform:none}
 <footer><div class="wrap fm">
   <div class="ft">
     <div><a class="fb" href="#top">🎄 Тайный Санта <em>2026</em></a>
-      <div class="fs"><span class="fsc">👥 Участников: <b id="footCount">0</b></span><span class="fsc" id="footDraw">🎲 Жеребьёвка 2 декабря</span><span class="fsc" id="footSheet">📊 Таблица не подключена</span></div></div>
+      <div class="fs"><span class="fsc">👥 Участников: <b id="footCount">0</b></span><span class="fsc" id="footDraw">🎲 Жеребьёвка 2 декабря</span><span class="fsc" id="footSheet">📊 Проверяем таблицу…</span></div></div>
     <nav class="fn" aria-label="Разделы страницы"><a href="#how">Как это работает</a><a href="#rules">Правила и бюджет</a><a href="#schedule">График доставки</a><a href="#reg">Регистрация</a><a href="#track">Кому я дарю?</a><a href="#faq">Вопросы и ответы</a><a href="#admin">🔐 Организатору</a></nav>
   </div>
   <div class="fbt"><span>Сделано с любовью и мишурой ✨ Тайный Санта 2026</span><span>Жёлтый — значит, подарок доставим точно в срок 📦</span></div>
@@ -630,8 +631,9 @@ html.anim .rv.in{opacity:1;transform:none}
     <div class="ma"><button class="btn b-ghost" id="mCancel" type="button">Отмена</button><button class="btn b-red" id="mOk" type="button">Подтвердить</button></div></div></div>
 
 <div id="sModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="sTitle"><div class="msc"></div>
-  <div class="mc wide"><h3 id="sTitle">📄 Скрипт для Google Sheets</h3>
-    <p>Откройте таблицу → <b>Расширения → Apps Script</b>, вставьте код целиком, сохраните и разверните как веб-приложение («Выполнять как: Я», «Доступ: Все»). Колонки листа создадутся автоматически и совпадают с полями формы.</p>
+  <div class="mc wide"><h3 id="sTitle">📄 Скрипт Google Sheets (уже развёрнут)</h3>
+    <p>Этот код уже работает по встроенному URL. Он нужен, только если вы захотите перенести приём заявок в другую таблицу:
+      <b>Расширения → Apps Script</b> → вставить → <b>Развернуть → Веб-приложение</b> («Выполнять как: Я», «Доступ: Все») → новый URL вставить в поле настроек.</p>
     <pre class="codebox" id="sCode"></pre>
     <div class="ma"><button class="btn b-yel" id="sCopy" type="button">📋 Скопировать код</button><button class="btn b-ghost" id="sClose" type="button">Закрыть</button></div></div></div>
 
@@ -713,7 +715,11 @@ function run_(p){
 'use strict';
 var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 addEventListener('error',function(){document.documentElement.classList.remove('anim')});
-var KEY='santa26.v4',GKEY='santa26.gs',VKEY='santa26.views',PASS='santa2026';
+/* ===== ВСТРОЕННОЕ ПОДКЛЮЧЕНИЕ К GOOGLE SHEETS ===== */
+var GS_URL='https://script.google.com/macros/s/AKfycbwKOyFwLLVKnjmivyzO1keMCidRGh15MOA0fgfQeLt0AfaIJ-YKgEXPBAonLcGKHxcE/exec';
+var GS_TOKEN='SANTA-2026',GS_SHEET='Участники';
+var GS_DOC='https://docs.google.com/spreadsheets/d/1lojyLY6g9lMf-tAufI4V5iHhduqrKu3NJCD-nGeK8EA/edit';
+var KEY='santa26.v5',GKEY='santa26.gs5',VKEY='santa26.views',PASS='santa2026';
 var DRAW=new Date('2026-12-02T12:00:00+03:00'),EXCH=new Date('2026-12-25T18:00:00+03:00');
 var MAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
@@ -726,14 +732,19 @@ var filters={q:'',dept:'',status:'',sort:'manual',dir:'asc'},sel=new Set(),table
 var autoTimer=null,attempt=0,nextAt=0;
 function load(){try{var r=localStorage.getItem(KEY);if(r){var p=JSON.parse(r);return{participants:p.participants||[],draw:p.draw||null}}}catch(e){}return{participants:[],draw:null}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
-function loadGs(){var d={url:'',sheet:'Участники',token:'SANTA-2026',sheetUrl:'',last:0,ok:null};try{var r=localStorage.getItem(GKEY);if(r)return Object.assign(d,JSON.parse(r))}catch(e){}return d}
+function loadGs(){
+  var d={url:GS_URL,sheet:GS_SHEET,token:GS_TOKEN,sheetUrl:GS_DOC,last:0,ok:null};
+  try{var r=localStorage.getItem(GKEY);if(r){var s=JSON.parse(r);if(s&&typeof s==='object')Object.assign(d,s)}}catch(e){}
+  if(!d.url)d.url=GS_URL;if(!d.sheet)d.sheet=GS_SHEET;if(!d.token)d.token=GS_TOKEN;if(!d.sheetUrl)d.sheetUrl=GS_DOC;
+  return d}
 function saveGs(){try{localStorage.setItem(GKEY,JSON.stringify(gs))}catch(e){}}
 function loadViews(){try{var r=localStorage.getItem(VKEY);if(r)return JSON.parse(r)||[]}catch(e){}return[]}
 function saveViews(){try{localStorage.setItem(VKEY,JSON.stringify(views))}catch(e){}}
 function byId(id){return state.participants.find(function(p){return p.id===id})}
-function sst(p){return (p.sync&&p.sync.state)||'pending'}
-function setS(p,s,e){p.sync={state:s,at:Date.now(),error:e||''}}
-function pendingList(){return state.participants.filter(function(p){return sst(p)!=='synced'})}
+function sst(p){return p.demo?'demo':((p.sync&&p.sync.state)||'pending')}
+function setS(p,s,e){if(p.demo)return;p.sync={state:s,at:Date.now(),error:e||''}}
+function pendingList(){return state.participants.filter(function(p){return !p.demo&&sst(p)!=='synced'})}
+function realList(){return state.participants.filter(function(p){return !p.demo})}
 var AL='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 function code(){var c;do{var b=new Uint8Array(8);crypto.getRandomValues(b);var f=function(a){return Array.prototype.map.call(a,function(x){return AL[x%AL.length]}).join('')};c='SN26-'+f(b.slice(0,4))+'-'+f(b.slice(4))}while(state.participants.some(function(p){return p.code===c}));return c}
 function toast(msg,type,act){
@@ -742,8 +753,7 @@ function toast(msg,type,act){
   var done=false,kill=function(){if(done)return;done=true;el.classList.add('out');setTimeout(function(){el.remove()},350)};
   if(act){var b=document.createElement('button');b.className='ta';b.type='button';b.textContent=act.label;b.onclick=function(){act.fn();kill()};el.appendChild(b)}
   var box=$('#toasts');box.appendChild(el);while(box.children.length>4)box.firstChild.remove();
-  setTimeout(kill,act?9000:4200);
-}
+  setTimeout(kill,act?9000:4200)}
 function copy(t){return navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t).then(function(){return true},fb):(fb(),Promise.resolve(true));
   function fb(){try{var a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}catch(e){}}}
 var ov=0;function overlay(o){ov=Math.max(0,ov+(o?1:-1));document.body.style.overflow=ov?'hidden':''}
@@ -803,29 +813,28 @@ function tick(){var n=Date.now(),t=null,l;
 var BND=['2026-12-02T00:00:00+03:00','2026-12-03T00:00:00+03:00','2026-12-25T00:00:00+03:00','2026-12-26T00:00:00+03:00'].map(function(x){return new Date(x).getTime()}),ICO=['📝','🎲','🎁','🚚'];
 function sched(){var n=Date.now();$$('.ti').forEach(function(el,i){var done=n>=BND[i],act=!done&&(i===0||n>=BND[i-1]);
   el.classList.toggle('done',done);el.classList.toggle('active',act);$('.tn',el).textContent=done?'✓':ICO[i]})}
-function counts(){var c={synced:0,pending:0,error:0};state.participants.forEach(function(p){var s=sst(p);if(s==='synced')c.synced++;else if(s==='error')c.error++;else c.pending++});return c}
-function badge(p){var s=sst(p),m={synced:['synced','В таблице'],pending:['pending','В очереди'],sending:['sending','Отправка…'],error:['error','Ошибка']},v=m[s]||m.pending;
+function counts(){var c={synced:0,pending:0,error:0};realList().forEach(function(p){var s=sst(p);if(s==='synced')c.synced++;else if(s==='error')c.error++;else c.pending++});return c}
+function badge(p){var s=sst(p),m={synced:['synced','В таблице'],pending:['pending','В очереди'],sending:['sending','Отправка…'],error:['error','Ошибка'],demo:['demo','Демо · локально']},v=m[s]||m.pending;
   var ti=s==='error'&&p.sync&&p.sync.error?' title="'+esc(p.sync.error)+'"':'';return '<span class="sync '+v[0]+'"'+ti+'><span class="d"></span>'+v[1]+'</span>'}
 function updateAuto(){
   var el=$('#autoState'),n=pendingList().length;
-  if(!state.participants.length){el.className='auto';el.innerHTML='⚡ Автоотправка включена — заявок пока нет';return}
-  if(!n){el.className='auto ok';el.innerHTML='✅ Все заявки автоматически сохранены в таблице';return}
+  if(!realList().length){el.className='auto';el.innerHTML='⚡ Автосинхронизация включена — реальных заявок пока нет';return}
+  if(!n){el.className='auto ok';el.innerHTML='✅ Все заявки автоматически записаны в Google Sheets';return}
   if(!gs.url){el.className='auto warn';el.innerHTML='⏸ '+n+' в очереди · укажите URL таблицы — отправка пойдёт сама';return}
   if(syncing){el.className='auto run';el.innerHTML='<span class="sp"></span> Отправляем '+n+' записей в Google Sheets…';return}
   var left=nextAt?Math.max(0,Math.ceil((nextAt-Date.now())/1000)):0;
-  el.className='auto run';el.innerHTML='<span class="sp"></span> Автоотправка: '+n+' в очереди'+(left?' · повтор через '+left+' с':' · запускаем…');
-}
+  el.className='auto run';el.innerHTML='<span class="sp"></span> Автоотправка: '+n+' в очереди'+(left?' · повтор через '+left+' с':' · запускаем…')}
 function render(){
   var n=state.participants.length,d=!!state.draw,c=counts();
   $('#heroCount').textContent=n;$('#regCount').textContent=n;$('#footCount').textContent=n;
   $('#footDraw').textContent=d?'✅ Маршруты построены':'🎲 Жеребьёвка 2 декабря';
-  $('#footSheet').textContent=gs.url?(gs.ok===false?'📊 Таблица: ошибка связи':'📊 Таблица подключена'):'📊 Таблица не подключена';
+  $('#footSheet').textContent=gs.url?(gs.ok===false?'📊 Таблица: ошибка связи':gs.ok===true?'📊 Таблица на связи':'📊 Проверяем таблицу…'):'📊 Таблица не подключена';
   $('#stCount').textContent=n;
   $('#stDraw').textContent=d?'Проведена ✅':'Ещё не было';$('#stDraw').className=d?'ok':'warn';
   $('#stQueue').textContent=c.pending+c.error;$('#stQueue').className=(c.pending+c.error)?'warn':'ok';
-  $('#stSheet').textContent=!gs.url?'Не подключено':gs.ok===true?'Подключено ✅':gs.ok===false?'Ошибка связи':'Настроено';
+  $('#stSheet').textContent=!gs.url?'Не подключено':gs.ok===true?'Подключено ✅':gs.ok===false?'Ошибка связи':'Проверяем…';
   $('#stSheet').className=!gs.url?'warn':gs.ok===true?'ok':gs.ok===false?'err':'warn';
-  $('#gsChip').textContent=!gs.url?'Не подключено':gs.ok===true?'Связь есть':gs.ok===false?'Ошибка связи':'Настроено, не проверено';
+  $('#gsChip').textContent=!gs.url?'Не подключено':gs.ok===true?'Связь есть':gs.ok===false?'Ошибка связи':'Проверяем связь…';
   $('#bDraw').textContent=d?'🎲 Перестроить маршруты':'🎲 Провести жеребьёвку';
   $('#gsSynced').textContent=c.synced;$('#gsPending').textContent=c.pending;$('#gsErrors').textContent=c.error;
   $('#gsLast').textContent=gs.last?tm(gs.last):'—';
@@ -838,8 +847,7 @@ function render(){
   $('#fDeptSel').innerHTML='<option value="">Все отделы</option>'+deps.map(function(d){return '<option'+(d===cur?' selected':'')+'>'+esc(d)+'</option>'}).join('');
   if(tableOpen)renderTable();
   if(drawerId){var p=byId(drawerId);if(p)$('#dSync').innerHTML=badge(p);else closeDrawer()}
-  if(lastP){var q=byId(lastP.id);if(q)wbSync(q)}
-}
+  if(lastP){var q=byId(lastP.id);if(q)wbSync(q)}}
 function canDrag(){return filters.sort==='manual'&&!filters.q&&!filters.dept&&!filters.status}
 function rows(){
   var q=filters.q.trim().toLowerCase();
@@ -851,8 +859,7 @@ function rows(){
   var cmp={manual:function(a,b){return idx(a)-idx(b)},name:function(a,b){return a.name.localeCompare(b.name,'ru')},
     dept:function(a,b){return (a.dept||'').localeCompare(b.dept||'','ru')||a.name.localeCompare(b.name,'ru')},
     ts:function(a,b){return a.ts-b.ts},sync:function(a,b){return sst(a).localeCompare(sst(b))}}[filters.sort];
-  return r.sort(function(a,b){return cmp(a,b)*dir});
-}
+  return r.sort(function(a,b){return cmp(a,b)*dir})}
 function renderTable(){
   var r=rows(),dg=canDrag();
   $('#tCount').textContent='Показано '+r.length+' из '+state.participants.length;
@@ -872,8 +879,7 @@ function renderTable(){
       '<td>'+badge(p)+'</td><td><div class="ra">'+
       '<button class="ib" type="button" data-edit="'+p.id+'" title="Открыть карточку">✏️</button>'+
       '<button class="ib" type="button" data-push="'+p.id+'" title="Отправить в таблицу">⬆️</button>'+
-      '<button class="ib dz" type="button" data-del="'+p.id+'" title="Удалить">🗑</button></div></td></tr>'}).join('');
-}
+      '<button class="ib dz" type="button" data-del="'+p.id+'" title="Удалить">🗑</button></div></td></tr>'}).join('')}
 function renderViews(){
   var built=[{id:'all',name:'Все',f:{q:'',dept:'',status:'',sort:'manual',dir:'asc'}},
     {id:'queue',name:'⏳ В очереди',f:{q:'',dept:'',status:'pending',sort:'manual',dir:'asc'}},
@@ -881,13 +887,12 @@ function renderViews(){
     {id:'err',name:'⚠️ Ошибки',f:{q:'',dept:'',status:'error',sort:'manual',dir:'asc'}}];
   window.__built=built;
   $('#views').innerHTML=built.map(function(v){return '<button class="view'+(activeView===v.id?' on':'')+'" type="button" data-view="'+v.id+'">'+v.name+'</button>'}).join('')+
-    views.map(function(v){return '<span class="view'+(activeView===v.id?' on':'')+'" data-view="'+v.id+'">'+esc(v.name)+' <button class="x" type="button" data-vdel="'+v.id+'" title="Удалить вид">✕</button></span>'}).join('');
-}
+    views.map(function(v){return '<span class="view'+(activeView===v.id?' on':'')+'" data-view="'+v.id+'">'+esc(v.name)+' <button class="x" type="button" data-vdel="'+v.id+'" title="Удалить вид">✕</button></span>'}).join('')}
 function applyView(id){var v=(window.__built||[]).concat(views).find(function(x){return x.id===id});if(!v)return;
   filters=Object.assign({},v.f);activeView=id;syncControls();renderViews();renderTable()}
 function syncControls(){$('#q').value=filters.q;$('#fDeptSel').value=filters.dept;$('#fStatus').value=filters.status;
   $('#sortBy').value=filters.sort;$('#sortDir').textContent=filters.dir==='asc'?'↑ по возрастанию':'↓ по убыванию'}
-/* --- регистрация: автосинхронизация сразу по кнопке --- */
+/* ===== РЕГИСТРАЦИЯ: запись в таблицу сразу по кнопке ===== */
 var F={name:$('#fName'),dept:$('#fDept'),contact:$('#fContact'),likes:$('#fLikes'),dont:$('#fDont'),allergy:$('#fAllergy')};
 function bad(i,m){var f=i.closest('.field');f.classList.add('bad');$('.err',f).textContent=m}
 function ok(i){var f=i.closest('.field');f.classList.remove('bad');$('.err',f).textContent=''}
@@ -902,19 +907,19 @@ $('#regForm').addEventListener('submit',function(e){
   if(likes.length<3){bad(F.likes,'Пара слов о пожеланиях поможет вашему Санте');first=first||F.likes}
   if(first){first.focus();toast('Проверьте выделенные поля','err');return}
   var p={id:uid(),name:name,dept:F.dept.value.trim(),contact:mail,likes:likes,dont:F.dont.value.trim(),allergies:F.allergy.value.trim(),code:code(),ts:Date.now(),updated:Date.now(),demo:false};
-  setS(p,'pending');state.participants.push(p);save();lastP=p;render();showWb(p);burstAt($('#regSubmit'));
+  setS(p,'sending');state.participants.push(p);save();lastP=p;render();showWb(p);burstAt($('#regSubmit'));
   $('#regForm').reset();
   toast('Заявка принята! Код выдан 🎫','ok');
-  attempt=0;push([p],true);
-});
+  attempt=0;nextAt=0;push([p],true)});
 function barcode(c){var s=c.split('').map(function(x){return x.charCodeAt(0)}),x=4,i=0,o='';
   while(x<194){var w=1+(s[i%s.length]+i)%4;if(i%2===0)o+='<rect x="'+x+'" y="4" width="'+w+'" height="38" fill="#221A06"/>';x+=w+1.5;i++}
   $('#wbBar').innerHTML=o}
 function wbSync(p){var s=sst(p),t;
-  if(s==='synced')t='Заявка автоматически сохранена в Google Sheets организатора.';
+  if(s==='synced')t='Заявка автоматически записана в Google Sheets организатора.';
   else if(s==='sending')t='Отправляем заявку в Google Sheets прямо сейчас…';
   else if(s==='error')t='Связь с таблицей недоступна — заявка сохранена и отправится повторно автоматически.';
-  else t=gs.url?'Заявка в очереди автоотправки — уйдёт в таблицу без вашего участия.':'Заявка сохранена. Как только организатор подключит таблицу, она уйдёт автоматически.';
+  else t=gs.url?'Заявка в очереди автоотправки — уйдёт в таблицу без вашего участия.':'Заявка сохранена; после подключения таблицы уйдёт автоматически.';
+  var h=$('#wbHead');h.textContent=s==='synced'?'В таблице':'В обработке';h.className='chip '+(s==='synced'?'c-green':'c-amber');
   $('#wbSync').innerHTML=badge(p)+'<span>'+esc(t)+'</span>'}
 function showWb(p){$('#wbCode').textContent=p.code;$('#wbName').textContent=p.name;$('#wbDept').textContent=p.dept||'—';$('#wbDate').textContent=dt(p.ts);
   barcode(p.code);wbSync(p);var w=$('#waybill');w.classList.remove('hidden','pop');void w.offsetWidth;w.classList.add('pop');
@@ -937,26 +942,32 @@ function doTrack(){
     (g.dont?'<div class="bl bad"><h4>🚫 Не дарить</h4><p>'+esc(g.dont)+'</p></div>':'')+
     (g.allergies?'<div class="bl warn"><h4>⚠️ Аллергии / ограничения</h4><p>'+esc(g.allergies)+'</p></div>':'')+
     '</div><div class="lc-f"><span class="chip c-ink">💸 Подарок до 1000 ₽</span><span class="lc-s">🤫 Не выдавайте себя до 25 декабря</span></div></div>';
-  var r=R.querySelector('.lc').getBoundingClientRect();burst(r.left+r.width/2,r.top+60,70);
-}
+  var r=R.querySelector('.lc').getBoundingClientRect();burst(r.left+r.width/2,r.top+60,70)}
 $('#trackForm').addEventListener('submit',function(e){e.preventDefault();doTrack()});
-/* --- Google Sheets: транспорт + автоматический движок --- */
+/* ===== ТРАНСПОРТ GOOGLE SHEETS ===== */
 function rowOf(p){var g=state.draw?byId(state.draw.pairs[p.id]):null;
   return{code:p.code,name:p.name,dept:p.dept||'',email:p.contact||'',likes:p.likes||'',dont:p.dont||'',allergies:p.allergies||'',giftTo:g?g.name:'',created:dt(p.ts),updated:dt(p.updated||p.ts)}}
+function parseRes(txt){var d;try{d=JSON.parse(txt)}catch(e){throw new Error('Ответ не JSON — проверьте доступ «Все» в развёртывании')}
+  if(!d.ok)throw new Error(d.error||'Ошибка скрипта');return d}
+function netErr(e){return new Error(e&&e.name==='AbortError'?'Таймаут запроса (25 с)':((e&&e.message)||'Сеть недоступна'))}
+function postGs(body){
+  var c=new AbortController(),t=setTimeout(function(){c.abort()},25000);
+  return fetch(gs.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},signal:c.signal,body:JSON.stringify(body)})
+    .then(function(r){clearTimeout(t);return r.text()},function(e){clearTimeout(t);throw netErr(e)}).then(parseRes)}
+function getGs(body){
+  var qs=Object.keys(body).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(typeof body[k]==='object'?JSON.stringify(body[k]):body[k])}).join('&');
+  var c=new AbortController(),t=setTimeout(function(){c.abort()},25000);
+  return fetch(gs.url+'?'+qs,{method:'GET',signal:c.signal})
+    .then(function(r){clearTimeout(t);return r.text()},function(e){clearTimeout(t);throw netErr(e)}).then(parseRes)}
 function gsReq(payload){
   if(!gs.url)return Promise.reject(new Error('Не указан URL веб-приложения'));
-  var c=new AbortController(),t=setTimeout(function(){c.abort()},25000);
-  return fetch(gs.url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},signal:c.signal,
-    body:JSON.stringify(Object.assign({token:gs.token,sheet:gs.sheet},payload))})
-    .then(function(r){return r.text()})
-    .then(function(txt){var d;try{d=JSON.parse(txt)}catch(e){throw new Error('Ответ не JSON — проверьте доступ «Все» в развёртывании')}
-      if(!d.ok)throw new Error(d.error||'Ошибка скрипта');
-      gs.ok=true;gs.last=Date.now();if(d.url)gs.sheetUrl=d.url;saveGs();clearTimeout(t);return d})
-    .catch(function(e){gs.ok=false;gs.last=Date.now();saveGs();clearTimeout(t);
-      throw new Error(e.name==='AbortError'?'Таймаут запроса (25 с)':(e.message||'Сеть недоступна'))});
-}
+  var body=Object.assign({token:gs.token,sheet:gs.sheet},payload);
+  return postGs(body).catch(function(e){if(payload.action==='ping')return getGs(body);throw e})
+    .then(function(d){gs.ok=true;gs.last=Date.now();if(d.url)gs.sheetUrl=d.url;saveGs();return d})
+    .catch(function(e){gs.ok=false;gs.last=Date.now();saveGs();throw e})}
 function push(list,quiet){
-  if(!list.length)return Promise.resolve();
+  list=(list||[]).filter(function(p){return p&&!p.demo});
+  if(!list.length){if(!quiet)toast('Демо-записи в таблицу не отправляются','info');return Promise.resolve()}
   var mine=list.length===1&&lastP&&list[0].id===lastP.id;
   if(!gs.url){list.forEach(function(p){setS(p,'pending','Таблица не подключена')});save();render();scheduleAuto();
     if(!quiet)toast('Google Sheets не подключён — заявки ждут автоотправки','warn');return Promise.resolve()}
@@ -964,14 +975,13 @@ function push(list,quiet){
   syncing=true;list.forEach(function(p){setS(p,'sending')});save();render();
   return gsReq({action:'save',rows:list.map(rowOf)}).then(function(d){
     list.forEach(function(p){setS(p,'synced')});attempt=0;
-    log('ok','Автосохранение: '+list.length+' строк · в листе '+(d.rows==null?'—':d.rows));
-    if(!quiet||mine)toast('Сохранено в Google Sheets: '+list.length+' ✅','ok');
-  }).catch(function(e){
+    log('ok','Записано строк: '+list.length+' · всего в листе «'+gs.sheet+'»: '+(d.rows==null?'—':d.rows));
+    if(!quiet||mine)toast('Заявка сохранена в Google Sheets ✅','ok')})
+  .catch(function(e){
     list.forEach(function(p){setS(p,'error',e.message)});log('err','Автоотправка не удалась: '+e.message);
     if(!quiet)toast('Не отправлено: '+e.message,'err');
-    else if(mine)toast('Таблица недоступна — отправим автоматически повторно','warn');
-  }).then(function(){syncing=false;save();render();scheduleAuto()});
-}
+    else if(mine)toast('Таблица недоступна — отправим автоматически повторно','warn')})
+  .then(function(){syncing=false;save();render();scheduleAuto()})}
 function scheduleAuto(){
   if(autoTimer){clearTimeout(autoTimer);autoTimer=null}
   var n=pendingList().length;
@@ -980,34 +990,35 @@ function scheduleAuto(){
   var delay=Math.min(60000,5000*Math.pow(2,Math.min(attempt,4)));
   nextAt=Date.now()+delay;
   autoTimer=setTimeout(function(){autoTimer=null;autoFlush()},delay);
-  updateAuto();
-}
+  updateAuto()}
 function autoFlush(){
   if(syncing){scheduleAuto();return}
   var list=pendingList();
   if(!list.length){attempt=0;nextAt=0;updateAuto();return}
   if(!gs.url){nextAt=0;updateAuto();return}
-  nextAt=0;push(list,true).then(function(){if(pendingList().length)attempt++;else attempt=0;scheduleAuto()});
-}
+  nextAt=0;push(list,true).then(function(){if(pendingList().length)attempt++;else attempt=0;scheduleAuto()})}
 addEventListener('online',function(){attempt=0;log('info','Сеть восстановлена — автоотправка возобновлена');autoFlush()});
 document.addEventListener('visibilitychange',function(){if(!document.hidden&&pendingList().length&&gs.url){attempt=0;autoFlush()}});
 function remoteDel(codes){if(!gs.url||!codes.length)return;
   gsReq({action:'delete',codes:codes}).then(function(d){log('ok','Удалено строк в таблице: '+(d.removed||0))})
     .catch(function(e){log('err','Удаление в таблице не выполнено: '+e.message)})}
-function readCfg(){gs.url=$('#gsUrl').value.trim();gs.sheet=$('#gsSheet').value.trim()||'Участники';gs.token=$('#gsToken').value.trim()||'SANTA-2026';
+function readCfg(){gs.url=$('#gsUrl').value.trim();gs.sheet=$('#gsSheet').value.trim()||GS_SHEET;gs.token=$('#gsToken').value.trim()||GS_TOKEN;
   if(!gs.url)gs.ok=null;saveGs()}
-$('#bCfg').onclick=function(){readCfg();render();attempt=0;log('info','Настройки сохранены'+(gs.url?' · автоотправка активна':' · URL не задан'));
+$('#bCfg').onclick=function(){readCfg();render();attempt=0;log('info','Настройки сохранены'+(gs.url?' · автосинхронизация активна':' · URL не задан'));
   toast('Настройки сохранены 💾','ok');if(gs.url)autoFlush();else scheduleAuto()};
+$('#bDef').onclick=function(){gs.url=GS_URL;gs.sheet=GS_SHEET;gs.token=GS_TOKEN;gs.sheetUrl=GS_DOC;gs.ok=null;saveGs();
+  $('#gsUrl').value=gs.url;$('#gsSheet').value=gs.sheet;$('#gsToken').value=gs.token;render();
+  log('info','Восстановлено встроенное подключение');toast('Встроенный URL восстановлен ↺','ok');bootPing()};
 $('#bPing').onclick=function(){readCfg();if(!gs.url){toast('Укажите URL веб-приложения','warn');render();return}
   log('info','Проверка связи…');
   gsReq({action:'ping'}).then(function(d){log('ok','Связь есть · лист «'+d.sheet+'», строк: '+d.rows);toast('Google Sheets на связи ✅','ok');render();attempt=0;autoFlush()})
     .catch(function(e){log('err','Нет связи: '+e.message);toast('Нет связи: '+e.message,'err');render()})};
-$('#bPushAll').onclick=function(){if(!state.participants.length){toast('Список пуст','warn');return}attempt=0;push(state.participants.slice())};
+$('#bPushAll').onclick=function(){var l=realList();if(!l.length){toast('Реальных заявок пока нет','warn');return}attempt=0;push(l)};
 $('#bRetry').onclick=function(){var l=pendingList();if(!l.length){toast('Очередь пуста — всё отправлено ✅','ok');return}attempt=0;push(l)};
 $('#bPushDraw').onclick=function(){
   if(!state.draw){toast('Сначала проведите жеребьёвку','warn');return}
   if(!gs.url){toast('Google Sheets не подключён','warn');return}
-  var pairs=state.participants.map(function(p){var g=byId(state.draw.pairs[p.id]);return{code:p.code,giftTo:g?g.name:''}});
+  var pairs=realList().map(function(p){var g=byId(state.draw.pairs[p.id]);return{code:p.code,giftTo:g?g.name:''}});
   syncing=true;render();
   gsReq({action:'draw',pairs:pairs}).then(function(d){log('ok','Назначения обновлены: '+(d.updated||0));toast('Назначения записаны в таблицу 🎲','ok')})
     .catch(function(e){log('err','Назначения не записаны: '+e.message);toast('Ошибка: '+e.message,'err')})
@@ -1019,10 +1030,15 @@ $('#bImport').onclick=function(){
     var add=0;(d.rows||[]).forEach(function(r){
       if(!r.code||state.participants.some(function(p){return norm(p.code)===norm(r.code)}))return;
       state.participants.push({id:uid(),code:String(r.code),name:r.name||'Без имени',dept:r.dept||'',contact:r.email||'',likes:r.likes||'',dont:r.dont||'',allergies:r.allergies||'',ts:Date.parse(r.created)||Date.now(),updated:Date.now(),demo:false,sync:{state:'synced',at:Date.now()}});add++});
-    save();log('ok','Импорт: добавлено '+add+' из '+(d.rows||[]).length);toast(add?'Загружено новых участников: '+add:'Новых строк нет — все уже в базе',add?'ok':'info');
-  }).catch(function(e){log('err','Импорт не выполнен: '+e.message);toast('Ошибка: '+e.message,'err')})
-    .then(function(){syncing=false;render();scheduleAuto()})};
-/* --- организатор --- */
+    save();log('ok','Импорт: добавлено '+add+' из '+(d.rows||[]).length);toast(add?'Загружено новых участников: '+add:'Новых строк нет — все уже в базе',add?'ok':'info')})
+  .catch(function(e){log('err','Импорт не выполнен: '+e.message);toast('Ошибка: '+e.message,'err')})
+  .then(function(){syncing=false;render();scheduleAuto()})};
+function bootPing(){
+  if(!gs.url)return;
+  gsReq({action:'ping'}).then(function(d){
+    log('ok','Таблица на связи · лист «'+d.sheet+'», строк: '+d.rows);render();attempt=0;autoFlush()})
+  .catch(function(e){log('err','Стартовая проверка связи: '+e.message);render();scheduleAuto()})}
+/* ===== ОРГАНИЗАТОР ===== */
 $('#gate').addEventListener('submit',function(e){e.preventDefault();
   if($('#pass').value===PASS){sessionStorage.setItem('santa26.admin','1');unlock();toast('Добро пожаловать, организатор 🎅','ok')}
   else{$('#gateErr').textContent='Неверный пароль';var g=$('#gate');g.classList.add('shake');setTimeout(function(){g.classList.remove('shake')},500)}});
@@ -1036,17 +1052,15 @@ $('#bDraw').onclick=function(){
     ids.forEach(function(id,i){pairs[id]=sh[i]});
     state.draw={pairs:pairs,at:new Date().toISOString()};save();$('#trackRes').innerHTML='';render();burstAt($('#bDraw'));
     toast('Маршруты построены: '+ids.length+' сант в рейсе 🎄','ok');log('info','Жеребьёвка проведена: '+ids.length+' участников');
-    attempt=0;push(state.participants.slice(),true);
-  };
+    attempt=0;push(realList(),true)};
   if(state.draw)ask({title:'Перестроить маршруты?',text:'Пары будут назначены заново для всех участников. Коды отслеживания не изменятся.',ok:'🎲 Перестроить'}).then(function(v){if(v)go()});
-  else go();
-};
+  else go()};
 $('#bTable').onclick=function(){tableOpen=!tableOpen;$('#tableBox').classList.toggle('hidden',!tableOpen);
   $('#bTable').textContent=tableOpen?'🙈 Скрыть таблицу':'📋 Показать таблицу';$('#bTable').setAttribute('aria-expanded',String(tableOpen));if(tableOpen)renderTable()};
 $('#bCsv').onclick=function(){
   if(!state.participants.length){toast('Список пуст — нечего выгружать','warn');return}
   var head=['Код','Имя и фамилия','Отдел / команда','Почта','Что вы любите?','Что вам НЕ дарить?','Аллергии и ограничения','Кому дарит','Зарегистрирован','Статус отправки'];
-  var st={synced:'Отправлено',pending:'В очереди',sending:'Отправка',error:'Ошибка'};
+  var st={synced:'Отправлено',pending:'В очереди',sending:'Отправка',error:'Ошибка',demo:'Демо (локально)'};
   var lines=[head].concat(state.participants.map(function(p){var r=rowOf(p);return[r.code,r.name,r.dept,r.email,r.likes,r.dont,r.allergies,r.giftTo,r.created,st[sst(p)]]}))
     .map(function(r){return r.map(function(v){return '"'+String(v==null?'':v).replace(/"/g,'""')+'"'}).join(';')}).join('\r\n');
   var b=new Blob(['\uFEFF'+lines],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');
@@ -1063,16 +1077,15 @@ var DEMO=[
  {name:'Алексей Зимин',dept:'Продажи',contact:'a.zimin@company.ru',likes:'Книги по бизнесу, эспрессо, карточные игры',dont:'Алкоголь',allergies:''}];
 function addDemo(silent){
   var n=0;DEMO.forEach(function(d){if(state.participants.some(function(p){return p.name.toLowerCase()===d.name.toLowerCase()}))return;
-    var p=Object.assign({id:uid(),code:code(),ts:Date.now()-n*36e5,updated:Date.now(),demo:true},d);
-    setS(p,'pending');state.participants.push(p);n++});
-  save();render();scheduleAuto();if(!silent)toast(n?'Демо-участники добавлены: '+n+' ✨':'Демо-участники уже в списке',n?'ok':'info');return n}
+    state.participants.push(Object.assign({id:uid(),code:code(),ts:Date.now()-n*36e5,updated:Date.now(),demo:true},d));n++});
+  save();render();if(!silent)toast(n?'Демо-участники добавлены: '+n+' ✨ (в таблицу не отправляются)':'Демо-участники уже в списке',n?'ok':'info');return n}
 $('#bDemo').onclick=function(){addDemo(false)};
 $('#bDemoDel').onclick=function(){del(state.participants.filter(function(p){return p.demo}).map(function(p){return p.id}))};
 $('#bReset').onclick=function(){
   if(!state.draw){toast('Жеребьёвка ещё не проводилась','warn');return}
   ask({title:'Сбросить жеребьёвку?',text:'Все маршруты будут удалены. Участники и коды останутся.',ok:'↺ Сбросить'}).then(function(v){
     if(!v)return;var old=state.draw;state.draw=null;save();$('#trackRes').innerHTML='';render();
-    toast('Жеребьёвка сброшена','info',{label:'↩ Отменить',fn:function(){state.draw=old;save();render();attempt=0;push(state.participants.slice(),true);toast('Жеребьёвка восстановлена','ok')}})})};
+    toast('Жеребьёвка сброшена','info',{label:'↩ Отменить',fn:function(){state.draw=old;save();render();attempt=0;push(realList(),true);toast('Жеребьёвка восстановлена','ok')}})})};
 $('#bClear').onclick=function(){
   ask({title:'Очистить все данные?',text:'Будут удалены все участники, коды и маршруты в браузере. Строки в Google Sheets останутся.',ok:'🗑 Удалить всё',danger:true}).then(function(v){
     if(!v)return;var snap=JSON.parse(JSON.stringify(state));
@@ -1080,7 +1093,7 @@ $('#bClear').onclick=function(){
     toast('Все данные очищены','info',{label:'↩ Отменить',fn:function(){state=snap;save();render();scheduleAuto();toast('Данные восстановлены','ok')}})})};
 function del(ids){
   if(!ids.length)return;
-  var snap=JSON.parse(JSON.stringify(state)),codes=state.participants.filter(function(p){return ids.indexOf(p.id)>-1}).map(function(p){return p.code});
+  var snap=JSON.parse(JSON.stringify(state)),codes=state.participants.filter(function(p){return ids.indexOf(p.id)>-1&&!p.demo}).map(function(p){return p.code});
   var hadDraw=!!state.draw;
   state.participants=state.participants.filter(function(p){return ids.indexOf(p.id)<0});
   if(hadDraw)state.draw=null;
@@ -1089,8 +1102,7 @@ function del(ids){
   save();render();scheduleAuto();remoteDel(codes);
   toast('Удалено: '+ids.length+(hadDraw?' · жеребьёвка сброшена':''),'info',{label:'↩ Отменить',fn:function(){
     state=snap;save();render();toast('Восстановлено','ok');attempt=0;
-    push(state.participants.filter(function(p){return codes.indexOf(p.code)>-1}),true)}});
-}
+    push(state.participants.filter(function(p){return codes.indexOf(p.code)>-1}),true)}})}
 $('#q').addEventListener('input',function(){filters.q=this.value;activeView='';renderViews();renderTable()});
 $('#fDeptSel').addEventListener('change',function(){filters.dept=this.value;activeView='';renderViews();renderTable()});
 $('#fStatus').addEventListener('change',function(){filters.status=this.value;activeView='';renderViews();renderTable()});
@@ -1113,8 +1125,7 @@ $('#tbody').addEventListener('click',function(e){
   var ed=e.target.closest('[data-edit]');if(ed){openDrawer(ed.getAttribute('data-edit'));return}
   var pu=e.target.closest('[data-push]');if(pu){var p=byId(pu.getAttribute('data-push'));if(p){attempt=0;push([p])}return}
   var dl=e.target.closest('[data-del]');if(dl){del([dl.getAttribute('data-del')]);return}
-  var tr=e.target.closest('tr[data-id]');if(tr)openDrawer(tr.getAttribute('data-id'));
-});
+  var tr=e.target.closest('tr[data-id]');if(tr)openDrawer(tr.getAttribute('data-id'))});
 var dragId=null;
 $('#tbody').addEventListener('dragstart',function(e){var tr=e.target.closest('tr[data-id]');if(!tr)return;
   if(!canDrag()){e.preventDefault();return}dragId=tr.getAttribute('data-id');tr.classList.add('drag');e.dataTransfer.effectAllowed='move';
@@ -1133,6 +1144,7 @@ function openDrawer(id){var p=byId(id);if(!p)return;drawerId=id;
   Object.keys(D).forEach(function(k){ok(D[k])});
   var g=state.draw?byId(state.draw.pairs[p.id]):null;
   $('#dMeta').innerHTML='<div>Кому дарит: <b>'+(g?esc(g.name):'—')+'</b></div><div>Заявка: <b>'+dt(p.ts)+'</b></div><div>Изменён: <b>'+dt(p.updated||p.ts)+'</b></div>'+
+    (p.demo?'<div>🧪 Демо-запись: в Google Sheets не отправляется</div>':'')+
     (p.sync&&p.sync.error?'<div style="color:#D40511">Ошибка: <b>'+esc(p.sync.error)+'</b></div>':'');
   $('#drawer').classList.add('open');overlay(true)}
 function closeDrawer(){if(!$('#drawer').classList.contains('open'))return;$('#drawer').classList.remove('open');overlay(false);drawerId=null}
@@ -1154,22 +1166,21 @@ var nav=$('#nav');
 $('#burger').onclick=function(){var o=nav.classList.toggle('open');this.setAttribute('aria-expanded',String(o))};
 $$('#navMenu a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');$('#burger').setAttribute('aria-expanded','false')})});
 addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8)},{passive:true});
-/* --- старт --- */
+/* ===== СТАРТ ===== */
 sizeS();sizeC();if(!reduced)requestAnimationFrame(loopS);else sc.style.display='none';
 $('#gsUrl').value=gs.url;$('#gsSheet').value=gs.sheet;$('#gsToken').value=gs.token;
 if(first)addDemo(true);
 syncControls();renderViews();render();sched();tick();setInterval(tick,1000);setInterval(sched,60000);
-log('info',gs.url?'Автоотправка активна — заявки уходят в таблицу сразу после отправки':'Google Sheets не подключён — заявки копятся и уйдут автоматически после настройки');
+log('info','Встроенное подключение к Google Sheets активно · лист «'+gs.sheet+'»');
 if(sessionStorage.getItem('santa26.admin')==='1')unlock();
-scheduleAuto();
+bootPing();scheduleAuto();
 if(!reduced&&'IntersectionObserver' in window){
   document.documentElement.classList.add('anim');
   var ro=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');ro.unobserve(en.target)}})},{threshold:.1});
   $$('.rv').forEach(function(el){ro.observe(el)});
   var ao=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){
     $$('#navMenu a[data-s]').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-s')===en.target.id)})}})},{rootMargin:'-35% 0px -55% 0px'});
-  ['top','how','rules','schedule','reg','track','admin','faq'].forEach(function(id){var e=document.getElementById(id);if(e)ao.observe(e)});
-}
+  ['top','how','rules','schedule','reg','track','admin','faq'].forEach(function(id){var e=document.getElementById(id);if(e)ao.observe(e)})}
 })();
 </script>
 </body>
