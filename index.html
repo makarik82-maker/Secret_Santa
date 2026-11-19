@@ -127,6 +127,7 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .rules{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .rule{display:flex;gap:16px;background:var(--dark2);border:2px solid rgba(255,204,0,.35);border-radius:16px;padding:20px 22px;transition:.2s}
 .rule:hover{border-color:var(--y);transform:translateY(-3px)}
+.rule.wide{grid-column:1/-1;border-color:var(--y);background:linear-gradient(100deg,#2A2009,#332708)}
 .rule i{flex:none;width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:22px;font-style:normal;background:var(--y);border:2px solid var(--ink);border-radius:13px}
 .rule h3{font-size:16px;font-weight:800;color:var(--white);margin-bottom:5px}.rule p{font-size:14px;color:#C9BC9C}
 #schedule{background:linear-gradient(180deg,var(--paper),var(--cream))}
@@ -213,6 +214,16 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .stat span{display:block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
 .stat b{font-family:var(--disp);font-weight:700;font-size:18px;word-break:break-word}
 .stat b.ok{color:var(--gd)}.stat b.warn{color:#B26A00}.stat b.err{color:var(--red)}
+.check{background:var(--white);border:2px solid var(--green);border-radius:16px;padding:16px 18px;box-shadow:4px 4px 0 var(--green);margin-bottom:20px}
+.check.bad{border-color:var(--red);box-shadow:4px 4px 0 var(--red)}
+.check-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px}
+.check-h b{font-family:var(--disp);font-weight:700;font-size:14px}
+.check-h .chip{margin-left:auto}
+.check-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:13px;font-weight:700}
+.check-list li{display:flex;gap:9px;align-items:flex-start}
+.check-list .m{flex:none;font-size:14px;line-height:1.3}
+.check-list .ok{color:var(--gd)}.check-list .no{color:var(--red)}
+.check-note{margin-top:11px;font-size:12.5px;font-weight:700;color:var(--red)}
 .demo{display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:#FFF4E0;border:2px solid var(--amber);border-radius:14px;padding:12px 16px;margin-bottom:18px;font-size:13.5px;font-weight:700;color:#8A5200}
 .demo .btn{margin-left:auto}
 .gs{background:var(--white);border:2px solid var(--ink);border-radius:20px;box-shadow:8px 8px 0 var(--ink);overflow:hidden;margin-bottom:22px}
@@ -253,7 +264,7 @@ svg,img{display:block;max-width:100%}a{color:inherit}.hidden{display:none!import
 .bulk .btn{box-shadow:3px 3px 0 rgba(255,204,0,.35)}
 .tt{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--mute)}
 .tw2b{overflow:auto;max-height:560px;border:2px solid var(--ink);border-radius:16px;background:var(--white);box-shadow:6px 6px 0 var(--ink)}
-table{border-collapse:collapse;min-width:1340px;width:100%;font-size:13px}
+table{border-collapse:collapse;min-width:1460px;width:100%;font-size:13px}
 thead th{position:sticky;top:0;z-index:2;background:var(--ink);color:var(--y);text-align:left;padding:11px 12px;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
 td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:middle}
 tbody tr{cursor:pointer;transition:background .15s}tbody tr:hover{background:#FFF6D6}tbody tr.sel{background:#FFF0B8}
@@ -262,8 +273,9 @@ tbody tr.drag{opacity:.35}tbody tr.over{box-shadow:inset 0 3px 0 var(--red)}
 .dg{width:30px;text-align:center;color:var(--mute);cursor:grab;user-select:none}.dg.off{opacity:.25;cursor:not-allowed}
 .dt2{font-family:var(--mono);font-size:11.5px;color:var(--mute);white-space:nowrap}
 .nm{font-weight:800;white-space:nowrap}.ml{font-size:12.5px;color:var(--ink2)}
-.lk2{max-width:240px;min-width:165px;font-size:12.5px;color:var(--ink2)}
+.lk2{max-width:230px;min-width:160px;font-size:12.5px;color:var(--ink2)}
 .as{color:var(--gd);font-weight:800;white-space:nowrap}
+.from{color:#1B4FBF;font-weight:800;white-space:nowrap}
 .wait{color:var(--mute);font-size:12px;font-style:italic;white-space:nowrap}
 .empty{text-align:center;padding:32px!important;color:var(--mute);font-weight:600}
 .dtag{font-size:9.5px;font-weight:800;text-transform:uppercase;background:var(--cream);border:1.5px solid var(--amber);color:#9A5B00;border-radius:5px;padding:1px 5px;margin-left:7px}
@@ -334,7 +346,7 @@ html.anim .rv.in{opacity:1;transform:none}
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:34px}.art{max-width:470px;margin:0 auto;width:100%}
 .how{grid-template-columns:1fr 1fr}.step:not(:last-child)::after{display:none}.reg{grid-template-columns:1fr}.reg-info{position:static}}
 @media(max-width:640px){.section{padding:58px 0}.hero{padding:50px 0 58px}
-.how,.rules,.stats{grid-template-columns:1fr}.tf{flex-direction:column}.wb-m{grid-template-columns:1fr 1fr}
+.how,.rules,.stats,.check-list{grid-template-columns:1fr}.tf{flex-direction:column}.wb-m{grid-template-columns:1fr 1fr}
 .wb-a .btn,.acts .btn,.gs-a .btn{flex:1 1 100%}.cd-c{min-width:48px;padding:6px 8px}.cd-c b{font-size:20px}
 .stamp{width:90px;height:90px;top:-8px;right:0}.budget{padding:20px}.ft{flex-direction:column;gap:22px}.fbt{flex-direction:column}
 .df{flex-wrap:wrap}#toasts{right:12px;left:12px;bottom:12px;max-width:none}.gs-h .btn{margin-left:0;width:100%}}
@@ -431,7 +443,7 @@ html.anim .rv.in{opacity:1;transform:none}
   <div class="sec-head rv"><span class="tag">Раздел 01 · Маршрут</span><h2>Как это <mark>работает</mark></h2><p>Четыре остановки — от заявки до праздничной доставки. Всё анонимно и точно в срок.</p></div>
   <div class="how">
     <article class="step rv"><span class="n">01</span><span class="ico">📝</span><h3>Заполните форму</h3><p>Нажмите «Отправить заявку» — получите секретный код из 4 цифр, а заявка сразу уйдёт организатору.</p></article>
-    <article class="step rv" data-d="1"><span class="n">02</span><span class="ico">🔑</span><h3>Узнайте подопечного</h3><p>После жеребьёвки введите код и узнайте, кому вы Санта.</p></article>
+    <article class="step rv" data-d="1"><span class="n">02</span><span class="ico">🔑</span><h3>Узнайте подопечного</h3><p>После жеребьёвки введите код и узнайте, кому вы Санта. Каждый дарит один подарок и получает один.</p></article>
     <article class="step rv" data-d="2"><span class="n">03</span><span class="ico">🎁</span><h3>Соберите подарок</h3><p>Подготовьте подарок до 1000 ₽ по пожеланиям подопечного.</p></article>
     <article class="step rv" data-d="3"><span class="n">04</span><span class="ico">🚚</span><h3>Доставка 25 декабря</h3><p>25 декабря — анонимная доставка и обмен подарками 🎁</p></article>
   </div>
@@ -445,6 +457,7 @@ html.anim .rv.in{opacity:1;transform:none}
     <div class="rule rv" data-d="1"><i>💼</i><div><h3>Уместно для офиса</h3><p>Подарок должен быть уместным для рабочей среды.</p></div></div>
     <div class="rule rv" data-d="2"><i>🎯</i><div><h3>Учитываем пожелания</h3><p>Смотрим «что люблю», аллергии и список «не дарить».</p></div></div>
     <div class="rule rv" data-d="3"><i>🤫</i><div><h3>Имя — секрет</h3><p>Имя подопечного — секрет до вручения. Интрига обязательна.</p></div></div>
+    <div class="rule wide rv" data-d="3"><i>🔄</i><div><h3>Один дарит одному — без повторов</h3><p>Жеребьёвка строится так, что каждый участник дарит ровно один подарок одному участнику и получает ровно один подарок. Никто не дарит сам себе, никто не получает два подарка и никто не остаётся без подарка.</p></div></div>
   </div>
 </div></section>
 
@@ -452,7 +465,7 @@ html.anim .rv.in{opacity:1;transform:none}
   <div class="sec-head rv"><span class="tag">Раздел 03 · Расписание</span><h2>График <mark>доставки</mark></h2><p>Праздничная логистика по расписанию — ни одна посылка не опоздает.</p></div>
   <div class="tl">
     <div class="ti rv"><span class="tn">📝</span><div class="tc"><span class="td">До 1 декабря</span><div class="tb"><b>Приём заявок</b><span>Заполняйте форму и получайте секретный код.</span></div><span class="chip c-red now">Сейчас</span></div></div>
-    <div class="ti rv" data-d="1"><span class="tn">🎲</span><div class="tc"><span class="td">2 декабря</span><div class="tb"><b>Жеребьёвка</b><span>Жеребьёвка и распределение маршрутов: кто кому дарит.</span></div><span class="chip c-red now">Сейчас</span></div></div>
+    <div class="ti rv" data-d="1"><span class="tn">🎲</span><div class="tc"><span class="td">2 декабря</span><div class="tb"><b>Жеребьёвка</b><span>Каждый дарит одному и получает один — без повторов.</span></div><span class="chip c-red now">Сейчас</span></div></div>
     <div class="ti rv" data-d="2"><span class="tn">🎁</span><div class="tc"><span class="td">До 24 декабря</span><div class="tb"><b>Подготовка посылок</b><span>Выбираем и упаковываем подарок до 1000 ₽ по пожеланиям.</span></div><span class="chip c-red now">Сейчас</span></div></div>
     <div class="ti rv" data-d="3"><span class="tn">🚚</span><div class="tc"><span class="td">25 декабря</span><div class="tb"><b>Обмен подарками 🎁</b><span>Анонимная доставка и праздничное вручение.</span></div><span class="chip c-red now">Сейчас</span></div></div>
   </div>
@@ -466,7 +479,7 @@ html.anim .rv.in{opacity:1;transform:none}
       <p>Заполните накладную — система выдаст секретный код из 4 цифр. После жеребьёвки код откроет имя подопечного и его пожелания.</p>
       <ul class="il">
         <li><i>⚡</i> Заявка сохраняется сразу по кнопке «Отправить заявку»</li>
-        <li><i>🔁</i> При сбое связи отправка повторится автоматически</li>
+        <li><i>🔄</i> Один подарок от вас и один подарок вам — без повторов</li>
         <li><i>🔒</i> Полные данные видит только организатор</li>
         <li><i>🤫</i> Никто не знает, кто чей Санта</li>
       </ul>
@@ -508,7 +521,7 @@ html.anim .rv.in{opacity:1;transform:none}
 </div></section>
 
 <section class="section" id="admin"><div class="wrap">
-  <div class="sec-head rv"><span class="tag">Раздел 06 · Служебный</span><h2>Организатору</h2><p>Жеребьёвка, база участников и автоматическое сохранение заявок.</p></div>
+  <div class="sec-head rv"><span class="tag">Раздел 06 · Служебный</span><h2>Организатору</h2><p>Жеребьёвка с проверкой правила «один дарит одному», база участников и автосохранение заявок.</p></div>
   <form class="gate rv" id="gate">
     <div class="lk">🔐</div><h3>Вход для организатора</h3><p>Пароль организатора</p>
     <input id="pass" type="password" autocomplete="off" placeholder="••••••••" aria-label="Пароль организатора">
@@ -522,6 +535,13 @@ html.anim .rv.in{opacity:1;transform:none}
       <div class="stat"><span>Очередь отправки</span><b id="stQueue" class="warn">0</b></div>
       <div class="stat"><span>Синхронизация</span><b id="stSheet" class="warn">Проверяем…</b></div>
     </div>
+
+    <div class="check hidden" id="drawCheck">
+      <div class="check-h"><b id="checkTitle">Проверка жеребьёвки</b><span class="chip c-green" id="checkChip">—</span></div>
+      <ul class="check-list" id="checkList"></ul>
+      <div class="check-note hidden" id="checkNote"></div>
+    </div>
+
     <div class="demo hidden" id="demoBar"><span>✨ Демо-записи хранятся только локально и в таблицу не отправляются.</span><button class="btn b-warn b-sm" id="bDemoDel" type="button">Удалить демо</button></div>
     <div class="demo hidden" id="fmtBar"><span>⚠️ В таблице работает старая версия скрипта. Замените код и создайте новое развёртывание — порядок колонок изменён.</span><button class="btn b-warn b-sm" id="bFmtCode" type="button">Показать код</button></div>
     <div class="gs">
@@ -542,7 +562,7 @@ html.anim .rv.in{opacity:1;transform:none}
             <li>Участник жмёт «Отправить заявку» — строка сразу уходит в таблицу.</li>
             <li>Дата и время пишутся как <code>07.09.2026 11.42.03</code>, код — 4 цифры.</li>
             <li>Колонка <code>Кому дарит</code> остаётся пустой до жеребьёвки.</li>
-            <li>После жеребьёвки назначения записываются в колонку <code>I</code>.</li>
+            <li>После жеребьёвки каждое имя встречается в колонке <code>I</code> ровно один раз.</li>
           </ol>
           <div class="gs-a">
             <button class="btn b-sheet b-sm" id="bPushAll" type="button">⬆️ Отправить всех</button>
@@ -582,7 +602,7 @@ html.anim .rv.in{opacity:1;transform:none}
         <button class="btn b-ghost b-xs" id="bBulkNone" type="button">✕ Снять выделение</button></div>
       <div class="tt"><span id="tCount"></span><span id="dragHint">Перетаскивайте строки за ⠿, чтобы задать порядок</span></div>
       <div class="tw2b"><table><thead><tr>
-        <th class="ck"><input type="checkbox" id="selAll" aria-label="Выбрать все показанные строки"></th><th class="dg">⠿</th><th>№</th><th>Дата и время</th><th>Имя и Фамилия</th><th>Отдел</th><th>Контакт</th><th>Любит</th><th>Код</th><th>Кому дарит</th><th>Статус</th><th>Действия</th>
+        <th class="ck"><input type="checkbox" id="selAll" aria-label="Выбрать все показанные строки"></th><th class="dg">⠿</th><th>№</th><th>Дата и время</th><th>Имя и Фамилия</th><th>Отдел</th><th>Контакт</th><th>Любит</th><th>Код</th><th>Кому дарит →</th><th>← Получает от</th><th>Статус</th><th>Действия</th>
       </tr></thead><tbody id="tbody"></tbody></table></div>
     </div>
   </div>
@@ -593,7 +613,8 @@ html.anim .rv.in{opacity:1;transform:none}
   <div class="faq">
     <details class="fq rv"><summary>Можно не участвовать?</summary><div class="fa">Да, участие добровольное.</div></details>
     <details class="fq rv" data-d="1"><summary>Сколько тратить?</summary><div class="fa">До 1000 ₽, дороже не нужно.</div></details>
-    <details class="fq rv" data-d="2"><summary>Я потерял код</summary><div class="fa">Напишите организатору — он подскажет код по вашему имени.</div></details>
+    <details class="fq rv" data-d="2"><summary>Может ли кто-то получить два подарка?</summary><div class="fa">Нет. Жеребьёвка строится так, что каждый участник дарит ровно один подарок одному участнику и получает ровно один подарок. Повторов нет, сам себе никто не дарит, без подарка не остаётся никто. После жеребьёвки система автоматически проверяет это правило.</div></details>
+    <details class="fq rv" data-d="3"><summary>Я потерял код</summary><div class="fa">Напишите организатору — он подскажет код по вашему имени.</div></details>
     <details class="fq rv" data-d="3"><summary>Что если не знаю, что дарить?</summary><div class="fa">Возьмите нейтральное: кофе, чай, канцелярию, сертификат.</div></details>
     <details class="fq rv" data-d="3"><summary>Какой у меня код?</summary><div class="fa">Секретный код — случайное число из 4 цифр, например 4821. Он выдаётся сразу после отправки заявки и нужен, чтобы узнать своего подопечного после жеребьёвки.</div></details>
     <details class="fq rv" data-d="3"><summary>Куда попадают заявки?</summary><div class="fa">Сразу после нажатия «Отправить заявку» данные автоматически сохраняются в таблице организатора в порядке: дата и время, имя и фамилия, отдел, контакт, «любит», «не дарить», аллергии, код, «кому дарит». Колонка «кому дарит» заполняется только после жеребьёвки. Если связь недоступна, заявка сохраняется в браузере и отправляется повторно сама.</div></details>
@@ -649,6 +670,7 @@ html.anim .rv.in{opacity:1;transform:none}
 /* Тайный Санта 2026 — приём заявок с сайта.
    Колонки: Дата и время | Имя и Фамилия | Отдел | Контакт | Любит | Не дарить | Аллергии | Код | Кому дарит
    «Кому дарит» заполняется только после жеребьёвки (действие draw).
+   Правило жеребьёвки: каждый дарит одному, каждый получает один, повторов нет.
    Расширения → Apps Script → вставить → Развернуть → Новое развёртывание → Веб-приложение
    Выполнять как: Я · Доступ: Все · URL /exec вставить в настройки сайта */
 const TOKEN = 'SANTA-2026';
@@ -673,7 +695,6 @@ function find_(h,names){
   for (var i=0;i<h.length;i++){ for (var j=0;j<names.length;j++){ if (h[i]===names[j]) return i; } }
   return -1;
 }
-/* Перестановка существующего листа в новый порядок колонок без потери данных */
 function migrate_(s){
   var all = s.getDataRange().getValues();
   if (!all.length){ style_(s); return 0; }
@@ -717,9 +738,7 @@ function doPost(e){ var d={}; try{ d=JSON.parse(e.postData.contents); }catch(x){
 
 function line_(r){
   if (Object.prototype.toString.call(r) === '[object Array]'){
-    var a = r.slice(0,9);
-    a[0] = dstr_(a[0]); a[7] = String(a[7]||'');
-    return a;
+    var a = r.slice(0,9); a[0] = dstr_(a[0]); a[7] = String(a[7]||''); return a;
   }
   return [dstr_(r.date || r.created || ''), r.name||'', r.dept||'', r.contact||r.email||'',
           r.likes||'', r.dont||'', r.allergies||'', String(r.code||''), r.giftTo||''];
@@ -753,13 +772,10 @@ function run_(p){
         if (!k) return;
         if (idx[k]){
           var rn = idx[k], old = vals[rn-2] || [];
-          /* «Кому дарит» не затираем: заполняется только жеребьёвкой */
           if (!String(L[8]||'').trim() && String(old[8]||'').trim()) L[8] = old[8];
           if (!String(L[0]||'').trim() && String(old[0]||'').trim()) L[0] = dstr_(old[0]);
           s.getRange(rn,1,1,HEAD.length).setValues([L]);
-        } else {
-          add.push(L); idx[k] = s.getLastRow() + add.length + 1;
-        }
+        } else { add.push(L); idx[k] = s.getLastRow() + add.length + 1; }
         n++;
       });
       if (add.length) s.getRange(s.getLastRow()+1,1,add.length,HEAD.length).setValues(add);
@@ -767,15 +783,24 @@ function run_(p){
       return out_({ok:true, saved:n, rows:total, count:total});
     }
 
-    /* Заполнение колонки «Кому дарит» после жеребьёвки */
+    /* Жеребьёвка: проверяем правило «каждый дарит одному, каждый получает один» */
     if (a === 'draw'){
-      var u = 0, pr = p.pairs || [];
+      var pr = p.pairs || [];
       if (typeof pr === 'string') pr = JSON.parse(pr);
+      var seenG = {}, seenR = {}, bad = 0, u = 0;
+      pr.forEach(function(x){
+        var g = String(x.code||'').trim().toUpperCase();
+        var r = String(x.giftTo||'').trim().toLowerCase();
+        if (!g) return;
+        if (seenG[g]) bad++; seenG[g] = 1;
+        if (r){ if (seenR[r]) bad++; seenR[r] = 1; }
+      });
+      if (p.strict && bad) return out_({ok:false, error:'Нарушено правило жеребьёвки: есть повторы ('+bad+')'});
       pr.forEach(function(x){
         var k = String(x.code||'').trim().toUpperCase();
         if (idx[k]){ s.getRange(idx[k],9).setValue(x.giftTo||''); u++; }
       });
-      return out_({ok:true, updated:u});
+      return out_({ok:true, updated:u, duplicates:bad});
     }
 
     if (a === 'delete'){
@@ -800,13 +825,11 @@ function run_(p){
 'use strict';
 var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 addEventListener('error',function(){document.documentElement.classList.remove('anim')});
-/* ===== встроенное подключение ===== */
 var GS_URL='https://script.google.com/macros/s/AKfycbwKOyFwLLVKnjmivyzO1keMCidRGh15MOA0fgfQeLt0AfaIJ-YKgEXPBAonLcGKHxcE/exec';
 var GS_TOKEN='SANTA-2026',GS_SHEET='Участники';
 var GS_DOC='https://docs.google.com/spreadsheets/d/1lojyLY6g9lMf-tAufI4V5iHhduqrKu3NJCD-nGeK8EA/edit';
-/* порядок колонок: Дата и время | Имя и Фамилия | Отдел | Контакт | Любит | Не дарить | Аллергии | Код | Кому дарит */
 var HEAD=['Дата и время','Имя и Фамилия','Отдел','Контакт','Любит','Не дарить','Аллергии','Код','Кому дарит'];
-var KEY='santa26.v8',GKEY='santa26.gs8',VKEY='santa26.views',PASS='santa2026';
+var KEY='santa26.v9',GKEY='santa26.gs9',VKEY='santa26.views',PASS='santa2026';
 var DRAW=new Date('2026-12-02T12:00:00+03:00'),EXCH=new Date('2026-12-25T18:00:00+03:00');
 var MAIL=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
@@ -815,8 +838,7 @@ function norm(s){return String(s==null?'':s).toUpperCase().replace(/[^A-Z0-9]/g,
 function p2(v){return String(v).padStart(2,'0')}
 function stamp(t){var d=new Date(t);return p2(d.getDate())+'.'+p2(d.getMonth()+1)+'.'+d.getFullYear()+' '+p2(d.getHours())+'.'+p2(d.getMinutes())+'.'+p2(d.getSeconds())}
 function parseDate(s){
-  if(!s)return 0;
-  if(s instanceof Date)return s.getTime();
+  if(!s)return 0;if(s instanceof Date)return s.getTime();
   var m=String(s).match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:[ ,]+(\d{1,2})[.:](\d{2})(?:[.:](\d{2}))?)?/);
   if(m)return new Date(+m[3],+m[2]-1,+m[1],+(m[4]||0),+(m[5]||0),+(m[6]||0)).getTime();
   var t=Date.parse(s);return isNaN(t)?0:t}
@@ -837,12 +859,79 @@ function sst(p){return p.demo?'demo':((p.sync&&p.sync.state)||'pending')}
 function setS(p,s,e){if(p.demo)return;p.sync={state:s,at:Date.now(),error:e||''}}
 function pendingList(){return state.participants.filter(function(p){return !p.demo&&sst(p)!=='synced'})}
 function realList(){return state.participants.filter(function(p){return !p.demo})}
-/* «Кому дарит» пусто, пока не проведена жеребьёвка */
 function giftOf(p){var g=state.draw?byId(state.draw.pairs[p.id]):null;return g?g.name:(p.giftToName||'')}
+function giverOf(p){
+  if(!state.draw)return null;
+  var keys=Object.keys(state.draw.pairs);
+  for(var i=0;i<keys.length;i++){if(state.draw.pairs[keys[i]]===p.id)return byId(keys[i])}
+  return null}
 function code(){var c,i=0;
   do{var b=new Uint16Array(1);crypto.getRandomValues(b);c=String(1000+b[0]%9000);i++}
   while(i<900&&state.participants.some(function(p){return norm(p.code)===c}));
   return c}
+/* ================= ПРАВИЛО ЖЕРЕБЬЁВКИ =================
+   Каждый участник дарит ровно ОДИН подарок ОДНОМУ участнику.
+   Каждый участник получает ровно ОДИН подарок. Повторов нет.
+   Никто не дарит сам себе. Никто не остаётся без подарка.        */
+function sattolo(ids){
+  var a=ids.slice();
+  for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*i),t=a[i];a[i]=a[j];a[j]=t}
+  return a}
+function buildPairs(ids){
+  var shuffled=sattolo(ids),pairs={};
+  ids.forEach(function(id,i){pairs[id]=shuffled[i]});
+  return pairs}
+function validateDraw(pairs,pool){
+  var ids=pool.map(function(p){return p.id}),known={},givers={},receivers={};
+  var r={ok:false,total:ids.length,pairs:0,self:0,dupGiver:0,dupReceiver:0,noGift:[],noGet:[],unknown:0};
+  ids.forEach(function(id){known[id]=true});
+  Object.keys(pairs).forEach(function(g){
+    var to=pairs[g];r.pairs++;
+    if(!known[g]||!known[to]){r.unknown++;return}
+    if(g===to)r.self++;
+    if(givers[g])r.dupGiver++;givers[g]=(givers[g]||0)+1;
+    if(receivers[to])r.dupReceiver++;receivers[to]=(receivers[to]||0)+1});
+  ids.forEach(function(id){if(!givers[id])r.noGift.push(id);if(!receivers[id])r.noGet.push(id)});
+  r.ok=r.total>1&&r.pairs===r.total&&r.self===0&&r.dupGiver===0&&r.dupReceiver===0&&
+       r.noGift.length===0&&r.noGet.length===0&&r.unknown===0;
+  return r}
+function makeDraw(pool){
+  var ids=pool.map(function(p){return p.id});
+  if(ids.length<2)return null;
+  for(var i=0;i<300;i++){
+    var pairs=buildPairs(ids),v=validateDraw(pairs,pool);
+    if(v.ok)return{pairs:pairs,report:v}}
+  return null}
+function namesOf(ids){
+  var n=ids.map(function(id){var p=byId(id);return p?p.name:'?'});
+  return n.slice(0,3).join(', ')+(n.length>3?' и ещё '+(n.length-3):'')}
+function renderCheck(){
+  var box=$('#drawCheck');
+  if(!state.draw){box.classList.add('hidden');return}
+  var pool=realList(),v=validateDraw(state.draw.pairs,pool);
+  state.draw.verified=v.ok;
+  box.classList.remove('hidden');box.classList.toggle('bad',!v.ok);
+  $('#checkTitle').textContent='Проверка жеребьёвки · участников: '+v.total;
+  var chip=$('#checkChip');chip.textContent=v.ok?'Правило соблюдено':'Нарушено — перестройте';
+  chip.className='chip '+(v.ok?'c-green':'c-red');
+  var items=[
+    [v.pairs===v.total&&v.unknown===0,'Назначено пар: '+v.pairs+' из '+v.total],
+    [v.dupGiver===0&&v.noGift.length===0,'Каждый дарит ровно один подарок'],
+    [v.dupReceiver===0&&v.noGet.length===0,'Каждый получает ровно один подарок'],
+    [v.dupGiver===0&&v.dupReceiver===0,'Повторов нет: двух подарков не бывает'],
+    [v.self===0,'Никто не дарит сам себе'],
+    [v.noGet.length===0,'Без подарка не остаётся никто']];
+  $('#checkList').innerHTML=items.map(function(x){
+    return '<li><span class="m '+(x[0]?'ok':'no')+'">'+(x[0]?'✔':'✘')+'</span><span class="'+(x[0]?'ok':'no')+'">'+esc(x[1])+'</span></li>'}).join('');
+  var note=[];
+  if(v.noGift.length)note.push('Не назначен подарок от: '+namesOf(v.noGift));
+  if(v.noGet.length)note.push('Не получает подарок: '+namesOf(v.noGet));
+  if(v.dupReceiver)note.push('Повторных получателей: '+v.dupReceiver);
+  if(v.self)note.push('Дарит сам себе: '+v.self);
+  if(v.unknown)note.push('Ссылки на удалённых участников: '+v.unknown);
+  var ne=$('#checkNote');ne.classList.toggle('hidden',!note.length);
+  ne.textContent=note.length?note.join(' · ')+' — нажмите «Перестроить маршруты».':''}
+/* ================= интерфейс ================= */
 function toast(msg,type,act){
   var ic={ok:'✅',err:'🚫',info:'ℹ️',warn:'⚠️'},el=document.createElement('div');
   el.className='toast '+(type||'info');el.innerHTML='<span>'+(ic[type]||'ℹ️')+'</span><span>'+esc(msg)+'</span>';
@@ -920,10 +1009,11 @@ function updateAuto(){
   var left=nextAt?Math.max(0,Math.ceil((nextAt-Date.now())/1000)):0;
   el.className='auto run';el.innerHTML='<span class="sp"></span> Автоотправка: '+n+' в очереди'+(left?' · повтор через '+left+' с':' · запускаем…')}
 function render(){
-  var d=!!state.draw,c=counts();paintCount();
-  $('#footDraw').textContent=d?'✅ Маршруты построены':'🎲 Жеребьёвка 2 декабря';
+  var c=counts();paintCount();renderCheck();
+  var d=!!state.draw,ok=d&&state.draw.verified;
+  $('#footDraw').textContent=ok?'✅ Маршруты построены':(d?'⚠️ Маршруты неполные':'🎲 Жеребьёвка 2 декабря');
   $('#footSheet').textContent=gs.url?(gs.ok===false?'📊 Таблица: ошибка связи':gs.ok===true?'📊 Таблица на связи':'📊 Проверяем таблицу…'):'📊 Таблица не подключена';
-  $('#stDraw').textContent=d?'Проведена ✅':'Ещё не было';$('#stDraw').className=d?'ok':'warn';
+  $('#stDraw').textContent=ok?'Проверена ✅':(d?'Нарушено ⚠️':'Ещё не было');$('#stDraw').className=ok?'ok':(d?'err':'warn');
   $('#stQueue').textContent=c.pending+c.error;$('#stQueue').className=(c.pending+c.error)?'warn':'ok';
   $('#stSheet').textContent=!gs.url?'Не подключено':gs.ok===true?'На связи ✅':gs.ok===false?'Ошибка связи':'Проверяем…';
   $('#stSheet').className=!gs.url?'warn':gs.ok===true?'ok':gs.ok===false?'err':'warn';
@@ -962,10 +1052,11 @@ function renderTable(){
   $('#dragHint').textContent=dg?'Перетаскивайте строки за ⠿, чтобы задать порядок':'Порядок доступен при сортировке «Ручной порядок» без фильтров';
   $('#bulk').classList.toggle('hidden',!sel.size);$('#bulkN').textContent=sel.size;
   $('#selAll').checked=r.length>0&&r.every(function(p){return sel.has(p.id)});
-  if(!r.length){$('#tbody').innerHTML='<tr><td colspan="12" class="empty">'+(state.participants.length?'Ничего не найдено 🔍':'Загружаем участников из таблицы…')+'</td></tr>';return}
+  if(!r.length){$('#tbody').innerHTML='<tr><td colspan="13" class="empty">'+(state.participants.length?'Ничего не найдено 🔍':'Загружаем участников из таблицы…')+'</td></tr>';return}
   $('#tbody').innerHTML=r.map(function(p){
-    var gn=giftOf(p);
+    var gn=giftOf(p),from=giverOf(p);
     var gift=gn?'<span class="as">'+esc(gn)+'</span>':(drawn?'<span class="wait">—</span>':'<span class="wait">после жеребьёвки</span>');
+    var inc=from?'<span class="from">'+esc(from.name)+'</span>':(drawn?'<span class="wait">—</span>':'<span class="wait">после жеребьёвки</span>');
     return '<tr data-id="'+p.id+'"'+(dg?' draggable="true"':'')+' class="'+(sel.has(p.id)?'sel':'')+'">'+
       '<td class="ck"><input type="checkbox" data-ck="'+p.id+'"'+(sel.has(p.id)?' checked':'')+' aria-label="Выбрать строку"></td>'+
       '<td class="dg'+(dg?'':' off')+'">⠿</td><td>'+(state.participants.indexOf(p)+1)+'</td>'+
@@ -974,7 +1065,7 @@ function renderTable(){
       '<td>'+esc(p.dept||'—')+'</td><td class="ml">'+esc(p.contact)+'</td>'+
       '<td class="lk2">'+esc(p.likes)+'</td>'+
       '<td><button class="code" type="button" data-copy="'+esc(p.code)+'">'+esc(p.code)+'</button></td>'+
-      '<td>'+gift+'</td><td>'+badge(p)+'</td><td><div class="ra">'+
+      '<td>'+gift+'</td><td>'+inc+'</td><td>'+badge(p)+'</td><td><div class="ra">'+
       '<button class="ib" type="button" data-edit="'+p.id+'" title="Открыть карточку">✏️</button>'+
       '<button class="ib" type="button" data-push="'+p.id+'" title="Отправить в таблицу">⬆️</button>'+
       '<button class="ib dz" type="button" data-del="'+p.id+'" title="Удалить">🗑</button></div></td></tr>'}).join('')}
@@ -1007,6 +1098,7 @@ $('#regForm').addEventListener('submit',function(e){
   var p={id:uid(),name:name,dept:F.dept.value.trim(),contact:mail,likes:likes,dont:F.dont.value.trim(),allergies:F.allergy.value.trim(),code:code(),ts:Date.now(),updated:Date.now(),demo:false,giftToName:''};
   setS(p,'sending');state.participants.push(p);save();lastP=p;render();showWb(p);burstAt($('#regSubmit'));
   $('#regForm').reset();toast('Заявка принята! Ваш код: '+p.code+' 🎫','ok');
+  if(state.draw)log('info','Новый участник после жеребьёвки — маршруты нужно перестроить');
   attempt=0;nextAt=0;push([p],true)});
 function barcode(c){var s=String(c).split('').map(function(x){return x.charCodeAt(0)}),x=4,i=0,o='';
   while(x<194){var w=1+(s[i%s.length]+i*7)%4;if(i%2===0)o+='<rect x="'+x+'" y="4" width="'+w+'" height="38" fill="#221A06"/>';x+=w+1.5;i++}
@@ -1030,8 +1122,10 @@ function doTrack(){
   var p=state.participants.find(function(x){return norm(x.code)===norm(v)});
   if(!p){R.innerHTML='<div class="lc error pop shake"><div class="lc-h"><span>🚫 КОД НЕ НАЙДЕН</span><span class="chip c-red">Ошибка</span></div><p class="lc-m">Проверьте цифры — или напишите организатору, он подскажет код по вашему имени.</p></div>';return}
   var gid=state.draw?state.draw.pairs[p.id]:null,g=gid?byId(gid):null;
-  if(!g&&p.giftToName)g=state.participants.find(function(x){return x.name.trim().toLowerCase()===String(p.giftToName).trim().toLowerCase()});
-  if(!g){R.innerHTML='<div class="lc pending pop"><div class="lc-h"><span>⏳ МАРШРУТ В ОБРАБОТКЕ</span><span class="chip c-amber">Ожидание</span></div><p class="lc-m">Код принят, <b>'+esc(p.name)+'</b>! Жеребьёвка пройдёт <b>2 декабря</b> — после неё здесь появится имя подопечного и его пожелания.</p><div class="lc-f"><span class="chip c-ink">🎲 2 декабря — жеребьёвка</span></div></div>';return}
+  if(!g&&p.giftToName){var m=state.participants.filter(function(x){return x.name.trim().toLowerCase()===String(p.giftToName).trim().toLowerCase()});if(m.length===1)g=m[0]}
+  if(!g){
+    if(state.draw){R.innerHTML='<div class="lc late pop"><div class="lc-h"><span>📮 ВЫ В СЛЕДУЮЩЕМ РЕЙСЕ</span><span class="chip c-blue">Инфо</span></div><p class="lc-m"><b>'+esc(p.name)+'</b>, вы зарегистрировались после жеребьёвки. Организатор перестроит маршруты, чтобы каждый дарил один подарок и каждый получил один — тогда здесь появится имя вашего подопечного.</p><div class="lc-f"><span class="chip c-ink">🔄 Ожидайте перестройки</span></div></div>';return}
+    R.innerHTML='<div class="lc pending pop"><div class="lc-h"><span>⏳ МАРШРУТ В ОБРАБОТКЕ</span><span class="chip c-amber">Ожидание</span></div><p class="lc-m">Код принят, <b>'+esc(p.name)+'</b>! Жеребьёвка пройдёт <b>2 декабря</b> — после неё здесь появится имя подопечного и его пожелания.</p><div class="lc-f"><span class="chip c-ink">🎲 2 декабря — жеребьёвка</span></div></div>';return}
   R.innerHTML='<div class="lc pop"><div class="lc-h"><span>🚚 МАРШРУТ ПОСТРОЕН</span><span class="chip c-red">Секретно</span></div>'+
     '<div class="lc-to">Вы — Тайный Санта для:</div><div class="lc-n">'+esc(g.name)+'</div>'+
     (g.dept?'<div class="lc-d">🏢 '+esc(g.dept)+'</div>':'')+'<div class="lc-g">'+
@@ -1041,7 +1135,7 @@ function doTrack(){
     '</div><div class="lc-f"><span class="chip c-ink">💸 Подарок до 1000 ₽</span><span class="lc-s">🤫 Не выдавайте себя до 25 декабря</span></div></div>';
   var r=R.querySelector('.lc').getBoundingClientRect();burst(r.left+r.width/2,r.top+60,70)}
 $('#trackForm').addEventListener('submit',function(e){e.preventDefault();doTrack()});
-/* ===== выгрузка: Дата и время | Имя и Фамилия | Отдел | Контакт | Любит | Не дарить | Аллергии | Код | Кому дарит ===== */
+/* ===== выгрузка ===== */
 function valsOf(p){return[stamp(p.ts),p.name,p.dept||'',p.contact||'',p.likes||'',p.dont||'',p.allergies||'',String(p.code),giftOf(p)]}
 function rowOf(p){var v=valsOf(p);
   return{date:v[0],name:v[1],dept:v[2],contact:v[3],likes:v[4],dont:v[5],allergies:v[6],code:v[7],giftTo:v[8],
@@ -1079,14 +1173,16 @@ function push(list,quiet){
   .catch(function(e){list.forEach(function(p){setS(p,'error',e.message)});log('err','Отправка не удалась: '+e.message);
     if(!quiet)toast('Не отправлено: '+e.message,'err');else if(mine)toast('Таблица недоступна — отправим автоматически повторно','warn')})
   .then(function(){syncing=false;save();render();scheduleAuto()})}
-/* запись колонки «Кому дарит» — только после жеребьёвки */
 function pushAssignments(quiet){
   if(!gs.url){if(!quiet)toast('Таблица не подключена','warn');return Promise.resolve()}
   if(!state.draw){if(!quiet)toast('Сначала проведите жеребьёвку','warn');return Promise.resolve()}
+  var v=validateDraw(state.draw.pairs,realList());
+  if(!v.ok){log('err','Назначения не отправлены: правило жеребьёвки нарушено');
+    if(!quiet)toast('Правило нарушено — перестройте маршруты','err');render();return Promise.resolve()}
   var pairs=realList().map(function(p){return{code:String(p.code),giftTo:giftOf(p)}});
-  return gsReq({action:'draw',pairs:pairs}).then(function(d){
-    log('ok','Колонка «Кому дарит» заполнена: '+(d.updated||0)+' строк');
-    if(!quiet)toast('Назначения записаны в таблицу 🎲','ok')})
+  return gsReq({action:'draw',pairs:pairs,strict:true}).then(function(d){
+    log('ok','«Кому дарит» заполнено: '+(d.updated||0)+' строк, повторов: '+(d.duplicates||0));
+    if(!quiet)toast('Назначения записаны: по одному подарку каждому 🎲','ok')})
   .catch(function(e){log('err','Назначения не записаны: '+e.message);if(!quiet)toast('Ошибка: '+e.message,'err')})}
 function scheduleAuto(){
   if(autoTimer){clearTimeout(autoTimer);autoTimer=null}
@@ -1105,7 +1201,7 @@ document.addEventListener('visibilitychange',function(){if(document.hidden)retur
 function remoteDel(codes){if(!gs.url||!codes.length)return;
   gsReq({action:'delete',codes:codes}).then(function(d){log('ok','Удалено строк: '+(d.removed||0));render()})
     .catch(function(e){log('err','Удаление в таблице не выполнено: '+e.message)})}
-/* ===== чтение таблицы: счётчик + участники ===== */
+/* ===== чтение таблицы ===== */
 function mapRow(r){
   var ts=parseDate(r.date||r.created)||0;
   return{code:String(r.code==null?'':r.code).trim(),name:r.name||'',dept:r.dept||'',contact:r.contact||r.email||'',
@@ -1117,12 +1213,17 @@ function mergeRemote(list){
     var ex=state.participants.find(function(p){return norm(p.code)===c});
     if(ex){if(!ex.demo&&sst(ex)==='synced'){var keep=ex.ts;Object.assign(ex,o);ex.ts=o.ts||keep||Date.now();ex.updated=Date.now();ex.sync={state:'synced',at:Date.now()}}}
     else{var np=Object.assign({id:uid(),demo:false,sync:{state:'synced',at:Date.now()}},o);np.ts=o.ts||Date.now();np.updated=np.ts;state.participants.push(np);added++}});
-  var pairs={},n=0;
+  /* восстанавливаем маршруты из таблицы и сразу проверяем правило */
+  var pairs={},amb=0;
   state.participants.forEach(function(p){
     if(!p.giftToName)return;
-    var t=state.participants.find(function(x){return x.name.trim().toLowerCase()===String(p.giftToName).trim().toLowerCase()});
-    if(t&&t.id!==p.id){pairs[p.id]=t.id;n++}});
-  if(n>=2)state.draw={pairs:pairs,at:new Date().toISOString(),remote:true};
+    var t=state.participants.filter(function(x){return x.name.trim().toLowerCase()===String(p.giftToName).trim().toLowerCase()});
+    if(t.length===1&&t[0].id!==p.id)pairs[p.id]=t[0].id;else amb++});
+  if(Object.keys(pairs).length>=2){
+    var v=validateDraw(pairs,realList());
+    state.draw={pairs:pairs,at:new Date().toISOString(),remote:true,verified:v.ok};
+    if(amb)log('err','В таблице есть неоднозначные имена получателей: '+amb);
+    if(!v.ok)log('err','Маршруты из таблицы не проходят проверку — перестройте жеребьёвку')}
   return added}
 function refreshRemote(quiet){
   if(!gs.url||countBusy)return Promise.resolve();
@@ -1162,21 +1263,21 @@ $('#gate').addEventListener('submit',function(e){e.preventDefault();
   else{$('#gateErr').textContent='Неверный пароль';var g=$('#gate');g.classList.add('shake');setTimeout(function(){g.classList.remove('shake')},500)}});
 function unlock(){$('#gate').classList.add('hidden');$('#panel').classList.remove('hidden');$('#pass').value='';$('#gateErr').textContent='';render()}
 $('#bLogout').onclick=function(){sessionStorage.removeItem('santa26.admin');$('#panel').classList.add('hidden');$('#gate').classList.remove('hidden');toast('Вы вышли из служебного раздела','info')};
-function sattolo(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*i),t=a[i];a[i]=a[j];a[j]=t}return a}
 $('#bDraw').onclick=function(){
   var pool=realList();
   if(pool.length<2){toast('Нужно минимум 2 реальных участника','err');return}
   var go=function(){
-    var ids=pool.map(function(p){return p.id}),sh=sattolo(ids),pairs={};
-    ids.forEach(function(id,i){pairs[id]=sh[i]});
-    state.draw={pairs:pairs,at:new Date().toISOString()};
+    var made=makeDraw(pool);
+    if(!made){log('err','Жеребьёвка отклонена: не удалось построить корректные пары');toast('Не удалось построить пары без повторов — попробуйте ещё раз','err');return}
+    state.draw={pairs:made.pairs,at:new Date().toISOString(),verified:true};
     pool.forEach(function(p){p.giftToName=giftOf(p)});
     save();$('#trackRes').innerHTML='';render();burstAt($('#bDraw'));
-    toast('Маршруты построены: '+ids.length+' сант в рейсе 🎄','ok');log('info','Жеребьёвка: '+ids.length+' участников');
+    var n=pool.length;
+    log('ok','Жеребьёвка: '+n+' участников · каждый дарит 1 и получает 1 · повторов 0 · себе 0');
+    toast('Готово: '+n+' сант, у каждого ровно один подарок 🎄','ok');
     attempt=0;
-    /* после жеребьёвки: строки участников + колонка «Кому дарит» */
     push(pool,true).then(function(){return pushAssignments(true)}).then(render)};
-  if(state.draw)ask({title:'Перестроить маршруты?',text:'Пары будут назначены заново, колонка «Кому дарит» перезапишется. Коды участников не изменятся.',ok:'🎲 Перестроить'}).then(function(v){if(v)go()});else go()};
+  if(state.draw)ask({title:'Перестроить маршруты?',text:'Пары будут назначены заново с проверкой правила: каждый дарит один подарок и получает один. Коды участников не изменятся.',ok:'🎲 Перестроить'}).then(function(v){if(v)go()});else go()};
 $('#bTable').onclick=function(){tableOpen=!tableOpen;$('#tableBox').classList.toggle('hidden',!tableOpen);
   $('#bTable').textContent=tableOpen?'🙈 Скрыть таблицу':'📋 Показать таблицу';$('#bTable').setAttribute('aria-expanded',String(tableOpen));if(tableOpen)renderTable()};
 $('#bCsv').onclick=function(){
@@ -1219,6 +1320,7 @@ function del(ids){
   if(lastP&&ids.indexOf(lastP.id)>-1){lastP=null;$('#waybill').classList.add('hidden')}
   if(remoteCount!=null&&codes.length)remoteCount=Math.max(0,remoteCount-codes.length);
   save();render();scheduleAuto();remoteDel(codes);
+  if(hadDraw)log('info','Состав изменился — жеребьёвка сброшена, чтобы правило «один дарит одному» не нарушилось');
   toast('Удалено: '+ids.length+(hadDraw?' · жеребьёвка сброшена':''),'info',{label:'↩ Отменить',fn:function(){
     state=snap;save();render();toast('Восстановлено','ok');attempt=0;push(state.participants.filter(function(p){return codes.indexOf(String(p.code))>-1}),true)}})}
 $('#q').addEventListener('input',function(){filters.q=this.value;activeView='';renderViews();renderTable()});
@@ -1259,8 +1361,10 @@ function openDrawer(id){var p=byId(id);if(!p)return;drawerId=id;
   $('#dTitle').textContent=p.name;$('#dCode').textContent=p.code;$('#dSync').innerHTML=badge(p);
   D.name.value=p.name;D.dept.value=p.dept||'';D.contact.value=p.contact;D.likes.value=p.likes;D.dont.value=p.dont||'';D.allergy.value=p.allergies||'';
   Object.keys(D).forEach(function(k){ok(D[k])});
+  var from=giverOf(p);
   $('#dMeta').innerHTML='<div>Дата и время: <b>'+esc(stamp(p.ts))+'</b></div><div>Код: <b>'+esc(p.code)+'</b></div>'+
-    '<div>Кому дарит: <b>'+(giftOf(p)?esc(giftOf(p)):(state.draw?'—':'после жеребьёвки'))+'</b></div>'+
+    '<div>Дарит → <b>'+(giftOf(p)?esc(giftOf(p)):(state.draw?'—':'после жеребьёвки'))+'</b></div>'+
+    '<div>Получает от ← <b>'+(from?esc(from.name):(state.draw?'—':'после жеребьёвки'))+'</b></div>'+
     (p.demo?'<div>🧪 Демо-запись: в таблицу не отправляется</div>':'')+
     (p.sync&&p.sync.error?'<div style="color:#D40511">Ошибка: <b>'+esc(p.sync.error)+'</b></div>':'');
   $('#drawer').classList.add('open');overlay(true)}
@@ -1275,7 +1379,9 @@ $('#dSave').onclick=function(){
   if(!MAIL.test(m)){bad(D.contact,'Формат почты: name@company.ru');first=first||D.contact}
   if(l.length<3){bad(D.likes,'Добавьте пожелания');first=first||D.likes}
   if(first){first.focus();return}
+  var oldName=p.name;
   p.name=n;p.dept=D.dept.value.trim();p.contact=m;p.likes=l;p.dont=D.dont.value.trim();p.allergies=D.allergy.value.trim();p.updated=Date.now();
+  if(state.draw&&oldName!==n)state.participants.forEach(function(x){if(x.giftToName===oldName)x.giftToName=n});
   setS(p,'pending');save();render();openDrawer(p.id);toast('Карточка обновлена 💾','ok');attempt=0;push([p],true)};
 $('#dPush').onclick=function(){var p=byId(drawerId);if(p){attempt=0;push([p])}};
 $('#dDel').onclick=function(){var id=drawerId;if(id)del([id])};
@@ -1287,8 +1393,8 @@ addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8)}
 sizeS();sizeC();if(!reduced)requestAnimationFrame(loopS);else sc.style.display='none';
 $('#gsUrl').value=gs.url;$('#gsSheet').value=gs.sheet;$('#gsToken').value=gs.token;
 syncControls();renderViews();render();sched();tick();setInterval(tick,1000);setInterval(sched,60000);
+log('info','Правило жеребьёвки: каждый дарит 1 подарок одному, каждый получает 1, повторов нет');
 log('info','Порядок выгрузки: '+HEAD.join(' | '));
-log('info','Колонка «Кому дарит» заполняется после жеребьёвки');
 if(sessionStorage.getItem('santa26.admin')==='1')unlock();
 refreshRemote(true);scheduleAuto();setInterval(function(){refreshRemote(true)},60000);
 if(!reduced&&'IntersectionObserver' in window){
