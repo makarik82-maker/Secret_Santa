@@ -93,6 +93,7 @@ body{font-family:var(--body);color:var(--ink);background:var(--paper);line-heigh
 .wb-bar{height:40px;margin-bottom:12px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 6px,transparent 6px 10px)}
 .wb-m{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}.wb-m span{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}.wb-m b{font-size:13.5px;word-break:break-word}
 .wb-n{background:#FFF4E0;border:2px solid var(--amber);border-radius:12px;padding:11px 13px;font-size:12.5px;font-weight:600;margin-bottom:14px}
+.wb-n.cfg{background:#FDECEC;border-color:var(--red);color:var(--red)}
 .wb-a{display:flex;flex-wrap:wrap;gap:9px}
 .my{margin-top:16px;background:var(--white);border:2px solid var(--ink);border-radius:14px;padding:14px 16px;box-shadow:5px 5px 0 var(--ink)}
 .my h4{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
@@ -192,7 +193,9 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <a class="rl" href="#track">Уже есть код? → Отследить маршрут</a>
 <div class="my hidden" id="myBox"><h4>Ваши заявки на этом устройстве</h4><div id="myList"></div></div>
 </div><div>
-<div class="card" id="regCard"><form id="regForm" novalidate>
+<div class="card" id="regCard">
+<div class="wb-n cfg hidden" id="cfgWarn"></div>
+<form id="regForm" novalidate>
 <div class="field"><label for="fName">Имя и фамилия <b>*</b></label><input id="fName" type="text" autocomplete="name" maxlength="80" placeholder="Например: Петр Смирнов"><small class="err"></small></div>
 <div class="field"><label for="fDept">Отдел / команда</label><input id="fDept" list="depts" maxlength="60" placeholder="Ops, HR, IT, Логистика…"><datalist id="depts"><option value="Ops"><option value="HR"><option value="IT"><option value="Логистика"><option value="Продажи"><option value="Маркетинг"><option value="Финансы"><option value="Клиентский сервис"></datalist><small class="err"></small></div>
 <div class="field"><label for="fContact">Куда писать лично (почта) <b>*</b></label><input id="fContact" type="email" inputmode="email" autocomplete="email" maxlength="120" placeholder="name@company.ru"><small class="err"></small></div>
@@ -211,7 +214,7 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <div class="wb-bar" aria-hidden="true"></div>
 <div class="wb-m"><div><span>Отправитель</span><b id="wbName">—</b></div><div><span>Отдел</span><b id="wbDept">—</b></div><div><span>Дата и время</span><b id="wbDate">—</b></div></div>
 <div class="wb-n" id="wbNote">⚠️ Сохраните код из 6 символов — он покажет, кому вы дарите, после жеребьёвки 2 декабря. Копия кода отправлена на вашу почту.</div>
-<div class="wb-a"><button class="btn b-yel b-sm" id="wbCopy">📋 Скопировать код</button><a class="btn b-ink b-sm" href="#track">📡 Проверить маршрут</a><button class="btn b-ghost b-sm" id="wbNew">＋ Ещё заявка</button></div>
+<div class="wb-a"><button class="btn b-yel b-sm" id="wbCopy">📋 Скопировать код</button><a class="btn b-ink b-sm" href="#track">📡 Проверить маршрут</a><button class="btn b-yel b-sm hidden" id="wbRetry" type="button">🔁 Повторить отправку</button><button class="btn b-ghost b-sm" id="wbNew">＋ Ещё заявка</button></div>
 </div>
 </div></div></div></section>
 <section class="section dark" id="track"><div class="wrap">
@@ -242,10 +245,10 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 </div></footer>
 <div id="toasts" aria-live="polite"></div>
 <script>
-/* ===== КОНФИГУРАЦИЯ: заполните после развёртывания Apps Script ===== */
+/* ===== КОНФИГУРАЦИЯ: значения ниже уже проверены на вашем сервере ===== */
 var CONFIG={
-  GS_URL:'ВСТАВЬТЕ_URL_ВЕБ_ПРИЛОЖЕНИЯ_EXEC',
-  PUB_TOKEN:'ВСТАВЬТЕ_PUBLIC_TOKEN_ИЗ_SETUP',
+  GS_URL:'https://script.google.com/macros/s/AKfycbzDSVdNrheyCXI-aHn3SDy6wJLtyNP7wujgNmvrR2ORe-ZUVsUF_XT5gu8Tkk6rigAa/exec',
+  PUB_TOKEN:'PUB-C6F3B55C',
   DRAW_AT:'2026-12-02T12:00:00+03:00',
   REG_DEADLINE:'2026-12-01T23:59:59+03:00',
   EXCHANGE_AT:'2026-12-25T18:00:00+03:00'
@@ -261,12 +264,24 @@ function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){retur
 function toast(msg,type){var t=document.createElement('div');t.className='toast'+(type?' '+type:'');t.textContent=msg;$('#toasts').appendChild(t);setTimeout(function(){t.remove();},4200);}
 function stamp(d){function p(n){return(n<10?'0':'')+n;}return p(d.getDate())+'.'+p(d.getMonth()+1)+'.'+d.getFullYear()+' '+p(d.getHours())+'.'+p(d.getMinutes())+'.'+p(d.getSeconds());}
 function normCode(c){return String(c||'').toUpperCase().replace(/[^A-Z0-9]/g,'');}
+/* ===== проверка подключения: баннер + блокировка формы, если CONFIG не заполнен ===== */
+function configProblem(){
+  if(!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(CONFIG.GS_URL))return 'в CONFIG.GS_URL должен быть URL веб-приложения Apps Script (вида https://script.google.com/macros/s/…/exec).';
+  if(!CONFIG.PUB_TOKEN||CONFIG.PUB_TOKEN.indexOf('ВСТАВЬТЕ')>-1)return 'в CONFIG.PUB_TOKEN должен быть токен из setup() (вида PUB-XXXXXXXX).';
+  return '';
+}
+function gateConfig(){
+  var msg=configProblem(),box=$('#cfgWarn');
+  if(msg){box.textContent='⚠️ Сайт не подключён к таблице: '+msg+' Откройте index.html, заполните блок CONFIG вверху файла и запушьте на GitHub Pages.';box.classList.remove('hidden');$('#regSubmit').disabled=true;}
+  else{box.classList.add('hidden');}
+  return !msg;
+}
 /* только СВОИ заявки и очередь — чужих данных в браузере нет */
 var MY_KEY='santa26.my',Q_KEY='santa26.queue';
 function load(k){try{return JSON.parse(localStorage.getItem(k))||[];}catch(e){return[];}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
-var my=load(MY_KEY),queue=load(Q_KEY),attempt=0,qTimer=null,lastPendingId=null;
-/* ===== связь с сервером: POST, при неудаче GET (как в v9) ===== */
+var my=load(MY_KEY),queue=load(Q_KEY),attempt=0,qTimer=null,lastPendingId=null,failedItem=null;
+/* ===== связь с сервером: POST, при неудаче GET ===== */
 function gsReq(payload){
   payload.t=CONFIG.PUB_TOKEN;
   var body=JSON.stringify(payload);
@@ -332,8 +347,9 @@ function showWb(p,code,pending){
   $('#wbCode').textContent=code||'······';
   var chip=$('#wbChip');chip.textContent=pending?'В очереди':'Принято';chip.className='chip'+(pending?' pending':'');
   $('#wbNote').textContent=pending
-    ?'⏳ Сеть недоступна — заявка сохранена в браузере и отправится автоматически. Код придёт письмом на '+p.contact+'.'
+    ?(navigator.onLine===false?'⏳ Сеть недоступна — заявка сохранена в браузере и отправится автоматически. Код придёт письмом на '+p.contact+'.':'⏳ Отправляем заявку на сервер…')
     :'⚠️ Сохраните код из 6 символов — он покажет, кому вы дарите, после жеребьёвки 2 декабря. Копия кода отправлена на '+p.contact+'.';
+  $('#wbRetry').classList.add('hidden');
   $('#waybill').scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});
 }
 function renderMy(){
@@ -352,15 +368,24 @@ function sendPending(){
   if(!queue.length){attempt=0;return;}
   var item=queue[0];
   gsReq({action:'save',p:item.p,hp:''}).then(function(d){
-    queue.shift();save(Q_KEY,queue);attempt=0;
+    queue.shift();save(Q_KEY,queue);attempt=0;failedItem=null;
     my.push({code:d.code,name:item.p.name,ts:Date.now()});save(MY_KEY,my);renderMy();
     if(lastPendingId===item.id){$('#wbCode').textContent=d.code;$('#wbChip').textContent='Принято';$('#wbChip').className='chip';
-      $('#wbNote').textContent='⚠️ Сохраните код из 6 символов. Копия отправлена на '+item.p.contact+'.';}
+      $('#wbNote').textContent='⚠️ Сохраните код из 6 символов. Копия отправлена на '+item.p.contact+'.';$('#wbRetry').classList.add('hidden');}
     toast('Заявка отправлена! Ваш код: '+d.code+' 🎫','ok');ping();scheduleQueue();
   }).catch(function(e){
     attempt++;
-    if(/почта уже зарегистрирована|закрыт|антиспам/i.test(e.message)){queue.shift();save(Q_KEY,queue);toast(e.message,'err');attempt=0;
-      if(lastPendingId===item.id){$('#wbChip').textContent='Ошибка';$('#wbChip').className='chip pending';$('#wbNote').textContent='❌ '+e.message;}}
+    var msg=e.message||'Ошибка';
+    var permanent=/почта уже зарегистрирована|закрыт|антиспам|токен|не настроен|Неизвестное действие/i.test(msg);
+    if(permanent){
+      queue.shift();save(Q_KEY,queue);attempt=0;failedItem=item;
+      toast(msg,'err');
+      if(lastPendingId===item.id){$('#wbChip').textContent='Ошибка';$('#wbChip').className='chip pending';
+        $('#wbNote').textContent='❌ '+msg+' Исправьте подключение и нажмите «Повторить отправку».';$('#wbRetry').classList.remove('hidden');}
+    }else{
+      if(attempt===1)toast('Не удалось отправить: '+msg+'. Повторю автоматически.','warn');
+      if(lastPendingId===item.id){$('#wbNote').textContent='⏳ Не удалось отправить ('+msg+'). Заявка в очереди — повторяю автоматически, код придёт письмом на '+item.p.contact+'.';}
+    }
     scheduleQueue();
   });
 }
@@ -371,6 +396,7 @@ function scheduleQueue(){
 }
 $('#regForm').addEventListener('submit',function(e){
   e.preventDefault();
+  if(!gateConfig()){toast('Сайт не подключён к таблице — заполните CONFIG в index.html','err');return;}
   Object.keys(F).forEach(function(k){ok(F[k]);});
   var p=validate();if(!p)return;
   var item={id:'q'+Date.now(),p:p,hp:$('#fWeb').value,ts:Date.now()};
@@ -378,6 +404,13 @@ $('#regForm').addEventListener('submit',function(e){
   if(item.hp){toast('Заявка отклонена антиспам-фильтром','err');return;}
   lastPendingId=item.id;showWb(p,null,true);
   queue.push(item);save(Q_KEY,queue);attempt=0;sendPending();
+});
+$('#wbRetry').addEventListener('click',function(){
+  if(!gateConfig()){toast('Сначала заполните CONFIG в index.html','err');return;}
+  if(!failedItem){toast('Нет заявки для повтора','warn');return;}
+  queue.push(failedItem);failedItem=null;save(Q_KEY,queue);
+  $('#wbRetry').classList.add('hidden');$('#wbChip').textContent='В очереди';$('#wbChip').className='chip pending';
+  $('#wbNote').textContent='⏳ Отправляем заявку на сервер…';attempt=0;sendPending();
 });
 $('#wbCopy').addEventListener('click',function(){
   var c=$('#wbCode').textContent;
@@ -436,7 +469,7 @@ for(var i=0;i<90;i++)parts.push({x:innerWidth/2,y:innerHeight*.4,vx:(Math.random
 for(var i=0;i<parts.length;i++){var p=parts[i];if(p.l<=0)continue;alive=true;p.l--;p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;cx.fillStyle=p.c;cx.globalAlpha=Math.min(1,p.l/30);cx.fillRect(p.x,p.y,6,6);}
 cx.globalAlpha=1;if(alive)requestAnimationFrame(loop);else parts=[];})();}
 /* ===== старт ===== */
-if(CONFIG.GS_URL.indexOf('https://script.google.com/macros/s/AKfycbzDSVdNrheyCXI-aHn3SDy6wJLtyNP7wujgNmvrR2ORe-ZUVsUF_XT5gu8Tkk6rigAa/exec')>-1||CONFIG.PUB_TOKEN.indexOf('PUB-C6F3B55C')>-1){toast('Сайт не подключён к таблице: заполните CONFIG (GS_URL и PUB_TOKEN)','warn');}
+gateConfig();
 renderMy();paintCount();tick();sched();setInterval(tick,1000);setInterval(sched,60000);
 ping();setInterval(ping,120000);
 addEventListener('online',function(){attempt=0;sendPending();ping();});
