@@ -16,6 +16,10 @@
 :root{--y:#FFCC00;--y2:#FFB800;--y3:#FFD84D;--red:#D40511;--red2:#FF2A33;--ink:#221A06;--ink2:#4A3B12;--mute:#6E6244;--paper:#FFF9E8;--cream:#FFF3CF;--white:#FFFDF6;--line:#EFE6CC;--dark:#241B09;--green:#1E9E6A;--gd:#1E7A4F;--amber:#FF9F1C;--blue:#2E6BFF;--disp:'Unbounded',system-ui,sans-serif;--body:'Manrope',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.55;overflow-x:hidden}
+::-webkit-scrollbar{width:12px;height:12px}::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--y3),var(--y2));border:3px solid var(--dark);border-radius:8px}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--red2),var(--red))}
+*{scrollbar-width:thin;scrollbar-color:var(--y2) var(--dark)}
 :focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:6px}
 .hidden{display:none!important}.wrap{max-width:1100px;margin:0 auto;padding:0 22px}section{scroll-margin-top:96px}
 #snow{position:fixed;inset:0;z-index:40;pointer-events:none}#confetti{position:fixed;inset:0;z-index:500;pointer-events:none}
@@ -95,9 +99,6 @@ body{font-family:var(--body);color:var(--ink);background:var(--paper);line-heigh
 .wb-n{background:#FFF4E0;border:2px solid var(--amber);border-radius:12px;padding:11px 13px;font-size:12.5px;font-weight:600;margin-bottom:14px}
 .wb-n.cfg{background:#FDECEC;border-color:var(--red);color:var(--red)}
 .wb-a{display:flex;flex-wrap:wrap;gap:9px}
-.my{margin-top:16px;background:var(--white);border:2px solid var(--ink);border-radius:14px;padding:14px 16px;box-shadow:5px 5px 0 var(--ink)}
-.my h4{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
-.my-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13.5px;font-weight:700;padding:6px 0;border-top:1px dashed var(--line)}.my-row code{font-family:var(--mono);color:var(--red);font-size:15px;letter-spacing:.1em}
 .track-box{max-width:700px;margin:0 auto}
 .tf{display:flex;gap:11px}.in-dark{flex:1;min-width:0;font-family:var(--mono);font-weight:700;font-size:21px;letter-spacing:.28em;text-transform:uppercase;color:var(--y);background:var(--dark);border:2px solid var(--y);border-radius:14px;padding:13px 16px}
 .in-dark::placeholder{color:#8A7C55;letter-spacing:0;font-family:var(--body);font-weight:600;font-size:13.5px;text-transform:none}.in-dark:focus{outline:none;box-shadow:0 0 0 4px rgba(255,204,0,.3)}
@@ -136,7 +137,6 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <div class="topstrip"><div class="ticker" aria-hidden="true"><div class="ticker-track"><span>❄ ❅ ❄ ✻ 🎁 ❄ ✦ 📦 ✦ ❄ ❅ ❄ ✻ 🎅 ❄ ✦ 📦 ✦ ❄ ❅ ❄ ✻ 🎁 ❄ ✦ 📦 ✦ </span><span>❄ ❅ ❄ ✻ 🎁 ❄ ✦ 📦 ✦ ❄ ❅ ❄ ✻ 🎅 ❄ ✦ 📦 ✦ ❄ ❅ ❄ ✻ 🎁 ❄ ✦ 📦 ✦ </span></div></div>
 <div class="tagline">ЖЕЛТАЯ СЛУЖБА ПРАЗДНИЧНОЙ ДОСТАВКИ</div></div>
 <nav id="nav"><div class="nav-inner">
-<a class="brand" href="#top">🎄 Тайный<em>Санта</em> 2026</a>
 <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><i></i><i></i><i></i></button>
 <ul id="navMenu"><li><a href="#how">Как это работает</a></li><li><a href="#rules">Правила</a></li><li><a href="#schedule">График</a></li><li><a href="#track">Кому я дарю?</a></li><li><a href="#faq">FAQ</a></li><li><a class="cta" href="#reg">🎁 Участвовать</a></li></ul>
 </div></nav>
@@ -191,7 +191,6 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 </ul>
 <span class="cnt">👥 Уже в деле: <b id="regCount">…</b></span><br>
 <a class="rl" href="#track">Уже есть код? → Отследить маршрут</a>
-<div class="my hidden" id="myBox"><h4>Ваши заявки на этом устройстве</h4><div id="myList"></div></div>
 </div><div>
 <div class="card" id="regCard">
 <div class="wb-n cfg hidden" id="cfgWarn"></div>
@@ -276,11 +275,11 @@ function gateConfig(){
   else{box.classList.add('hidden');}
   return !msg;
 }
-/* только СВОИ заявки и очередь — чужих данных в браузере нет */
-var MY_KEY='santa26.my',Q_KEY='santa26.queue';
+/* только очередь неотправленных заявок — чужих данных в браузере нет */
+var Q_KEY='santa26.queue';
 function load(k){try{return JSON.parse(localStorage.getItem(k))||[];}catch(e){return[];}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
-var my=load(MY_KEY),queue=load(Q_KEY),attempt=0,qTimer=null,lastPendingId=null,failedItem=null;
+var queue=load(Q_KEY),attempt=0,qTimer=null,lastPendingId=null,failedItem=null;
 /* ===== связь с сервером: POST, при неудаче GET ===== */
 function gsReq(payload){
   payload.t=CONFIG.PUB_TOKEN;
@@ -352,24 +351,11 @@ function showWb(p,code,pending){
   $('#wbRetry').classList.add('hidden');
   $('#waybill').scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});
 }
-function renderMy(){
-  var box=$('#myBox'),list=$('#myList');
-  if(!my.length){box.classList.add('hidden');return;}
-  box.classList.remove('hidden');list.innerHTML='';
-  my.slice(-5).reverse().forEach(function(m){
-    var row=document.createElement('div');row.className='my-row';
-    row.innerHTML='<code>'+esc(m.code)+'</code><span>'+esc(m.name)+'</span>';
-    var b=document.createElement('button');b.className='btn b-ghost b-sm';b.textContent='📡 Маршрут';
-    b.addEventListener('click',function(){$('#trackCode').value=m.code;location.hash='#track';doTrack(m.code);});
-    row.appendChild(b);list.appendChild(row);
-  });
-}
 function sendPending(){
   if(!queue.length){attempt=0;return;}
   var item=queue[0];
   gsReq({action:'save',p:item.p,hp:''}).then(function(d){
     queue.shift();save(Q_KEY,queue);attempt=0;failedItem=null;
-    my.push({code:d.code,name:item.p.name,ts:Date.now()});save(MY_KEY,my);renderMy();
     if(lastPendingId===item.id){$('#wbCode').textContent=d.code;$('#wbChip').textContent='Принято';$('#wbChip').className='chip';
       $('#wbNote').textContent='⚠️ Сохраните код из 6 символов. Копия отправлена на '+item.p.contact+'.';$('#wbRetry').classList.add('hidden');}
     toast('Заявка отправлена! Ваш код: '+d.code+' 🎫','ok');ping();scheduleQueue();
@@ -469,8 +455,9 @@ for(var i=0;i<90;i++)parts.push({x:innerWidth/2,y:innerHeight*.4,vx:(Math.random
 for(var i=0;i<parts.length;i++){var p=parts[i];if(p.l<=0)continue;alive=true;p.l--;p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;cx.fillStyle=p.c;cx.globalAlpha=Math.min(1,p.l/30);cx.fillRect(p.x,p.y,6,6);}
 cx.globalAlpha=1;if(alive)requestAnimationFrame(loop);else parts=[];})();}
 /* ===== старт ===== */
+try{localStorage.removeItem('santa26.my');}catch(e){}
 gateConfig();
-renderMy();paintCount();tick();sched();setInterval(tick,1000);setInterval(sched,60000);
+paintCount();tick();sched();setInterval(tick,1000);setInterval(sched,60000);
 ping();setInterval(ping,120000);
 addEventListener('online',function(){attempt=0;sendPending();ping();});
 document.addEventListener('visibilitychange',function(){if(!document.hidden){ping();if(queue.length){attempt=0;sendPending();}}});
