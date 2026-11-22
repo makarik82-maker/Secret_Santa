@@ -436,7 +436,7 @@ for(var i=0;i<90;i++)parts.push({x:innerWidth/2,y:innerHeight*.4,vx:(Math.random
 for(var i=0;i<parts.length;i++){var p=parts[i];if(p.l<=0)continue;alive=true;p.l--;p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;cx.fillStyle=p.c;cx.globalAlpha=Math.min(1,p.l/30);cx.fillRect(p.x,p.y,6,6);}
 cx.globalAlpha=1;if(alive)requestAnimationFrame(loop);else parts=[];})();}
 /* ===== старт ===== */
-if(CONFIG.GS_URL.indexOf('ВСТАВЬТЕ')>-1||CONFIG.PUB_TOKEN.indexOf('ВСТАВЬТЕ')>-1){toast('Сайт не подключён к таблице: заполните CONFIG (GS_URL и PUB_TOKEN)','warn');}
+if(CONFIG.GS_URL.indexOf('https://script.google.com/macros/s/AKfycbzDSVdNrheyCXI-aHn3SDy6wJLtyNP7wujgNmvrR2ORe-ZUVsUF_XT5gu8Tkk6rigAa/exec')>-1||CONFIG.PUB_TOKEN.indexOf('PUB-C6F3B55C')>-1){toast('Сайт не подключён к таблице: заполните CONFIG (GS_URL и PUB_TOKEN)','warn');}
 renderMy();paintCount();tick();sched();setInterval(tick,1000);setInterval(sched,60000);
 ping();setInterval(ping,120000);
 addEventListener('online',function(){attempt=0;sendPending();ping();});
