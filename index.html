@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#FFCC00">
 <meta name="description" content="Тайный Санта 2026 — жёлтая служба праздничной доставки: заявки, секретные коды, жеребьёвка и обмен подарками до 1000 ₽.">
 <meta property="og:title" content="Тайный Санта 2026 🎄">
-<meta property="og:description" content="Анонимный обмен подарками до 1000 ₽. Заявки до 1 декабря, жеребьёвка 2 декабря, обмен 25 декабря.">
+<meta property="og:description" content="Анонимный обмен подарками до 1000 ₽. Заявки до 8 декабря, жеребьёвка 9 декабря, обмен 28 декабря.">
 <meta property="og:type" content="website">
 <title>Тайный Санта 2026 • Жёлтая служба праздничной доставки</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
@@ -95,7 +95,7 @@ body{font-family:var(--body);color:var(--ink);background:var(--paper);line-heigh
 .wb-l{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
 .wb-c{font-family:var(--mono);font-weight:700;font-size:clamp(30px,6vw,48px);letter-spacing:.2em;color:var(--red);margin-bottom:10px}
 .wb-bar{height:40px;margin-bottom:12px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 6px,transparent 6px 10px)}
-.wb-m{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}.wb-m span{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}.wb-m b{font-size:13.5px;word-break:break-word}
+.wb-m{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px}.wb-m span{display:block;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}.wb-m b{font-size:13.5px;word-break:break-word}
 .wb-n{background:#FFF4E0;border:2px solid var(--amber);border-radius:12px;padding:11px 13px;font-size:12.5px;font-weight:600;margin-bottom:14px}
 .wb-n.cfg{background:#FDECEC;border-color:var(--red);color:var(--red)}
 .wb-a{display:flex;flex-wrap:wrap;gap:9px}
@@ -108,7 +108,6 @@ body{font-family:var(--body);color:var(--ink);background:var(--paper);line-heigh
 .lc{background:var(--white);border:2px solid var(--ink);border-radius:18px;padding:22px;box-shadow:8px 8px 0 var(--y);color:var(--ink)}
 .lc-to{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
 .lc-n{font-family:var(--disp);font-weight:900;font-size:clamp(22px,4vw,32px);line-height:1.1;margin-bottom:8px;word-break:break-word}
-.lc-d{display:inline-block;background:var(--cream);border:2px solid var(--ink);border-radius:999px;padding:4px 13px;font-weight:800;font-size:12.5px;margin-bottom:14px}
 .lc-g{display:grid;gap:11px;margin-bottom:14px}.bl{border:2px solid;border-radius:12px;padding:11px 14px}.bl h4{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}.bl p{font-size:14px}
 .bl.good{border-color:var(--green);background:#EAF7F0}.bl.good h4{color:var(--gd)}.bl.bad{border-color:var(--red);background:#FDECEC}.bl.bad h4{color:var(--red)}.bl.warn{border-color:var(--amber);background:#FFF4E0}.bl.warn h4{color:#9A5B00}
 .lc-f{border-top:2px dashed var(--line);padding-top:12px;font-size:13px;font-weight:700;color:var(--mute)}
@@ -122,13 +121,14 @@ body{font-family:var(--body);color:var(--ink);background:var(--paper);line-heigh
 footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid var(--y)}
 .f-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
 .f-grid a{color:var(--y);text-decoration:none;font-weight:700;font-size:13px}.f-note{font-size:12px;margin-top:14px;text-align:center}
+.f-grid .brand{color:var(--y)}.f-grid .brand em{color:var(--red2)}
 #toasts{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:600;display:flex;flex-direction:column;gap:8px;align-items:center;width:min(92vw,480px)}
 .toast{background:var(--ink);color:var(--y);border:2px solid var(--y);border-radius:12px;padding:11px 16px;font-weight:800;font-size:13.5px;box-shadow:4px 4px 0 rgba(0,0,0,.3);animation:pop .3s;text-align:center}
 .toast.err{background:var(--red);color:#fff;border-color:#fff}.toast.warn{background:var(--amber);color:var(--ink);border-color:var(--ink)}
 @media(max-width:900px){.hero-grid,.reg{grid-template-columns:1fr}.how{grid-template-columns:1fr 1fr}.rules{grid-template-columns:1fr}.art{display:none}
 #navMenu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--ink);flex-direction:column;align-items:stretch;padding:10px 22px}
 #nav.open #navMenu{display:flex}.burger{display:flex}}
-@media(max-width:560px){.how{grid-template-columns:1fr}.wb-m{grid-template-columns:1fr 1fr}.tf{flex-direction:column}}
+@media(max-width:560px){.how{grid-template-columns:1fr}.wb-m{grid-template-columns:1fr}.tf{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -150,7 +150,7 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <div class="cd-c"><b id="cdH">00</b><span>час</span></div><span class="cd-s">:</span>
 <div class="cd-c"><b id="cdM">00</b><span>мин</span></div><span class="cd-s">:</span>
 <div class="cd-c"><b id="cdS">00</b><span>сек</span></div></div></div>
-<div class="hstats"><span class="hstat">💸 бюджет <b>до 1000 ₽</b></span><span class="hstat">🎲 жеребьёвка <b>2 дек</b></span><span class="hstat">🎁 обмен <b>25 дек</b></span><span class="hstat">👥 участников: <b id="hCount">…</b></span></div>
+<div class="hstats"><span class="hstat">💸 бюджет <b>до 1000 ₽</b></span><span class="hstat">🎲 жеребьёвка <b>9 дек</b></span><span class="hstat">🎁 обмен <b>28 дек</b></span><span class="hstat">👥 участников: <b id="hCount">…</b></span></div>
 </div><div class="art" aria-hidden="true">🎅📦</div></div></header>
 <div class="tape" aria-hidden="true"></div>
 <section class="section" id="how"><div class="wrap">
@@ -159,7 +159,7 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <div class="step"><span class="n">01</span><span class="ico">📝</span><h3>Заполните форму</h3><p>Нажмите «Отправить заявку» — получите секретный код из 6 символов. Код продублируется письмом на вашу почту.</p></div>
 <div class="step"><span class="n">02</span><span class="ico">🔑</span><h3>Узнайте подопечного</h3><p>После жеребьёвки введите код и узнайте, кому вы Санта. Каждый дарит один подарок и получает один.</p></div>
 <div class="step"><span class="n">03</span><span class="ico">🎁</span><h3>Соберите подарок</h3><p>Подготовьте подарок до 1000 ₽ по пожеланиям подопечного.</p></div>
-<div class="step"><span class="n">04</span><span class="ico">🚚</span><h3>Доставка 25 декабря</h3><p>25 декабря — анонимная доставка и обмен подарками 🎁</p></div>
+<div class="step"><span class="n">04</span><span class="ico">🚚</span><h3>Доставка 28 декабря</h3><p>28 декабря — анонимная доставка и обмен подарками 🎁</p></div>
 </div></div></section>
 <section class="section dark" id="rules"><div class="wrap">
 <div class="sec-head"><span class="tag">Раздел 02 · Регламент</span><h2>Правила и бюджет</h2><p>Простой регламент, чтобы праздник остался праздником для всех.</p></div>
@@ -174,10 +174,10 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <section class="section" id="schedule"><div class="wrap">
 <div class="sec-head"><span class="tag">Раздел 03 · Расписание</span><h2>График доставки</h2><p>Праздничная логистика по расписанию — ни одна посылка не опоздает.</p></div>
 <div class="tl">
-<div class="ti" id="ti0"><span class="tn">📝</span><div class="tc"><span class="td">До 1 декабря</span><div class="tb"><b>Приём заявок</b><span>Заполняйте форму и получайте секретный код.</span></div><span class="now">Сейчас</span></div></div>
-<div class="ti" id="ti1"><span class="tn">🎲</span><div class="tc"><span class="td">2 декабря</span><div class="tb"><b>Жеребьёвка</b><span>Каждый дарит одному и получает один — без повторов.</span></div><span class="now">Сейчас</span></div></div>
-<div class="ti" id="ti2"><span class="tn">🎁</span><div class="tc"><span class="td">До 24 декабря</span><div class="tb"><b>Подготовка посылок</b><span>Выбираем и упаковываем подарок до 1000 ₽ по пожеланиям.</span></div><span class="now">Сейчас</span></div></div>
-<div class="ti" id="ti3"><span class="tn">🚚</span><div class="tc"><span class="td">25 декабря</span><div class="tb"><b>Обмен подарками 🎁</b><span>Анонимная доставка и праздничное вручение.</span></div><span class="now">Сейчас</span></div></div>
+<div class="ti" id="ti0"><span class="tn">📝</span><div class="tc"><span class="td">До 8 декабря</span><div class="tb"><b>Приём заявок</b><span>Заполняйте форму и получайте секретный код.</span></div><span class="now">Сейчас</span></div></div>
+<div class="ti" id="ti1"><span class="tn">🎲</span><div class="tc"><span class="td">9 декабря</span><div class="tb"><b>Жеребьёвка</b><span>Каждый дарит одному и получает один — без повторов.</span></div><span class="now">Сейчас</span></div></div>
+<div class="ti" id="ti2"><span class="tn">🎁</span><div class="tc"><span class="td">До 27 декабря</span><div class="tb"><b>Подготовка посылок</b><span>Выбираем и упаковываем подарок до 1000 ₽ по пожеланиям.</span></div><span class="now">Сейчас</span></div></div>
+<div class="ti" id="ti3"><span class="tn">🚚</span><div class="tc"><span class="td">28 декабря</span><div class="tb"><b>Обмен подарками 🎁</b><span>Анонимная доставка и праздничное вручение.</span></div><span class="now">Сейчас</span></div></div>
 </div></div></section>
 <section class="section" id="reg"><div class="wrap">
 <div class="sec-head"><span class="tag">Раздел 04 · Накладная</span><h2>Регистрация</h2><p>Заполните праздничную накладную — код выдаётся сразу и дублируется письмом.</p></div>
@@ -196,7 +196,6 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <div class="wb-n cfg hidden" id="cfgWarn"></div>
 <form id="regForm" novalidate>
 <div class="field"><label for="fName">Имя и фамилия <b>*</b></label><input id="fName" type="text" autocomplete="name" maxlength="80" placeholder="Например: Петр Смирнов"><small class="err"></small></div>
-<div class="field"><label for="fDept">Отдел / команда</label><input id="fDept" list="depts" maxlength="60" placeholder="Ops, HR, IT, Логистика…"><datalist id="depts"><option value="Ops"><option value="HR"><option value="IT"><option value="Логистика"><option value="Продажи"><option value="Маркетинг"><option value="Финансы"><option value="Клиентский сервис"></datalist><small class="err"></small></div>
 <div class="field"><label for="fContact">Куда писать лично (почта) <b>*</b></label><input id="fContact" type="email" inputmode="email" autocomplete="email" maxlength="120" placeholder="name@company.ru"><small class="err"></small></div>
 <div class="field"><label for="fLikes">Что вы любите? <b>*</b></label><textarea id="fLikes" rows="3" maxlength="500" placeholder="Кофе, книги, настолки, сертификаты…"></textarea><small class="err"></small></div>
 <div class="field"><label for="fDont">Что вам НЕ дарить?</label><textarea id="fDont" rows="2" maxlength="300" placeholder="Алкоголь, свечи, косметику…"></textarea><small class="err"></small></div>
@@ -211,8 +210,8 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <div class="wb-l">Ваш секретный код отслеживания</div>
 <div class="wb-c" id="wbCode">······</div>
 <div class="wb-bar" aria-hidden="true"></div>
-<div class="wb-m"><div><span>Отправитель</span><b id="wbName">—</b></div><div><span>Отдел</span><b id="wbDept">—</b></div><div><span>Дата и время</span><b id="wbDate">—</b></div></div>
-<div class="wb-n" id="wbNote">⚠️ Сохраните код из 6 символов — он покажет, кому вы дарите, после жеребьёвки 2 декабря. Копия кода отправлена на вашу почту.</div>
+<div class="wb-m"><div><span>Отправитель</span><b id="wbName">—</b></div><div><span>Дата и время</span><b id="wbDate">—</b></div></div>
+<div class="wb-n" id="wbNote">⚠️ Сохраните код из 6 символов — он покажет, кому вы дарите, после жеребьёвки 9 декабря. Копия кода отправлена на вашу почту.</div>
 <div class="wb-a"><button class="btn b-yel b-sm" id="wbCopy">📋 Скопировать код</button><a class="btn b-ink b-sm" href="#track">📡 Проверить маршрут</a><button class="btn b-yel b-sm hidden" id="wbRetry" type="button">🔁 Повторить отправку</button><button class="btn b-ghost b-sm" id="wbNew">＋ Ещё заявка</button></div>
 </div>
 </div></div></div></section>
@@ -234,23 +233,23 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <details><summary>Что если не знаю, что дарить?</summary><div class="a">Возьмите нейтральное: кофе, чай, канцелярию, сертификат. И загляните в пожелания подопечного — они открываются по вашему коду.</div></details>
 <details><summary>Какой у меня код?</summary><div class="a">Секретный код — 6 случайных символов, например K7M2QX. Он выдаётся сразу после отправки заявки и дублируется письмом. Код нужен, чтобы узнать своего подопечного после жеребьёвки.</div></details>
 <details><summary>Куда попадают заявки?</summary><div class="a">Данные сохраняются в защищённой таблице организатора. Сайт показывает по коду только имя и пожелания вашего подопечного — никаких чужих кодов, почт и списков. Полный список видит только организатор.</div></details>
-<details><summary>Что если я зарегистрируюсь после жеребьёвки?</summary><div class="a">До 1 декабря включительно — успеете. Если жеребьёвка уже прошла, система аккуратно встроит вас в маршрут, изменив ровно одно назначение, и пришлёт письмо тому, чей маршрут обновился.</div></details>
+<details><summary>Что если я зарегистрируюсь после жеребьёвки?</summary><div class="a">До 8 декабря включительно — успеете. Если жеребьёвка уже прошла, система аккуратно встроит вас в маршрут, изменив ровно одно назначение, и пришлёт письмо тому, чей маршрут обновился.</div></details>
 </div></div></section>
 <footer><div class="wrap">
-<div class="f-grid"><a class="brand" href="#top" style="color:#fff">🎄 Тайный<em>Санта</em> 2026</a>
+<div class="f-grid"><a class="brand" href="#top">🎄 Тайный<em>Санта</em> 2026</a>
 <span>👥 Участников: <b id="fCount" style="color:var(--y)">…</b></span>
-<span>🎲 Жеребьёвка 2 декабря · 🎁 Обмен 25 декабря</span></div>
+<span>🎲 Жеребьёвка 9 декабря · 🎁 Обмен 28 декабря</span></div>
 <div class="f-note">Сделано с любовью и мишурой ✨ Жёлтый — значит, подарок доставим точно в срок 📦</div>
 </div></footer>
 <div id="toasts" aria-live="polite"></div>
 <script>
 /* ===== КОНФИГУРАЦИЯ: значения ниже уже проверены на вашем сервере ===== */
 var CONFIG={
-  GS_URL:'https://script.google.com/macros/s/AKfycbzDSVdNrheyCXI-aHn3SDy6wJLtyNP7wujgNmvrR2ORe-ZUVsUF_XT5gu8Tkk6rigAa/exec',
+  GS_URL:'https://script.google.com/macros/s/AKfycbws2di26x-qsLy7ycG0h4c1qMKV9IroVpTP1H-5n0V-NY6Eskk73gVdj052td-hXWvm/exec',
   PUB_TOKEN:'PUB-C6F3B55C',
-  DRAW_AT:'2026-12-02T12:00:00+03:00',
-  REG_DEADLINE:'2026-12-01T23:59:59+03:00',
-  EXCHANGE_AT:'2026-12-25T18:00:00+03:00'
+  DRAW_AT:'2026-12-09T12:00:00+03:00',
+  REG_DEADLINE:'2026-12-08T23:59:59+03:00',
+  EXCHANGE_AT:'2026-12-28T18:00:00+03:00'
 };
 </script>
 <script>
@@ -320,12 +319,12 @@ function gateForm(){
   var closed=!server.regOpen||Date.now()>new Date(CONFIG.REG_DEADLINE).getTime();
   if(closed&&!$('#regClosed')){
     var n=document.createElement('div');n.id='regClosed';n.className='wb-n';n.style.marginTop='14px';
-    n.textContent='📮 Приём заявок закрыт 1 декабря. Если очень хотите в рейс — напишите организатору.';
+    n.textContent='📮 Приём заявок закрыт 8 декабря. Если очень хотите в рейс — напишите организатору.';
     $('#regCard').appendChild(n);$('#regSubmit').disabled=true;
   }
 }
 /* ===== форма регистрации ===== */
-var F={name:$('#fName'),dept:$('#fDept'),contact:$('#fContact'),likes:$('#fLikes'),dont:$('#fDont'),allergy:$('#fAllergy')};
+var F={name:$('#fName'),contact:$('#fContact'),likes:$('#fLikes'),dont:$('#fDont'),allergy:$('#fAllergy')};
 function bad(i,m){var f=i.closest('.field');f.classList.add('bad');f.querySelector('.err').textContent=m;}
 function ok(i){var f=i.closest('.field');f.classList.remove('bad');f.querySelector('.err').textContent='';}
 Object.keys(F).forEach(function(k){F[k].addEventListener('input',function(){ok(F[k]);});});
@@ -338,16 +337,16 @@ function validate(){
   if(likes.length<3){bad(F.likes,'Пара слов о пожеланиях поможет вашему Санте');first=first||F.likes;}
   if(!$('#fConsent').checked){toast('Отметьте согласие на обработку данных','warn');first=first||$('#fConsent');}
   if(first){first.focus();return null;}
-  return{name:name,dept:F.dept.value.trim(),contact:mail,likes:likes,dont:F.dont.value.trim(),allergies:F.allergy.value.trim()};
+  return{name:name,contact:mail,likes:likes,dont:F.dont.value.trim(),allergies:F.allergy.value.trim()};
 }
 function showWb(p,code,pending){
   $('#waybill').classList.remove('hidden');
-  $('#wbName').textContent=p.name;$('#wbDept').textContent=p.dept||'—';$('#wbDate').textContent=stamp(new Date());
+  $('#wbName').textContent=p.name;$('#wbDate').textContent=stamp(new Date());
   $('#wbCode').textContent=code||'······';
   var chip=$('#wbChip');chip.textContent=pending?'В очереди':'Принято';chip.className='chip'+(pending?' pending':'');
   $('#wbNote').textContent=pending
     ?(navigator.onLine===false?'⏳ Сеть недоступна — заявка сохранена в браузере и отправится автоматически. Код придёт письмом на '+p.contact+'.':'⏳ Отправляем заявку на сервер…')
-    :'⚠️ Сохраните код из 6 символов — он покажет, кому вы дарите, после жеребьёвки 2 декабря. Копия кода отправлена на '+p.contact+'.';
+    :'⚠️ Сохраните код из 6 символов — он покажет, кому вы дарите, после жеребьёвки 9 декабря. Копия кода отправлена на '+p.contact+'.';
   $('#wbRetry').classList.add('hidden');
   $('#waybill').scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});
 }
@@ -412,15 +411,14 @@ function doTrack(code){
   $('#trackBtn').disabled=true;
   trackCard('<div class="lc-to">Запрос</div><div class="lc-n">Ищем маршрут… 📡</div><p class="lc-f">Связываемся со службой доставки.</p>');
   gsReq({action:'track',code:code}).then(function(d){
-    if(d.status==='pending'){trackCard('<div class="lc-to">Статус</div><div class="lc-n">Посылка в обработке 🕒</div><p class="lc-f">Жеребьёвка ещё не прошла. Загляните после 2 декабря — код покажет вашего подопечного.</p>','pending');}
+    if(d.status==='pending'){trackCard('<div class="lc-to">Статус</div><div class="lc-n">Посылка в обработке 🕒</div><p class="lc-f">Жеребьёвка ещё не прошла. Загляните после 9 декабря — код покажет вашего подопечного.</p>','pending');}
     else if(d.status==='late'){trackCard('<div class="lc-to">Статус</div><div class="lc-n">Вы в следующем рейсе 🚚</div><p class="lc-f">Жеребьёвка уже прошла, и ваш маршрут ещё не назначен. Напишите организатору — он добавит вас в рейс.</p>','late');}
     else{var t=d.to;
       trackCard('<div class="lc-to">Ваш подопечный</div><div class="lc-n">'+esc(t.name)+'</div>'+
-        (t.dept?'<span class="lc-d">'+esc(t.dept)+'</span>':'')+
         '<div class="lc-g"><div class="bl good"><h4>🎯 Что любит</h4><p>'+esc(t.likes)+'</p></div>'+
         (t.dont?'<div class="bl bad"><h4>🚫 Не дарить</h4><p>'+esc(t.dont)+'</p></div>':'')+
         (t.allergies?'<div class="bl warn"><h4>⚠️ Аллергии и ограничения</h4><p>'+esc(t.allergies)+'</p></div>':'')+
-        '</div><p class="lc-f">🎁 Бюджет — до 1000 ₽ · подготовить до 24 декабря · обмен 25 декабря. Имя вашего Санты — секрет 🤫</p>');
+        '</div><p class="lc-f">🎁 Бюджет — до 1000 ₽ · подготовить до 27 декабря · обмен 28 декабря. Имя вашего Санты — секрет 🤫</p>');
       burst();}
   }).catch(function(e){
     trackCard('<div class="lc-to">Ошибка</div><div class="lc-n">'+esc(e.message)+'</div><p class="lc-f">Проверьте код (6 символов из письма). Потеряли код — нажмите «Забыли код?» ниже.</p>','error');
