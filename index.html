@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#FFCC00">
-<meta name="description" content="Тайный Санта 2026 — жёлтая служба праздничной доставки: заявки, секретные коды, жеребьёвка и обмен подарками до 1000 ₽.">
-<meta property="og:title" content="Тайный Санта 2026 🎄">
+<meta name="description" content="Тайный Дед Мороз 2026 — жёлтая служба праздничной доставки: заявки, секретные коды, жеребьёвка и обмен подарками до 1000 ₽.">
+<meta property="og:title" content="Тайный Дед Мороз 2026 🎄">
 <meta property="og:description" content="Анонимный обмен подарками до 1000 ₽. Заявки до 1 декабря, жеребьёвка 2 декабря, обмен 25 декабря.">
 <meta property="og:type" content="website">
-<title>Тайный Санта 2026 • Жёлтая служба праздничной доставки</title>
+<title>Тайный Дед Мороз 2026 • Жёлтая служба праздничной доставки</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Manrope:wght@400;600;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
@@ -52,7 +52,7 @@ body{font-family:var(--body);color:var(--ink);background:var(--paper);line-heigh
 .cd-c{background:var(--ink);color:var(--y);border-radius:10px;padding:6px 9px;min-width:54px;text-align:center}.cd-c b{font-family:var(--mono);font-size:22px;display:block;line-height:1.1}.cd-c span{display:block;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#C9BC9C}.cd-s{font-weight:800;font-size:20px;padding-top:7px}
 .hstats{display:flex;flex-wrap:wrap;gap:9px}.hstat{background:rgba(255,253,246,.85);border:2px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:800;font-size:13px}.hstat b{color:var(--red)}
 .art{font-size:clamp(90px,14vw,170px);text-align:center;animation:bob 7s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-10px)}}
-/* ===== новогодний грузовик на заднем плане ===== */
+/* ===== новогодний грузовик на заднем плане героя ===== */
 .road{position:absolute;left:0;right:0;bottom:0;height:18px;background:rgba(255,253,246,.5);border-top:3px solid rgba(34,26,6,.4);z-index:1}
 .road::after{content:'';position:absolute;left:0;right:0;top:6px;height:3px;background:repeating-linear-gradient(90deg,rgba(34,26,6,.45) 0 26px,transparent 26px 52px)}
 .truck{position:absolute;bottom:14px;left:0;width:clamp(150px,20vw,250px);z-index:1;transform:translateX(-30vw);animation:drive 26s linear infinite;pointer-events:none;filter:drop-shadow(4px 5px 0 rgba(34,26,6,.18))}
@@ -64,6 +64,15 @@ body{font-family:var(--body);color:var(--ink);background:var(--paper);line-heigh
 @keyframes tbob{from{transform:translateY(0)}to{transform:translateY(2.5px)}}
 @keyframes wspin{to{transform:rotate(360deg)}}
 @keyframes puff{0%{opacity:.75;transform:translate(0,0) scale(.5)}100%{opacity:0;transform:translate(-30px,-16px) scale(1.6)}}
+/* ===== новогодний самолёт на заднем плане раздела «Регистрация» ===== */
+#reg{position:relative;overflow:hidden}
+#reg .wrap{position:relative;z-index:2}
+.plane{position:absolute;top:46px;left:0;width:clamp(230px,34vw,430px);z-index:1;transform:translateX(-45vw);animation:fly 30s linear infinite;pointer-events:none;opacity:.92;filter:drop-shadow(4px 6px 0 rgba(34,26,6,.15))}
+.plane svg{display:block;width:100%;height:auto;animation:psway 3.2s ease-in-out infinite alternate}
+.plane .prop{transform-box:fill-box;transform-origin:center;animation:pspin .45s linear infinite}
+@keyframes fly{from{transform:translateX(-45vw)}to{transform:translateX(115vw)}}
+@keyframes psway{from{transform:translateY(-6px) rotate(-1.5deg)}to{transform:translateY(8px) rotate(1.5deg)}}
+@keyframes pspin{to{transform:rotate(360deg)}}
 .tape{height:16px;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:repeating-linear-gradient(45deg,var(--red) 0 18px,var(--y) 18px 36px,var(--ink) 36px 54px)}
 .section{padding:70px 0}.sec-head{margin-bottom:34px;max-width:720px}
 .tag{display:inline-block;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.2em;background:var(--ink);color:var(--y);padding:5px 11px;border-radius:7px;margin-bottom:12px;text-transform:uppercase}
@@ -140,9 +149,10 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 @media(max-width:900px){.hero-grid,.reg{grid-template-columns:1fr}.how{grid-template-columns:1fr 1fr}.rules{grid-template-columns:1fr}.art{display:none}
 #navMenu{display:none;position:absolute;top:100%;left:0;right:0;margin:0;background:var(--paper);border-bottom:2px solid var(--ink);flex-direction:column;align-items:stretch;padding:10px 22px}
 #nav.open #navMenu{display:flex}.burger{display:flex}}
-@media(max-width:560px){.how{grid-template-columns:1fr}.wb-m{grid-template-columns:1fr}.tf{flex-direction:column}.truck{width:130px;bottom:12px}}
+@media(max-width:560px){.how{grid-template-columns:1fr}.wb-m{grid-template-columns:1fr}.tf{flex-direction:column}.truck{width:130px;bottom:12px}.plane{width:200px;top:30px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}
-.truck{transform:translateX(6vw)}.truck .puff{opacity:.5}}
+.truck{transform:translateX(6vw)}.truck .puff{opacity:.5}
+.plane{transform:translateX(58vw)}}
 </style>
 </head>
 <body>
@@ -155,7 +165,7 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 </div></nav>
 <header class="hero" id="top"><div class="wrap hero-grid"><div>
 <span class="eyebrow"><span class="d"></span> Сезон 2026 · приём заявок открыт</span>
-<h1>Тайный<br>Санта <span>2026</span></h1>
+<h1>Тайный<br>Дед Мороз <span>2026</span></h1>
 <p class="hero-sub">Доставим праздничное настроение точно в срок 📦✨ Анонимно, по пожеланиям и без превышения бюджета.</p>
 <div class="hero-cta"><a class="btn b-red" href="#reg">🎁 Участвовать</a><a class="btn b-ghost" href="#how">Как это работает ↓</a></div>
 <div class="cd"><span class="cd-l" id="cdLabel">До жеребьёвки</span><div class="cd-d">
@@ -197,7 +207,7 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <div class="sec-head"><span class="tag">Раздел 01 · Маршрут</span><h2>Как это <mark>работает</mark></h2><p>Четыре остановки — от заявки до праздничной доставки. Всё анонимно и точно в срок.</p></div>
 <div class="how">
 <div class="step"><span class="n">01</span><span class="ico">📝</span><h3>Заполните форму</h3><p>Нажмите «Отправить заявку» — получите секретный код из 6 символов. Код продублируется письмом на вашу почту.</p></div>
-<div class="step"><span class="n">02</span><span class="ico">🔑</span><h3>Узнайте подопечного</h3><p>После жеребьёвки введите код и узнайте, кому вы Санта. Каждый дарит один подарок и получает один.</p></div>
+<div class="step"><span class="n">02</span><span class="ico">🔑</span><h3>Узнайте подопечного</h3><p>После жеребьёвки введите код и узнайте, кому вы Дед Мороз. Каждый дарит один подарок и получает один.</p></div>
 <div class="step"><span class="n">03</span><span class="ico">🎁</span><h3>Соберите подарок</h3><p>Подготовьте подарок до 1000 ₽ по пожеланиям подопечного.</p></div>
 <div class="step"><span class="n">04</span><span class="ico">🚚</span><h3>Доставка 25 декабря</h3><p>25 декабря — анонимная доставка и обмен подарками 🎁</p></div>
 </div></div></section>
@@ -219,7 +229,33 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <div class="ti" id="ti2"><span class="tn">🎁</span><div class="tc"><span class="td">До 24 декабря</span><div class="tb"><b>Подготовка посылок</b><span>Выбираем и упаковываем подарок до 1000 ₽ по пожеланиям.</span></div><span class="now">Сейчас</span></div></div>
 <div class="ti" id="ti3"><span class="tn">🚚</span><div class="tc"><span class="td">25 декабря</span><div class="tb"><b>Обмен подарками 🎁</b><span>Анонимная доставка и праздничное вручение.</span></div><span class="now">Сейчас</span></div></div>
 </div></div></section>
-<section class="section" id="reg"><div class="wrap">
+<section class="section" id="reg">
+<div class="plane" aria-hidden="true">
+<svg viewBox="0 0 460 150" xmlns="http://www.w3.org/2000/svg">
+<g>
+<rect x="14" y="48" width="140" height="52" rx="8" fill="#D40511" stroke="#221A06" stroke-width="4"/>
+<text x="84" y="80" text-anchor="middle" font-family="Manrope,system-ui,sans-serif" font-weight="800" font-size="15" fill="#FFCC00">С НОВЫМ ГОДОМ!</text>
+<path d="M154 58 L204 72 M154 92 L204 92" stroke="#221A06" stroke-width="3"/>
+</g>
+<path d="M214 62 l-16-34 q-2-8 6-8 l26 0 q8 0 10 8 l6 34 z" fill="#D40511" stroke="#221A06" stroke-width="5" stroke-linejoin="round"/>
+<circle cx="228" cy="38" r="8" fill="#FFCC00" stroke="#221A06" stroke-width="3"/>
+<path d="M206 96 l-34 10 q-8 2-6-6 l4-14 z" fill="#D40511" stroke="#221A06" stroke-width="4" stroke-linejoin="round"/>
+<rect x="205" y="62" width="190" height="46" rx="23" fill="#FFCC00" stroke="#221A06" stroke-width="5"/>
+<rect x="214" y="90" width="172" height="10" fill="#D40511"/>
+<path d="M330 62 q10-18 34-16 q16 2 22 16 z" fill="#FFFDF6" stroke="#221A06" stroke-width="4"/>
+<circle cx="252" cy="78" r="7" fill="#FFFDF6" stroke="#221A06" stroke-width="4"/>
+<circle cx="278" cy="78" r="7" fill="#FFFDF6" stroke="#221A06" stroke-width="4"/>
+<circle cx="304" cy="78" r="7" fill="#FFFDF6" stroke="#221A06" stroke-width="4"/>
+<path d="M392 62 q34 4 40 23 q-6 19-40 23 z" fill="#D40511" stroke="#221A06" stroke-width="5" stroke-linejoin="round"/>
+<path d="M290 84 l-52 44 q-6 6 2 8 l30 0 q10 0 16-8 l34-40 z" fill="#D40511" stroke="#221A06" stroke-width="5" stroke-linejoin="round"/>
+<g class="prop">
+<ellipse cx="434" cy="60" rx="5" ry="24" fill="#FFFDF6" stroke="#221A06" stroke-width="3"/>
+<ellipse cx="434" cy="110" rx="5" ry="24" fill="#FFFDF6" stroke="#221A06" stroke-width="3"/>
+</g>
+<circle cx="434" cy="85" r="6" fill="#221A06"/>
+</svg>
+</div>
+<div class="wrap">
 <div class="sec-head"><span class="tag">Раздел 04 · Накладная</span><h2>Регистрация</h2><p>Заполните праздничную накладную — код выдаётся сразу и дублируется письмом.</p></div>
 <div class="reg"><div class="reg-info">
 <h3>Присоединяйтесь к рейсу 🎅</h3>
@@ -227,7 +263,7 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <li><i>⚡</i> Заявка уходит организатору сразу по кнопке «Отправить заявку»</li>
 <li><i>📧</i> Секретный код приходит и на почту — не потеряется</li>
 <li><i>🔒</i> Полные данные видит только организатор</li>
-<li><i>🤫</i> Никто не знает, кто чей Санта — даже сайт не показывает чужие коды</li>
+<li><i>🤫</i> Никто не знает, кто чей Дед Мороз — даже сайт не показывает чужие коды</li>
 </ul>
 <span class="cnt">👥 Уже в деле: <b id="regCount">…</b></span><br>
 <a class="rl" href="#track">Уже есть код? → Отследить маршрут</a>
@@ -241,7 +277,7 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <div class="field"><label for="fDont">Что вам НЕ дарить?</label><textarea id="fDont" rows="2" maxlength="300" placeholder="Алкоголь, свечи, косметику…"></textarea><small class="err"></small></div>
 <div class="field"><label for="fAllergy">Аллергии и ограничения</label><input id="fAllergy" type="text" maxlength="300" placeholder="Орехи, цитрусовые, без сахара…"><small class="err"></small></div>
 <div class="hp" aria-hidden="true"><label>Не заполняйте это поле<input id="fWeb" type="text" tabindex="-1" autocomplete="off"></label></div>
-<label class="consent"><input type="checkbox" id="fConsent"> Согласен(на) на обработку персональных данных (имя, почта, пожелания, аллергии) организатором исключительно для проведения игры «Тайный Санта 2026».</label>
+<label class="consent"><input type="checkbox" id="fConsent"> Согласен(на) на обработку персональных данных (имя, почта, пожелания, аллергии) организатором исключительно для проведения игры «Тайный Дед Мороз 2026».</label>
 <button class="btn b-red b-big" type="submit" id="regSubmit">🎁 Отправить заявку</button>
 <p class="note">Если сеть недоступна — заявка сохранится в браузере и отправится сама, код придёт письмом.</p>
 </form></div>
@@ -276,7 +312,7 @@ footer{background:var(--dark);color:#C9BC9C;padding:36px 0;border-top:3px solid 
 <details><summary>Что если я зарегистрируюсь после жеребьёвки?</summary><div class="a">До 1 декабря включительно — успеете. Если жеребьёвка уже прошла, система аккуратно встроит вас в маршрут, изменив ровно одно назначение; организатор сообщит об этом общей рассылкой «Разослать подопечных».</div></details>
 </div></div></section>
 <footer><div class="wrap">
-<div class="f-grid"><a class="brand" href="#top">🎄 Тайный<em>Санта</em> 2026</a>
+<div class="f-grid"><a class="brand" href="#top">🎄 Тайный<em>Дед Мороз</em> 2026</a>
 <span>👥 Участников: <b id="fCount" style="color:var(--y)">…</b></span>
 <span>🎲 Жеребьёвка 2 декабря · 🎁 Обмен 25 декабря</span></div>
 <div class="f-note">Сделано с любовью и мишурой ✨ Жёлтый — значит, подарок доставим точно в срок 📦</div>
